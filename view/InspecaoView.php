@@ -153,7 +153,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Unidades</a>
+              <a href="#">Inspeções</a>
             </li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
@@ -162,7 +162,7 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Unidades cadastradas</span>
+              <span class="spanmenu">Inspeções cadastradas</span>
             </div>
             <div class="card-body">
               <div class="table-responsive">

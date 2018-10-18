@@ -153,7 +153,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Unidades</a>
+              <a href="#">Cautelas</a>
             </li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
@@ -162,7 +162,7 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Unidades cadastradas</span>
+              <span class="spanmenu">Cautelas cadastradas</span>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -690,7 +690,7 @@
     </div>
 
      <!-- Bootstrap core JavaScript-->
-     <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
