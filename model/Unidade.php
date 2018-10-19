@@ -1,5 +1,4 @@
 <?php
-//done
 class unidade {
     public $descricao;
     public $sigla;

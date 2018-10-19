@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
   <head>
 
@@ -63,6 +63,19 @@
         left:50%;      
         margin-left:10px;
     }
+
+    .btn-circle {
+      width: 30px;
+      height: 30px;
+      padding: 6px 0;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.428571429;
+    }
+
+    .btn-xs{padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px}
+
 
 </style>
 
