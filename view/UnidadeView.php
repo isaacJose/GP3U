@@ -175,14 +175,14 @@
                     <tr>
                       <th>Unidade</th>
                       <th>Sigla</th>
-                      <th>Editar</th>
-                      <th>Excluir</th>      
+                      <th></th>
+                      <th></th>      
                     </tr>
                   </thead>            
                   <tbody>
-                    <?php
-                      $lista = new UnidadeController();
-                      $lista->listaUnidade();
+                    <?php                       
+                    $lista = new UnidadeController();                       
+                    $lista->listaUnidade();
                     ?>
                   </tbody>
                 </table>
