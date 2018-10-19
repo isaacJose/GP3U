@@ -205,13 +205,18 @@ class ItemDao {
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 echo '<tr>';
-                echo '<td>' . $row["tipo"] . '</td>';
-                echo '<td>' . $row["fabricante"] . '</td>';
-                echo '<td>' . $row["modelo"] . '</td>';
-                echo '<td>' . $row["serial"] . '</td>';
-                echo '<td>' . $row["quantidade"] . '</td>';
-                echo '<td>' . $row["situacao"] . '</td>';
-                echo '<td align="center"><button type="submit" name="excluir" value="Excluir" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></td>';
+                    echo '<td>' . $row["tipo"] . '</td>';
+                    echo '<td>' . $row["fabricante"] . '</td>';
+                    echo '<td>' . $row["modelo"] . '</td>';
+                    echo '<td>' . $row["serial"] . '</td>';
+                    echo '<td>' . $row["quantidade"] . '</td>';
+                    echo '<td>' . $row["situacao"] . '</td>';
+                    echo '<td align="center">
+                            <form name="formitem" action="../controller/ItemController.php" method="POST">
+                                <button type="submit" name="excluir" value="" class="btn btn-danger btn-xs">Excluir</button>
+                                <input type="hidden" name="id" value="'.$row["id"].'">
+                            </form>
+                        </td>';
                 echo '</tr>';
             }
         } else {

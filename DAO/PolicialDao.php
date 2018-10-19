@@ -32,19 +32,25 @@ class PolicialDao {
 
         if (mysqli_num_rows($result) > 0) {
             //while($row = mysqli_fetch_assoc($result)) {  
-            while($row = mysqli_fetch_assoc($result)) {  
-                $id = $row['id'];
-                $_SESSION['idpm'] = $id;
-                var_dump($id);
-                echo '<tr>';
-                echo '<input type="hidden" name="id" value="'.$id.'">';                
-                echo '<td>' . $row["nome"] . '</td>';
-                echo '<td>' . $row["graduacao"] . '</td>';
-                echo '<td>' . $row["matricula"] . '</td>';
-                echo '<td>' . $row["situacao"] . '</td>';
-                echo '<td>' . $row["sigla_subunidade"] . '</td>';
-                echo '<td align="center"><button type="submit" name="editar1" value="Editar" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></td>';
-                echo '<td align="center"><button type="submit" name="excluir" value="Excluir" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></td>';
+            while($row = mysqli_fetch_assoc($result)) { 
+                echo '<tr>';        
+                    echo '<td>' . $row["nome"] . '</td>';
+                    echo '<td>' . $row["graduacao"] . '</td>';
+                    echo '<td>' . $row["matricula"] . '</td>';
+                    echo '<td>' . $row["situacao"] . '</td>';
+                    echo '<td>' . $row["sigla_subunidade"] . '</td>';
+                    echo    '<td align="center">
+                                <form name="formpolicial1" action="../controller/PolicialController.php" method="POST">
+                                    <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
+                                    <input type="hidden" name="id" value="'.$row["id"].'">
+                                </form>
+                            </td>';
+                    echo    '<td align="center">
+                                <form name="formpolicial2" action="../controller/PolicialController.php" method="POST">
+                                    <button type="submit" name="excluir" value="" class="btn btn-danger btn-xs">Excluir</button>
+                                    <input type="hidden" name="id" value="'.$row["id"].'">
+                                </form>
+                            </td>';
                 echo '</tr>';
                 
             }
