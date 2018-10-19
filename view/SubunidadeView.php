@@ -1,3 +1,7 @@
+<?php
+    include_once '../controller/SubunidadeController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,6 +63,8 @@
         left:50%;      
         margin-left:10px;
     }
+
+    .btn-xs{padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px}
 
 </style>
 
@@ -177,7 +183,10 @@
                     </tr>
                   </thead>            
                   <tbody>
-                    
+                    <?php                       
+                    $lista = new SubunidadeController();                       
+                    $lista->listaSubunidade();
+                    ?>
                   </tbody>
                 </table>
               </div>

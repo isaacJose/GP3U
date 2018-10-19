@@ -89,13 +89,13 @@ class SubunidadeDao {
                 echo        '<td>'. $row["sigla2"] .'</td>';
                 echo        '<td align="center">
                                 <form name="formsubunidade1" action="../controller/SubunidadeController.php" method="POST">
-                                    <button type="submit" name="editar1" value="Editar" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>
+                                <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
                                     <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>
                             </td>';
                 echo        '<td align="center">
                                 <form name="formsubunidade2" action="../controller/SubunidadeController.php" method="POST">
-                                    <button type="submit" name="excluir" value="Excluir" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>
+                                <button type="submit" name="excluir" value="" class="btn btn-danger btn-xs">Excluir</button>
                                     <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>
                             </td>';
