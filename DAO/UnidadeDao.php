@@ -16,23 +16,8 @@ class unidadeDao{
         }
     }
     
-    function recuperaId($id) {
-        $query = "SELECT id, sigla, descricao FROM unidade WHERE id = $id";
-        
-        $result = mysqli_query($conn->conecta(), $query);
-
-        if (mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
-                $id = $row['id'];
-                return $id;  
-            }
-        } else {
-            echo "0 results";
-        }      
-    }
-    
-    function recuperaDescricao(conexao $conn) {
-        $query = "SELECT id, sigla, descricao FROM unidade";
+    function recuperaDescricao(conexao $conn, $id) {
+        $query = "SELECT descricao FROM unidade WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -46,8 +31,8 @@ class unidadeDao{
         }      
     }
     
-    function recuperaSigla(conexao $conn) {
-        $query = "SELECT id, sigla, descricao FROM unidade";
+    function recuperaSigla(conexao $conn, $id) {
+        $query = "SELECT sigla FROM unidade WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -93,7 +78,7 @@ class unidadeDao{
                 echo        '<td>'. $row["descricao"]. '</td>';
                 echo        '<td>'. $row["sigla"] .'</td>';
                 echo        '<td align="center">
-                                <form name="formunidade1" action="../controller/UnidadeController.php" method="POST">
+                                <form name="formunidade1" action="UnidadeViewEditar.php" method="POST">
                                     <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
                                     <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>

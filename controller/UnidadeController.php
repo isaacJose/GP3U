@@ -46,13 +46,13 @@ class UnidadeController {
     
     //done
     public function editaUnidade() {
+        $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
         if (isset($_POST['descricao']))
             $descricao = $_POST['descricao'];
         if (isset($_POST['sigla']))
             $sigla = $_POST['sigla'];
         $conexao = new conexao();
         $unidade = new unidade();
-        $id = UnidadeDao::recuperaId($conexao);
         $unidade->setId($id);
         $unidade->setDescricao($descricao);
         $unidade->setSigla($sigla);
@@ -66,15 +66,11 @@ $cad = new UnidadeController();
 if (isset($_POST['cadastrar']))
     $cadastrar = $_POST['cadastrar'];
 
-if (isset($_POST['excluir'])){
+if (isset($_POST['excluir']))
     $excluir = $_POST['excluir'];
-}
 
-if (isset($_POST['editar1']))
-    $editar1 = $_POST['editar1'];
-
-if (isset($_POST['editar2']))
-    $editar2 = $_POST['editar2'];
+if (isset($_POST['editar']))
+    $editar = $_POST['editar'];
 
 
 if (isset($cadastrar)) {
@@ -87,13 +83,8 @@ if (isset($excluir)) {
     header("Location: ../view/UnidadeView.php");
 }
 
-if (isset($editar1)){
-    header("Location: ../view/unidade_listar.php");
-    
-    
-}
-if (isset($editar2)){
+if (isset($editar)){
     $cad->editaUnidade();
-    header("Location: ../view/unidade_listar.php");
+    header("Location: ../view/UnidadeView.php");
     
 }

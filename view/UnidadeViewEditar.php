@@ -1,5 +1,8 @@
 <?php
     include_once '../controller/UnidadeController.php';
+    include_once '../DAO/UnidadeDao.php';
+    include_once '../model/Unidade.php';
+    include_once '../DAO/Conexao.php';
 ?>
 
 <!DOCTYPE html>
@@ -172,7 +175,7 @@
             <li class="breadcrumb-item">
               <a href="#">Unidades</a>
             </li>
-            <li class="breadcrumb-item active">Cadastrar</li>
+            <li class="breadcrumb-item active">Editar</li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
 
@@ -180,7 +183,7 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Formulário de cadastro de unidade</span>
+              <span class="spanmenu">Formulário para editar unidade</span>
             </div>
             <div class="card-body">
               <form action="../controller/UnidadeController.php" method="post">
@@ -188,19 +191,29 @@
                   <div class="col-lg-6"> 
                     <div class="form-group">
                       <label>Unidade</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                      <?php 
+                        $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);                        
+                        $conexao = new conexao();                        
+                        $descricao = UnidadeDao::recuperaDescricao($conexao, $id);
+                        echo "<input id='descricao' type='text' name='descricao' class='form-control' value='$descricao' title='Campo referente a unidade'>";                                 
+                      ?>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label>Sigla</label>
-                      <input id="sigla" type="text" name="sigla" class="form-control" placeholder="Ex.: 6BPM" title="Campo referente a sigla">
+                      <?php
+                       
+                        $sigla = UnidadeDao::recuperaSigla($conexao, $id);
+                        echo "<input id='sigla' type='text' name='sigla' class='form-control' value='$sigla' title='Campo referente a sigla'>";
+                        echo '<input type="hidden" name="id" value="'.$id.'">';                                
+                      ?> 
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
-                    <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar"> 
+                    <input type="submit" class="btn btn-primary" id="editar" name="editar" value="Editar"> 
                   </div>
                 </div>
               </form>
