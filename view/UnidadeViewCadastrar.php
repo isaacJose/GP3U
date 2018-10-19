@@ -172,6 +172,7 @@
             <li class="breadcrumb-item">
               <a href="#">Unidades</a>
             </li>
+            <li class="breadcrumb-item active">Cadastrar</li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
 
@@ -179,39 +180,33 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Unidades cadastradas</span>
+              <span class="spanmenu">Formuário de cadastro de Unidade</span>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Unidade</th>
-                      <th>Sigla</th>
-                      <th></th>
-                      <th></th>      
-                    </tr>
-                  </thead>            
-                  <tbody>
-                    <?php                       
-                    $lista = new UnidadeController();                       
-                    $lista->listaUnidade();
-                    ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <form action="UnidadeViewCadastrar.php">
-                <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+              <form action="../controller/UnidadeController.php" method="post">
+                <div class="row">
+                  <div class="col-lg-6"> 
+                    <div class="form-group">
+                      <label>Unidade</label>
+                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Sigla</label>
+                      <input id="sigla" type="text" name="sigla" class="form-control" placeholder="Ex.: 6BPM" title="Campo referente a sigla">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar"> 
+                  </div>
+                </div>
               </form>
             </div>
           </div>
         </div>
-        <br>
-
         
         <!-- /.container-fluid -->
 

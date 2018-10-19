@@ -79,12 +79,12 @@ if (isset($_POST['editar2']))
 
 if (isset($cadastrar)) {
     $cad->insereUnidade();
-    header("Location: ../view/unidade_listar.php");
+    header("Location: ../view/UnidadeView.php");
 }
 
 if (isset($excluir)) {
     $cad->excluiUnidade();
-    header("Location: ../view/unidade_listar.php");
+    header("Location: ../view/UnidadeView.php");
 }
 
 if (isset($editar1)){
