@@ -1,9 +1,9 @@
 <?php
-    include_once '../controller/UnidadeController.php';
+    include_once '../controller/SubunidadeController.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
   <head>
 
@@ -64,18 +64,7 @@
         margin-left:10px;
     }
 
-    .btn-circle {
-      width: 30px;
-      height: 30px;
-      padding: 6px 0;
-      border-radius: 15px;
-      text-align: center;
-      font-size: 12px;
-      line-height: 1.428571429;
-    }
-
     .btn-xs{padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px}
-
 
 </style>
 
@@ -125,13 +114,13 @@
             <span class="spanmenu">Principal</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="UnidadeView.php">
           <i class="material-icons">star</i>
             <span class="spanmenu">Unidades</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="SubunidadeView.php">
           <i class="material-icons">star_border</i>
             <span class="spanmenu">Subunidades</span>
@@ -170,7 +159,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Unidades</a>
+              <a href="#">Subunidades</a>
             </li>
             <li class="breadcrumb-item active">Cadastrar</li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
@@ -180,33 +169,46 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Unidade- Formulário de cadastro</span>
+              <span class="spanmenu">Subunidade - Formulário de cadastro</span>
             </div>
             <div class="card-body">
-              <form action="../controller/UnidadeController.php" method="post">
+              <form action="../controller/SubunidadeController.php" method="post">
                 <div class="row">
-                  <div class="col-lg-6"> 
+                  <div class="col-lg-4">
                     <div class="form-group">
                       <label>Unidade</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                      <select name="unidade" class="form-control" required>
+                        <?php 
+                        $opt = new SubunidadeController();
+                        $opt->listaOptions();
+                        ?>                                                                 
+                      </select>
                     </div>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Subunidade</label>
+                      <input name="descricao" class="form-control" placeholder="Ex.: 1ª Companhia de Policia Militar" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
                     <div class="form-group">
                       <label>Sigla</label>
-                      <input id="sigla" type="text" name="sigla" class="form-control" placeholder="Ex.: 6BPM" title="Campo referente a sigla">
+                      <input name="sigla" class="form-control" placeholder="Ex.: 1CPM" required>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-lg-6">
-                    <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar"> 
+                  <div class="col-lg-12">
+                    <input type="submit" class="btn btn-success" name="cadastrar" value="Cadastrar">
                   </div>
                 </div>
-              </form>
+              </form>  
             </div>
           </div>
         </div>
+        <br>
+
         
         <!-- /.container-fluid -->
 

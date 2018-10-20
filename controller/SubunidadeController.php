@@ -10,19 +10,22 @@ require_once '../model/Subunidade.php';
 class SubunidadeController {
     //done
     public function insereSubunidade() {
-        if (isset($_POST['unidade']))
-            $unidade = $_POST['unidade'];
-        if (isset($_POST['descricao']))
-            $descricao = $_POST['descricao'];
-        if (isset($_POST['sigla']))
-            $sigla = $_POST['sigla'];
+        $unidade = filter_input(INPUT_POST,"unidade",FILTER_SANITIZE_STRING);
+        var_dump($unidade);
+        $descricao = filter_input(INPUT_POST,"descricao",FILTER_SANITIZE_STRING);
+        var_dump($descricao);
+        $sigla = filter_input(INPUT_POST,"sigla",FILTER_SANITIZE_STRING);
+        var_dump($sigla);   
         
         $conexao = new conexao();
+
+        $idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);
+        var_dump($idSup);   
+
         $subunidade = new subunidade();
-        $id = subunidadeDao::recuperaSiglaUnidade($conexao);
         $subunidade->setSigla($sigla);
         $subunidade->setDescricao($descricao);
-        $subunidade->setUnidadeSuperior($id);
+        $subunidade->setUnidadeSuperior($idSup);
         $subunidadeDao = new SubunidadeDao();
         $subunidadeDao->adiciona($conexao, $subunidade);      
     }
@@ -86,12 +89,12 @@ if (isset($_POST['editar2']))
 
 if (isset($cadastrar)) {
     $subunidade->insereSubunidade();
-    header("Location: ../view/subunidades_listar.php");
+    header("Location: ../view/SubunidadeView.php");
 }
 
 if (isset($excluir)) {
     $subunidade->excluiSubunidade();
-    header("Location: ../view/SubunidadeFormListar.php");
+    header("Location: ../view/SubunidadeView.php");
 }
 
 if(isset($editar1)){

@@ -29,6 +29,23 @@ class SubunidadeDao {
             echo "0 results";
         }      
     }
+
+    function recuperaIdSuperior(conexao $conn, $sigla) {
+        //$query = "SELECT u.id FROM unidade AS u, subunidade AS s WHERE u.sigla = $unidade";
+        $query = "SELECT id FROM unidade WHERE sigla = '$sigla'";
+        //SELECT id FROM subunidade WHERE descricao = "3ª CIPM - Currais Novos"
+        
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+                return $id;  
+            }
+        } else {
+            echo "0 results";
+        }      
+    }
     
     function recuperaDescricao(conexao $conn) {
         $query = "SELECT s.id AS id, s.sigla AS sigla, s.descricao AS descricao, u.sigla AS sigla2 FROM subunidade AS s, unidade AS u WHERE s.id_unid_superior = u.id";
@@ -113,9 +130,7 @@ class SubunidadeDao {
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                $id = $row["id"];
-                $_SESSION['idselect'] = $id;
-                echo '<option>'. $row["sigla"]. '</option>';
+                echo '<option>'. $row["sigla"].'</option>';
             }
         } else {
             echo "0 results";

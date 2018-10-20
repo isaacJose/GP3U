@@ -194,7 +194,9 @@
           </div>
           <div class="row">
             <div class="col-lg-12">
-              <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+              <form action="SubunidadeViewCadastrar.php">
+                <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+              </form>
             </div>
           </div>
         </div>
