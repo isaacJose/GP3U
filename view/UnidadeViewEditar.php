@@ -18,6 +18,9 @@
 
     <title>SIGEP</title>
 
+    <!-- Favicon-->
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
+
     <!-- Bootstrap core CSS-->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
