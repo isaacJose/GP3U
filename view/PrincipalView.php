@@ -198,7 +198,7 @@
           <div class="modal-body">Selecione a opção "Logout" para sair do sistema.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="../login.php">Logout</a>
           </div>
         </div>
       </div>
