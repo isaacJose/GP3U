@@ -30,12 +30,15 @@ class PolicialController {
         var_dump($situacao);
         $subunidade = filter_input(INPUT_POST,"subunidade",FILTER_SANITIZE_STRING);
         var_dump($subunidade);
-        
+        $id = filter_input(INPUT_POST,"nome",FILTER_SANITIZE_STRING);
+        var_dump($id);
+
         $conexao = new conexao();
 
-        $idSub = PolicialDao::recuperaIdSubunidade($conexao, $subunidade);
+        $idSub = PolicialDao::recuperaIdSubunidade2($conexao, $subunidade);
         var_dump($idSub);
         $policial = new Policial();
+        $policial->setId($id);
         $policial->setNome($nome);
         $policial->setGraduacao($patente);
         $policial->setNome_funcional($nome_funcional);
@@ -63,25 +66,27 @@ class PolicialController {
     }
     
     public function editaPolicial() {
-        
-        if (isset($_POST['nome']))//ok
-            $nome = $_POST['nome'];
-        if (isset($_POST['patente']))//ok
-            $patente = $_POST['patente'];
-        if (isset($_POST['nome_funcional']))//ok
-            $nome_funcional = $_POST['nome_funcional'];
-        if (isset($_POST['matricula']))//ok
-            $matricula = $_POST['matricula'];
-        if (isset($_POST['email']))//ok
-            $email = $_POST['email'];
-        if (isset($_POST['situacao']))//ok
-            $situacao = $_POST['situacao'];
-        if (isset($_POST['subunidade']))//ok
-            $subunidade = $_POST['subunidade'];     
+
+        $nome = filter_input(INPUT_POST,"nome",FILTER_SANITIZE_STRING);
+        //var_dump($nome);
+        $patente = filter_input(INPUT_POST,"patente",FILTER_SANITIZE_STRING);
+        //var_dump($patente);
+        $nome_funcional = filter_input(INPUT_POST,"nome_funcional",FILTER_SANITIZE_STRING);
+        //var_dump($nome_funcional);
+        $matricula = filter_input(INPUT_POST,"matricula",FILTER_SANITIZE_STRING);
+        var_dump($matricula);
+        $email = filter_input(INPUT_POST,"email",FILTER_SANITIZE_STRING);
+        //var_dump($email);
+        $situacao = filter_input(INPUT_POST,"situacao",FILTER_SANITIZE_STRING);
+        //var_dump($situacao);
+        $subunidade = filter_input(INPUT_POST,"subunidade",FILTER_SANITIZE_STRING);
+        //var_dump($subunidade);
+        $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
+        //var_dump($id); 
         
         $conexao = new conexao();       
         $policial = new Policial();
-        $id = PolicialDao::recuperaId($conexao, $policial);
+        $idSub = PolicialDao::recuperaIdSubunidade2($conexao, $subunidade);
         $policial->setId($id);
         $policial->setNome($nome);
         $policial->setGraduacao($patente);
@@ -89,7 +94,7 @@ class PolicialController {
         $policial->setMatricula($matricula);
         $policial->setEmail($email);
         $policial->setSituacao($situacao);
-        $policial->setId_subunidade($subunidade);
+        $policial->setId_subunidade($idSub);
         $policialDao = new PolicialDao();
         $policialDao->edita($conexao, $policial);
     }
@@ -116,5 +121,5 @@ if (isset($excluir)) {
 
 if (isset($editar)) {
     $policial->editaPolicial();
-    header("Location: ../view/PolicialFormListar.php");
+    header("Location: ../view/PolicialView.php");
 }

@@ -1,7 +1,7 @@
 <?php
     include_once '../controller/PolicialController.php';
 
-    include_once '../DAO/PolicialDao.php';
+    include_once '../DAO/SubunidadeDao.php';
     //include_once '../model/Subunidade.php';
     include_once '../DAO/Conexao.php';
 
@@ -191,10 +191,13 @@
                       <label>Situação</label>
                       <div class="radio">
                         <label class="radio-inline">
-                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto">Operacional
+                          <?php
+                          $situacao = PolicialDao::recuperaSituacao($conexao, $id);
+                          ?>
+                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto" <?php if($situacao == "Apto") echo "checked";?>>Operacional
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica">Junta psiquiátrica
+                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica" <?php if($situacao == "Junta psiquiátrica") echo "checked";?>>Junta psiquiátrica
                         </label>
                       </div>
                     </div>                                        
@@ -204,10 +207,12 @@
                       <label>Lotação</label>
                       <select name="subunidade" class="form-control">
                         <?php
-                        $subunidade = PolicialDao::recuperaIdSubunidade($conexao, $id);
+                        $subunidadeId = PolicialDao::recuperaIdSubunidade($conexao, $id);
+                        $subunidade = PolicialDao::recuperaSiglaSubunidade($conexao, $subunidadeId);
                         echo"<option selected>".$subunidade."</option>";
                         $opt = new PolicialController();
                         $opt->listaOptions();
+                        echo '<input type="hidden" name="id" value="'.$id.'">';  
                         ?>    
                       </select>
                     </div>                                        
@@ -215,7 +220,7 @@
                 </div>
                 <div class="row">
                   <div class="col-lg-12">
-                    <input type="submit" name="cadastrar" value="Editar" class="btn btn-primary">
+                    <input type="submit" name="editar" value="Editar" class="btn btn-primary">
                   </div>
                 </div>
               </form>
