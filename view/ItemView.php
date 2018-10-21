@@ -130,7 +130,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Itens</a>
+              <a href="../view/ItemView.php">Itens</a>
             </li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>

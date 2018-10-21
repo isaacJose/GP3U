@@ -33,6 +33,11 @@
         margin-left:10px;
     }
 
+    .container img {
+      width:500px;
+      height:500px;
+    }
+
 </style>
 
   <body id="page-top">
@@ -70,7 +75,7 @@
       <ul class="sidebar navbar-nav">
         <li>
           <div class="imagem">
-            <img src="../img/logo.png">
+            <img src="../img/sigeplogo.png">
           </div>                  
         </li>
         <li class="nav-item active">
@@ -124,7 +129,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Principal</a>
+              <a href="../view/PrincipalView.php">Principal</a>
             </li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
@@ -133,8 +138,11 @@
         </div>
         <br>
 
-        
         <!-- /.container-fluid -->
+
+        <div align="center" class="container"> 
+          <img src="../img/logo.png" width="320" height="205" />
+        </div>
 
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
