@@ -121,5 +121,5 @@ if (isset($excluir)) {
 
 if (isset($editar)) {
     $policial->editaPolicial();
-    //header("Location: ../view/PolicialFormListar.php");
+    header("Location: ../view/PolicialView.php");
 }
