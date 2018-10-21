@@ -8,46 +8,7 @@
     include 'includes/header.html';
 ?>
 
-  <style>
-
-    img {
-        width:150px;
-        height:150px;      
-        top:50%;
-        left:50%;      
-        margin-left:10px;      
-    }
-    .imagem{
-      background-color:white;
-      border-radius:100%;
-      margin-top:10px;
-      margin-left:30px;
-      margin-right:30px;
-    }
-    i{
-      position: absolute;  
-    }
-
-    .spanmenu{
-      margin-left:30px;
-    }
-
-    .exit{ 
-        width:20px;
-        height:20px;  
-        top:50%;
-        left:50%;      
-        margin-left:10px;
-    }
-
-    .btn-xs{
-        padding:1px 5px;
-        font-size:12px;
-        line-height:1.5;
-        border-radius:3px
-    }
-
-</style>
+  
 
   <body id="page-top">
 
@@ -55,7 +16,9 @@
 
       <a class="navbar-brand mr-1" href="index.html">SIGEP</a>
 
-      
+      <?php
+        include 'includes/style/PolicialViewCadastrar.html';
+      ?>
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
