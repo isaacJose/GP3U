@@ -166,10 +166,10 @@
                       <label>Situação</label>
                       <div class="radio">
                         <label class="radio-inline">
-                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto">Operacional
+                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto"> Operacional
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica">Junta psiquiátrica
+                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica"> Junta psiquiátrica
                         </label>
                       </div>
                     </div>                                        

@@ -194,10 +194,10 @@
                           <?php
                           $situacao = PolicialDao::recuperaSituacao($conexao, $id);
                           ?>
-                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto" <?php if($situacao == "Apto") echo "checked";?>>Operacional
+                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto" <?php if($situacao == "Apto") echo "checked";?>> Operacional
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica" <?php if($situacao == "Junta psiquiátrica") echo "checked";?>>Junta psiquiátrica
+                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica" <?php if($situacao == "Junta psiquiátrica") echo "checked";?>> Junta psiquiátrica
                         </label>
                       </div>
                     </div>                                        
