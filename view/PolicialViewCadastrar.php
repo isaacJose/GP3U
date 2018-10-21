@@ -144,37 +144,15 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Policiais cadastrados</span>
+              <span class="spanmenu">Policiais - Formulário de cadastro</span>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Nome Funcional</th>
-                      <th>Patente</th>
-                      <th>Matrícula</th>
-                      <th>Situação</th>
-                      <th>Lotação</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>            
-                  <tbody>
-                    <?php                       
-                    $lista = new PolicialController();                       
-                    $lista->listaPolicial();
-                    ?>
-                  </tbody>
-                </table>
-              </div>
+              
             </div>
           </div>
           <div class="row">
             <div class="col-lg-12">
-              <form action="PolicialViewCadastrar.php">
-                <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
-              </form>
+              <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
             </div>
           </div>
         </div>

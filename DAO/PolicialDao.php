@@ -40,7 +40,7 @@ class PolicialDao {
                     echo '<td>' . $row["situacao"] . '</td>';
                     echo '<td>' . $row["sigla_subunidade"] . '</td>';
                     echo    '<td align="center">
-                                <form name="formpolicial1" action="../controller/PolicialController.php" method="POST">
+                                <form name="formpolicial1" action="../view/PolicialViewEditar.php" method="POST">
                                     <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
                                     <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>

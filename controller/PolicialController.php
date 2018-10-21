@@ -99,15 +99,12 @@ if (isset($_POST['cadastrar']))
 if (isset($_POST['excluir']))
     $excluir = $_POST['excluir'];
 
-if (isset($_POST['editar1']))
-    $editar1 = $_POST['editar1'];
-
-if (isset($_POST['editar2']))
-    $editar2 = $_POST['editar2'];
+if (isset($_POST['editar']))
+    $editar = $_POST['editar'];
 
 if (isset($cadastrar)) {
     $policial->inserePolicial();
-    header("Location: ../view/PolicialFormListar.php");
+    header("Location: ../view/PolicialViewListar.php");
 }
 
 if (isset($excluir)) {
@@ -115,11 +112,7 @@ if (isset($excluir)) {
     header("Location: ../view/PolicialFormListar.php");
 }
 
-if (isset($editar1)) {
-    header("Location: ../view/PolicialFormEditar.php");
-}
-
-if (isset($editar2)) {
+if (isset($editar)) {
     $policial->editaPolicial();
     header("Location: ../view/PolicialFormListar.php");
 }

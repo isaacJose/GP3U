@@ -10,17 +10,14 @@ require_once '../model/Subunidade.php';
 class SubunidadeController {
     //done
     public function insereSubunidade() {
+
         $unidade = filter_input(INPUT_POST,"unidade",FILTER_SANITIZE_STRING);
-        var_dump($unidade);
         $descricao = filter_input(INPUT_POST,"descricao",FILTER_SANITIZE_STRING);
-        var_dump($descricao);
-        $sigla = filter_input(INPUT_POST,"sigla",FILTER_SANITIZE_STRING);
-        var_dump($sigla);   
+        $sigla = filter_input(INPUT_POST,"sigla",FILTER_SANITIZE_STRING); 
         
         $conexao = new conexao();
 
-        $idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);
-        var_dump($idSup);   
+        $idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);  
 
         $subunidade = new subunidade();
         $subunidade->setSigla($sigla);
@@ -54,13 +51,16 @@ class SubunidadeController {
     }
     
     public function editaSubunidade() {
+
         $conexao = new conexao();
+
         //recuperação de dados
         $descricao = filter_input(INPUT_POST,"descricao",FILTER_SANITIZE_STRING);
         $sigla = filter_input(INPUT_POST,"sigla",FILTER_SANITIZE_STRING);
         $unidade = filter_input(INPUT_POST,"unidade",FILTER_SANITIZE_STRING);
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);//vindo do input hidden.
-        $idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);        
+        $idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);      
+          
         //onde acontece a mágica        
         $subunidade = new subunidade();        
         $subunidade->setId($id);
