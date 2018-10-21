@@ -109,7 +109,7 @@
       <ul class="sidebar navbar-nav">
         <li>
           <div class="imagem">
-            <img src="../img/logo.png">
+          <img src="../img/sigeplogo.png">
           </div>                  
         </li>
         <li class="nav-item">
@@ -163,7 +163,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Subunidades</a>
+              <a href="../view/SubunidadeView.php">Subunidades</a>
             </li>
             <li class="breadcrumb-item active">Editar</li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
