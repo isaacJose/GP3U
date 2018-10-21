@@ -174,7 +174,7 @@
                     <div class="form-group">
                       <label>Sigla</label>
                       <?php
-                       
+                      
                         $sigla = UnidadeDao::recuperaSigla($conexao, $id);
                         echo "<input id='sigla' type='text' name='sigla' class='form-control' value='$sigla' title='Campo referente a sigla'>";
                         echo '<input type="hidden" name="id" value="'.$id.'">';                                
@@ -220,11 +220,9 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Selecione a opção "Logout" para sair do sistema.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
+          <?php
+            include 'includes/logaout_in_navbar.html';
+          ?>
         </div>
       </div>
     </div>

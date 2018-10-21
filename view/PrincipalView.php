@@ -172,11 +172,9 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Selecione a opção "Logout" para sair do sistema.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="../login.php">Logout</a>
-          </div>
+          <?php
+            include 'includes/logaout_in_navbar.html';
+          ?>
         </div>
       </div>
     </div>
