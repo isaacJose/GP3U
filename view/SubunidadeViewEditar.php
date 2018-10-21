@@ -208,9 +208,9 @@
                     <div class="form-group">
                       <label>Sigla</label>
                       <?php
-                       $sigla = SubunidadeDao::recuperaSiglaSubunidade($conexao, $id);
-                       echo "<input name='sigla' class='form-control' value='$sigla' placeholder='Ex.: 1CPM' required>";  
-                       echo '<input type="hidden" name="id" value="'.$id.'">';  
+                        $sigla = SubunidadeDao::recuperaSiglaSubunidade($conexao, $id);
+                        echo "<input name='sigla' class='form-control' value='$sigla' placeholder='Ex.: 1CPM' required>";
+                        echo '<input type="hidden" name="id" value="'.$id.'">';  
                       ?>
                     </div>
                   </div>
@@ -259,17 +259,15 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Selecione a opção "Logout" para sair do sistema.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
+          <?php
+            include 'includes/logaout_in_navbar.html';
+          ?>
         </div>
       </div>
     </div>
 
-     <!-- Bootstrap core JavaScript-->
-     <script src="../vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
