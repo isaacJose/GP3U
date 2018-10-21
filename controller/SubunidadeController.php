@@ -54,21 +54,21 @@ class SubunidadeController {
     }
     
     public function editaSubunidade() {
-        if (isset($_POST['descricao']))
-            $descricao = $_POST['descricao'];
-        if (isset($_POST['sigla']))
-            $sigla = $_POST['sigla'];
-        $unidadeSuperior = $_SESSION['idselect'];
         $conexao = new conexao();
-        $subunidade = new subunidade();
-        $id = subunidadeDao::recuperaId($conexao);
+        //recuperação de dados
+        $descricao = filter_input(INPUT_POST,"descricao",FILTER_SANITIZE_STRING);
+        $sigla = filter_input(INPUT_POST,"sigla",FILTER_SANITIZE_STRING);
+        $unidade = filter_input(INPUT_POST,"unidade",FILTER_SANITIZE_STRING);
+        $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);//vindo do input hidden.
+        $idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);        
+        //onde acontece a mágica        
+        $subunidade = new subunidade();        
         $subunidade->setId($id);
         $subunidade->setDescricao($descricao);
         $subunidade->setSigla($sigla);
-        $subunidade->setUnidadeSuperior($unidadeSuperior);
+        $subunidade->setUnidadeSuperior($idSup);
         $subunidadeDao = new SubunidadeDao();
         $subunidadeDao->edita($conexao, $subunidade);
-        unset($_SESSION);
     }
 }
 
@@ -96,5 +96,5 @@ if (isset($excluir)) {
 
 if(isset($editar)){
     $subunidade->editaSubunidade();
-    header("Location: ../view/SubunidadeFormListar.php");
+    header("Location: ../view/SubunidadeView.php");
 }
