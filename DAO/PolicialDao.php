@@ -165,8 +165,8 @@ class PolicialDao {
         }      
     }
     //done
-    function recuperaLotacao(conexao $conn) {
-        $query = "SELECT p.id AS id, p.nome AS nome, p.graduacao AS graduacao, p.nome_funcional AS nome_funcional, p.matricula AS matricula, p.email AS email, p.situacao AS situacao, p.id_subunidade AS id_subunidade, s.sigla AS sigla_subunidade FROM policial AS p, subunidade AS s WHERE p.id_subunidade = s.id";
+    function recuperaIdSubunidade(conexao $conn, $sigla) {
+        $query = "SELECT id FROM subunidade WHERE sigla = '$sigla'";
         
         $result = mysqli_query($conn->conecta(), $query);
 

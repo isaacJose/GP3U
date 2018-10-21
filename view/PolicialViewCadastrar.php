@@ -148,97 +148,100 @@
             </div>
             <div class="card-body">
               <!-- Form -->
-              <div class="row">
-                <div class="col-lg-5">                                        
-                  <div class="form-group">
-                    <label>Nome</label>
-                    <input name="nome" class="form-control" placeholder="Nome completo do policial">
-                  </div>                                        
-                </div>
-                <div class="col-lg-2">                                        
-                  <div class="form-group">
-                    <label>Patente</label>
-                    <select name="patente" class="form-control">
-                        <option></option>
-                        <option>Soldado</option>
-                        <option>Cabo</option>
-                        <option>Sargento</option>
-                        <option>Sargento</option>
-                        <option>Sargento</option>
-                        <option>Subtenente</option>
-                        <option>Aspirante</option>
-                        <option>Segundo-tenente</option>
-                        <option>Primeiro-tenente</option>
-                        <option>Capitão</option>
-                        <option>Major</option>
-                        <option>Tenente-coronel</option>
-                        <option>Coronel</option>
-                    </select>
-                  </div>                                        
-                </div>
-                  <div class="col-lg-3">                                        
+              <form action="../controller/PolicialController.php" method="post">
+                <div class="row">
+                  <div class="col-lg-5">                                        
                     <div class="form-group">
-                      <label>Nome Funcional</label>
-                      <input name="nome_funcional" class="form-control" placeholder="Nome de guerra">
+                      <label>Nome</label>
+                      <input name="nome" class="form-control" placeholder="Nome completo do policial">
                     </div>                                        
                   </div>
                   <div class="col-lg-2">                                        
                     <div class="form-group">
-                      <label>Matrícula</label>
-                      <input name="matricula" class="form-control" placeholder="Ex.: 123456-0">
+                      <label>Patente</label>
+                      <select name="patente" class="form-control">
+                          <option></option>
+                          <option>Soldado</option>
+                          <option>Cabo</option>
+                          <option>Sargento</option>
+                          <option>Sargento</option>
+                          <option>Sargento</option>
+                          <option>Subtenente</option>
+                          <option>Aspirante</option>
+                          <option>Segundo-tenente</option>
+                          <option>Primeiro-tenente</option>
+                          <option>Capitão</option>
+                          <option>Major</option>
+                          <option>Tenente-coronel</option>
+                          <option>Coronel</option>
+                      </select>
                     </div>                                        
                   </div>
-                </div>
-                                    <div class="row">
-                                      <div class="col-lg-4">                                        
-                                        <div class="form-group">
-                                          <label>E-mail</label>
-                                          <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com">
-                                        </div>                                        
+                    <div class="col-lg-3">                                        
+                      <div class="form-group">
+                        <label>Nome Funcional</label>
+                        <input name="nome_funcional" class="form-control" placeholder="Nome de guerra">
+                      </div>                                        
+                    </div>
+                    <div class="col-lg-2">                                        
+                      <div class="form-group">
+                        <label>Matrícula</label>
+                        <input name="matricula" class="form-control" placeholder="Ex.: 123456-0">
+                      </div>                                        
+                    </div>
+                  </div>
+                                      <div class="row">
+                                        <div class="col-lg-4">                                        
+                                          <div class="form-group">
+                                            <label>E-mail</label>
+                                            <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com">
+                                          </div>                                        
+                                        </div>
+                                        <div class="col-lg-4" >                                        
+                                          <div class="form-group" align="center">
+                                            <label>Situação</label>
+                                            <div class="radio">
+                                              <label class="radio-inline">
+                                                <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto">Operacional
+                                              </label>
+                                              <label class="radio-inline">
+                                                <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica">Junta psiquiátrica
+                                              </label>
+                                            </div>
+                                          </div>                                        
+                                        </div>
+                                        <div class="col-lg-4">                                        
+                                          <div class="form-group">
+                                            <label>Lotação</label>
+                                              <select name="subunidade" class="form-control">
+                                                <option></option>
+                                                <option>1CIA/SEDE</option>
+                                                <option>2CIA/JSERIDO</option>
+                                                <option>3CIA/JUCURUTU</option>
+                                                <option>3CIPM</option>
+                                                <option>5CIPM</option>
+                                                <option>3DPRE</option>
+                                                <option>2EPMON</option>
+                                                <option>DPM/CRUZETA</option>
+                                                <option>DPM/IPUEIRA</option>
+                                                <option>DPM/OUROB</option>
+                                                <option>DPM/SJSERIDO</option>
+                                                <option>DPM/SJSABUGI</option>
+                                                <option>DPM/TIMBAUBA</option>
+                                                <option>DPM/SFERNAND</option>
+                                                <option>DPM/FLORANIA</option>
+                                                <option>DPM/SMATOS</option>
+                                                <option>DPM/TENLAURE</option>                                                    </select>
+                                          </div>                                        
+                                        </div>
                                       </div>
-                                      <div class="col-lg-4" >                                        
-                                        <div class="form-group" align="center">
-                                          <label>Situação</label>
-                                          <div class="radio">
-                                            <label class="radio-inline">
-                                              <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto">Operacional
-                                            </label>
-                                            <label class="radio-inline">
-                                              <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica">Junta psiquiátrica
-                                            </label>
-                                          </div>
-                                        </div>                                        
-                                      </div>
-                                      <div class="col-lg-4">                                        
-                                        <div class="form-group">
-                                          <label>Lotação</label>
-                                            <select name="subunidade" class="form-control">
-                                              <option></option>
-                                              <option>1CIA/SEDE</option>
-                                              <option>2CIA/JSERIDO</option>
-                                              <option>3CIA/JUCURUTU</option>
-                                              <option>3CIPM</option>
-                                              <option>5CIPM</option>
-                                              <option>3DPRE</option>
-                                              <option>2EPMON</option>
-                                              <option>DPM/CRUZETA</option>
-                                              <option>DPM/IPUEIRA</option>
-                                              <option>DPM/OUROB</option>
-                                              <option>DPM/SJSERIDO</option>
-                                              <option>DPM/SJSABUGI</option>
-                                              <option>DPM/TIMBAUBA</option>
-                                              <option>DPM/SFERNAND</option>
-                                              <option>DPM/FLORANIA</option>
-                                              <option>DPM/SMATOS</option>
-                                              <option>DPM/TENLAURE</option>                                                    </select>
-                                        </div>                                        
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-lg-12">
-                                        <input type="submit" name="cadastrar" value="Cadastrar" class="btn btn-success">
-                                      </div>
-                                    </div>
+                                      <div class="row">
+                                        <div class="col-lg-12">
+                                          <input type="submit" name="cadastrar" value="Cadastrar" class="btn btn-success">
+                                        </div>
+              
+                                        </div>
+              </form>
             </div>
           </div>
         </div>

@@ -15,22 +15,18 @@ class PolicialController {
     }
     //done
     public function inserePolicial() {
-        if (isset($_POST['nome']))//ok
-            $nome = $_POST['nome'];
-        if (isset($_POST['patente']))//ok
-            $patente = $_POST['patente'];
-        if (isset($_POST['nome_funcional']))//ok
-            $nome_funcional = $_POST['nome_funcional'];
-        if (isset($_POST['matricula']))//ok
-            $matricula = $_POST['matricula'];
-        if (isset($_POST['email']))//ok
-            $email = $_POST['email'];
-        if (isset($_POST['situacao']))//ok
-            $situacao = $_POST['situacao'];
-        if (isset($_POST['subunidade']))//ok
-            $subunidade = $_POST['subunidade'];
+        //recuperando os dados do formulário
+        $nome = filter_input(INPUT_POST,"nome",FILTER_SANITIZE_STRING);
+        $patente = filter_input(INPUT_POST,"patente",FILTER_SANITIZE_STRING);
+        $nome_funcional = filter_input(INPUT_POST,"nome_funcional",FILTER_SANITIZE_STRING);
+        $matricula = filter_input(INPUT_POST,"matricula",FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST,"email",FILTER_SANITIZE_STRING);
+        $situacao = filter_input(INPUT_POST,"situacao",FILTER_SANITIZE_STRING);
+        $subunidade = filter_input(INPUT_POST,"subunidade",FILTER_SANITIZE_STRING);
         
         $conexao = new conexao();
+
+        $idSub = PolicialDao::recuperaIdSubunidade($conexao, $subunidade);
         $policial = new Policial();
         $policial->setNome($nome);
         $policial->setGraduacao($patente);
@@ -38,7 +34,7 @@ class PolicialController {
         $policial->setMatricula($matricula);
         $policial->setEmail($email);
         $policial->setSituacao($situacao);
-        $policial->setId_subunidade($subunidade);
+        $policial->setId_subunidade($idSub);
         $policialDao = new PolicialDao();
         $policialDao->adiciona($conexao, $policial);
     }
@@ -93,8 +89,8 @@ class PolicialController {
 
 $policial = new PolicialController();
 
-if (isset($_POST['cadastrar']))
-    $cadastrar = $_POST['cadastrar'];
+// se apertou casdastar, $cadastrar recebe $_POST['cadastrar(name do input)']
+$cadastrar = filter_input(INPUT_POST,"cadastrar",FILTER_SANITIZE_STRING);
 
 if (isset($_POST['excluir']))
     $excluir = $_POST['excluir'];
@@ -104,12 +100,12 @@ if (isset($_POST['editar']))
 
 if (isset($cadastrar)) {
     $policial->inserePolicial();
-    header("Location: ../view/PolicialViewListar.php");
+    header("Location: ../view/PolicialView.php");
 }
 
 if (isset($excluir)) {
     $policial->excluiPolicial();
-    header("Location: ../view/PolicialFormListar.php");
+    header("Location: ../view/PolicialView.php");
 }
 
 if (isset($editar)) {
