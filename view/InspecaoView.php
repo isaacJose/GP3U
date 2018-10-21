@@ -174,13 +174,9 @@
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © UFRN 2018</span>
-            </div>
-          </div>
-        </footer>
+        <?php
+          include 'includes/footer.html';
+        ?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -213,7 +209,7 @@
     </div>
 
     <?php
-      include 'includes/footer.html';
+      include 'includes/script.html';
     ?>
 
   </body>
