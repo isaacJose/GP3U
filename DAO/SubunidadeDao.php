@@ -47,8 +47,8 @@ class SubunidadeDao {
         }      
     }
     
-    function recuperaDescricao(conexao $conn) {
-        $query = "SELECT s.id AS id, s.sigla AS sigla, s.descricao AS descricao, u.sigla AS sigla2 FROM subunidade AS s, unidade AS u WHERE s.id_unid_superior = u.id";
+    function recuperaDescricao(conexao $conn, $id) {
+        $query = "SELECT descricao FROM subunidade WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -62,23 +62,23 @@ class SubunidadeDao {
         }      
     }
     
-    function recuperaSiglaUnidade(conexao $conn) {
-        $query = "SELECT s.id AS id, s.sigla AS sigla, s.descricao AS descricao, u.sigla AS sigla2 FROM subunidade AS s, unidade AS u WHERE s.id_unid_superior = u.id";
+    function recuperaSiglaUnidade(conexao $conn, $id) {
+        $query = "SELECT id_unid_superior FROM subunidade WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                $sigla2 = $row['sigla2'];
-                return $sigla2;  
+                $id_unid_superior = $row['id_unid_superior'];
+                return $id_unid_superior;  
             }
         } else {
             echo "0 results";
         }      
     }
     
-    function recuperaSiglaSubunidade(conexao $conn) {
-        $query = "SELECT s.id AS id, s.sigla AS sigla, s.descricao AS descricao, u.sigla AS sigla2 FROM subunidade AS s, unidade AS u WHERE s.id_unid_superior = u.id";
+    function recuperaSiglaSubunidade(conexao $conn, $id) {
+        $query = "SELECT sigla FROM subunidade WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -105,7 +105,7 @@ class SubunidadeDao {
                 echo        '<td>'. $row["descricao"] .'</td>';
                 echo        '<td>'. $row["sigla2"] .'</td>';
                 echo        '<td align="center">
-                                <form name="formsubunidade1" action="../controller/SubunidadeController.php" method="POST">
+                                <form name="formsubunidade1" action="SubunidadeViewEditar.php" method="POST">
                                 <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
                                     <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>
