@@ -35,7 +35,12 @@
         margin-left:10px;
     }
 
-    .btn-xs{padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px}
+    .btn-xs{
+        padding:1px 5px;
+        font-size:12px;
+        line-height:1.5;
+        border-radius:3px
+    }
 
 </style>
 

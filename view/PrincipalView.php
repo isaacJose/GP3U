@@ -34,6 +34,8 @@
     }
 
     .container img {
+      margin-left: auto;
+      margin-right: auto;
       width:500px;
       height:500px;
     }
