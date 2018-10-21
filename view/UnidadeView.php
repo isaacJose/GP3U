@@ -85,7 +85,7 @@
       <ul class="sidebar navbar-nav">
         <li>
           <div class="imagem">
-            <img src="../img/logo.png">
+          <img src="../img/sigeplogo.png">
           </div>                  
         </li>
         <li class="nav-item">
