@@ -1,5 +1,10 @@
 <?php
     include_once '../controller/PolicialController.php';
+
+    include_once '../DAO/PolicialDao.php';
+    //include_once '../model/Subunidade.php';
+    include_once '../DAO/Conexao.php';
+
     include 'includes/header.html';
 ?>
 
@@ -137,6 +142,7 @@
             <li class="breadcrumb-item">
               <a href="../view/PolicialView.php">Policiais</a>
             </li>
+            <li class="breadcrumb-item active">Editar</li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
 
@@ -147,12 +153,109 @@
               <span class="spanmenu">Policiais - Formulário de edição</span>
             </div>
             <div class="card-body">
-              
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+
+            <!-- Form -->
+              <form action="../controller/PolicialController.php" method="post">
+                <div class="row">
+                  <div class="col-lg-5">                                        
+                    <div class="form-group">
+                      <label>Nome</label>
+                      <?php
+                      $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
+                      $conexao = new conexao();
+                      $nome = PolicialDao::recuperaNome($conexao, $id);
+                      echo "<input name='nome' value='$nome' class='form-control' placeholder='Nome completo do policial' required>"
+                      ?>
+                    </div>                                        
+                  </div>
+                  <div class="col-lg-2">                                        
+                    <div class="form-group">
+                      <label>Patente</label>
+                      <select name="patente" class="form-control">
+                        <?php
+                        $graduacao = PolicialDao::recuperaPatente($conexao, $id);
+                        echo"<option selected>".$graduacao."</option>";
+                        //$opt = new SubunidadeController();
+                        //$opt->listaOptions();
+                        ?>
+                        <option>Soldado</option>
+                        <option>Cabo</option>
+                        <option>Sargento</option>
+                        <option>Sargento</option>
+                        <option>Sargento</option>
+                        <option>Subtenente</option>
+                        <option>Aspirante</option>
+                        <option>Segundo-tenente</option>
+                        <option>Primeiro-tenente</option>
+                        <option>Capitão</option>
+                        <option>Major</option>
+                        <option>Tenente-coronel</option>
+                        <option>Coronel</option>
+                      </select>
+                    </div>                                        
+                  </div>
+                  <div class="col-lg-3">                                        
+                    <div class="form-group">
+                      <label>Nome Funcional</label>
+                      <?php
+                      $nome_funcional = PolicialDao::recuperaNomeFuncional($conexao, $id);
+                      echo "<input name='nome_funcional' value='$nome_funcional' class='form-control' required>";
+                      ?>
+                    </div>                                        
+                  </div>
+                  <div class="col-lg-2">                                        
+                    <div class="form-group">
+                      <label>Matrícula</label>
+                      <?php
+                      $matricula = PolicialDao::recuperaMatricula($conexao, $id);
+                      echo "<input name='matricula' value='$matricula' class='form-control' placeholder='Ex.: 123456-0' required>";
+                      ?>
+                    </div>                                        
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4">                                        
+                    <div class="form-group">
+                      <label>E-mail</label>
+                      <?php
+                      $email = PolicialDao::recuperaEmail($conexao, $id);
+                      echo "<input name='email' class='form-control' value='$email' placeholder='Ex.: email@exemplo.com' required>";
+                      ?>
+                    </div>                                        
+                  </div>
+                  <div class="col-lg-4" >                                        
+                    <div class="form-group" align="center">
+                      <label>Situação</label>
+                      <div class="radio">
+                        <label class="radio-inline">
+                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto">Operacional
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica">Junta psiquiátrica
+                        </label>
+                      </div>
+                    </div>                                        
+                  </div>
+                  <div class="col-lg-4">                                        
+                    <div class="form-group">
+                      <label>Lotação</label>
+                      <select name="subunidade" class="form-control">
+                        <?php
+                        $subunidade = PolicialDao::recuperaIdSubunidade($conexao, $id);
+                        echo"<option selected>".$subunidade."</option>";
+                        $opt = new PolicialController();
+                        $opt->listaOptions();
+                        ?>    
+                      </select>
+                    </div>                                        
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <input type="submit" name="cadastrar" value="Editar" class="btn btn-primary">
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

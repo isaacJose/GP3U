@@ -137,6 +137,7 @@
             <li class="breadcrumb-item">
               <a href="../view/PolicialView.php">Policiais</a>
             </li>
+            <li class="breadcrumb-item active">Cadastrar</li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
 
@@ -160,7 +161,7 @@
                     <div class="form-group">
                       <label>Patente</label>
                       <select name="patente" class="form-control">
-                          <option></option>
+                          
                           <option>Soldado</option>
                           <option>Cabo</option>
                           <option>Sargento</option>
@@ -214,24 +215,10 @@
                     <div class="form-group">
                       <label>Lotação</label>
                       <select name="subunidade" class="form-control">
-                          <option></option>
-                          <option>1CIA/SEDE</option>
-                          <option>2CIA/JSERIDO</option>
-                          <option>3CIA/JUCURUTU</option>
-                          <option>3CIPM</option>
-                          <option>5CIPM</option>
-                          <option>3DPRE</option>
-                          <option>2EPMON</option>
-                          <option>DPM/CRUZETA</option>
-                          <option>DPM/IPUEIRA</option>
-                          <option>DPM/OUROB</option>
-                          <option>DPM/SJSERIDO</option>
-                          <option>DPM/SJSABUGI</option>
-                          <option>DPM/TIMBAUBA</option>
-                          <option>DPM/SFERNAND</option>
-                          <option>DPM/FLORANIA</option>
-                          <option>DPM/SMATOS</option>
-                          <option>DPM/TENLAURE</option>   
+                        <?php 
+                        $opt = new PolicialController();
+                        $opt->listaOptions();
+                        ?>    
                       </select>
                     </div>                                        
                   </div>

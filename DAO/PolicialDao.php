@@ -11,6 +11,37 @@ class PolicialDao {
             echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
         }
     }
+
+    function recuperaPatente(conexao $conn, $id) {
+        $query = "SELECT graduacao FROM policial WHERE id = $id";
+        
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $graduacao = $row['graduacao'];
+                return $graduacao;  
+            }
+        } else {
+            echo "0 results";
+        }      
+    }
+
+    function recuperaNomeFuncional(conexao $conn, $id) {
+        $query = "SELECT nome_funcional FROM policial WHERE id = $id";
+        
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $nome_funcional = $row['nome_funcional'];
+                return $nome_funcional;  
+            }
+        } else {
+            echo "0 results";
+        }      
+    }
+
     //done
     function listaSelect(conexao $conn) {
         $query = "SELECT * FROM subunidade";
@@ -75,8 +106,8 @@ class PolicialDao {
         }      
     }
     //done
-    function recuperaNome(conexao $conn) {
-        $query = "SELECT p.id AS id, p.nome AS nome, p.graduacao AS graduacao, p.nome_funcional AS nome_funcional, p.matricula AS matricula, p.email AS email, p.situacao AS situacao, p.id_subunidade AS id_subunidade, s.sigla AS sigla_subunidade FROM policial AS p, subunidade AS s WHERE p.id_subunidade = s.id";
+    function recuperaNome(conexao $conn, $id) {
+        $query = "SELECT nome FROM policial WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -120,8 +151,8 @@ class PolicialDao {
         }      
     }
     //done
-    function recuperaMatricula(conexao $conn) {
-        $query = "SELECT p.id AS id, p.nome AS nome, p.graduacao AS graduacao, p.nome_funcional AS nome_funcional, p.matricula AS matricula, p.email AS email, p.situacao AS situacao, p.id_subunidade AS id_subunidade, s.sigla AS sigla_subunidade FROM policial AS p, subunidade AS s WHERE p.id_subunidade = s.id";
+    function recuperaMatricula(conexao $conn, $id) {
+        $query = "SELECT matricula FROM policial WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -135,8 +166,8 @@ class PolicialDao {
         }      
     }
     //done
-    function recuperaEmail(conexao $conn) {
-        $query = "SELECT p.id AS id, p.nome AS nome, p.graduacao AS graduacao, p.nome_funcional AS nome_funcional, p.matricula AS matricula, p.email AS email, p.situacao AS situacao, p.id_subunidade AS id_subunidade, s.sigla AS sigla_subunidade FROM policial AS p, subunidade AS s WHERE p.id_subunidade = s.id";
+    function recuperaEmail(conexao $conn, $id) {
+        $query = "SELECT email FROM policial WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -165,15 +196,15 @@ class PolicialDao {
         }      
     }
     //done
-    function recuperaIdSubunidade(conexao $conn, $sigla) {
-        $query = "SELECT id FROM subunidade WHERE sigla = '$sigla'";
+    function recuperaIdSubunidade(conexao $conn, $id) {
+        $query = "SELECT id_subunidade FROM policial WHERE id = '$id'";
         
         $result = mysqli_query($conn->conecta(), $query);
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                $sigla_subunidade = $row['id'];
-                return $sigla_subunidade;  
+                $id_subunidade = $row['id_subunidade'];
+                return $id_subunidade;  
             }
         } else {
             echo "0 results";
