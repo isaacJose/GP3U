@@ -3,8 +3,8 @@
 //done
 class PolicialDao {
     //done
-    function adiciona(conexao $conn, Policial $policial) {
-        $query = "INSERT INTO policial(id, nome, graduacao, nome_funcional, matricula, email, situacao, id_subunidade) VALUES (NULL,'{$policial->getNome()}','{$policial->getGraduacao()}','{$policial->getNome_funcional()}','{$policial->getMatricula()}','{$policial->getEmail()}','{$policial->getSituacao()}', (SELECT id FROM subunidade WHERE sigla = '{$policial->getId_subunidade()}'))";
+    function adiciona(conexao $conn, policial $policial) {
+        $query = "INSERT INTO policial(id, nome, graduacao, nome_funcional, matricula, email, situacao, id_subunidade) VALUES (NULL,'{$policial->getNome()}','{$policial->getGraduacao()}','{$policial->getNome_funcional()}','{$policial->getMatricula()}','{$policial->getEmail()}','{$policial->getSituacao()}','{$policial->getId_subunidade()}')";
         if (mysqli_query($conn->conecta(), $query)) {
             echo "Novo cadastro realizado com sucesso!";
         } else {
@@ -172,7 +172,7 @@ class PolicialDao {
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-                $sigla_subunidade = $row['sigla_subunidade'];
+                $sigla_subunidade = $row['id'];
                 return $sigla_subunidade;  
             }
         } else {
