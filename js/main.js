@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+$(document).ready(function () {
     $("#matricula").mask("000000-0");
 });
 
