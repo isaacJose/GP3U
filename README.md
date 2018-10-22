@@ -1,5 +1,5 @@
 <!-- <img src="imagens/sigep-logo.jpg" width="100"> -->
-<img src="imagens/logo-sigep.png" width="100">
+<img src="img/sigeplogo2.png" width="100">
 
 # SIGEP
 ## Sistema de Gestão de Equipamentos para Proteção Policial
