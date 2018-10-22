@@ -91,19 +91,41 @@ class PolicialDao {
                                     <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>
                             </td>';
-                    echo    '<td align="center">
-                                <form name="formpolicial2" action="../controller/PolicialController.php" method="POST">
-                                    <button type="submit" name="excluir" value="" class="btn btn-danger btn-xs">Excluir</button>
-                                    <input type="hidden" name="id" value="'.$row["id"].'">
-                                </form>
-                            </td>';
-                echo '</tr>';
-                
-            }
-        } else {
-            echo "0 results";
-        }
-        
+                    echo        '<td align="center">                                
+                                        <button name="excluir" value="" class="btn btn-danger btn-xs"
+                                        type="button" data-toggle="modal" data-target="#modalDeletePolicial'.$row["id"].$row["nome_funcional"].'">Excluir</button>                                    
+                                </td>';
+                    
+                    //Modal para confirmar a exclusão dos itens selecionados
+                    //Devemos passar tanto o ID como a SIGLA para que o modal possa exibir e exluir o item
+                    echo        '<!-- Modal -->
+                                <div class="modal fade" id="modalDeletePolicial'.$row["id"].$row["nome_funcional"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="TituloModalCentralizado">Aviso de exclusão</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Deseja realmente exlcuir o policial <strong>'.$row["nome_funcional"].'</strong>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <form name="formunidade2" action="../controller/UnidadeController.php" method="POST">
+                                            <button type="submit" name="excluir" value="" class="btn btn-danger">Excluir</button>
+                                            <input type="hidden" name="id" value="'.$row["id"].'">
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>';
+                    echo    '</tr>';                  
+                }
+            } else {
+                echo "0 results";
+            }        
     }
     //done
     function recuperaId(conexao $conn, Policial $policial) {

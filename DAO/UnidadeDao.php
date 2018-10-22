@@ -104,7 +104,7 @@ class unidadeDao{
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Deseja realmente exlcuir o item '.$row["sigla"].'?
+                                    Deseja realmente exlcuir a unidade <strong>'.$row["sigla"].'</strong>?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
