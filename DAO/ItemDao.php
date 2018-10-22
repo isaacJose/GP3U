@@ -4,29 +4,29 @@ class ItemDao {
     function adiciona(conexao $conn, Item $item) {
           
         $query = "INSERT INTO item(
-                id, 
-                serial, 
-                modelo, 
-                estoque, 
-                estoque_danificado, 
-                situacao, validade, 
-                observacoes, 
-                id_subunidade, 
-                id_tipo_item, 
-                id_fabricante
-            ) VALUES (
-                NULL,
-                '{$item->getSerial()}',
-                '{$item->getModelo()}',
-                '{$item->getEstoque()}',
-                '{$item->getEstoque_danificado()}',
-                '{$item->getSituacao()}',
-                '{$item->getValidade()}',
-                '{$item->getObservacoes()}',
-                '{$item->getId_subunidade()}',
-                '{$item->getId_tipo_item()}',
-                '{$item->getId_fabricante()}''
-            )";
+
+                              id,
+                              serial, 
+                              modelo, 
+                              estoque, 
+                              estoque_danificado, 
+                              situacao, 
+                              validade, 
+                              observacoes, 
+                              id_subunidade, 
+                              id_tipo_item, 
+                              id_fabricante) VALUES (
+                                NULL, 
+                              '{$item->getSerial()}',
+                              '{$item->getModelo()}',
+                              '{$item->getEstoque()}',
+                              '{$item->getEstoque_danificado()}',
+                              '{$item->getSituacao()}',
+                              '{$item->getValidade()}',
+                              '{$item->getObservacoes()}',
+                              '{$item->getId_subunidade()}',
+                              '{$item->getId_tipo_item()}',
+                              '{$item->getId_fabricante()}')";
         
         if (mysqli_query($conn->conecta(), $query)) {
             echo "Novo cadastro realizado com sucesso!";

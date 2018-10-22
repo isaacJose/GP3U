@@ -29,34 +29,24 @@
 
     <div class="container">
       <div class="card card-login mx-auto mt-5">
-          <div aling="center">
-            <center>
-              <img src="img/logo.png" height="300" width="300">
-            </center>
-          </div>
-        <div class="card-header">Login</div>
+        <!-- <div class="card-header">Login</div> -->
+        <div style="font-family: 'Roboto Slab', serif;">
+          <center>
+            <img src="img/sigeplogologin.jpg" height="345" width="300">
+          </center>
+        </div>
         <div class="card-body">
           <form>
             <div class="form-group">
               <div class="form-label-group">
-<<<<<<< HEAD
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                <label for="inputEmail">E-mail</label>
-=======
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus="autofocus" required>
                 <label for="inputEmail">Email address</label>
->>>>>>> 50bf148fa5484186751aeee4fb28b52f51d83301
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-<<<<<<< HEAD
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">Senha</label>
-=======
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Password</label>
->>>>>>> 50bf148fa5484186751aeee4fb28b52f51d83301
               </div>
             </div>
             <div class="form-group">

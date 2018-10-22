@@ -31,10 +31,10 @@
       <div class="card card-login mx-auto mt-5">
       <div aling="center">
             <center>
-              <img src="img/logo.png" height="300" width="300">
+                <img src="img/sigeplogoreset.jpg" height="345" width="300">
             </center>
           </div>
-        <div class="card-header">Reset Password</div>
+        <!-- <div class="card-header">Reset Password</div> -->
         <div class="card-body">
           <div class="text-center mb-4">
             <h4>Forgot your password?</h4>
