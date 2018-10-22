@@ -23,6 +23,7 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 
 * [PHP](http://php.net/) - Linguagem de programação utilizada
 * [Material Design Lite](https://getmdl.io/) - Framework de telas
+* [Bootstrap 4](https://getbootstrap.com/) - kit de ferramentas de código aberto para desenvolvimento com HTML, CSS e JS.
 * [Java Script](https://www.javascript.com/) - Linguagem de programação interpretada
 
 ## Colaboradores

@@ -150,7 +150,7 @@
                   <div class="col-lg-2">                                        
                     <div class="form-group">
                       <label>Matrícula</label>
-                      <input name="matricula" class="form-control" placeholder="Ex.: 123456-0">
+                      <input id="matricula" name="matricula" class="form-control" placeholder="Ex.: 123456-0">
                     </div>                                        
                   </div>
                 </div>
