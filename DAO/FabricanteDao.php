@@ -12,11 +12,9 @@ class FabricanteDao{
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
-<<<<<<< HEAD
+
                 echo '<option value='. $row["id"].'>'. $row["descricao"].'</option>';
-=======
-                echo '<option value=' . $row["id"].'>'. $row["descricao"].'</option>';
->>>>>>> 510bfe77872e33c6b3c9c0adba9c62333139c19f
+
             }
         } else {
             echo "0 results";
