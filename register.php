@@ -29,7 +29,16 @@
 
     <div class="container">
       <div class="card card-register mx-auto mt-5">
+<<<<<<< HEAD
         <div class="card-header">Registrar conta</div>
+=======
+      <div aling="center">
+            <center>
+              <img src="img/logo.png" height="300" width="300">
+            </center>
+          </div>
+        <div class="card-header">Register an Account</div>
+>>>>>>> 50bf148fa5484186751aeee4fb28b52f51d83301
         <div class="card-body">
           <form>
             <div class="form-group">
