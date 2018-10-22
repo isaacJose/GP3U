@@ -12,7 +12,7 @@
     <title>SB Admin - Forgot Password</title>
 
     <!-- Favicon-->
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/sigeplogo2.png">
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
