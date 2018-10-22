@@ -1,4 +1,10 @@
 --
+-- Extraindo dados da tabela `Cautela`
+--
+
+INSERT INTO `cautela` (`id`, `permanente`,`aberta`,`dataRetirada`,`vencimento`,`dataEntrega`,`idPolicial`,`idDespachante`,`idRecebedor`) VALUES
+(1, 1, 1, '2018/10/22', '2020/01/01', '', '', 1,2,3);
+--
 -- Extraindo dados da tabela `fabricante`
 --
 

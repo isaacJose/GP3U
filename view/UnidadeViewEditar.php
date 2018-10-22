@@ -119,8 +119,9 @@
                       <label>Unidade</label>
                       <?php 
                         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);                        
-                        $conexao = new conexao();                        
-                        $descricao = UnidadeDao::recuperaDescricao($conexao, $id);
+                        $conexao = new conexao();  
+                        $unidadeDao = new UnidadeDao();                      
+                        $descricao = $unidadeDao->recuperaDescricao($conexao, $id);
                         echo "<input id='descricao' type='text' name='descricao' class='form-control' value='$descricao' title='Campo referente a unidade'>";                                 
                       ?>
                     </div>
@@ -129,8 +130,8 @@
                     <div class="form-group">
                       <label>Sigla</label>
                       <?php
-                      
-                        $sigla = UnidadeDao::recuperaSigla($conexao, $id);
+                        $unidadeDao = new UnidadeDao();
+                        $sigla = $unidadeDao->recuperaSigla($conexao, $id);
                         echo "<input id='sigla' type='text' name='sigla' class='form-control' value='$sigla' title='Campo referente a sigla'>";
                         echo '<input type="hidden" name="id" value="'.$id.'">';                                
                       ?> 

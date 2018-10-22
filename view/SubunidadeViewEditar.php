@@ -164,8 +164,8 @@
                     <div class="form-group">
                       <label>Subunidade</label>
                       <?php
-                      
-                      $descricao = SubunidadeDao::recuperaDescricao($conexao, $id);
+                      $subunidadeDao = new SubunidadeDao();
+                      $descricao = $subunidadeDao->recuperaDescricao($conexao, $id);
                       echo "<input name='descricao' class='form-control' value='$descricao' placeholder='Ex.: 1ª Companhia de Policia Militar' required>";
                       ?>
                     </div>
@@ -174,7 +174,8 @@
                     <div class="form-group">
                       <label>Sigla</label>
                       <?php
-                        $sigla = SubunidadeDao::recuperaSiglaSubunidade($conexao, $id);
+                        $subunidadeDao = new SubunidadeDao();
+                        $sigla = $subunidadeDao->recuperaSiglaSubunidade($conexao, $id);
                         echo "<input name='sigla' class='form-control' value='$sigla' placeholder='Ex.: 1CPM' required>";
                         echo '<input type="hidden" name="id" value="'.$id.'">';  
                       ?>
