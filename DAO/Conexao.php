@@ -1,7 +1,7 @@
 <?php
 //done
 class conexao {
-       
+
     public function conecta() {
         $conn = new mysqli('localhost', 'root', '', 'sigep', '3306');
         if (!$conn) {
