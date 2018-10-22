@@ -36,8 +36,8 @@
     .container img {
       margin-left: auto;
       margin-right: auto;
-      width:500px;
-      height:500px;
+      width:600px;
+      height:600px;
     }
 
 </style>
@@ -143,7 +143,7 @@
         <!-- /.container-fluid -->
 
         <div align="center" class="container"> 
-          <img src="../img/logo.png" width="320" height="205" />
+          <img src="../img/logo.png"/>
         </div>
 
         <!-- Sticky Footer -->
