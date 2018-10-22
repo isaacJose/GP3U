@@ -9,10 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Login</title>
+    <title>SIGEP</title>
 
     <!-- Favicon-->
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/oie_transparent.png">
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,28 +35,28 @@
             <div class="form-group">
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                <label for="inputEmail">Email address</label>
+                <label for="inputEmail">E-mail</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">Password</label>
+                <label for="inputPassword">Senha</label>
               </div>
             </div>
             <div class="form-group">
               <div class="checkbox">
                 <label>
                   <input type="checkbox" value="remember-me">
-                  Remember Password
+                  Lembrar senha
                 </label>
               </div>
             </div>
             <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Login</a>
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="register.php">Register an Account</a>
-            <a class="d-block small" href="forgot-password.php">Forgot Password?</a>
+            <a class="d-block small mt-3" href="register.php">Registrar conta</a>
+            <a class="d-block small" href="forgot-password.php">Esqueceu a senha?</a>
           </div>
         </div>
       </div>
