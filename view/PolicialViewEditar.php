@@ -126,7 +126,8 @@
                       <?php
                       $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
                       $conexao = new conexao();
-                      $nome = PolicialDao::recuperaNome($conexao, $id);
+                      $policialDao = new PolicialDao();
+                      $nome = $policialDao->recuperaNome($conexao, $id);
                       echo "<input name='nome' value='$nome' class='form-control' placeholder='Nome completo do policial' required>"
                       ?>
                     </div>                                        
@@ -161,7 +162,8 @@
                     <div class="form-group">
                       <label>Nome Funcional</label>
                       <?php
-                      $nome_funcional = PolicialDao::recuperaNomeFuncional($conexao, $id);
+                      $policialDao = new PolicialDao();
+                      $nome_funcional = $policialDao->recuperaNomeFuncional($conexao, $id);
                       echo "<input name='nome_funcional' value='$nome_funcional' class='form-control' required>";
                       ?>
                     </div>                                        
@@ -170,7 +172,8 @@
                     <div class="form-group">
                       <label>Matrícula</label>
                       <?php
-                      $matricula = PolicialDao::recuperaMatricula($conexao, $id);
+                      $policialDao = new PolicialDao();
+                      $matricula = $policialDao->recuperaMatricula($conexao, $id);
                       echo "<input name='matricula' value='$matricula' class='form-control' placeholder='Ex.: 123456-0' required>";
                       ?>
                     </div>                                        
@@ -181,7 +184,8 @@
                     <div class="form-group">
                       <label>E-mail</label>
                       <?php
-                      $email = PolicialDao::recuperaEmail($conexao, $id);
+                      $policialDao = new PolicialDao();
+                      $email = $policialDao->recuperaEmail($conexao, $id);
                       echo "<input name='email' class='form-control' value='$email' placeholder='Ex.: email@exemplo.com' required>";
                       ?>
                     </div>                                        
@@ -192,7 +196,8 @@
                       <div class="radio">
                         <label class="radio-inline">
                           <?php
-                          $situacao = PolicialDao::recuperaSituacao($conexao, $id);
+                          $policialDao = new PolicialDao();
+                          $situacao = $policialDao->recuperaSituacao($conexao, $id);
                           ?>
                           <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto" <?php if($situacao == "Apto") echo "checked";?>> Operacional
                         </label>

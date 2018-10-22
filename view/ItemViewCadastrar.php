@@ -1,5 +1,8 @@
 <?php
     include_once '../controller/ItemController.php';
+    include_once '../controller/SubunidadeController.php';
+    include_once '../controller/TipoItemController.php';
+    include_once '../controller/FabricanteController.php';
     include 'includes/header.html';
 ?>
 
@@ -96,7 +99,7 @@
             <span class="spanmenu">Unidades</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="SubunidadeView.php">
           <i class="material-icons">star_border</i>
             <span class="spanmenu">Subunidades</span>
@@ -108,7 +111,7 @@
             <span class="spanmenu">Policiais</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="ItemView.php">
           <i class="material-icons">storage</i>
             <span class="spanmenu">Itens</span>
@@ -137,6 +140,7 @@
             <li class="breadcrumb-item">
               <a href="../view/ItemView.php">Itens</a>
             </li>
+            <li class="breadcrumb-item active">Cadastrar</li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
 
@@ -144,37 +148,109 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Itens cadastrados</span>
+              <span class="spanmenu">Itens - Formulário de cadastro</span>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Tipo</th>
-                      <th>Fabricante</th>
-                      <th>Modelo</th>
-                      <th>Serial</th>
-                      <th>Qtd</th>
-                      <th>Situação</th>
-                      <th></th>
-                    </tr>
-                  </thead>            
-                  <tbody>
-                    <?php                       
-                    $lista = new ItemController();                       
-                    $lista->listaItem();
-                    ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-            <form action="ItemViewCadastrar.php">
-              <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
-            </form>
+              <form action="../controller/ItemController.php" method="post">
+                <div class="row">
+                
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Serial</label>
+                      <input id="serial" name="serial" class="form-control" required>
+                    </div>
+                </div>
+                  
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Modelo</label>
+                      <input id="modelo" name="modelo" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Estoque</label>
+                      <input type="int" id="estoque" name="estoque" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Estoque Danificado</label>
+                      <input type="int" id="estoque_danificado" name="estoque_danificado" class="form-control" required>
+                    </div>
+                </div>
+                
+              <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Situação</label>
+                        <select id="situacao" name="situacao" class="form-control" required>
+                        <option value="Operacional">Operacional</option> 
+                        <option value="Danificado">Danificado</option>
+                        <option value="Manutenção">Manutenção</option>
+                        <option value="Justiça">Justiça</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Validade</label>
+                      <input type="date" id="validade" name="validade" class="form-control" required>
+                    </div>
+                </div>
+                  
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Observações</label>
+                      <input id="observacoes" name="observacoes" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Subunidade</label>
+                      <select id="id_subunidade" name="id_subunidade" class="form-control" required>
+                        <?php 
+                        $opt = new SubunidadeController();
+                        $opt->listaOptions();
+                        ?>                                                                 
+                      </select>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Tipo Item</label>
+                      <select id="id_tipo_item" name="id_tipo_item" class="form-control" required>
+                        <?php 
+                        $opt = new TipoItemController();
+                        $opt->listaOptions();                        
+                        ?>                                                                 
+                      </select> 
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Fabricante</label>
+                      <select id="id_fabricante" name="id_fabricante" class="form-control" required>
+                        <?php 
+                          $opt = new FabricanteController();
+                          $opt->listaOptions();
+                        ?>                                                                 
+                      </select>   
+                    </div>
+                </div> 
+            
+                <div class="row">
+                  <div class="col-lg-12">
+                    <input type="submit" class="btn btn-success" name="cadastrar" value="Cadastrar">
+                  </div>
+                </div>
+
+              </form>  
             </div>
           </div>
         </div>

@@ -32,12 +32,71 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `alteracao_cautela`
+--
+
+DROP TABLE IF EXISTS `alteracao_cautela`;
+CREATE TABLE IF NOT EXISTS `alteracao_cautela` (
+  `idCautela` bigint(20) NOT NULL,
+  `idItem` bigint(20) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `motivo` varchar(100) DEFAULT NULL,
+  `comunicacao` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`idCautela`,`idItem`),
+  KEY `idItem` (`idItem`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cautela`
+--
+
+DROP TABLE IF EXISTS `cautela`;
+CREATE TABLE IF NOT EXISTS `cautela` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `permanente` tinyint(1) NOT NULL,
+  `aberta` tinyint(1) NOT NULL,
+  `dataRetirada` date NOT NULL,
+  `vencimento` date,
+  `dataEntrega` date,
+  `idPolicial` bigint(20) NOT NULL,
+  `idDespachante` bigint(20) NOT NULL,
+  `idRecebedor` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idPolicial` (`idPolicial`),
+  KEY `idDespachante` (`idDespachante`),
+  KEY `idRecebedor` (`idRecebedor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+
+--
 -- Estrutura da tabela `fabricante`
 --
 
 CREATE TABLE `fabricante` (
   `id` int(11) NOT NULL,
   `descricao` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+
+--
+-- Estrutura da tabela `inspecao`
+--
+
+DROP TABLE IF EXISTS `inspecao`;
+CREATE TABLE IF NOT EXISTS `inspecao` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `dataUltima` date NOT NULL,
+  `dataProxima` date NOT NULL,
+  `situacao` varchar(50) DEFAULT NULL,
+  `idCautela` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idCautela` (`idCautela`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -58,6 +117,21 @@ CREATE TABLE `item` (
   `id_subunidade` int(11) DEFAULT NULL,
   `id_tipo_item` int(11) DEFAULT NULL,
   `id_fabricante` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `item_cautela`
+--
+
+DROP TABLE IF EXISTS `item_cautela`;
+CREATE TABLE IF NOT EXISTS `item_cautela` (
+  `idCautela` bigint(20) NOT NULL,
+  `idItem` bigint(20) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  PRIMARY KEY (`idCautela`,`idItem`),
+  KEY `idItem` (`idItem`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
