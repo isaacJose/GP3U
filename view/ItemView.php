@@ -159,6 +159,7 @@
                       <th>Qtd</th>
                       <th>Situação</th>
                       <th></th>
+                      <th></th>
                     </tr>
                   </thead>            
                   <tbody>
