@@ -2,10 +2,30 @@
 //done
 class InspecaoDao {
     //
-    function adiciona(conexao $conn, inspecao $inspecao) {
-        $query = "INSERT INTO inspecao (id, dataUltima, dataProxima, situacao, idCautela) VALUES (NULL,'{$inspecao->getDataUltima()}','{$inspecao->getDataProxima()}','{$inspecao->getSituacao()}','{$inspecao->getIdCautela()}')";
+    function adiciona(conexao $conn, Inspecao $inspecao) {
+        $query = "INSERT INTO inspecao (id, dataUltima, dataProxima, situacao, idCautela) 
+        VALUES (NULL,'{$inspecao->getDataUltima()}','{$inspecao->getDataProxima()}','{$inspecao->getSituacao()}','{$inspecao->getIdCautela()}')";
         if (mysqli_query($conn->conecta(), $query)) {
             echo "Novo cadastro realizado com sucesso!";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        }
+    }
+
+    function exclui(conexao $conn, Inspecao $inspecao) {
+        $query = "DELETE FROM inspecao WHERE id = {$inspecao->getId()}";
+
+        if (mysqli_query($conn->conecta(), $query)) {
+            echo "Registro excluído com sucesso!";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        }
+    }
+    
+    function edita(conexao $conn, Inspecao $subunidade) {
+        $query = "UPDATE inspecao SET dataUltima='{$inspecao->getDataUltima()}', dataProxima='{$inspecao->getDataProxima()}', situacao='{$inspecao->getSituacao()}', idCautela={$inspecao->getIdCautela()} WHERE id={$inspecao->getId()}";
+        if (mysqli_query($conn->conecta(), $query)) {
+            echo "Registro editado com sucesso!";
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
         }
