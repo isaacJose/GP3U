@@ -146,6 +146,7 @@
             <i class="material-icons">grid_on</i>
               <span class="spanmenu">Itens cadastrados</span>
             </div>
+            
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">

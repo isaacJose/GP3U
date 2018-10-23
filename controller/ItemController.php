@@ -6,9 +6,15 @@ include_once '../model/Item.php';
 
 class ItemController {
     
+    public function listaItem() {
+        $conexao = new conexao();
+        $itemDao = new ItemDao();
+        $itemDao->lista($conexao);
+    }
+
     //done
     public function insereItem() {
-       var_dump($_POST);
+       
        if (isset($_POST['serial']))
             $serial = $_POST['serial'];
         if (isset($_POST['modelo']))
@@ -58,18 +64,12 @@ class ItemController {
         unset($id);
     }
 
-    public function listaItem() {
-        $conexao = new conexao();
-        $itemDao = new ItemDao();
-        $itemDao->lista($conexao);
-    }
-
     //done
     public function editaItem() {
-        $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
+        
         if (isset($_POST['serial']))
             $serial = $_POST['serial'];
-         if (isset($_POST['modelo']))
+        if (isset($_POST['modelo']))
             $modelo = $_POST['modelo'];
         if (isset($_POST['estoque']))
             $estoque = $_POST['estoque'];
@@ -86,8 +86,8 @@ class ItemController {
         if (isset($_POST['id_tipo_item']))
             $id_tipo_item = $_POST['id_tipo_item'];
         if (isset($_POST['id_fabricante']))
-           $id_fabricante = $_POST['id_fabricante'];
-
+            $id_fabricante = $_POST['id_fabricante'];
+       
         $conexao = new conexao();
         $item = new Item();
         $item->setSerial($serial);
@@ -100,6 +100,7 @@ class ItemController {
         $item->setId_subunidade($id_subunidade);
         $item->setId_tipo_item($id_tipo_item);
         $item->setId_fabricante($id_fabricante);
+       
         $itemDao = new ItemDao();
         $itemDao->edita($conexao, $item);
     }

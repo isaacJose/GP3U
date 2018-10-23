@@ -78,7 +78,7 @@ class SubunidadeDao {
     }
     
     function recuperaSiglaSubunidade(conexao $conn, $id) {
-        $query = "SELECT sigla FROM subunidade WHERE id = $id";
+        $query = "SELECT sigla FROM subunidade WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
