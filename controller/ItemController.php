@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\VarDumper\VarDumper;
+
 include_once '../DAO/ItemDao.php';
 include_once '../DAO/Conexao.php';
 include_once '../model/Item.php';
@@ -67,6 +69,8 @@ class ItemController {
     //done
     public function editaItem() {
         
+        if (isset($_POST['id']))
+            $id = $_POST['id'];
         if (isset($_POST['serial']))
             $serial = $_POST['serial'];
         if (isset($_POST['modelo']))
@@ -90,18 +94,22 @@ class ItemController {
        
         $conexao = new conexao();
         $item = new Item();
+        $item->setId(intval($id));
         $item->setSerial($serial);
         $item->setModelo($modelo);
-        $item->setEstoque($estoque);
-        $item->setEstoque_danificado($estoque_danificado);
+        $item->setEstoque(intval($estoque));
+        $item->setEstoque_danificado(intval($estoque_danificado));
         $item->setSituacao($situacao);
         $item->setValidade($validade);
         $item->setObservacoes($observacoes);
-        $item->setId_subunidade($id_subunidade);
-        $item->setId_tipo_item($id_tipo_item);
-        $item->setId_fabricante($id_fabricante);
+        $item->setId_subunidade(intval($id_subunidade));
+        $item->setId_tipo_item(intval($id_tipo_item));
+        $item->setId_fabricante(intval($id_fabricante));
        
         $itemDao = new ItemDao();
+
+        print_r($item);
+
         $itemDao->edita($conexao, $item);
     }
 }

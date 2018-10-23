@@ -213,7 +213,7 @@ class ItemDao {
     }
     //done
     function edita(conexao $conn, Item $item) {
-        
+
         $query = "UPDATE item SET 
                   serial='{$item->getSerial()}',
                   modelo='{$item->getModelo()}',
@@ -224,13 +224,15 @@ class ItemDao {
                   observacoes='{$item->getObservacoes()}',
                   id_subunidade={$item->getId_subunidade()},
                   id_tipo_item={$item->getId_tipo_item()},
-                  id_fabricante={$item->getId_fabricante()},
+                  id_fabricante={$item->getId_fabricante()}
                   WHERE id={$item->getId()}";
+
+            
 
             if (mysqli_query($conn->conecta(), $query)) {
                 echo "Registro editado com sucesso!";
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+                echo "Error: </br>" . $query . "</br>" . mysqli_error($conn->conecta());
             }
         
 

@@ -161,7 +161,7 @@
                        ?>
                     </div>
                   </div>
-
+                  
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label>Modelo</label>
@@ -170,6 +170,7 @@
                         $itemDao = new ItemDao();
                         $modelo = $itemDao->recuperaModelo($conexao, $itemId);
                         echo "<input id='modelo' name='modelo' class='form-control' value='$modelo' required>";
+                        echo '<input type="hidden" id="id" name="id" value="'.$itemId.'">';
                        ?>
                     </div>
                   </div>
