@@ -1,7 +1,15 @@
 <?php
- session_start();
 //done
 class InspecaoDao {
+    //
+    function adiciona(conexao $conn, inspecao $inspecao) {
+        $query = "INSERT INTO inspecao (id, dataUltima, dataProxima, situacao, idCautela) VALUES (NULL,'{$inspecao->getDataUltima()}','{$inspecao->getDataProxima()}','{$inspecao->getSituacao()}','{$inspecao->getIdCautela()}')";
+        if (mysqli_query($conn->conecta(), $query)) {
+            echo "Novo cadastro realizado com sucesso!";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        }
+    }
 
     function lista(conexao $conn) {
         $query = "SELECT * FROM inspecao";

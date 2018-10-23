@@ -60,7 +60,6 @@ class InspecaoController {
         $inspecaoDao->edita($conexao, $inspecao);
     }
 }
-//`id`, `dataUltima`, `dataProxima`, `situacao`, `idCautela`
 
 $inspecao = new InspecaoController();
 
