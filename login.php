@@ -40,13 +40,13 @@
             <div class="form-group">
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus="autofocus" required>
-                <label for="inputEmail">Email address</label>
+                <label for="inputEmail">Endereço de email</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
+                <label for="inputPassword">Senha</label>
               </div>
             </div>
             <div class="form-group">
@@ -58,7 +58,7 @@
               </div>
             </div>
             <!-- <input type="submit" <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Login</a> /> -->
-            <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Login</a>
+            <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Entrar</a>
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="register.php">Registrar conta</a>
