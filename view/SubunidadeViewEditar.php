@@ -150,9 +150,9 @@
                       <label>Unidade</label>
                       <select name='unidade' class='form-control' required>
                         <?php
-                        $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
+                        $idUnidade = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING); 
                         $conexao = new conexao();
-                        $unidade = SubunidadeDao::recuperaSiglaUnidade($conexao, $id);
+                        $unidade = SubunidadeDao::recuperaSiglaUnidade($conexao, $idUnidade);
                         $sigla = UnidadeDao::recuperaSigla($conexao, $unidade);
                         //echo"<option selected>".$sigla."</option>";
                         $opt = new UnidadeController();
@@ -163,8 +163,10 @@
                   </div>
                   <div class="col-lg-4">
                     <div class="form-group">
-                      <label>Subunidade</label>
+                      <label>Descrição</label>
                       <?php
+                      $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
+                      $conexao = new conexao();
                       $subunidadeDao = new SubunidadeDao();
                       $descricao = $subunidadeDao->recuperaDescricao($conexao, $id);
                       echo "<input name='descricao' class='form-control' value='$descricao' placeholder='Ex.: 1ª Companhia de Policia Militar' required>";

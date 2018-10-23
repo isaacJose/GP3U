@@ -32,7 +32,7 @@ class SubunidadeDao {
 
     function recuperaIdSuperior(conexao $conn, $sigla) {
         //$query = "SELECT u.id FROM unidade AS u, subunidade AS s WHERE u.sigla = $unidade";
-        $query = "SELECT id FROM unidade WHERE sigla = '$sigla'";
+        $query = "SELECT id FROM unidade WHERE sigla = $sigla";
         //SELECT id FROM subunidade WHERE descricao = "3ª CIPM - Currais Novos"
         
         $result = mysqli_query($conn->conecta(), $query);
@@ -40,7 +40,7 @@ class SubunidadeDao {
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 $id = $row['id'];
-                return $id;  
+                return $id;
             }
         } else {
             echo "0 results";
