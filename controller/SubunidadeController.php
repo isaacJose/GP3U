@@ -14,17 +14,20 @@ class SubunidadeController {
         $unidade = filter_input(INPUT_POST,"unidade",FILTER_SANITIZE_STRING);
         $descricao = filter_input(INPUT_POST,"descricao",FILTER_SANITIZE_STRING);
         $sigla = filter_input(INPUT_POST,"sigla",FILTER_SANITIZE_STRING); 
-        
+                
         $conexao = new conexao();
 
-        $idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);  
+        //$idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);  
+        $idSup = $unidade;
 
-        $subunidade = new subunidade();
+        $subunidade = new Subunidade();
         $subunidade->setSigla($sigla);
         $subunidade->setDescricao($descricao);
         $subunidade->setUnidadeSuperior($idSup);
         $subunidadeDao = new SubunidadeDao();
         $subunidadeDao->adiciona($conexao, $subunidade);      
+
+        var_dump($subunidade);
     }
 
     //done
@@ -65,8 +68,9 @@ class SubunidadeController {
         $sigla = filter_input(INPUT_POST,"sigla",FILTER_SANITIZE_STRING);
         $unidade = filter_input(INPUT_POST,"unidade",FILTER_SANITIZE_STRING);
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);//vindo do input hidden.
-        $idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);      
-          
+        //$idSup = subunidadeDao::recuperaIdSuperior($conexao, $unidade);
+        $idSup = $unidade;
+
         //onde acontece a mágica        
         $subunidade = new subunidade();        
         $subunidade->setId($id);
