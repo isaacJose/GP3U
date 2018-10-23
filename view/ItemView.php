@@ -68,7 +68,7 @@
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">            
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
           </div>
         </li>
       </ul>
@@ -146,6 +146,7 @@
             <i class="material-icons">grid_on</i>
               <span class="spanmenu">Itens cadastrados</span>
             </div>
+            
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">

@@ -1,6 +1,8 @@
 <?php
-
+ session_start();
+ 
 class ItemDao {
+
     function adiciona(conexao $conn, Item $item) {
           
         $query = "INSERT INTO item(
@@ -50,8 +52,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaSerial(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaSerial(conexao $conn, $id) {
+        $query = "SELECT * FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -65,8 +67,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaModelo(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaModelo(conexao $conn, $id) {
+        $query = "SELECT * FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -80,8 +82,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaEstoque(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaEstoque(conexao $conn, $id) {
+        $query = "SELECT * FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -95,8 +97,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaEstoque_danificado(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaEstoque_danificado(conexao $conn, $id) {
+        $query = "SELECT * FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -110,8 +112,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaSituacao(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaSituacao(conexao $conn, $id) {
+        $query = "SELECT * FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -125,8 +127,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaValidade(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaValidade(conexao $conn, $id) {
+        $query = "SELECT * FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -140,8 +142,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaObservacoes(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaObservacoes(conexao $conn, $id) {
+        $query = "SELECT * FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -155,8 +157,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaId_subunidade(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaId_subunidade(conexao $conn, $id) {
+        $query = "SELECT id_subunidade FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -170,8 +172,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaId_tipo_item(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaId_tipo_item(conexao $conn, $id) {
+        $query = "SELECT id_tipo_item FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -185,8 +187,8 @@ class ItemDao {
         }      
     }
     //ok
-    function recuperaId_fabricante(conexao $conn) {
-        $query = "SELECT * FROM item";
+    function recuperaId_fabricante(conexao $conn, $id) {
+        $query = "SELECT id_fabricante FROM item WHERE id = ".$id;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -211,17 +213,47 @@ class ItemDao {
     }
     //done
     function edita(conexao $conn, Item $item) {
-        //$query = "UPDATE policial SET nome='{$policial->getNome()}',graduacao='{$policial->getGraduacao()}',nome_funcional='{$policial->getNome_funcional()}',matricula='{$policial->getMatricula()}',email='{$policial->getEmail()}',situacao='{$policial->getSituacao()}',id_subunidade=(SELECT id FROM subunidade WHERE sigla = '{$policial->getId_subunidade()}') WHERE id = {$policial->getId()}";
-        $query = "UPDATE item SET serial='{$item->getSerial()}',modelo='{$item->getModelo()}',estoque={$item->getEstoque()},estoque_danificado={$item->getEstoque_danificado()},`situacao`=[value-6],`validade`=[value-7],`observacoes`=[value-8],`id_subunidade`=[value-9],`id_tipo_item`=[value-10],`id_fabricante`=[value-11] WHERE 1";
-        if (mysqli_query($conn->conecta(), $query)) {
-            echo "Registro editado com sucesso!";
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
-        }
-    }
+        
+        $query = "UPDATE item SET 
+                  serial='{$item->getSerial()}',
+                  modelo='{$item->getModelo()}',
+                  estoque={$item->getEstoque()},
+                  estoque_danificado={$item->getEstoque_danificado()},
+                  situacao='{$item->getSituacao()}',
+                  validade='{$item->getValidade()}',
+                  observacoes='{$item->getObservacoes()}',
+                  id_subunidade={$item->getId_subunidade()},
+                  id_tipo_item={$item->getId_tipo_item()},
+                  id_fabricante={$item->getId_fabricante()},
+                  WHERE id={$item->getId()}";
+
+            if (mysqli_query($conn->conecta(), $query)) {
+                echo "Registro editado com sucesso!";
+            } else {
+                echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+            }
+        
+
+
+    } 
     
     function lista(conexao $conn) {
-        $query = "SELECT i.id AS id, i.serial AS serial, i.modelo AS modelo, i.estoque AS quantidade, i.estoque_danificado AS estoque_danificado, i.situacao AS situacao, i.validade AS validade, i.observacoes AS observacoes, i.id_subunidade AS id_subunidade, i.id_tipo_item AS id_tipo_item, i.id_fabricante AS id_fabricante, t.descricao AS tipo, f.descricao AS fabricante FROM item AS i, tipo_item AS t, fabricante AS f WHERE i.id_tipo_item = t.id AND i.id_fabricante = f.id";
+        
+          $query = "SELECT i.id AS id, 
+                  i.serial AS serial, 
+                  i.modelo AS modelo, 
+                  i.estoque AS quantidade, 
+                  i.estoque_danificado AS estoque_danificado, 
+                  i.situacao AS situacao, 
+                  i.validade AS validade, 
+                  i.observacoes AS observacoes, 
+                  i.id_subunidade AS id_subunidade, 
+                  i.id_tipo_item AS id_tipo_item, 
+                  i.id_fabricante AS id_fabricante, 
+                  t.descricao AS tipo, 
+                  f.descricao AS fabricante 
+                  FROM item i, tipo_item t, fabricante f 
+                  WHERE i.id_tipo_item = t.id AND i.id_fabricante = f.id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -234,11 +266,18 @@ class ItemDao {
                     echo '<td>' . $row["serial"] . '</td>';
                     echo '<td>' . $row["quantidade"] . '</td>';
                     echo '<td>' . $row["situacao"] . '</td>';
-    
+                    
+                    echo '<td align="center">
+                             <form name="formItem1" action="../view/ItemViewEditar.php" method="POST">
+                                    <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
+                                    <input type="hidden" name="id" value="'.$row["id"].'">
+                                    </form>
+                                 </td>';
+
                     echo        '<td align="center">                                
                         <button name="excluir" value="" class="btn btn-danger btn-xs"
                         type="button" data-toggle="modal" data-target="#modalDeleteItem'.$row["id"].$row["modelo"].'">Excluir</button>                                    
-                    </td>';
+                     </td>';
     
                     //Modal para confirmar a exclusão dos itens selecionados
                     //Devemos passar tanto o ID como a SIGLA para que o modal possa exibir e exluir o item
@@ -253,7 +292,7 @@ class ItemDao {
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Deseja realmente exlcuir o item <strong>'.$row["modelo"].'</strong>?
+                                        Deseja realmente excluir o item <strong>'.$row["modelo"].'</strong>?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -269,7 +308,7 @@ class ItemDao {
                 }
                 } else {
                     echo "0 results";
-                }   
+                }  
         
-    }
+    } 
 }

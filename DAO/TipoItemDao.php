@@ -20,14 +20,30 @@ class TipoItemDao{
         }
     }
 
-    function recuperaId($descricao) {
-        $query = "SELECT id from tipo_item ti where ti.descricao = $descricao";      
+    function recuperaId(conexao $conn) {
+        $query = "SELECT id FROM tipo_item";
         $result = mysqli_query($conn->conecta(), $query);
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 $id = $row['id'];
                 return $id;  
+            }
+        } else {
+            echo "0 results";
+        }      
+    }
+
+
+
+    function recuperaDescricao(conexao $conn, $id) {
+        $query = "SELECT descricao from tipo_item WHERE id= ".$id;      
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $descricao = $row['descricao'];
+                return $descricao;  
             }
         } else {
             echo "0 results";

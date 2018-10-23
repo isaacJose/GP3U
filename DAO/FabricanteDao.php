@@ -20,5 +20,36 @@ class FabricanteDao{
             echo "0 results";
         }
     }
+
+    function recuperaId(conexao $conn) {
+        $query = "SELECT id FROM fabricante";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+                return $id;  
+            }
+        } else {
+            echo "0 results";
+        }      
+    }
+
+    function recuperaDescricao(conexao $conn, $id) {
+        $query = "SELECT descricao from fabricante WHERE id= ".$id;      
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $descricao = $row['descricao'];
+                return $descricao;  
+            }
+        } else {
+            echo "0 results";
+        }      
+    }
+
+
+    
     
 }

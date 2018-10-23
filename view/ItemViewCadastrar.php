@@ -202,14 +202,14 @@
                     </div>
                 </div>
                   
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="form-group">
                       <label>Observações</label>
                       <input id="observacoes" name="observacoes" class="form-control" required>
                     </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <div class="form-group">
                       <label>Subunidade</label>
                       <select id="id_subunidade" name="id_subunidade" class="form-control" required>
@@ -221,7 +221,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <div class="form-group">
                       <label>Tipo Item</label>
                       <select id="id_tipo_item" name="id_tipo_item" class="form-control" required>
@@ -233,7 +233,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <div class="form-group">
                       <label>Fabricante</label>
                       <select id="id_fabricante" name="id_fabricante" class="form-control" required>
