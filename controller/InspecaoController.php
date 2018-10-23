@@ -61,6 +61,7 @@ class InspecaoController {
     }
 }
 
+//Form quando solicitado via input tem seu tratamento realizado aqui 
 $inspecao = new InspecaoController();
 
 $cadastrar = filter_input(INPUT_POST,"cadastrar",FILTER_SANITIZE_STRING);//Verifica o acionamento do botao cadastrar.
@@ -69,15 +70,15 @@ $excluir = filter_input(INPUT_POST,"excluir",FILTER_SANITIZE_STRING);//Verifica 
 
 if (isset($cadastrar)) {
     $inspecao->insereInspecao();
-    header("Location: ../view/SubunidadeView.php");
+    header("Location: ../view/InspecaoView.php");
 }
 
 if (isset($excluir)) {
     $inspecao->excluiInspecao();
-    header("Location: ../view/SubunidadeView.php");
+    header("Location: ../view/InspecaoView.php");
 }
 
 if(isset($editar)){
     $inspecao->editaInspecao();
-    header("Location: ../view/SubunidadeView.php");
+    header("Location: ../view/InspecaoView.php");
 }

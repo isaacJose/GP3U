@@ -145,39 +145,51 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Inspeções cadastradas</span>
+              <span class="spanmenu">Inspeção- Formulário de cadastro</span>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Cautela</th>
-                      <th>Policial</th>
-                      <th>Última inspeção</th>
-                      <th>Próxima inspeção</th>
-                      <th>Situação</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>            
-                  <tbody>
-                    <!-- faltando o controller ainda -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <form action="InspecaoViewCadastrar.php">
-                <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+              <form action="../controller/InspecaoController.php" method="post">
+                <div class="row">
+                  <div class="col-lg-6"> 
+                    <div class="form-group">
+                      <label>Cautela</label>
+                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                    </div>
+                  </div>
+                  <div class="col-lg-6"> 
+                    <div class="form-group">
+                      <label>Policial</label>
+                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                    </div>
+                  </div>
+                  <div class="col-lg-4"> 
+                    <div class="form-group">
+                      <label>Última inspeção</label>
+                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                    </div>
+                  </div>
+                  <div class="col-lg-4"> 
+                    <div class="form-group">
+                      <label>Próxima inspeção</label>
+                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                    </div>
+                  </div>
+                  <div class="col-lg-4"> 
+                    <div class="form-group">
+                      <label>Situação</label>
+                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+                  </div>
+                </div>
               </form>
             </div>
           </div>
         </div>
-        <br>
-
         
         <!-- /.container-fluid -->
 
