@@ -21,6 +21,25 @@ class FabricanteDao{
         }
     }
 
+    function listaSelectEdicao(conexao $conn, $idFabricante) {
+        $query = "SELECT id, descricao FROM fabricante";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                if($idFabricante === $row["id"]){
+                    echo '<option selected="selected" value='. $row["id"].'>'. $row["descricao"].'</option>';
+                }
+                else{
+                    echo '<option value='. $row["id"].'>'. $row["descricao"].'</option>';
+                }
+
+            }
+        } else {
+            echo "0 results";
+        }
+    }
+
     function recuperaId(conexao $conn) {
         $query = "SELECT id FROM fabricante";
         $result = mysqli_query($conn->conecta(), $query);

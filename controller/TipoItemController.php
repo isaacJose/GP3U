@@ -15,5 +15,10 @@ class TipoItemController {
         $tipoItemDao->listaSelect($conexao);
     }
     
+    public function listaOptionsEdicao($id) {
+        $conexao = new conexao();
+        $tipoItemDao = new TipoItemDao();
+        $tipoItemDao->listaSelectEdicao($conexao, $id);
+    }
 }
   

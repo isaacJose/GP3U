@@ -204,14 +204,15 @@
                       <label>Situação</label>
                       <select id='situacao' name="situacao" class="form-control">
                         <?php
+                        $select = 'selected="selected"';
                         $itemDao = new ItemDao();
                         $situacao = $itemDao->recuperaSituacao($conexao, $itemId);
-                        echo"<option selected>".$situacao."</option>";
+                        //echo"<option selected>".$situacao."</option>";
                         ?>
-                        <option value="Operacional">Operacional</option> 
-                        <option value="Danificado">Danificado</option>
-                        <option value="Manutenção">Manutenção</option>
-                        <option value="Justiça">Justiça</option>
+                        <option <?php if($situacao === "Operacional") echo $select; ?> value="Operacional">Operacional</option> 
+                        <option <?php if($situacao === "Danificado") echo $select; ?> value="Danificado">Danificado</option>
+                        <option <?php if($situacao === "Manutenção") echo $select; ?> value="Manutenção">Manutenção</option>
+                        <option <?php if($situacao === "Justiça") echo $select; ?> value="Justiça">Justiça</option>
                       </select>
                     </div>                                        
                   </div>
@@ -248,9 +249,9 @@
                         $subunidadeDao = new SubunidadeDao();
                         $subunidadeId = $ItemDao->recuperaId_subunidade($conexao, $itemId);
                         $subunidade = $subunidadeDao->recuperaSiglaSubunidade($conexao, $subunidadeId);
-                        echo"<option selected>".$subunidade."</option>";
+                        //echo"<option selected>".$subunidade."</option>";
                         $opt = new SubunidadeController();
-                        $opt->listaOptions();
+                        $opt->listaOptionsEdicao($subunidadeId);
                         ?>                                                                 
                       </select>
                     </div>
@@ -265,9 +266,9 @@
                         $tipoItemDao = new TipoItemDao();
                         $tipoItemId = $ItemDao->recuperaId_tipo_item($conexao, $itemId);
                         $tipoItem = $tipoItemDao->recuperaDescricao($conexao, $tipoItemId);
-                        echo"<option selected>".$tipoItem."</option>";
+                        //echo"<option selected>".$tipoItem."</option>";
                         $opt = new TipoItemController();
-                        $opt->listaOptions();
+                        $opt->listaOptionsEdicao($tipoItemId);
                         ?>                                                                 
                       </select>
                     </div>
@@ -280,11 +281,11 @@
                         <?php
                         $ItemDao = new ItemDao(); 
                         $fabricanteDao = new FabricanteDao();
-                        $fabricanteId = $ItemDao->recuperaId_tipo_item($conexao, $itemId);
+                        $fabricanteId = $ItemDao->recuperaId_fabricante($conexao, $itemId);
                         $fabricante = $fabricanteDao->recuperaDescricao($conexao, $fabricanteId);
-                        echo"<option selected>".$fabricante."</option>";
+                        //echo"<option selected>".$fabricante."</option>"; //Selecionando assim, duplica no banco
                         $opt = new FabricanteController();
-                        $opt->listaOptions();
+                        $opt->listaOptionsEdicao($fabricanteId);
                         ?>                                                                 
                       </select>
                     </div>

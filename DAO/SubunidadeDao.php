@@ -160,6 +160,25 @@ class SubunidadeDao {
             echo "0 results";
         }
     }
+
+    function listaSelectEdicao(conexao $conn, $idSubunidade) {
+        $query = "SELECT id, sigla FROM subunidade";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                if($row["id"] === $idSubunidade){
+                    echo '<option selected="selected" value='. $row["id"].'>'. $row["sigla"].'</option>';
+                }
+                else{
+                    echo '<option value='. $row["id"].'>'. $row["sigla"].'</option>';
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+    }
+
     
     function exclui(conexao $conn, subunidade $subunidade) {
         $query = "DELETE FROM subunidade WHERE id = {$subunidade->getId()}";

@@ -15,5 +15,10 @@ class FabricanteController {
         $fabricanteDao->listaSelect($conexao);
     }
     
+    public function listaOptionsEdicao($id) {
+        $conexao = new conexao();
+        $fabricanteDao = new FabricanteDao();
+        $fabricanteDao->listaSelectEdicao($conexao, $id);
+    }
 }
  

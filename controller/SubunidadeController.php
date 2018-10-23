@@ -39,6 +39,12 @@ class SubunidadeController {
         $subunidadeDao = new SubunidadeDao();
         $subunidadeDao->listaSelect($conexao);
     }
+
+    public function listaOptionsEdicao($id) {
+        $conexao = new conexao();
+        $subunidadeDao = new SubunidadeDao();
+        $subunidadeDao->listaSelectEdicao($conexao, $id);
+    }
     //done
     public function excluiSubunidade() {
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
