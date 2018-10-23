@@ -113,8 +113,8 @@
                   <thead>
                     <tr>
                       <th>Sigla</th>
-                      <th>Unidade</th>
-                      <th>Subunidade</th>
+                      <th>Descrição</th>
+                      <th>Unidade Superior</th>
                       <th></th>
                       <th></th>
                     </tr>

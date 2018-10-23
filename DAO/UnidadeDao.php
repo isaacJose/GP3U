@@ -122,4 +122,35 @@ class unidadeDao{
             echo "0 results";
         }
     }
+
+    function listaSelect(conexao $conn) {
+        $query = "SELECT id, sigla FROM unidade";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                echo '<option value='. $row["id"].'>'. $row["sigla"].'</option>';
+            }
+        } else {
+            echo "0 results";
+        }
+    }
+
+    function listaSelectEdicao(conexao $conn, $idUnidade) {
+        $query = "SELECT id, sigla FROM unidade";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                if($row["id"] === $idUnidade){
+                    echo '<option selected="selected" value='. $row["id"].'>'. $row["sigla"].'</option>';
+                }
+                else{
+                    echo '<option value='. $row["id"].'>'. $row["sigla"].'</option>';
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+    }
 }

@@ -44,6 +44,19 @@ class UnidadeController {
         $unidadeDao->lista($conexao);
     }
     
+    public function listaOptions() {
+        $conexao = new conexao();
+        $unidadeDao = new UnidadeDao();
+        $unidadeDao->listaSelect($conexao);
+    }
+
+    public function listaOptionsEdicao($id) {
+        $conexao = new conexao();
+        $unidadeDao = new UnidadeDao();
+        $unidadeDao->listaSelectEdicao($conexao, $id);
+    }
+
+
     //done
     public function editaUnidade() {
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);

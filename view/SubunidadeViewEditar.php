@@ -1,5 +1,6 @@
 <?php
     include_once '../controller/SubunidadeController.php';
+    include_once '../controller/UnidadeController.php';
     include_once '../DAO/SubunidadeDao.php';
     include_once '../DAO/UnidadeDao.php';
     include_once '../model/Subunidade.php';
@@ -153,9 +154,9 @@
                         $conexao = new conexao();
                         $unidade = SubunidadeDao::recuperaSiglaUnidade($conexao, $id);
                         $sigla = UnidadeDao::recuperaSigla($conexao, $unidade);
-                        echo"<option selected>".$sigla."</option>";
-                        $opt = new SubunidadeController();
-                        $opt->listaOptions();
+                        //echo"<option selected>".$sigla."</option>";
+                        $opt = new UnidadeController();
+                        $opt->listaOptionsEdicao($unidade);
                         ?>                                                                 
                       </select>
                     </div>

@@ -1,5 +1,6 @@
 <?php
     include_once '../controller/SubunidadeController.php';
+    include_once '../controller/UnidadeController.php';
     include 'includes/header.html';
 ?>
 
@@ -113,10 +114,10 @@
                 <div class="row">
                   <div class="col-lg-4">
                     <div class="form-group">
-                      <label>Unidade</label>
+                      <label>Unidade Superior</label>
                       <select name="unidade" class="form-control" required>
                         <?php 
-                        $opt = new SubunidadeController();
+                        $opt = new UnidadeController();
                         $opt->listaOptions();
                         ?>                                                                 
                       </select>
@@ -124,7 +125,7 @@
                   </div>
                   <div class="col-lg-4">
                     <div class="form-group">
-                      <label>Subunidade</label>
+                      <label>Descrição</label>
                       <input name="descricao" class="form-control" placeholder="Ex.: 1ª Companhia de Policia Militar" required>
                     </div>
                   </div>
