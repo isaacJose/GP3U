@@ -22,6 +22,9 @@ SET time_zone = "+00:00";
 -- Database: `sigep_db`
 --
 
+CREATE DATABASE sigep;
+USE sigep;
+
 -- --------------------------------------------------------
 
 --
