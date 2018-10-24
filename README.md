@@ -1,7 +1,7 @@
-<!-- <img src="imagens/sigep-logo.jpg" width="100"> -->
 <img src="img/banner.png" width="550">
 
 # SIGEP
+
 ## Sistema de Gestão de Equipamentos para Proteção Policial
 
 O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um software de cadastro e gerenciamento de materiais bélicos e equipamentos de proteção individual (EPIs) presentes em cada organização policial militar (OPM), bem como o gerenciamento das cautelas¹ destes materiais pelos policiais de suas respectivas unidades.
@@ -9,6 +9,7 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 1. Termo utilizado no ambiente militar para caracterizar a guarda temporária de patrimonio institucional.
 
 ### Pre-requisitos
+
 * Servidor PHP instalado. Ex.: [XAMPP](https://www.apachefriends.org/download.html) ou [WAMP](http://www.wampserver.com/en/)
 
 ### Instalação
@@ -35,7 +36,9 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 * **Vanderson Fabio** - [vandersonfabio](https://github.com/vandersonfabio)
 
 ## Responsabilidades + Gerência
-#### Gerente atual: [silv4b](https://github.com/silv4b)
+
+### Gerente atual: [silv4b](https://github.com/silv4b)
+
 #### Iteração atual: 5ª
 
 | *Iteração* | *Aluno*     | *Função*      | *Inicio - Fim*          |
