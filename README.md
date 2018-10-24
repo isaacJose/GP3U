@@ -62,8 +62,8 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 | -          | -           | -             |                         |
 | 5          | Vanderson   | Desenvolvedor |                         |
 | 5          | Isaac       | Desenvolvedor |                         |
-| *5*        | *Bruno*     | Gerente       |                         |
-| 5          | Rodrigo     | Desenvolvedor | 09/10/2018 - 24/10/2018 |
+| *5*        | *Bruno*     | Gerente       | 09/10/2018 - 24/10/2018 |
+| 5          | Rodrigo     | Desenvolvedor |                         |
 | -          | -           | -             |                         |
 
 ## Licença
