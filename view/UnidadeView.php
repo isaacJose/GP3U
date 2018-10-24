@@ -3,9 +3,9 @@
     include 'includes/header.html';
 ?>
 
-  <?php
-      include 'includes/style/UnidadeView.html';
-  ?>
+<?php
+    include 'includes/style/UnidadeView.html';
+?>
 
   <body id="page-top">
 
