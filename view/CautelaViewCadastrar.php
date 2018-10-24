@@ -1,5 +1,5 @@
 <?php
-    include_once '../controller/InspecaoController.php';
+    include_once '../controller/CautelaController.php';
     include 'includes/header.html';
 ?>
 
@@ -19,7 +19,6 @@
       margin-left:30px;
       margin-right:30px;
     }
-
     i{
       position: absolute;  
     }
@@ -115,13 +114,13 @@
             <span class="spanmenu">Itens</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="CautelaView.php">
           <i class="material-icons">attach_file</i>
             <span class="spanmenu">Cautelas</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="InspecaoView.php">
           <i class="material-icons">find_in_page</i>
             <span class="spanmenu">Inspeções</span>
@@ -136,7 +135,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="../view/InspecaoView.php">Inspeções</a>
+              <a href="../view/CautelaView.php">Cautelas</a>
             </li>
             <li class="breadcrumb-item active">Cadastrar</li>
           </ol>
@@ -145,40 +144,34 @@
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Inspeção - Formulário de cadastro</span>
+              <span class="spanmenu">Cautela - Formulário de cadastro</span>
             </div>
             <div class="card-body">
-              <form action="../controller/InspecaoController.php" method="post">
+              <form action="../controller/CautelaController.php" method="post">
                 <div class="row">
-                  <div class="col-lg-6"> 
+                  <div class="col-lg-3">                                        
                     <div class="form-group">
-                      <label>Cautela</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
-                    </div>
+                      <label>Tipo</label>
+                      <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com">
+                    </div>                                        
                   </div>
-                  <div class="col-lg-6"> 
+                  <div class="col-lg-3">                                        
                     <div class="form-group">
                       <label>Policial</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
-                    </div>
+                      <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com">
+                    </div>                                        
                   </div>
-                  <div class="col-lg-4"> 
+                  <div class="col-lg-3">                                        
                     <div class="form-group">
-                      <label>Última inspeção</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
-                    </div>
+                      <label>Retirada</label>
+                      <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com">
+                    </div>                                        
                   </div>
-                  <div class="col-lg-4"> 
+                  <div class="col-lg-3">                                        
                     <div class="form-group">
-                      <label>Próxima inspeção</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
-                    </div>
-                  </div>
-                  <div class="col-lg-4"> 
-                    <div class="form-group">
-                      <label>Situação</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
-                    </div>
+                      <label>Vencimento</label>
+                      <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com">
+                    </div>                                        
                   </div>
                 </div>
                 <div class="row">
@@ -190,6 +183,7 @@
             </div>
           </div>
         </div>
+        <br>
         
         <!-- /.container-fluid -->
 
