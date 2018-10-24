@@ -15,9 +15,10 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 
 ### Execução
 
-1. Iniciar o servidor PHP
-2. Em um navegador acessar pagina [localhost](http://localhost)
-3. Acessar o diretório do projeto (pode variar dependendo de qual servidor for ultilizado)
+1. Criar o banco de dados na pasta sql/
+2. Iniciar o servidor PHP
+3. Em um navegador acessar pagina [localhost](http://localhost)
+4. Acessar o diretório do projeto (pode variar dependendo de qual servidor for ultilizado)
 
 ## Desenvolvido com
 
@@ -34,8 +35,8 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 * **Vanderson Fabio** - [vandersonfabio](https://github.com/vandersonfabio)
 
 ## Responsabilidades + Gerência
-#### Gerente atual: [rodrigoaggeu](https://github.com/rodrigoaggeu)
-#### Iteração atual: 4ª
+#### Gerente atual: [silv4b](https://github.com/silv4b)
+#### Iteração atual: 5ª
 
 | *Iteração* | *Aluno*     | *Função*      | *Inicio - Fim*          |
 | ---------- | ----------- | ------------- | ----------------------- |
@@ -59,14 +60,11 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 | 4          | Bruno       | Desenvolvedor |                         |
 | *4*        | *Rodrigo*   | *Gerente*     | 24/092018 - 09/10/2018  |
 | -          | -           | -             |                         |
-
-## Siglas
-
-```
-> Ger - Gerente
-> Dev - Desenvolvedor
-> Ant - Analista
-```
+| 5          | Vanderson   | Desenvolvedor |                         |
+| 5          | Isaac       | Desenvolvedor |                         |
+| *5*        | *Bruno*     | Gerente       |                         |
+| 5          | Rodrigo     | Desenvolvedor | 09/10/2018 - 24/10/2018 |
+| -          | -           | -             |                         |
 
 ## Licença
 
