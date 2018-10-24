@@ -148,112 +148,57 @@
             </div>
             <div class="card-body">
               <form action="../controller/CautelaController.php" method="post">
-              <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Cadastrar cautela
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        
-                                            <div class="form-group">
-                                                <label>Policial</label>
-                                                <input class="form-control" placeholder="Matrícula">
-                                            </div>
-                                       
-                                    </div>
-                                    <div class="col-lg-3">
-                                        
-                                            <div class="form-group">
-                                                <label>Armamento</label>
-                                                <input class="form-control" placeholder="Serial do armamento">
-                                            </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-2">
-                                        
-                                            <div class="form-group">
-                                                <label>Quantidade</label>
-                                                <input class="form-control" placeholder="Ex.: 10">
-                                            </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-3">
-                                        
-                                            <div class="form-group" align="center">
-                                                <label>Tipo de cautela</label>
-                                                <div class="radio">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temporária
-                                                    </label>
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Permanente
-                                                    </label>
-                                                </div>
-                                               
-                                            </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-2">
-                                        
-                                            <div class="form-group">
-                                                <label>Vencimento</label>
-                                                <input class="form-control">
-                                            </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                Cautelas
-                                            </div>
-                                            <!-- /.panel-heading -->
-                                            <div class="panel-body">
-                                                <table width="100%" class="table table-bordered table-hover table-sm" id="dataTables-example">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="col-lg-2">Tipo</th>
-                                                            <th class="col-lg-2">Fabricante</th>
-                                                            <th class="col-lg-2">Modelo</th>
-                                                            <th class="col-lg-2">Seriel</th>
-                                                            <th class="col-lg-2">Quantidade</th>
-                                                            <th class="col-lg-2">Situação</th>
-                                                            <th class="col-lg-0"></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Pistola</td>
-                                                            <td>Tauros</td>
-                                                            <td>PT 100</td>
-                                                            <td>abc123456</td>
-                                                            <td>1</td>
-                                                            <td>Operacional</td>
-                                                            <td align="center"><button type="button" class="btn btn-danger btn-xs">Excluir</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <!-- /.table-responsive -->
-                                            </div>
-                                            <!-- /.panel-body -->
-                                        </div>
-                                        <!-- /.panel -->
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <button type="button" class="btn btn-success">Cadastrar</button>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="panel panel-default">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <div class="form-group">
+                            <label>Policial</label>
+                            <input class="form-control" placeholder="Matrícula">
+                          </div>
                         </div>
+                        <div class="col-lg-2">
+                          <div class="form-group">
+                            <label>Armamento</label>
+                            <input class="form-control" placeholder="Serial do armamento">
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="form-group">
+                            <label>Quantidade</label>
+                            <input class="form-control" placeholder="Ex.: 10">
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="form-group" align="center">
+                            <label>Tipo de cautela</label>
+                            <div class="radio">
+                              <label class="radio-inline">
+                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temporária
+                              </label>
+                              <label class="radio-inline">
+                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Permanente
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="form-group">
+                            <label>Vencimento</label>
+                            <input class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Tabela de acrodo com os docs do projeto -->
                     </div>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <button type="button" class="btn btn-success">Cadastrar</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
               </form>
             </div>
           </div>
