@@ -1,7 +1,3 @@
-<head>
-  <meta charset="UTF-8">
-</head>
-
 <?php
     include_once '../controller/UnidadeController.php';
     include 'includes/header.html';
