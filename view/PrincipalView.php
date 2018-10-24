@@ -36,8 +36,8 @@
     .container img {
       margin-left: auto;
       margin-right: auto;
-      width:600px;
-      height:600px;
+      width:450px;
+      height:450px;
     }
 
 </style>
