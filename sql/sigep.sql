@@ -28,6 +28,12 @@ USE sigep;
 -- --------------------------------------------------------
 
 --
+-- Definindo o charset do banco para UFT-8
+--
+
+ALTER DATABASE `sigep` CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+--
 -- Estrutura da tabela `alteracao_cautela`
 --
 
