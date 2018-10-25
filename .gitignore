@@ -2,7 +2,6 @@ node_modules
 faviconlogo/
 .idea/
 node_modules/
-.gitignore
 
 # Created by https://www.gitignore.io/api/netbeans,phpstorm,notepadpp,sublimetext,phpstorm+all,phpstorm+iml,phpcodesniffer,visualstudiocode
 
