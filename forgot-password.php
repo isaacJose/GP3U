@@ -38,7 +38,7 @@
         <div class="card-body">
           <div class="text-center mb-4">
             <h4>Esqueceu a sua senha?</h4>
-            <p>Digite o seu email e enviaremos instruções de como recuperar a sua sennha.</p>
+            <p>Digite o seu email e enviaremos para você instruções de como recuperar a sua sennha.</p>
           </div>
           <form action="email.php" name="sendemail" method="post">
             <div class="form-group">
@@ -48,7 +48,8 @@
               </div>
             </div>
             <!-- <a class="btn btn-primary btn-block" href="login.php">Resetar senha</a> -->
-            <input type="submit" class="btn btn-primary btn-block" id="cadastrar" name="cadastrar" value="Recuperar senha"> 
+            <input type="submit" class="btn btn-primary btn-block" id="cadastrar" name="cadastrar" value="Recuperar senha
+            "> 
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="register.php">Registrar uma conta</a>
