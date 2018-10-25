@@ -68,6 +68,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">            
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
           </div>
         </li>
       </ul>
@@ -178,6 +179,25 @@
           <?php
             include 'includes/logaout_in_navbar.html';
           ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">O Sistema de Gerenciamento de Equipamentos para Proteção policial - SIGEP
+            foi desenvolvido como parte de requisito de nota para a disciplina de Gestão de Projetos por:
+            <br/> <br/> Bruno Silva <br/>
+            Vanderson Fábio <br/>
+            Rodrigo Aggeu <br/>
+            Isaac José <br/>
+            </h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
