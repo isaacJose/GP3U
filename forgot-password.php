@@ -48,7 +48,7 @@
               </div>
             </div>
             <!-- <a class="btn btn-primary btn-block" href="login.php">Resetar senha</a> -->
-            <input type="submit" class="btn btn-primary btn-block" id="cadastrar" name="cadastrar" value="Cadastrar"> 
+            <input type="submit" class="btn btn-primary btn-block" id="cadastrar" name="cadastrar" value="Recuperar senha"> 
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="register.php">Registrar uma conta</a>
