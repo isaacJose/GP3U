@@ -25,7 +25,7 @@
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="exit">
-              <i class="material-icons" >exit_to_app</i>
+            <i class="material-icons" >settings</i>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">            
