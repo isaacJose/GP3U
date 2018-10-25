@@ -40,14 +40,15 @@
             <h4>Esqueceu a sua senha?</h4>
             <p>Digite o seu email e enviaremos instruções de como recuperar a sua sennha.</p>
           </div>
-          <form>
+          <form action="email.php" name="sendemail" method="post">
             <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus">
-                <label for="inputEmail">Digite seu endereço de email</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus" name="email">
+                <label id="email" for="inputEmail">Digite seu endereço de email</label>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="login.php">Resetar senha</a>
+            <!-- <a class="btn btn-primary btn-block" href="login.php">Resetar senha</a> -->
+            <input type="submit" class="btn btn-primary btn-block" id="cadastrar" name="cadastrar" value="Cadastrar"> 
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="register.php">Registrar uma conta</a>
