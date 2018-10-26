@@ -127,21 +127,20 @@
                   <div class="col-lg-2">                                        
                     <div class="form-group">
                       <label>Patente</label>
-                      <select name="patente" class="form-control">
-                          
-                          <option>Soldado</option>
-                          <option>Cabo</option>
-                          <option>Sargento</option>
-                          <option>Sargento</option>
-                          <option>Sargento</option>
-                          <option>Subtenente</option>
-                          <option>Aspirante</option>
-                          <option>Segundo-tenente</option>
-                          <option>Primeiro-tenente</option>
-                          <option>Capitão</option>
-                          <option>Major</option>
-                          <option>Tenente-coronel</option>
-                          <option>Coronel</option>
+                      <select name="patente" class="form-control">                          
+                          <option value="SD">Soldado</option>
+                          <option value="CB">Cabo</option>
+                          <option value="3SGT">Sargento</option>
+                          <option value="2SGT">Sargento</option>
+                          <option value="1SGT">Sargento</option>
+                          <option value="ST">Subtenente</option>
+                          <option value="ASP">Aspirante</option>
+                          <option value="2TEN">Segundo-tenente</option>
+                          <option value="1TEN">Primeiro-tenente</option>
+                          <option value="CAP">Capitão</option>
+                          <option value="MAJ">Major</option>
+                          <option value="TC">Tenente-coronel</option>
+                          <option value="CEL">Coronel</option>
                       </select>
                     </div>                                        
                   </div>

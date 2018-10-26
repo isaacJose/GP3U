@@ -12,6 +12,14 @@ class PolicialController {
         $policialDao = new PolicialDao();
         $policialDao->listaSelect($conexao);
     }
+
+    //done
+    public function listaOptionsEdicao($idSubunidade) {
+        $conexao = new conexao();
+        $policialDao = new PolicialDao();
+        $policialDao->listaSelectEdicao($conexao, $idSubunidade);
+    }
+
     //done
     public function inserePolicial() {
         //recuperando os dados do formulário
