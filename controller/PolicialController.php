@@ -1,6 +1,5 @@
 <?php
 
-
 include_once '../DAO/PolicialDao.php';
 include_once '../DAO/Conexao.php';
 include_once '../model/Policial.php';
