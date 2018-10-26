@@ -59,9 +59,8 @@
               </div>
             </div>
             <!-- <input type="submit" <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Login</a> /> -->
-            <!-- <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Entrar</a> -->
-            <input type="submit" class="btn btn-primary btn-block" id="Entrar" name="Entrar" value="Entrar
-            ">
+            <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Entrar</a>
+            <!-- <input type="submit" class="btn btn-primary btn-block" id="Entrar" name="Entrar" value="Entrar"> -->
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="register.php">Registrar conta</a>
