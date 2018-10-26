@@ -142,6 +142,8 @@
                       <select name="patente" class="form-control">
                         <?php
                         $graduacao = PolicialDao::recuperaPatente($conexao, $id);
+
+                        $selecionar = 'selected="selected"';
                         //echo"<option selected>".$graduacao."</option>";
                         //$opt = new SubunidadeController();
                         //$opt->listaOptions();
