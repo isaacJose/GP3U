@@ -1,5 +1,6 @@
 <?php
     include 'includes/header.html';
+    $email = $_POST["email"];
 ?>
   <style>
 
@@ -46,7 +47,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP | Sistema de gestão de equipamentos para proteção policial</a>
+      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
 
       <!-- Modelo (alterável) download de documentos (se necessário) -->
       <!-- <a class="fasc-button fasc-size-medium fasc-type-flat fasc-ico-before dashicons-admin-links" style="background-color:#33809e;color:#ffffff;" href="https://www.todoespacoonline.com/w/tuts/2014/10/dompdf.zip">Download DOMPDF (com exemplo)</a> -->
@@ -54,7 +55,7 @@
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <a class="navbar-brand mr-1" href="">Bem vindo(a), User!</a>
+          <a class="navbar-brand mr-1" href="">Bem vindo(a), <?php echo $email ?> </a>
         </div>
       </form>
 
