@@ -36,10 +36,10 @@
           </center>
         </div>
         <div class="card-body">
-          <form>
+          <form action="view/PrincipalView.php" method="post">
             <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus="autofocus" required>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus="autofocus" name="email" required>
                 <label for="inputEmail">Endereço de email</label>
               </div>
             </div>
@@ -58,7 +58,9 @@
               </div>
             </div>
             <!-- <input type="submit" <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Login</a> /> -->
-            <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Entrar</a>
+            <!-- <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Entrar</a> -->
+            <input type="submit" class="btn btn-primary btn-block" id="Entrar" name="Entrar" value="Entrar
+            ">
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="register.php">Registrar conta</a>

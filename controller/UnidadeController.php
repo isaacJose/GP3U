@@ -56,7 +56,6 @@ class UnidadeController {
         $unidadeDao->listaSelectEdicao($conexao, $id);
     }
 
-
     //done
     public function editaUnidade() {
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
@@ -98,6 +97,5 @@ if (isset($excluir)) {
 
 if (isset($editar)){
     $cad->editaUnidade();
-    header("Location: ../view/UnidadeView.php");
-    
+    header("Location: ../view/UnidadeView.php");    
 }

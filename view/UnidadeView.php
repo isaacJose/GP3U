@@ -1,9 +1,6 @@
 <?php
     include_once '../controller/UnidadeController.php';
     include 'includes/header.html';
-?>
-
-<?php
     include 'includes/style/UnidadeView.html';
 ?>
 
