@@ -150,16 +150,16 @@
                         ?>
                             <option <?php if($graduacao === "SD") echo $selecionar; ?> value="SD">Soldado</option>
                             <option <?php if($graduacao === "CB") echo $selecionar; ?> value="CB">Cabo</option>
-                            <option <?php if($graduacao === "3SGT") echo $selecionar; ?> value="3SGT">Sargento</option>
-                            <option <?php if($graduacao === "2SGT") echo $selecionar; ?> value="2SGT">Sargento</option>
-                            <option <?php if($graduacao === "1SGT") echo $selecionar; ?> value="1SGT">Sargento</option>
+                            <option <?php if($graduacao === "3SGT") echo $selecionar; ?> value="3SGT">3º Sargento</option>
+                            <option <?php if($graduacao === "2SGT") echo $selecionar; ?> value="2SGT">2º Sargento</option>
+                            <option <?php if($graduacao === "1SGT") echo $selecionar; ?> value="1SGT">1º Sargento</option>
                             <option <?php if($graduacao === "ST") echo $selecionar; ?> value="ST">Subtenente</option>
                             <option <?php if($graduacao === "ASP") echo $selecionar; ?> value="ASP">Aspirante</option>
-                            <option <?php if($graduacao === "2TEN") echo $selecionar; ?> value="2TEN">Segundo-tenente</option>
-                            <option <?php if($graduacao === "1TEN") echo $selecionar; ?> value="1TEN">Primeiro-tenente</option>
+                            <option <?php if($graduacao === "2TEN") echo $selecionar; ?> value="2TEN">2º Tenente</option>
+                            <option <?php if($graduacao === "1TEN") echo $selecionar; ?> value="1TEN">1º Tenente</option>
                             <option <?php if($graduacao === "CAP") echo $selecionar; ?> value="CAP">Capitão</option>
                             <option <?php if($graduacao === "MAJ") echo $selecionar; ?> value="MAJ">Major</option>
-                            <option <?php if($graduacao === "TC") echo $selecionar; ?> value="TC">Tenente-coronel</option>
+                            <option <?php if($graduacao === "TC") echo $selecionar; ?> value="TC">Tenente-Coronel</option>
                             <option <?php if($graduacao === "CEL") echo $selecionar; ?> value="CEL">Coronel</option>
                       </select>
                     </div>                                        
@@ -192,7 +192,7 @@
                       <?php
                       $policialDao = new PolicialDao();
                       $email = $policialDao->recuperaEmail($conexao, $id);
-                      echo "<input name='email' class='form-control' value='$email' placeholder='Ex.: email@exemplo.com' required>";
+                      echo "<input type='email' name='email' class='form-control' value='$email' placeholder='Ex.: email@exemplo.com' required>";
                       ?>
                     </div>                                        
                   </div>
@@ -220,9 +220,9 @@
                         <?php
                         $subunidadeId = PolicialDao::recuperaIdSubunidade($conexao, $id);
                         $subunidade = PolicialDao::recuperaSiglaSubunidade($conexao, $subunidadeId);
-                        echo"<option selected>".$subunidade."</option>";
+                        ////////////////echo"<option selected>".$subunidade."</option>";
                         $opt = new PolicialController();
-                        $opt->listaOptions();
+                        $opt->listaOptionsEdicao($subunidade);
                         echo '<input type="hidden" name="id" value="'.$id.'">';  
                         ?>    
                       </select>

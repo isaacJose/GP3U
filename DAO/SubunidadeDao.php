@@ -3,6 +3,8 @@ if(!isset($_SESSION)){
     session_start();
 }
 
+require_once "../controller/Uteis.php";
+
 class SubunidadeDao {
     //done
     function adiciona(conexao $conn, subunidade $subunidade) {
@@ -101,6 +103,7 @@ class SubunidadeDao {
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 echo    '<tr>';
+                $stringModal = Uteis::sanitizeString($row["sigla"]);
                 echo        '<td>'. $row["sigla"]. '</td>';
                 echo        '<td>'. $row["descricao"] .'</td>';
                 echo        '<td>'. $row["sigla2"] .'</td>';
@@ -112,13 +115,13 @@ class SubunidadeDao {
                             </td>';
                             echo        '<td align="center">                                
                             <button name="excluir" value="" class="btn btn-danger btn-xs"
-                            type="button" data-toggle="modal" data-target="#modalDeleteSubunidade'.$row["id"].$row["sigla"].'">Excluir</button>                                    
+                            type="button" data-toggle="modal" data-target="#modalDeleteSubunidade'.$row["id"].$stringModal.'">Excluir</button>                                    
                     </td>';
         
                 //Modal para confirmar a exclusão dos itens selecionados
                 //Devemos passar tanto o ID como a SIGLA para que o modal possa exibir e exluir o item
                 echo        '<!-- Modal -->
-                            <div class="modal fade" id="modalDeleteSubunidade'.$row["id"].$row["sigla"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                            <div class="modal fade" id="modalDeleteSubunidade'.$row["id"].$stringModal.'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">

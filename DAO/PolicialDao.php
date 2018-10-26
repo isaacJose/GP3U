@@ -1,5 +1,7 @@
 <?php
  session_start();
+require_once "../controller/Uteis.php";
+
 //done
 class PolicialDao {
     //done
@@ -70,6 +72,25 @@ class PolicialDao {
             echo "0 results";
         }
     }
+
+    //done
+    function listaSelectEdicao(conexao $conn, $siglaSubunidade) {
+        $query = "SELECT * FROM subunidade";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                if($siglaSubunidade === $row["sigla"]){
+                    echo '<option selected="selected">'. $row["sigla"]. '</option>';
+                }
+                else{
+                    echo '<option>'. $row["sigla"]. '</option>';
+                }
+            }
+        } else {
+            echo "0 results";
+        }
+    }
     //done
     function lista(conexao $conn) {
         $query = "SELECT p.id AS id, p.nome AS nome, p.graduacao AS graduacao, p.nome_funcional AS nome_funcional, p.matricula AS matricula, p.email AS email, p.situacao AS situacao, p.id_subunidade AS id_subunidade, s.sigla AS sigla_subunidade FROM policial AS p, subunidade AS s WHERE p.id_subunidade = s.id";
@@ -79,7 +100,8 @@ class PolicialDao {
         if (mysqli_num_rows($result) > 0) {
             //while($row = mysqli_fetch_assoc($result)) {  
             while($row = mysqli_fetch_assoc($result)) { 
-                echo '<tr>';        
+                echo '<tr>';
+                $stringModal = Uteis::sanitizeString($row["nome_funcional"]);        
                     echo '<td>' . $row["nome"] . '</td>';
                     echo '<td>' . $row["graduacao"] . '</td>';
                     echo '<td>' . $row["matricula"] . '</td>';
@@ -93,13 +115,13 @@ class PolicialDao {
                             </td>';
                     echo        '<td align="center">                                
                                         <button name="excluir" value="" class="btn btn-danger btn-xs"
-                                        type="button" data-toggle="modal" data-target="#modalDeletePolicial'.$row["id"].$row["nome_funcional"].'">Excluir</button>                                    
+                                        type="button" data-toggle="modal" data-target="#modalDeletePolicial'.$row["id"].$stringModal.'">Excluir</button>                                    
                                 </td>';
                     
                     //Modal para confirmar a exclusão dos itens selecionados
                     //Devemos passar tanto o ID como a SIGLA para que o modal possa exibir e exluir o item
                     echo        '<!-- Modal -->
-                                <div class="modal fade" id="modalDeletePolicial'.$row["id"].$row["nome_funcional"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                <div class="modal fade" id="modalDeletePolicial'.$row["id"].$stringModal.'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
