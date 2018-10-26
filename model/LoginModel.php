@@ -1,5 +1,5 @@
 <?php
-class login {
+class LoginModel {
     public $email;
     public $senha;
 

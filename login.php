@@ -36,17 +36,18 @@
           </center>
         </div>
         <div class="card-body">
-          <form action="view/PrincipalView.php" method="post">
-            <div class="form-group">
+          <!-- <form action="controller/LoginController.php" method="post"> -->
+          <form action="view/PrincipalView.php" method-="post">
+          <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus="autofocus" name="email" required>
-                <label for="inputEmail">Endereço de email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" autofocus="autofocus" required>
+                <label for="email">Endereço de email</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Senha</label>
+                <input type="password" id="password" name="senha" class="form-control" placeholder="Password" required>
+                <label for="password">Senha</label>
               </div>
             </div>
             <div class="form-group">
