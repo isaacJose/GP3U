@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP | Sistema de gestão de equipamentos para proteção policial</a>
+      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
 
       <?php
         include 'includes/style/PolicialViewCadastrar.html';
