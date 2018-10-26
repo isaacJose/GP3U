@@ -46,7 +46,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">SIGEP</a>
+      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP | Sistema de gestão de equipamentos para proteção policial</a>
 
       <!-- Modelo (alterável) download de documentos (se necessário) -->
       <!-- <a class="fasc-button fasc-size-medium fasc-type-flat fasc-ico-before dashicons-admin-links" style="background-color:#33809e;color:#ffffff;" href="https://www.todoespacoonline.com/w/tuts/2014/10/dompdf.zip">Download DOMPDF (com exemplo)</a> -->
@@ -54,7 +54,7 @@
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <a class="navbar-brand mr-1" href="">Bem vindo(a), Usuário</a>
+          <a class="navbar-brand mr-1" href="">Bem vindo(a), User!</a>
         </div>
       </form>
 
@@ -206,25 +206,6 @@
             Vanderson Fábio <br/></div>
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">O Sistema de Gerenciamento de Equipamentos para Proteção policial - SIGEP
-            foi desenvolvido como parte de requisito de nota para a disciplina de Gestão de Projetos por:
-            <br/> <br/> Bruno Silva <br/>
-            Vanderson Fábio <br/>
-            Rodrigo Aggeu <br/>
-            Isaac José <br/>
-            </h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
           </div>
         </div>
       </div>
