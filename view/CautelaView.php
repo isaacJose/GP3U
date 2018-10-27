@@ -57,7 +57,7 @@ include 'includes/header.html';
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <a class="navbar-brand mr-1" href="">Bem vindo(a), <?php echo $_SESSION['nome_funcional']; ?></a>
+          <a class="navbar-brand mr-1" href="">Bem vindo(a), <?php echo utf8_encode($_SESSION['nome_funcional']); ?></a>
         </div>
       </form>
 
