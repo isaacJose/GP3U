@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['nome_funcional'])){
+  header('Location: ../login.php');
+}
     include_once '../controller/SubunidadeController.php';
     include_once '../controller/UnidadeController.php';
     include_once '../DAO/SubunidadeDao.php';
@@ -50,7 +54,7 @@
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <a class="navbar-brand mr-1" href="">Bem vindo(a), User!</a>
+          <a class="navbar-brand mr-1" href="">Bem vindo(a), <?php echo $_SESSION['nome_funcional']; ?></a>
         </div>
       </form>
 

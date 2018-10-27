@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +44,7 @@
           <form name="loginform" action="validalogin.php" method="post">
           <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" autofocus="autofocus" value="brunno.linkin@gmail.com" required>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" autofocus="autofocus" value="" required>
                 <label for="email">Endereço de email</label>
               </div>
             </div>

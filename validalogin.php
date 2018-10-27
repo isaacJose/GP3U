@@ -1,15 +1,9 @@
 <?php
-$banco = "sigep";
-$host = "localhost";
-$userbd = "root";
-$senhabd = "";
+include 'DAO/Conexao.php';
 
-$conexao = mysqli_connect($host, $userbd, $senhabd) or die(mysqli_error());
-$conexaobd = mysqli_select_db($conexao, $banco) or die(mysqli_error());
-?>
-
-<?php
 $email = $_POST["email"];
+$conn = new conexao();
+$conexao = $conn->conecta();
 
 $sql = mysqli_query($conexao, "select nome_funcional from policial where email = '$email' ") or die(mysqli_error());
 $row = mysqli_num_rows($sql);
@@ -22,7 +16,10 @@ if ($row > 0) {
     $_SESSION['nome_funcional'] = $result['nome_funcional'];
     echo "logado com sucesso!";
     header('Location: view/PrincipalView.php');
+} else {
+    $_SESSION['loginErro'] = "Usuário ou senha inválido";
+    header('Location: login.php');
 }
 
-//brunno.linkin@gmail.com
+//bruno.linkin@gmail.com
 ?>
