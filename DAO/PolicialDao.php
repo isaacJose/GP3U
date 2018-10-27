@@ -131,11 +131,11 @@ class PolicialDao {
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Deseja realmente exlcuir o policial <strong>'.$row["nome_funcional"].'</strong>?
+                                        Deseja realmente exlcuir o policial <strong>'.$stringModal.'</strong>?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <form name="formunidade2" action="../controller/UnidadeController.php" method="POST">
+                                        <form name="formunidade2" action="../controller/PolicialController.php" method="POST">
                                             <button type="submit" name="excluir" value="" class="btn btn-danger">Excluir</button>
                                             <input type="hidden" name="id" value="'.$row["id"].'">
                                         </form>
