@@ -37,16 +37,16 @@
         </div>
         <div class="card-body">
           <!-- <form action="controller/LoginController.php" method="post"> -->
-          <form action="view/PrincipalView.php" method-="post">
+          <form name="loginform" action="validalogin.php" method="post">
           <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" autofocus="autofocus" required>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" autofocus="autofocus" value="brunno.linkin@gmail.com" required>
                 <label for="email">Endereço de email</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" id="password" name="senha" class="form-control" placeholder="Password" required>
+                <input type="password" id="password" name="senha" class="form-control" placeholder="Password" value="bruno@3bak" required>
                 <label for="password">Senha</label>
               </div>
             </div>
@@ -58,9 +58,7 @@
                 </label>
               </div>
             </div>
-            <!-- <input type="submit" <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Login</a> /> -->
-            <a class="btn btn-primary btn-block" href="view/PrincipalView.php">Entrar</a>
-            <!-- <input type="submit" class="btn btn-primary btn-block" id="Entrar" name="Entrar" value="Entrar"> -->
+            <input type="submit" class="btn btn-primary btn-block" id="Entrar" name="Entrar" value="Entrar">
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="register.php">Registrar conta</a>

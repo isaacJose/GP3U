@@ -21,4 +21,3 @@ class FabricanteController {
         $fabricanteDao->listaSelectEdicao($conexao, $id);
     }
 }
- 

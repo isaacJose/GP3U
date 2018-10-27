@@ -1,5 +1,4 @@
 <?php
-
 class CautelaDao {
     function adiciona(conexao $conn, Cautela $cautela) {
           

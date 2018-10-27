@@ -1,14 +1,16 @@
 <?php
-    include 'includes/header.html';
+session_start();
+include 'includes/header.html';
+//include 'validalogin.php';
 ?>
   <style>
 
     img {
         width:150px;
-        height:150px;      
+        height:150px;
         top:50%;
-        left:50%;      
-        margin-left:10px;      
+        left:50%;
+        margin-left:10px;
     }
     .imagem{
       background-color:white;
@@ -18,18 +20,18 @@
       margin-right:30px;
     }
     i{
-      position: absolute;  
+      position: absolute;
     }
 
     .spanmenu{
       margin-left:30px;
     }
 
-    .exit{ 
+    .exit{
         width:20px;
-        height:20px;  
+        height:20px;
         top:50%;
-        left:50%;      
+        left:50%;
         margin-left:10px;
     }
 
@@ -40,7 +42,7 @@
       height:450px;
     }
 
-</style>
+  </style>
 
   <body id="page-top">
 
@@ -54,7 +56,7 @@
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <a class="navbar-brand mr-1" href="#">Bem vindo(a), User!</a>
+          <a class="navbar-brand mr-1" href="#">Bem vindo(a), <?php echo $_SESSION['nome_funcional']; ?> </a>
         </div>
       </form>
 
@@ -69,7 +71,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -86,7 +88,7 @@
         <li>
           <div class="imagem">
             <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="PrincipalView.php">
@@ -144,20 +146,20 @@
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
 
-          
+
         </div>
         <br>
 
         <!-- /.container-fluid -->
 
-        <div align="center" class="container"> 
+        <div align="center" class="container">
           <img src="../img/logo.png"/>
         </div>
 
         <!-- Sticky Footer -->
         <?php
-          include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -212,8 +214,8 @@
     </div>
 
     <?php
-      include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 
