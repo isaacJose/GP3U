@@ -2,10 +2,13 @@
 include 'DAO/Conexao.php';
 
 $email = $_POST["email"];
+$senha = $_POST["senha"];
+
 $conn = new conexao();
 $conexao = $conn->conecta();
 
-$sql = mysqli_query($conexao, "select nome_funcional from policial where email = '$email' ") or die(mysqli_error());
+$query = "select nome_funcional from operador where email = '$email' and senha = '$senha' ";
+$sql = mysqli_query($conexao, $query) or die(mysqli_error());
 $row = mysqli_num_rows($sql);
 
 $result = mysqli_fetch_assoc($sql);

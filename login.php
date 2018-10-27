@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" id="password" name="senha" class="form-control" placeholder="Password" value="bruno@3bak" required>
+                <input type="password" id="password" name="senha" class="form-control" placeholder="Password" required>
                 <label for="password">Senha</label>
               </div>
             </div>
