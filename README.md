@@ -16,7 +16,7 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 
 ### Execução
 
-1. Criar o banco de dados na pasta sql/
+1. Criar o banco de dados na pasta [sql/](https://github.com/rodrigoaggeu/GP3U/tree/master/sql)
 2. Iniciar o servidor PHP
 3. Em um navegador acessar pagina [localhost](http://localhost)
 4. Acessar o diretório do projeto (pode variar dependendo de qual servidor for ultilizado)
