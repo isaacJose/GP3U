@@ -1,9 +1,9 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['nome_funcional'])){
-      header('Location: ../login.php');
-    }
-    include 'includes/header.html';
+session_start();
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
+}
+include 'includes/header.html';
 ?>
   <style>
 

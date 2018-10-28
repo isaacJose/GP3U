@@ -1,23 +1,21 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
 }
-    include_once '../controller/PolicialController.php';
-    include 'includes/header.html';
+include_once '../controller/PolicialController.php';
+include 'includes/header.html';
 ?>
 
   <?php
-    include 'includes/style/PolicialViewCadastrar.html';
-  ?>
+include 'includes/style/PolicialViewCadastrar.html';
+?>
 
   <body id="page-top">
 
       <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
-
-      
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -36,7 +34,7 @@ if(!isset($_SESSION['nome_funcional'])){
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -53,7 +51,7 @@ if(!isset($_SESSION['nome_funcional'])){
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -122,16 +120,16 @@ if(!isset($_SESSION['nome_funcional'])){
               <!-- Form -->
               <form action="../controller/PolicialController.php" method="post">
                 <div class="row">
-                  <div class="col-lg-5">                                        
+                  <div class="col-lg-5">
                     <div class="form-group">
                       <label>Nome</label>
                       <input name="nome" class="form-control" placeholder="Nome completo do policial">
-                    </div>                                        
+                    </div>
                   </div>
-                  <div class="col-lg-2">                                        
+                  <div class="col-lg-2">
                     <div class="form-group">
                       <label>Patente</label>
-                      <select name="patente" class="form-control">                          
+                      <select name="patente" class="form-control">
                           <option value="SD">Soldado</option>
                           <option value="CB">Cabo</option>
                           <option value="3SGT">Sargento</option>
@@ -146,29 +144,29 @@ if(!isset($_SESSION['nome_funcional'])){
                           <option value="TC">Tenente-coronel</option>
                           <option value="CEL">Coronel</option>
                       </select>
-                    </div>                                        
+                    </div>
                   </div>
-                  <div class="col-lg-3">                                        
+                  <div class="col-lg-3">
                     <div class="form-group">
                       <label>Nome Funcional</label>
                       <input name="nome_funcional" class="form-control" placeholder="Nome de guerra">
-                    </div>                                        
+                    </div>
                   </div>
-                  <div class="col-lg-2">                                        
+                  <div class="col-lg-2">
                     <div class="form-group">
                       <label>Matrícula</label>
                       <input id="matricula" name="matricula" class="form-control" placeholder="Ex.: 123456-0">
-                    </div>                                        
+                    </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-lg-4">                                        
+                  <div class="col-lg-4">
                     <div class="form-group">
                       <label>E-mail</label>
                       <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com">
-                    </div>                                        
+                    </div>
                   </div>
-                  <div class="col-lg-4" >                                        
+                  <div class="col-lg-4" >
                     <div class="form-group" align="center">
                       <label>Situação</label>
                       <div class="radio">
@@ -179,18 +177,18 @@ if(!isset($_SESSION['nome_funcional'])){
                           <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica"> Junta psiquiátrica
                         </label>
                       </div>
-                    </div>                                        
+                    </div>
                   </div>
-                  <div class="col-lg-4">                                        
+                  <div class="col-lg-4">
                     <div class="form-group">
                       <label>Lotação</label>
                       <select name="subunidade" class="form-control">
-                        <?php 
-                        $opt = new PolicialController();
-                        $opt->listaOptions();
-                        ?>    
+                        <?php
+$opt = new PolicialController();
+$opt->listaOptions();
+?>
                       </select>
-                    </div>                                        
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -207,8 +205,8 @@ if(!isset($_SESSION['nome_funcional'])){
 
         <!-- Footer -->
         <?php
-          include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -232,8 +230,8 @@ if(!isset($_SESSION['nome_funcional'])){
             </button>
           </div>
           <?php
-            include 'includes/logaout_in_navbar.html';
-          ?>
+include 'includes/logaout_in_navbar.html';
+?>
         </div>
       </div>
     </div>
@@ -261,8 +259,8 @@ if(!isset($_SESSION['nome_funcional'])){
     </div>
 
     <?php
-      include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 

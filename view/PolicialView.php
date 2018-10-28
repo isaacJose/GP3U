@@ -8,7 +8,7 @@ include 'includes/header.html';
 ?>
 
   <?php
-  include 'includes/style/PolicialView.html';
+    include 'includes/style/PolicialView.html';
   ?>
 
   <body id="page-top">

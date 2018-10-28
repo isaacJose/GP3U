@@ -1,62 +1,22 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
 }
 include_once '../controller/InspecaoController.php';
 include 'includes/header.html';
 ?>
 
-  <style>
-
-    img {
-        width:150px;
-        height:150px;      
-        top:50%;
-        left:50%;      
-        margin-left:10px;      
-    }
-    .imagem{
-      background-color:white;
-      border-radius:100%;
-      margin-top:10px;
-      margin-left:30px;
-      margin-right:30px;
-    }
-
-    i{
-      position: absolute;  
-    }
-
-    .spanmenu{
-      margin-left:30px;
-    }
-
-    .exit{ 
-        width:20px;
-        height:20px;  
-        top:50%;
-        left:50%;      
-        margin-left:10px;
-    }
-
-    .btn-xs{
-        padding:1px 5px;
-        font-size:12px;
-        line-height:1.5;
-        border-radius:3px
-    }
-
-</style>
+<?php 
+    include 'includes/style/InspecaoView.html';
+  ?>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
-
       
-
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
@@ -74,7 +34,7 @@ include 'includes/header.html';
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -91,7 +51,7 @@ include 'includes/header.html';
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -168,7 +128,7 @@ include 'includes/header.html';
                       <th></th>
                       <th></th>
                     </tr>
-                  </thead>            
+                  </thead>
                   <tbody>
                     <!-- faltando o controller ainda -->
                   </tbody>
@@ -186,13 +146,13 @@ include 'includes/header.html';
         </div>
         <br>
 
-        
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <?php
-        include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -216,8 +176,8 @@ include 'includes/header.html';
             </button>
           </div>
           <?php
-          include 'includes/logaout_in_navbar.html';
-          ?>
+include 'includes/logaout_in_navbar.html';
+?>
         </div>
       </div>
     </div>
@@ -246,8 +206,8 @@ include 'includes/header.html';
 
 
     <?php
-    include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 

@@ -1,23 +1,27 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
 }
-    include_once '../controller/ItemController.php';
-    include_once '../controller/SubunidadeController.php';
-    include_once '../controller/TipoItemController.php';
-    include_once '../controller/FabricanteController.php';
-    include 'includes/header.html';
+include_once '../controller/ItemController.php';
+include_once '../controller/SubunidadeController.php';
+include_once '../controller/TipoItemController.php';
+include_once '../controller/FabricanteController.php';
+include 'includes/header.html';
+?>
+
+<?php
+include 'includes/style/ItemViewCadastrar.html';
 ?>
 
   <style>
 
     img {
         width:150px;
-        height:150px;      
+        height:150px;
         top:50%;
-        left:50%;      
-        margin-left:10px;      
+        left:50%;
+        margin-left:10px;
     }
     .imagem{
       background-color:white;
@@ -27,18 +31,18 @@ if(!isset($_SESSION['nome_funcional'])){
       margin-right:30px;
     }
     i{
-      position: absolute;  
+      position: absolute;
     }
 
     .spanmenu{
       margin-left:30px;
     }
 
-    .exit{ 
+    .exit{
         width:20px;
-        height:20px;  
+        height:20px;
         top:50%;
-        left:50%;      
+        left:50%;
         margin-left:10px;
     }
 
@@ -57,7 +61,7 @@ if(!isset($_SESSION['nome_funcional'])){
 
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
 
-      
+
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -76,7 +80,7 @@ if(!isset($_SESSION['nome_funcional'])){
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -93,7 +97,7 @@ if(!isset($_SESSION['nome_funcional'])){
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -160,56 +164,56 @@ if(!isset($_SESSION['nome_funcional'])){
             </div>
             <div class="card-body">
               <form action="../controller/ItemController.php" method="post">
-                
+
                 <div class="row">
-                
+
                 <div class="col-lg-4">
                     <div class="form-group">
                       <label>Serial</label>
                       <input id="serial" name="serial" class="form-control" required>
                     </div>
                 </div>
-                  
+
                 <div class="col-lg-4">
                     <div class="form-group">
                       <label>Modelo</label>
                       <input id="modelo" name="modelo" class="form-control" required>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4">
                     <div class="form-group">
                       <label>Estoque</label>
                       <input type="int" id="estoque" name="estoque" class="form-control" required>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4">
                     <div class="form-group">
                       <label>Estoque Danificado</label>
                       <input type="int" id="estoque_danificado" name="estoque_danificado" class="form-control" required>
                     </div>
                 </div>
-                
+
               <div class="col-lg-4">
                     <div class="form-group">
                         <label>Situação</label>
                         <select id="situacao" name="situacao" class="form-control" required>
-                        <option value="Operacional">Operacional</option> 
+                        <option value="Operacional">Operacional</option>
                         <option value="Danificado">Danificado</option>
                         <option value="Manutenção">Manutenção</option>
                         <option value="Justiça">Justiça</option>
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4">
                     <div class="form-group">
                       <label>Validade</label>
                       <input type="date" id="validade" name="validade" class="form-control" required>
                     </div>
                 </div>
-                  
+
                 <div class="col-lg-6">
                     <div class="form-group">
                       <label>Observações</label>
@@ -221,23 +225,23 @@ if(!isset($_SESSION['nome_funcional'])){
                     <div class="form-group">
                       <label>Subunidade</label>
                       <select id="id_subunidade" name="id_subunidade" class="form-control" required>
-                        <?php 
-                        $opt = new SubunidadeController();
-                        $opt->listaOptions();
-                        ?>                                                                 
+                        <?php
+$opt = new SubunidadeController();
+$opt->listaOptions();
+?>
                       </select>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2">
                     <div class="form-group">
                       <label>Tipo Item</label>
                       <select id="id_tipo_item" name="id_tipo_item" class="form-control" required>
-                        <?php 
-                        $opt = new TipoItemController();
-                        $opt->listaOptions();                        
-                        ?>                                                                 
-                      </select> 
+                        <?php
+$opt = new TipoItemController();
+$opt->listaOptions();
+?>
+                      </select>
                     </div>
                 </div>
 
@@ -245,33 +249,33 @@ if(!isset($_SESSION['nome_funcional'])){
                     <div class="form-group">
                       <label>Fabricante</label>
                       <select id="id_fabricante" name="id_fabricante" class="form-control" required>
-                        <?php 
-                          $opt = new FabricanteController();
-                          $opt->listaOptions();
-                        ?>                                                                 
-                      </select>   
+                        <?php
+$opt = new FabricanteController();
+$opt->listaOptions();
+?>
+                      </select>
                     </div>
-                </div> 
-            
+                </div>
+
                 <div class="row">
                   <div class="col-lg-12">
                     <input type="submit" class="btn btn-success" name="cadastrar" value="Cadastrar">
                   </div>
                 </div>
 
-              </form>  
+              </form>
             </div>
           </div>
         </div>
         <br>
 
-        
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <?php
-          include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -296,8 +300,8 @@ if(!isset($_SESSION['nome_funcional'])){
           </div>
 
           <?php
-            include 'includes/logaout_in_navbar.html';
-          ?>
+include 'includes/logaout_in_navbar.html';
+?>
         </div>
       </div>
     </div>
@@ -325,8 +329,8 @@ if(!isset($_SESSION['nome_funcional'])){
     </div>
 
     <?php
-      include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 

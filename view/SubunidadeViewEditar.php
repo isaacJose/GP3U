@@ -1,55 +1,27 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
 }
-    include_once '../controller/SubunidadeController.php';
-    include_once '../controller/UnidadeController.php';
-    include_once '../DAO/SubunidadeDao.php';
-    include_once '../DAO/UnidadeDao.php';
-    include_once '../model/Subunidade.php';
-    include_once '../DAO/Conexao.php';
+include_once '../controller/SubunidadeController.php';
+include_once '../controller/UnidadeController.php';
+include_once '../DAO/SubunidadeDao.php';
+include_once '../DAO/UnidadeDao.php';
+include_once '../model/Subunidade.php';
+include_once '../DAO/Conexao.php';
+
+include 'includes/header.html';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SIGEP</title>
-
-    <!-- Bootstrap core CSS-->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
-    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Page level plugin CSS-->
-    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="../css/sb-admin.css" rel="stylesheet">
-
-    <!-- Custom styles for icons-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  </head>
-
-  <?php
-    include 'includes/style/SubunidadeViewEditar.html';
-  ?>
+<?php
+include 'includes/style/SubunidadeViewEditar.html';
+?>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>      
+      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -68,7 +40,7 @@ if(!isset($_SESSION['nome_funcional'])){
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -85,7 +57,7 @@ if(!isset($_SESSION['nome_funcional'])){
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -158,14 +130,14 @@ if(!isset($_SESSION['nome_funcional'])){
                       <label>Unidade</label>
                       <select name='unidade' class='form-control' required>
                         <?php
-                        $idUnidade = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING); 
-                        $conexao = new conexao();
-                        $unidade = SubunidadeDao::recuperaSiglaUnidade($conexao, $idUnidade);
-                        $sigla = UnidadeDao::recuperaSigla($conexao, $unidade);
-                        //echo"<option selected>".$sigla."</option>";
-                        $opt = new UnidadeController();
-                        $opt->listaOptionsEdicao($unidade);
-                        ?>                                                                 
+$idUnidade = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
+$conexao = new conexao();
+$unidade = SubunidadeDao::recuperaSiglaUnidade($conexao, $idUnidade);
+$sigla = UnidadeDao::recuperaSigla($conexao, $unidade);
+//echo"<option selected>".$sigla."</option>";
+$opt = new UnidadeController();
+$opt->listaOptionsEdicao($unidade);
+?>
                       </select>
                     </div>
                   </div>
@@ -173,23 +145,23 @@ if(!isset($_SESSION['nome_funcional'])){
                     <div class="form-group">
                       <label>Descrição</label>
                       <?php
-                      $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
-                      $conexao = new conexao();
-                      $subunidadeDao = new SubunidadeDao();
-                      $descricao = $subunidadeDao->recuperaDescricao($conexao, $id);
-                      echo "<input name='descricao' class='form-control' value='$descricao' placeholder='Ex.: 1ª Companhia de Policia Militar' required>";
-                      ?>
+$id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
+$conexao = new conexao();
+$subunidadeDao = new SubunidadeDao();
+$descricao = $subunidadeDao->recuperaDescricao($conexao, $id);
+echo "<input name='descricao' class='form-control' value='$descricao' placeholder='Ex.: 1ª Companhia de Policia Militar' required>";
+?>
                     </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label>Sigla</label>
                       <?php
-                        $subunidadeDao = new SubunidadeDao();
-                        $sigla = $subunidadeDao->recuperaSiglaSubunidade($conexao, $id);
-                        echo "<input name='sigla' class='form-control' value='$sigla' placeholder='Ex.: 1CPM' required>";
-                        echo '<input type="hidden" name="id" value="'.$id.'">';  
-                      ?>
+$subunidadeDao = new SubunidadeDao();
+$sigla = $subunidadeDao->recuperaSiglaSubunidade($conexao, $id);
+echo "<input name='sigla' class='form-control' value='$sigla' placeholder='Ex.: 1CPM' required>";
+echo '<input type="hidden" name="id" value="' . $id . '">';
+?>
                     </div>
                   </div>
                 </div>
@@ -198,13 +170,13 @@ if(!isset($_SESSION['nome_funcional'])){
                     <input type="submit" class="btn btn-primary" id ="editar" name="editar" value="Editar">
                   </div>
                 </div>
-              </form>  
+              </form>
             </div>
           </div>
         </div>
         <br>
 
-        
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
@@ -238,8 +210,8 @@ if(!isset($_SESSION['nome_funcional'])){
             </button>
           </div>
           <?php
-            include 'includes/logaout_in_navbar.html';
-          ?>
+include 'includes/logaout_in_navbar.html';
+?>
         </div>
       </div>
     </div>

@@ -1,23 +1,21 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
 }
-    include_once '../controller/UnidadeController.php';
-    include 'includes/header.html';
+include_once '../controller/UnidadeController.php';
+include 'includes/header.html';
 ?>
 
   <?php
-      include 'includes/style/UnidadeViewCadastrar.html';
-  ?>
+include 'includes/style/UnidadeViewCadastrar.html';
+?>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
-
-      
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -36,7 +34,7 @@ if(!isset($_SESSION['nome_funcional'])){
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -53,7 +51,7 @@ if(!isset($_SESSION['nome_funcional'])){
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -121,7 +119,7 @@ if(!isset($_SESSION['nome_funcional'])){
             <div class="card-body">
               <form action="../controller/UnidadeController.php" method="post">
                 <div class="row">
-                  <div class="col-lg-6"> 
+                  <div class="col-lg-6">
                     <div class="form-group">
                       <label>Unidade</label>
                       <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
@@ -136,20 +134,20 @@ if(!isset($_SESSION['nome_funcional'])){
                 </div>
                 <div class="row">
                   <div class="col-lg-6">
-                    <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar"> 
+                    <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
                   </div>
                 </div>
               </form>
             </div>
           </div>
         </div>
-        
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <?php
-          include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -173,8 +171,8 @@ if(!isset($_SESSION['nome_funcional'])){
             </button>
           </div>
           <?php
-            include 'includes/logaout_in_navbar.html';
-          ?>
+include 'includes/logaout_in_navbar.html';
+?>
         </div>
       </div>
     </div>
@@ -203,8 +201,8 @@ if(!isset($_SESSION['nome_funcional'])){
 
 
     <?php
-      include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 

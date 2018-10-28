@@ -1,18 +1,16 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
 }
-    include_once '../controller/PolicialController.php';
+include_once '../controller/PolicialController.php';
 
-    include_once '../DAO/SubunidadeDao.php';
-    //include_once '../model/Subunidade.php';
-    include_once '../DAO/Conexao.php';
+include_once '../DAO/SubunidadeDao.php';
+//include_once '../model/Subunidade.php';
+include_once '../DAO/Conexao.php';
 
-    include 'includes/header.html';
+include 'includes/header.html';
 ?>
-
-  
 
   <body id="page-top">
 
@@ -21,8 +19,8 @@ if(!isset($_SESSION['nome_funcional'])){
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
 
       <?php
-        include 'includes/style/PolicialViewCadastrar.html';
-      ?>
+include 'includes/style/PolicialViewCadastrar.html';
+?>
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -41,7 +39,7 @@ if(!isset($_SESSION['nome_funcional'])){
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -58,7 +56,7 @@ if(!isset($_SESSION['nome_funcional'])){
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -128,109 +126,154 @@ if(!isset($_SESSION['nome_funcional'])){
             <!-- Form -->
               <form action="../controller/PolicialController.php" method="post">
                 <div class="row">
-                  <div class="col-lg-5">                                        
+                  <div class="col-lg-5">
                     <div class="form-group">
                       <label>Nome</label>
                       <?php
-                      $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
-                      $conexao = new conexao();
-                      $policialDao = new PolicialDao();
-                      $nome = $policialDao->recuperaNome($conexao, $id);
-                      echo "<input name='nome' value='$nome' class='form-control' placeholder='Nome completo do policial' required>"
-                      ?>
-                    </div>                                        
+$id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
+$conexao = new conexao();
+$policialDao = new PolicialDao();
+$nome = $policialDao->recuperaNome($conexao, $id);
+echo "<input name='nome' value='$nome' class='form-control' placeholder='Nome completo do policial' required>"
+?>
+                    </div>
                   </div>
-                  <div class="col-lg-2">                                        
+                  <div class="col-lg-2">
                     <div class="form-group">
                       <label>Patente</label>
                       <select name="patente" class="form-control">
                         <?php
-                        $graduacao = PolicialDao::recuperaPatente($conexao, $id);
+$graduacao = PolicialDao::recuperaPatente($conexao, $id);
 
-                        $selecionar = 'selected="selected"';
-                        //echo"<option selected>".$graduacao."</option>";
-                        //$opt = new SubunidadeController();
-                        //$opt->listaOptions();
-                        ?>
-                            <option <?php if($graduacao === "SD") echo $selecionar; ?> value="SD">Soldado</option>
-                            <option <?php if($graduacao === "CB") echo $selecionar; ?> value="CB">Cabo</option>
-                            <option <?php if($graduacao === "3SGT") echo $selecionar; ?> value="3SGT">3º Sargento</option>
-                            <option <?php if($graduacao === "2SGT") echo $selecionar; ?> value="2SGT">2º Sargento</option>
-                            <option <?php if($graduacao === "1SGT") echo $selecionar; ?> value="1SGT">1º Sargento</option>
-                            <option <?php if($graduacao === "ST") echo $selecionar; ?> value="ST">Subtenente</option>
-                            <option <?php if($graduacao === "ASP") echo $selecionar; ?> value="ASP">Aspirante</option>
-                            <option <?php if($graduacao === "2TEN") echo $selecionar; ?> value="2TEN">2º Tenente</option>
-                            <option <?php if($graduacao === "1TEN") echo $selecionar; ?> value="1TEN">1º Tenente</option>
-                            <option <?php if($graduacao === "CAP") echo $selecionar; ?> value="CAP">Capitão</option>
-                            <option <?php if($graduacao === "MAJ") echo $selecionar; ?> value="MAJ">Major</option>
-                            <option <?php if($graduacao === "TC") echo $selecionar; ?> value="TC">Tenente-Coronel</option>
-                            <option <?php if($graduacao === "CEL") echo $selecionar; ?> value="CEL">Coronel</option>
+$selecionar = 'selected="selected"';
+//echo"<option selected>".$graduacao."</option>";
+//$opt = new SubunidadeController();
+//$opt->listaOptions();
+?>
+                            <option <?php if ($graduacao === "SD") {
+    echo $selecionar;
+}
+?> value="SD">Soldado</option>
+                            <option <?php if ($graduacao === "CB") {
+    echo $selecionar;
+}
+?> value="CB">Cabo</option>
+                            <option <?php if ($graduacao === "3SGT") {
+    echo $selecionar;
+}
+?> value="3SGT">3º Sargento</option>
+                            <option <?php if ($graduacao === "2SGT") {
+    echo $selecionar;
+}
+?> value="2SGT">2º Sargento</option>
+                            <option <?php if ($graduacao === "1SGT") {
+    echo $selecionar;
+}
+?> value="1SGT">1º Sargento</option>
+                            <option <?php if ($graduacao === "ST") {
+    echo $selecionar;
+}
+?> value="ST">Subtenente</option>
+                            <option <?php if ($graduacao === "ASP") {
+    echo $selecionar;
+}
+?> value="ASP">Aspirante</option>
+                            <option <?php if ($graduacao === "2TEN") {
+    echo $selecionar;
+}
+?> value="2TEN">2º Tenente</option>
+                            <option <?php if ($graduacao === "1TEN") {
+    echo $selecionar;
+}
+?> value="1TEN">1º Tenente</option>
+                            <option <?php if ($graduacao === "CAP") {
+    echo $selecionar;
+}
+?> value="CAP">Capitão</option>
+                            <option <?php if ($graduacao === "MAJ") {
+    echo $selecionar;
+}
+?> value="MAJ">Major</option>
+                            <option <?php if ($graduacao === "TC") {
+    echo $selecionar;
+}
+?> value="TC">Tenente-Coronel</option>
+                            <option <?php if ($graduacao === "CEL") {
+    echo $selecionar;
+}
+?> value="CEL">Coronel</option>
                       </select>
-                    </div>                                        
+                    </div>
                   </div>
-                  <div class="col-lg-3">                                        
+                  <div class="col-lg-3">
                     <div class="form-group">
                       <label>Nome Funcional</label>
                       <?php
-                      $policialDao = new PolicialDao();
-                      $nome_funcional = $policialDao->recuperaNomeFuncional($conexao, $id);
-                      echo "<input name='nome_funcional' value='$nome_funcional' class='form-control' required>";
-                      ?>
-                    </div>                                        
+$policialDao = new PolicialDao();
+$nome_funcional = $policialDao->recuperaNomeFuncional($conexao, $id);
+echo "<input name='nome_funcional' value='$nome_funcional' class='form-control' required>";
+?>
+                    </div>
                   </div>
-                  <div class="col-lg-2">                                        
+                  <div class="col-lg-2">
                     <div class="form-group">
                       <label>Matrícula</label>
                       <?php
-                      $policialDao = new PolicialDao();
-                      $matricula = $policialDao->recuperaMatricula($conexao, $id);
-                      echo "<input name='matricula' value='$matricula' class='form-control' placeholder='Ex.: 123456-0' required>";
-                      ?>
-                    </div>                                        
+$policialDao = new PolicialDao();
+$matricula = $policialDao->recuperaMatricula($conexao, $id);
+echo "<input name='matricula' value='$matricula' class='form-control' placeholder='Ex.: 123456-0' required>";
+?>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-lg-4">                                        
+                  <div class="col-lg-4">
                     <div class="form-group">
                       <label>E-mail</label>
                       <?php
-                      $policialDao = new PolicialDao();
-                      $email = $policialDao->recuperaEmail($conexao, $id);
-                      echo "<input type='email' name='email' class='form-control' value='$email' placeholder='Ex.: email@exemplo.com' required>";
-                      ?>
-                    </div>                                        
+$policialDao = new PolicialDao();
+$email = $policialDao->recuperaEmail($conexao, $id);
+echo "<input type='email' name='email' class='form-control' value='$email' placeholder='Ex.: email@exemplo.com' required>";
+?>
+                    </div>
                   </div>
-                  <div class="col-lg-4" >                                        
+                  <div class="col-lg-4" >
                     <div class="form-group" align="center">
                       <label>Situação</label>
                       <div class="radio">
                         <label class="radio-inline">
                           <?php
-                          $policialDao = new PolicialDao();
-                          $situacao = $policialDao->recuperaSituacao($conexao, $id);
-                          ?>
-                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto" <?php if($situacao == "Apto") echo "checked";?>> Operacional
+$policialDao = new PolicialDao();
+$situacao = $policialDao->recuperaSituacao($conexao, $id);
+?>
+                          <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto" <?php if ($situacao == "Apto") {
+    echo "checked";
+}
+?>> Operacional
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica" <?php if($situacao == "Junta psiquiátrica") echo "checked";?>> Junta psiquiátrica
+                          <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica" <?php if ($situacao == "Junta psiquiátrica") {
+    echo "checked";
+}
+?>> Junta psiquiátrica
                         </label>
                       </div>
-                    </div>                                        
+                    </div>
                   </div>
-                  <div class="col-lg-4">                                        
+                  <div class="col-lg-4">
                     <div class="form-group">
                       <label>Lotação</label>
                       <select name="subunidade" class="form-control">
                         <?php
-                        $subunidadeId = PolicialDao::recuperaIdSubunidade($conexao, $id);
-                        $subunidade = PolicialDao::recuperaSiglaSubunidade($conexao, $subunidadeId);
-                        ////////////////echo"<option selected>".$subunidade."</option>";
-                        $opt = new PolicialController();
-                        $opt->listaOptionsEdicao($subunidade);
-                        echo '<input type="hidden" name="id" value="'.$id.'">';  
-                        ?>    
+$subunidadeId = PolicialDao::recuperaIdSubunidade($conexao, $id);
+$subunidade = PolicialDao::recuperaSiglaSubunidade($conexao, $subunidadeId);
+////////////////echo"<option selected>".$subunidade."</option>";
+$opt = new PolicialController();
+$opt->listaOptionsEdicao($subunidade);
+echo '<input type="hidden" name="id" value="' . $id . '">';
+?>
                       </select>
-                    </div>                                        
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -243,13 +286,13 @@ if(!isset($_SESSION['nome_funcional'])){
           </div>
         </div>
         <br>
-        
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <?php
-          include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -273,8 +316,8 @@ if(!isset($_SESSION['nome_funcional'])){
             </button>
           </div>
           <?php
-            include 'includes/logaout_in_navbar.html';
-          ?>
+include 'includes/logaout_in_navbar.html';
+?>
         </div>
       </div>
     </div>
@@ -302,8 +345,8 @@ if(!isset($_SESSION['nome_funcional'])){
     </div>
 
     <?php
-      include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 

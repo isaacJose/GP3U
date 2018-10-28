@@ -1,18 +1,18 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
 }
-    include_once '../controller/UnidadeController.php';
-    include 'includes/header.html';
-    include 'includes/style/UnidadeView.html';
+include_once '../controller/UnidadeController.php';
+include 'includes/header.html';
+include 'includes/style/UnidadeView.html';
 ?>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>     
+      <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -32,7 +32,7 @@ if(!isset($_SESSION['nome_funcional'])){
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -49,7 +49,7 @@ if(!isset($_SESSION['nome_funcional'])){
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -121,14 +121,14 @@ if(!isset($_SESSION['nome_funcional'])){
                       <th>Unidade</th>
                       <th>Sigla</th>
                       <th></th>
-                      <th></th>      
+                      <th></th>
                     </tr>
-                  </thead>            
+                  </thead>
                   <tbody>
-                    <?php                       
-                    $lista = new UnidadeController();                       
-                    $lista->listaUnidade();
-                    ?>
+                    <?php
+$lista = new UnidadeController();
+$lista->listaUnidade();
+?>
                   </tbody>
                 </table>
               </div>
@@ -144,13 +144,13 @@ if(!isset($_SESSION['nome_funcional'])){
         </div>
         <br>
 
-        
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <?php
-          include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -174,8 +174,8 @@ if(!isset($_SESSION['nome_funcional'])){
             </button>
           </div>
           <?php
-            include 'includes/logaout_in_navbar.html';
-          ?>
+include 'includes/logaout_in_navbar.html';
+?>
         </div>
       </div>
     </div>
@@ -203,8 +203,8 @@ if(!isset($_SESSION['nome_funcional'])){
     </div>
 
     <?php
-      include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 

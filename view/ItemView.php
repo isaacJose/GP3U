@@ -1,52 +1,15 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
+if (!isset($_SESSION['nome_funcional'])) {
+    header('Location: ../login.php');
 }
-    include_once '../controller/ItemController.php';
-    include 'includes/header.html';
+include_once '../controller/ItemController.php';
+include 'includes/header.html';
 ?>
 
-  <style>
-
-    img {
-        width:150px;
-        height:150px;      
-        top:50%;
-        left:50%;      
-        margin-left:10px;      
-    }
-    .imagem{
-      background-color:white;
-      border-radius:100%;
-      margin-top:10px;
-      margin-left:30px;
-      margin-right:30px;
-    }
-    i{
-      position: absolute;  
-    }
-
-    .spanmenu{
-      margin-left:30px;
-    }
-
-    .exit{ 
-        width:20px;
-        height:20px;  
-        top:50%;
-        left:50%;      
-        margin-left:10px;
-    }
-
-    .btn-xs{
-        padding:1px 5px;
-        font-size:12px;
-        line-height:1.5;
-        border-radius:3px
-    }
-
-</style>
+  <?php
+include 'includes/style/ItemView.html';
+?>
 
   <body id="page-top">
 
@@ -54,7 +17,7 @@ if(!isset($_SESSION['nome_funcional'])){
 
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
 
-      
+
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -73,7 +36,7 @@ if(!isset($_SESSION['nome_funcional'])){
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -90,7 +53,7 @@ if(!isset($_SESSION['nome_funcional'])){
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -154,7 +117,7 @@ if(!isset($_SESSION['nome_funcional'])){
             <i class="material-icons">grid_on</i>
               <span class="spanmenu">Itens cadastrados</span>
             </div>
-            
+
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
@@ -169,12 +132,12 @@ if(!isset($_SESSION['nome_funcional'])){
                       <th></th>
                       <th></th>
                     </tr>
-                  </thead>            
+                  </thead>
                   <tbody>
-                    <?php                       
-                    $lista = new ItemController();                       
-                    $lista->listaItem();
-                    ?>
+                    <?php
+$lista = new ItemController();
+$lista->listaItem();
+?>
                   </tbody>
                 </table>
               </div>
@@ -190,13 +153,13 @@ if(!isset($_SESSION['nome_funcional'])){
         </div>
         <br>
 
-        
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <?php
-          include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -251,8 +214,8 @@ if(!isset($_SESSION['nome_funcional'])){
     </div>
 
     <?php
-      include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 
