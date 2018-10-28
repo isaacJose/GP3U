@@ -34,6 +34,21 @@ USE sigep;
 ALTER DATABASE `sigep` CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 --
+-- Estrutura da tabela `logacesso`
+--
+
+DROP TABLE IF EXISTS `logacesso`;
+CREATE TABLE `logacesso` (
+    `matricula` VARCHAR(255),
+    `nomedoacesso` VARCHAR(255),
+    `horalogin` VARCHAR(255),
+    `horalogout` VARCHAR(255),
+    `datalogin` VARCHAR(255),
+    `datalogout` VARCHAR(255),
+    PRIMARY KEY (`matricula`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
 -- Estrutura da tabela `alteracao_cautela`
 --
 
