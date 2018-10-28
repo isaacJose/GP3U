@@ -49,6 +49,6 @@
         header('Location: view/PrincipalView.php');
     } else {
         $_SESSION['loginErro'] = "Usuário ou senha inválido";
-        header('Location: login.php');
+        header('Location: forgot-password.php');
     }
 ?>
