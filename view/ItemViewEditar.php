@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['nome_funcional'])) {
-    header('Location: ../login.php');
+  header('Location: ../login.php');
 }
 include_once '../controller/ItemController.php';
 include_once '../controller/SubunidadeController.php';
@@ -17,8 +17,8 @@ include 'includes/header.html';
 ?>
 
   <?php
-include 'includes/style/ItemViewEditar.html';
-?>
+  include 'includes/style/ItemViewEditar.html';
+  ?>
 
   <body id="page-top">
 
@@ -133,12 +133,12 @@ include 'includes/style/ItemViewEditar.html';
                     <div class="form-group">
                       <label>Serial</label>
                       <?php
-$conexao = new conexao();
-$itemDao = new ItemDao();
-$itemId = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
-$serial = $itemDao->recuperaSerial($conexao, $itemId);
-echo "<input id='serial' name='serial' class='form-control' value='$serial' required>";
-?>
+                      $conexao = new conexao();
+                      $itemDao = new ItemDao();
+                      $itemId = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
+                      $serial = $itemDao->recuperaSerial($conexao, $itemId);
+                      echo "<input id='serial' name='serial' class='form-control' value='$serial' required>";
+                      ?>
                     </div>
                   </div>
 
@@ -147,11 +147,11 @@ echo "<input id='serial' name='serial' class='form-control' value='$serial' requ
                       <label>Modelo</label>
                       <?php
 
-$itemDao = new ItemDao();
-$modelo = $itemDao->recuperaModelo($conexao, $itemId);
-echo "<input id='modelo' name='modelo' class='form-control' value='$modelo' required>";
-echo '<input type="hidden" id="id" name="id" value="' . $itemId . '">';
-?>
+                      $itemDao = new ItemDao();
+                      $modelo = $itemDao->recuperaModelo($conexao, $itemId);
+                      echo "<input id='modelo' name='modelo' class='form-control' value='$modelo' required>";
+                      echo '<input type="hidden" id="id" name="id" value="' . $itemId . '">';
+                      ?>
                     </div>
                   </div>
 
@@ -160,10 +160,10 @@ echo '<input type="hidden" id="id" name="id" value="' . $itemId . '">';
                       <label>Estoque</label>
                       <?php
 
-$itemDao = new ItemDao();
-$estoque = $itemDao->recuperaEstoque($conexao, $itemId);
-echo "<input id='estoque' name='estoque' class='form-control' value='$estoque' required>";
-?>
+                      $itemDao = new ItemDao();
+                      $estoque = $itemDao->recuperaEstoque($conexao, $itemId);
+                      echo "<input id='estoque' name='estoque' class='form-control' value='$estoque' required>";
+                      ?>
                     </div>
                   </div>
 
@@ -172,10 +172,10 @@ echo "<input id='estoque' name='estoque' class='form-control' value='$estoque' r
                       <label>Estoque Danificado</label>
                       <?php
 
-$itemDao = new ItemDao();
-$estoque_danificado = $itemDao->recuperaEstoque_danificado($conexao, $itemId);
-echo "<input id='estoque_danificado' name='estoque_danificado' class='form-control' value='$estoque_danificado' required>";
-?>
+                      $itemDao = new ItemDao();
+                      $estoque_danificado = $itemDao->recuperaEstoque_danificado($conexao, $itemId);
+                      echo "<input id='estoque_danificado' name='estoque_danificado' class='form-control' value='$estoque_danificado' required>";
+                      ?>
                     </div>
                   </div>
 
@@ -184,27 +184,27 @@ echo "<input id='estoque_danificado' name='estoque_danificado' class='form-contr
                       <label>Situação</label>
                       <select id='situacao' name="situacao" class="form-control">
                         <?php
-$select = 'selected="selected"';
-$itemDao = new ItemDao();
-$situacao = $itemDao->recuperaSituacao($conexao, $itemId);
+                        $select = 'selected="selected"';
+                        $itemDao = new ItemDao();
+                        $situacao = $itemDao->recuperaSituacao($conexao, $itemId);
 //echo"<option selected>".$situacao."</option>";
-?>
+                        ?>
                         <option <?php if ($situacao === "Operacional") {
-    echo $select;
-}
-?> value="Operacional">Operacional</option>
+                                  echo $select;
+                                }
+                                ?> value="Operacional">Operacional</option>
                         <option <?php if ($situacao === "Danificado") {
-    echo $select;
-}
-?> value="Danificado">Danificado</option>
+                                  echo $select;
+                                }
+                                ?> value="Danificado">Danificado</option>
                         <option <?php if ($situacao === "Manutenção") {
-    echo $select;
-}
-?> value="Manutenção">Manutenção</option>
+                                  echo $select;
+                                }
+                                ?> value="Manutenção">Manutenção</option>
                         <option <?php if ($situacao === "Justiça") {
-    echo $select;
-}
-?> value="Justiça">Justiça</option>
+                                  echo $select;
+                                }
+                                ?> value="Justiça">Justiça</option>
                       </select>
                     </div>
                   </div>
@@ -214,10 +214,10 @@ $situacao = $itemDao->recuperaSituacao($conexao, $itemId);
                       <label>Validade</label>
                       <?php
 
-$itemDao = new ItemDao();
-$validade = $itemDao->recuperaValidade($conexao, $itemId);
-echo "<input type='date' id='validade' name='validade' class='form-control' value='$validade' required>";
-?>
+                      $itemDao = new ItemDao();
+                      $validade = $itemDao->recuperaValidade($conexao, $itemId);
+                      echo "<input type='date' id='validade' name='validade' class='form-control' value='$validade' required>";
+                      ?>
                     </div>
                   </div>
 
@@ -225,10 +225,10 @@ echo "<input type='date' id='validade' name='validade' class='form-control' valu
                     <div class="form-group">
                       <label>Observações</label>
                       <?php
-$itemDao = new ItemDao();
-$observacoes = $itemDao->recuperaObservacoes($conexao, $itemId);
-echo "<input id='observacoes' name='observacoes' class='form-control' value='$observacoes' required>";
-?>
+                      $itemDao = new ItemDao();
+                      $observacoes = $itemDao->recuperaObservacoes($conexao, $itemId);
+                      echo "<input id='observacoes' name='observacoes' class='form-control' value='$observacoes' required>";
+                      ?>
                     </div>
                   </div>
 
@@ -237,14 +237,14 @@ echo "<input id='observacoes' name='observacoes' class='form-control' value='$ob
                       <label>Subunidade</label>
                       <select id='id_subunidade' name='id_subunidade' class='form-control' required>
                         <?php
-$ItemDao = new ItemDao();
-$subunidadeDao = new SubunidadeDao();
-$subunidadeId = $ItemDao->recuperaId_subunidade($conexao, $itemId);
-$subunidade = $subunidadeDao->recuperaSiglaSubunidade($conexao, $subunidadeId);
+                        $ItemDao = new ItemDao();
+                        $subunidadeDao = new SubunidadeDao();
+                        $subunidadeId = $ItemDao->recuperaId_subunidade($conexao, $itemId);
+                        $subunidade = $subunidadeDao->recuperaSiglaSubunidade($conexao, $subunidadeId);
 //echo"<option selected>".$subunidade."</option>";
-$opt = new SubunidadeController();
-$opt->listaOptionsEdicao($subunidadeId);
-?>
+                        $opt = new SubunidadeController();
+                        $opt->listaOptionsEdicao($subunidadeId);
+                        ?>
                       </select>
                     </div>
                   </div>
@@ -254,14 +254,14 @@ $opt->listaOptionsEdicao($subunidadeId);
                       <label>Tipo Item</label>
                       <select id='id_tipo_item' name='id_tipo_item' class='form-control' required>
                         <?php
-$ItemDao = new ItemDao();
-$tipoItemDao = new TipoItemDao();
-$tipoItemId = $ItemDao->recuperaId_tipo_item($conexao, $itemId);
-$tipoItem = $tipoItemDao->recuperaDescricao($conexao, $tipoItemId);
+                        $ItemDao = new ItemDao();
+                        $tipoItemDao = new TipoItemDao();
+                        $tipoItemId = $ItemDao->recuperaId_tipo_item($conexao, $itemId);
+                        $tipoItem = $tipoItemDao->recuperaDescricao($conexao, $tipoItemId);
 //echo"<option selected>".$tipoItem."</option>";
-$opt = new TipoItemController();
-$opt->listaOptionsEdicao($tipoItemId);
-?>
+                        $opt = new TipoItemController();
+                        $opt->listaOptionsEdicao($tipoItemId);
+                        ?>
                       </select>
                     </div>
                   </div>
@@ -271,14 +271,14 @@ $opt->listaOptionsEdicao($tipoItemId);
                       <label>Fabricante</label>
                       <select id='id_fabricante' name='id_fabricante' class='form-control' required>
                         <?php
-$ItemDao = new ItemDao();
-$fabricanteDao = new FabricanteDao();
-$fabricanteId = $ItemDao->recuperaId_fabricante($conexao, $itemId);
-$fabricante = $fabricanteDao->recuperaDescricao($conexao, $fabricanteId);
+                        $ItemDao = new ItemDao();
+                        $fabricanteDao = new FabricanteDao();
+                        $fabricanteId = $ItemDao->recuperaId_fabricante($conexao, $itemId);
+                        $fabricante = $fabricanteDao->recuperaDescricao($conexao, $fabricanteId);
 //echo"<option selected>".$fabricante."</option>"; //Selecionando assim, duplica no banco
-$opt = new FabricanteController();
-$opt->listaOptionsEdicao($fabricanteId);
-?>
+                        $opt = new FabricanteController();
+                        $opt->listaOptionsEdicao($fabricanteId);
+                        ?>
                       </select>
                     </div>
                   </div>
@@ -331,8 +331,8 @@ $opt->listaOptionsEdicao($fabricanteId);
           </div>
 
           <?php
-include 'includes/logaout_in_navbar.html';
-?>
+              include 'includes/logaout_in_navbar.html';
+          ?>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ if (!isset($_SESSION['nome_funcional'])) {
     header('Location: ../login.php');
 }
 include 'includes/header.html';
+//include 'validalogout.php';
 ?>
   <style>
 
@@ -184,11 +185,9 @@ include 'includes/footer.html';
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Selecione a opção "Sair" para sair do sistema.</div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-              <a class="btn btn-primary" href="../logout.php">Sair</a>
-          </div>
+          <?php
+              include 'includes/logaout_in_navbar.html';
+          ?>
         </div>
       </div>
     </div>

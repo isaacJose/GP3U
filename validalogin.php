@@ -35,12 +35,13 @@
         
         $_SESSION['nome_funcional'] = $result['nome_funcional'];
         $nomeacesso = $_SESSION['nome_funcional'];
+        
         $_SESSION['matricula'] = $result['matricula'];
         $matricula = $_SESSION['matricula'];
 
         $logquery = "INSERT INTO logacesso (matricula, nomedoacesso, horalogin, datalogin) VALUES ('$matricula', '$nomeacesso', '$horaAcesso', '$dataAcesso')";
         mysqli_query($conexao, $logquery) or die(mysqli_error($conexao));
-        mysqli_close($conexao);
+        //mysqli_close($conexao);
         //$logrow = mysqli_num_rows($logsql);
         //$logresult = mysqli_fetch_assoc($logsql);
 

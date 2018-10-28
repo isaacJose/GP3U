@@ -1,15 +1,15 @@
 <?php
 session_start();
 if (!isset($_SESSION['nome_funcional'])) {
-    header('Location: ../login.php');
+  header('Location: ../login.php');
 }
 include_once '../controller/InspecaoController.php';
 include 'includes/header.html';
 ?>
 
 <?php 
-    include 'includes/style/InspecaoView.html';
-  ?>
+include 'includes/style/InspecaoView.html';
+?>
 
   <body id="page-top">
 
@@ -151,8 +151,8 @@ include 'includes/header.html';
 
         <!-- Sticky Footer -->
         <?php
-include 'includes/footer.html';
-?>
+        include 'includes/footer.html';
+        ?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -176,8 +176,8 @@ include 'includes/footer.html';
             </button>
           </div>
           <?php
-include 'includes/logaout_in_navbar.html';
-?>
+          include 'includes/logaout_in_navbar.html';
+          ?>
         </div>
       </div>
     </div>
@@ -206,8 +206,8 @@ include 'includes/logaout_in_navbar.html';
 
 
     <?php
-include 'includes/script.html';
-?>
+    include 'includes/script.html';
+    ?>
 
   </body>
 

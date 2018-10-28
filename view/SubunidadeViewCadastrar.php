@@ -185,8 +185,8 @@ include 'includes/footer.html';
             </button>
           </div>
           <?php
-include 'includes/logaout_in_navbar.html';
-?>
+              include 'includes/logaout_in_navbar.html';
+          ?>
         </div>
       </div>
     </div>

@@ -39,13 +39,14 @@ ALTER DATABASE `sigep` CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS `logacesso`;
 CREATE TABLE `logacesso` (
+    `id` int auto_increment not null,
     `matricula` VARCHAR(255),
     `nomedoacesso` VARCHAR(255),
     `horalogin` VARCHAR(255),
     `horalogout` VARCHAR(255),
     `datalogin` VARCHAR(255),
     `datalogout` VARCHAR(255),
-    PRIMARY KEY (`matricula`)
+    PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --

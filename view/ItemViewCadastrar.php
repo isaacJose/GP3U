@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['nome_funcional'])) {
-    header('Location: ../login.php');
+  header('Location: ../login.php');
 }
 include_once '../controller/ItemController.php';
 include_once '../controller/SubunidadeController.php';
@@ -14,48 +14,7 @@ include 'includes/header.html';
 include 'includes/style/ItemViewCadastrar.html';
 ?>
 
-  <style>
-
-    img {
-        width:150px;
-        height:150px;
-        top:50%;
-        left:50%;
-        margin-left:10px;
-    }
-    .imagem{
-      background-color:white;
-      border-radius:100%;
-      margin-top:10px;
-      margin-left:30px;
-      margin-right:30px;
-    }
-    i{
-      position: absolute;
-    }
-
-    .spanmenu{
-      margin-left:30px;
-    }
-
-    .exit{
-        width:20px;
-        height:20px;
-        top:50%;
-        left:50%;
-        margin-left:10px;
-    }
-
-    .btn-xs{
-        padding:1px 5px;
-        font-size:12px;
-        line-height:1.5;
-        border-radius:3px
-    }
-
-</style>
-
-  <body id="page-top">
+   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -226,9 +185,9 @@ include 'includes/style/ItemViewCadastrar.html';
                       <label>Subunidade</label>
                       <select id="id_subunidade" name="id_subunidade" class="form-control" required>
                         <?php
-$opt = new SubunidadeController();
-$opt->listaOptions();
-?>
+                        $opt = new SubunidadeController();
+                        $opt->listaOptions();
+                        ?>
                       </select>
                     </div>
                 </div>
@@ -238,9 +197,9 @@ $opt->listaOptions();
                       <label>Tipo Item</label>
                       <select id="id_tipo_item" name="id_tipo_item" class="form-control" required>
                         <?php
-$opt = new TipoItemController();
-$opt->listaOptions();
-?>
+                        $opt = new TipoItemController();
+                        $opt->listaOptions();
+                        ?>
                       </select>
                     </div>
                 </div>
@@ -250,9 +209,9 @@ $opt->listaOptions();
                       <label>Fabricante</label>
                       <select id="id_fabricante" name="id_fabricante" class="form-control" required>
                         <?php
-$opt = new FabricanteController();
-$opt->listaOptions();
-?>
+                        $opt = new FabricanteController();
+                        $opt->listaOptions();
+                        ?>
                       </select>
                     </div>
                 </div>
@@ -274,8 +233,8 @@ $opt->listaOptions();
 
         <!-- Sticky Footer -->
         <?php
-include 'includes/footer.html';
-?>
+        include 'includes/footer.html';
+        ?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -300,8 +259,8 @@ include 'includes/footer.html';
           </div>
 
           <?php
-include 'includes/logaout_in_navbar.html';
-?>
+              include 'includes/logaout_in_navbar.html';
+          ?>
         </div>
       </div>
     </div>
@@ -329,8 +288,8 @@ include 'includes/logaout_in_navbar.html';
     </div>
 
     <?php
-include 'includes/script.html';
-?>
+    include 'includes/script.html';
+    ?>
 
   </body>
 
