@@ -75,8 +75,9 @@ class unidadeDao{
         $result = mysqli_query($conn->conecta(), $query);
 
         if (mysqli_num_rows($result) >= 0) {
-            while($row = mysqli_fetch_assoc($result)) {    
-                $stringModal = Uteis::sanitizeString($row["sigla"]);
+            while($row = mysqli_fetch_assoc($result)) { 
+                $uteis = new Uteis();   
+                $stringModal = $uteis->sanitizeString($row["sigla"]);
                 $id = $row["id"];
                 echo    '<tr>';
                 echo        '<td>'. $row["descricao"]. '</td>';

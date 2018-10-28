@@ -103,7 +103,8 @@ class SubunidadeDao {
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 echo    '<tr>';
-                $stringModal = Uteis::sanitizeString($row["sigla"]);
+                $uteis = new Uteis();
+                $stringModal = $uteis->sanitizeString($row["sigla"]);
                 echo        '<td>'. $row["sigla"]. '</td>';
                 echo        '<td>'. $row["descricao"] .'</td>';
                 echo        '<td>'. $row["sigla2"] .'</td>';
