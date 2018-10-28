@@ -1,0 +1,45 @@
+{
+    "name": "[BUILDING] On github rodrigoaggeu/GP3U",
+    "description": "(GP3U) SIGEP - Sistema de Gestão de Equipamentos para Proteção Policial.",
+    "type": "template",
+    "keywords": [
+        "css",
+        "php",
+        "js",
+        "less",
+        "mysql",
+        "back-end",
+        "template",
+        "theme",
+        "web",
+        "admin"
+    ],
+    "homepage": "https://github.com/rodrigoaggeu/GP3U",
+    "authors": [
+        {
+            "name": "Bruno Silva",
+            "email": "brunosilv_a@outlook.com"
+        },
+        {
+            "name": " Rodrigo Aggeu",
+            "email": "rodrigo_aggeu@hotmail.com"
+        },
+        {
+            "name": "Vanderson Fábio",
+            "email": "vanderson.fabio@gmail.com"
+        },
+        {
+            "name": "Isaac José",
+            "email": "oliveiira99.I@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/rodrigoaggeu/GP3U/issues"
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "composer/installers": "1.*",
+        "bower-asset/jquery": ">=1.9.0 <4.0.0"
+    }
+}
