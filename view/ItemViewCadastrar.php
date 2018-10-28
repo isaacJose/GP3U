@@ -111,7 +111,7 @@ include 'includes/style/ItemViewCadastrar.html';
             <span class="spanmenu">Unidades</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="SubunidadeView.php">
           <i class="material-icons">star_border</i>
             <span class="spanmenu">Subunidades</span>
@@ -123,7 +123,7 @@ include 'includes/style/ItemViewCadastrar.html';
             <span class="spanmenu">Policiais</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="ItemView.php">
           <i class="material-icons">storage</i>
             <span class="spanmenu">Itens</span>

@@ -101,7 +101,8 @@ class PolicialDao {
             //while($row = mysqli_fetch_assoc($result)) {  
             while($row = mysqli_fetch_assoc($result)) { 
                 echo '<tr>';
-                $stringModal = Uteis::sanitizeString($row["nome_funcional"]);        
+                $uteis = new Uteis();
+                $stringModal = $uteis->sanitizeString($row["nome_funcional"]);        
                     echo '<td>' . $row["nome"] . '</td>';
                     echo '<td>' . $row["graduacao"] . '</td>';
                     echo '<td>' . $row["matricula"] . '</td>';
