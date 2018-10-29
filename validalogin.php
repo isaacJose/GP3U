@@ -26,6 +26,7 @@
     $conexao = $conn->conecta();
 
     $query = "select matricula, nome_funcional from operador where email = '$email' and senha = '$senha' ";
+    
     $sql = mysqli_query($conexao, $query) or die(mysqli_error());
     $row = mysqli_num_rows($sql);
     $result = mysqli_fetch_assoc($sql);
