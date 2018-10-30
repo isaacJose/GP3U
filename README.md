@@ -76,4 +76,4 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 
 ## Licença
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/rodrigoaggeu/GP3U/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/rodrigoaggeu/GP3U/blob/master/LICENSE) file for details.
