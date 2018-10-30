@@ -20,3 +20,24 @@ class CautelaController {
         $cautelaDao->exclui($conexao, $cautela);
     }
 }
+
+$cautela = new CautelaController();
+
+$cadastrar = filter_input(INPUT_POST,"cadastra",FILTER_SANITIZE_STRING);
+$excluir = filter_input(INPUT_POST,"excluir",FILTER_SANITIZE_STRING);
+$editar = filter_input(INPUT_POST,"editar",FILTER_SANITIZE_STRING);
+
+if (isset($cadastrar)) {
+    $cautela->insereSubunidade();
+    header("Location: ../view/SubunidadeView.php");
+}
+
+if (isset($excluir)) {
+    $cautela->excluiCautela();
+    header("Location: ../view/CautelaView.php");
+}
+
+if(isset($editar)){
+    $cautela->editaSubunidade();
+    header("Location: ../view/SubunidadeView.php");
+}
