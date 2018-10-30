@@ -1,10 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
-}
-    include_once '../controller/InspecaoController.php';
-    include 'includes/header.html';
+include '../verificasessaoativa.php';
+include '../validasessao.php';
+include_once '../controller/InspecaoController.php';
+include 'includes/header.html';
 ?>
 
   <?php 

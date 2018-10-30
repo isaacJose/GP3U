@@ -1,9 +1,7 @@
 <?php
     include 'DAO/Conexao.php';
-
     date_default_timezone_set('America/Sao_Paulo');
-
-    // Ignore
+    
     $dia = date("d");
     $mes = date("m");
     $ano = date("Y");
@@ -16,8 +14,6 @@
 
     $horaAcesso = "$hra:$min:$seg";
     $dataAcesso = "$dia/$mes/$ano";
-
-    // ignore 
 
     $email = $_POST["email"];
     $senha = $_POST["senha"];
@@ -42,11 +38,6 @@
 
         $logquery = "INSERT INTO logacesso (matricula, nomedoacesso, horalogin, datalogin) VALUES ('$matricula', '$nomeacesso', '$horaAcesso', '$dataAcesso')";
         mysqli_query($conexao, $logquery) or die(mysqli_error($conexao));
-        //mysqli_close($conexao);
-        //$logrow = mysqli_num_rows($logsql);
-        //$logresult = mysqli_fetch_assoc($logsql);
-
-        //echo "logado com sucesso!";
         header('Location: view/PrincipalView.php');
     } else {
         $_SESSION['loginErro'] = "Usuário ou senha inválido";

@@ -1,8 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['nome_funcional'])) {
-  header('Location: ../login.php');
-}
+include '../verificasessaoativa.php';
+include '../validasessao.php';
 include_once '../controller/ItemController.php';
 include_once '../controller/SubunidadeController.php';
 include_once '../controller/TipoItemController.php';

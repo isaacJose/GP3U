@@ -1,10 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['nome_funcional'])){
-  header('Location: ../login.php');
-}
-    include_once '../controller/CautelaController.php';
-    include 'includes/header.html';
+include '../verificasessaoativa.php';
+include '../validasessao.php';
+include_once '../controller/CautelaController.php';
+include 'includes/header.html';
 ?>
 
   <?php
@@ -180,7 +179,7 @@ if(!isset($_SESSION['nome_funcional'])){
 
         <!-- Sticky Footer -->
         <?php
-          include 'includes/footer.html';
+        include 'includes/footer.html';
         ?>
 
       </div>
@@ -205,7 +204,7 @@ if(!isset($_SESSION['nome_funcional'])){
             </button>
           </div>
           <?php
-            include 'includes/logaout_in_navbar.html';
+          include 'includes/logaout_in_navbar.html';
           ?>
         </div>
       </div>
@@ -234,7 +233,7 @@ if(!isset($_SESSION['nome_funcional'])){
     </div>
 
     <?php
-      include 'includes/script.html';
+    include 'includes/script.html';
     ?>
 
   </body>

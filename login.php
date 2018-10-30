@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION["sessiontime"] = time() + 30;
 ?>
 
 <!DOCTYPE html>
