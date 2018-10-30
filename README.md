@@ -39,7 +39,7 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 
 ### Gerente atual: [isaacJose](https://github.com/isaacJose)
 
-#### Iteração atual: 5ª
+#### Iteração atual: 6ª
 
 | *Iteração* | *Aluno*     | *Função*      | *Inicio - Fim*          |
 | ---------- | ----------- | ------------- | ----------------------- |
