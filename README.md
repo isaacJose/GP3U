@@ -37,38 +37,43 @@ O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um soft
 
 ## Responsabilidades + Gerência
 
-### Gerente atual: [silv4b](https://github.com/silv4b)
+### Gerente atual: [isaacJose](https://github.com/isaacJose)
 
-#### Iteração atual: 5ª
+#### Iteração atual: 6ª
 
 | *Iteração* | *Aluno*     | *Função*      | *Inicio - Fim*          |
 | ---------- | ----------- | ------------- | ----------------------- |
-| *1*        | *Vanderson* | *Gerente*     | 13/08/2018 - 28/08/2018 |
+| *1*        | *Vanderson* | *Gerente*     |*13/08/2018 - 28/08/2018*|
 | 1          | Isaac       | Desenvolvedor |                         |
 | 1          | Bruno       | Desenvolvedor |                         |
 | 1          | Rodrigo     | Desenvolvedor |                         |
 | -          | -           | -             |                         |
 | 2          | Vanderson   | Desenvolvedor |                         |
-| *2*        | *Isaac*     | *Gerente*     | 28/08/2018 - 11/092018  |
+| *2*        | *Isaac*     | *Gerente*     |*28/08/2018 - 11/092018* |
 | 2          | Bruno       | Desenvolvedor |                         |
 | 2          | Rodrigo     | Desenvolvedor |                         |
 | -          | -           | -             |                         |
 | 3          | Vanderson   | Desenvolvedor |                         |
 | 3          | Isaac       | Desenvolvedor |                         |
-| *3*        | *Bruno*     | *Gerente*     | 11/09/2018 - 24/092018  |
+| *3*        | *Bruno*     | *Gerente*     |*11/09/2018 - 24/092018* |
 | 3          | Rodrigo     | Desenvolvedor |                         |
 | -          | -           | -             |                         |
 | 4          | Vanderson   | Desenvolvedor |                         |
 | 4          | Isaac       | Desenvolvedor |                         |
 | 4          | Bruno       | Desenvolvedor |                         |
-| *4*        | *Rodrigo*   | *Gerente*     | 24/092018 - 09/10/2018  |
+| *4*        | *Rodrigo*   | *Gerente*     |*24/09/2018 - 09/10/2018*|
 | -          | -           | -             |                         |
 | 5          | Vanderson   | Desenvolvedor |                         |
 | 5          | Isaac       | Desenvolvedor |                         |
-| *5*        | *Bruno*     | Gerente       | 09/10/2018 - 24/10/2018 |
+| *5*        | *Bruno*     | Gerente       |*09/10/2018 - 24/10/2018*|
 | 5          | Rodrigo     | Desenvolvedor |                         |
+| -          | -           | -             |                         |
+| 6          | Vanderson   | Desenvolvedor |                         |
+| *6*        | *Isaac*     | *Gerente*     |*30/10/2018 - 13/10/2018*|
+| 6          | Bruno       | Desenvolvedor |                         |
+| 6          | Rodrigo     | Desenvolvedor |                         |
 | -          | -           | -             |                         |
 
 ## Licença
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/rodrigoaggeu/GP3U/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/rodrigoaggeu/GP3U/blob/master/LICENSE) file for details.
