@@ -120,16 +120,23 @@ include 'includes/header.html';
                 <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Tipo</th>
-                      <th>Policial</th>
+                      <th>permanente</th>
+                      <th>aberta</th>
                       <th>Retirada</th>
-                      <th>Vencimento</th>
+                      <th>vencimento</th>
+                      <th>Entrega</th>
+                      <th>Policial</th>
+                      <th>Despachante</th>
+                      <th>Recebedor</th>
                       <th></th>
                       <th></th>
                     </tr>
                   </thead>            
                   <tbody>
-                    
+                  <?php 
+                    $lista = new CautelaController();
+                    $lista->listaCautela();
+                    ?>
                   </tbody>
                 </table>
               </div>
