@@ -1,55 +1,76 @@
 <?php
 
 class Cautela {
-    public $id, $policial, $armamento, $quantidade, $tipo_cautela, $vencimento;
-    
+    public $id, $permanente, $aberta, $dataRetirada, $vencimento, $dataEntrega, $idPolicial, $idDespachante, $idRecebedor;
     function getId() {
         return $this->id;
     }
 
-    function getPolicial() {
-        return $this->policial;
+    function getPermanente() {
+        return $this->permanente;
     }
 
-    function getArmamento() {
-        return $this->armamento;
+    function getAberta() {
+        return $this->aberta;
     }
 
-    function getQuantidade() {
-        return $this->quantidade;
-    }
-
-    function getTipo_cautela() {
-        return $this->tipo_cautela;
+    function getDataRetirada() {
+        return $this->dataRetirada;
     }
 
     function getVencimento() {
         return $this->vencimento;
     }
 
+    function getDataEntrega() {
+        return $this->dataEntrega;
+    }
+
+    function getIdPolicial() {
+        return $this->idPolicial;
+    }
+
+    function getIdDespachante() {
+        return $this->idDespachante;
+    }
+
+    function getIdRecebedor() {
+        return $this->idRecebedor;
+    }
+
     function setId($id) {
         $this->id = $id;
     }
 
-    function setPolicial($policial) {
-        $this->policial = $policial;
+    function setPermanente($permanente) {
+        $this->permanente = $permanente;
     }
 
-    function setArmamento($armamento) {
-        $this->armamento = $armamento;
+    function setAberta($aberta) {
+        $this->aberta = $aberta;
     }
 
-    function setQuantidade($quantidade) {
-        $this->quantidade = $quantidade;
-    }
-
-    function setTipo_cautela($tipo_cautela) {
-        $this->tipo_cautela = $tipo_cautela;
+    function setDataRetirada($dataRetirada) {
+        $this->dataRetirada = $dataRetirada;
     }
 
     function setVencimento($vencimento) {
         $this->vencimento = $vencimento;
     }
 
+    function setDataEntrega($dataEntrega) {
+        $this->dataEntrega = $dataEntrega;
+    }
 
+    function setIdPolicial($idPolicial) {
+        $this->idPolicial = $idPolicial;
+    }
+
+    function setIdDespachante($idDespachante) {
+        $this->idDespachante = $idDespachante;
+    }
+
+    function setIdRecebedor($idRecebedor) {
+        $this->idRecebedor = $idRecebedor;
+    }
 }
