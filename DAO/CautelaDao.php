@@ -15,14 +15,14 @@ class CautelaDao {
             idRecebedor
         )VALUES(
             NULL,
-            '{$cautela->getPermanente()}',
-            '{$cautela->getAberta()}',
+            {$cautela->getPermanente()},
+            {$cautela->getAberta()},
             NOW(),
-            '{$cautela->getVencimento()}',
-            '{$cautela->getDataEntrega()}',
-            '{$cautela->getIdPolicial()}',
-            '{$cautela->getIdDespachante()}',
-            '{$cautela->getIdRecebedor()}'";
+            NOW(),
+            NOW(),
+            {$cautela->getIdPolicial()},
+            {$cautela->getIdDespachante()},
+            {$cautela->getIdRecebedor()})";
         
         if (mysqli_query($conn->conecta(), $query)) {
             echo "Novo cadastro realizado com sucesso!";

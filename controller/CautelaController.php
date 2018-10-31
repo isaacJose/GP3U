@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once '../DAO/CautelaDao.php';
 include_once '../DAO/Conexao.php';
 include_once '../model/Cautela.php';
@@ -25,7 +24,8 @@ class CautelaController {
 
         $conexao = new conexao(); 
 
-        $permanente = filter_input(INPUT_POST,"permanente",FILTER_SANITIZE_STRING);
+        //$permanente = filter_input(INPUT_POST,"permanente",FILTER_SANITIZE_STRING);
+        $permanente = 1;
         //var_dump($permanente);
         //Ao realizar o cadastro, a cautela fica como aberta automaticamente, ao ser finalizada a cautela, o valor sera atualizado para 0.
         $aberta = 1;
@@ -40,10 +40,11 @@ class CautelaController {
         //var_dump($idPolicial);
         //pegará o valor da session do operador logado;
         $despachante = $_SESSION['nome_funcional'];
+        //var_dump($despachante);
         $idDespachante = CautelaDao::recuperaIdOperador($conexao, $despachante);
         //var_dump($idDespachante);
         //Realizado da mesma forma do anterior, com a diferença que será feito por um update via sql, sendo cadastrado o usuario atualmente logado no sistema.
-        $idRecebedor = filter_input(INPUT_POST,"idRecebedor",FILTER_SANITIZE_STRING);
+        $idRecebedor = $idDespachante;
         //var_dump($idRecebedor);
 
         $cautela = new Cautela();
@@ -96,13 +97,13 @@ class CautelaController {
 
 $cautela = new CautelaController();
 
-$cadastrar = filter_input(INPUT_POST,"cadastra",FILTER_SANITIZE_STRING);
+$cadastrar = filter_input(INPUT_POST,"cadastrar",FILTER_SANITIZE_STRING);
 $excluir = filter_input(INPUT_POST,"excluir",FILTER_SANITIZE_STRING);
 $editar = filter_input(INPUT_POST,"editar",FILTER_SANITIZE_STRING);
 
 if (isset($cadastrar)) {
-    $cautela->insereSubunidade();
-    header("Location: ../view/SubunidadeView.php");
+    $cautela->insereCautela();
+    //header("Location: ../view/CautelaView.php");
 }
 
 if (isset($excluir)) {

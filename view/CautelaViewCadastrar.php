@@ -125,19 +125,19 @@ include 'includes/header.html';
                         <div class="col-lg-3">
                           <div class="form-group">
                             <label>Policial</label>
-                            <input class="form-control" placeholder="Matrícula">
+                            <input class="form-control" name="idPolicial" placeholder="Matrícula" required>
                           </div>
                         </div>
                         <div class="col-lg-2">
                           <div class="form-group">
                             <label>Armamento</label>
-                            <input class="form-control" placeholder="Serial do armamento">
+                            <input class="form-control" name="Id" placeholder="Serial do armamento" required>
                           </div>
                         </div>
                         <div class="col-lg-2">
                           <div class="form-group">
                             <label>Quantidade</label>
-                            <input class="form-control" placeholder="Ex.: 10">
+                            <input class="form-control" placeholder="Ex.: 10" required>
                           </div>
                         </div>
                         <div class="col-lg-3">
@@ -156,7 +156,7 @@ include 'includes/header.html';
                         <div class="col-lg-2">
                           <div class="form-group">
                             <label>Vencimento</label>
-                            <input class="form-control">
+                            <input class="form-control" name="vencimento" required>
                           </div>
                         </div>
                       </div>
@@ -164,7 +164,7 @@ include 'includes/header.html';
                     </div>
                     <div class="row">
                       <div class="col-lg-12">
-                        <button type="button" class="btn btn-success">Cadastrar</button>
+                        <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
                       </div>
                     </div>
                   </div>
