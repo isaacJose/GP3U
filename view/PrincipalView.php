@@ -1,50 +1,13 @@
 <?php
 session_start();
 include '../verificasessaoativa.php';
-include '../validasessao.php';
+//include '../validasessao.php';
 include 'includes/header.html';
 //include 'validalogout.php';
 ?>
-  <style>
-
-    img {
-        width:150px;
-        height:150px;
-        top:50%;
-        left:50%;
-        margin-left:10px;
-    }
-    .imagem{
-      background-color:white;
-      border-radius:100%;
-      margin-top:10px;
-      margin-left:30px;
-      margin-right:30px;
-    }
-    i{
-      position: absolute;
-    }
-
-    .spanmenu{
-      margin-left:30px;
-    }
-
-    .exit{
-        width:20px;
-        height:20px;
-        top:50%;
-        left:50%;
-        margin-left:10px;
-    }
-
-    .container img {
-      margin-left: auto;
-      margin-right: auto;
-      width:450px;
-      height:450px;
-    }
-
-  </style>
+  <?php
+  include 'includes/style/PrincipialView.html'
+  ?>
 
   <body id="page-top">
 

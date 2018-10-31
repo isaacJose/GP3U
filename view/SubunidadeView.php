@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../verificasessaoativa.php';
-include '../validasessao.php';
+//include '../validasessao.php';
 include_once '../controller/SubunidadeController.php';
 include 'includes/header.html';
 ?>
