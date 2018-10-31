@@ -3,7 +3,26 @@ require_once "../controller/Uteis.php";
 class CautelaDao {
     function adiciona(conexao $conn, Cautela $cautela) {
           
-        $query = "";
+        $query = "INSERT INTO cautela(
+            id,
+            permanente,
+            aberta,
+            dataRetirada,
+            vencimento,
+            dataEntrega,
+            idPolicial,
+            idDespachante,
+            idRecebedor
+        )VALUES(
+            NULL,
+            '{$cautela->getPermanente()}',
+            '{$cautela->getAberta()}',
+            NOW(),
+            '{$cautela->getVencimento()}',
+            '{$cautela->getDataEntrega()}',
+            '{$cautela->getIdPolicial()}',
+            '{$cautela->getIdDespachante()}',
+            '{$cautela->getIdRecebedor()}'";
         
         if (mysqli_query($conn->conecta(), $query)) {
             echo "Novo cadastro realizado com sucesso!";
