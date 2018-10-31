@@ -2,6 +2,7 @@
 session_start();
 include '../verificasessaoativa.php';
 include '../validasessao.php';
+
 include 'includes/header.html';
 include 'includes/style/PrincipialView.html'
 ?>
