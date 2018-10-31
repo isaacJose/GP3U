@@ -13,8 +13,6 @@
     $min = date("i");
     $seg = date("s");
 
-    $meses = Array("","Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
-
     $horaSaida = "$hra:$min:$seg";
     $dataSaida = "$dia/$mes/$ano";
 
@@ -24,10 +22,13 @@
     $conn = new conexao();
     $conexao = $conn->conecta();
 
-    $query = "UPDATE logacesso SET horalogout = '$horaSaida', datalogout = '$dataSaida' WHERE nomedoacesso = '$nomeacesso' AND matricula = '$matricula' ";
+    $idlogoff = $_SESSION['iddoacesso'];
 
-    mysqli_query($conexao, $query) or die(mysqli_error($conexao));
+    $inseresaida = "UPDATE logacesso SET horalogout = '$horaSaida', datalogout = '$dataSaida' WHERE id = '$idlogoff'";
+    
+    mysqli_query($conexao, $inseresaida) or die(mysqli_error($conexao));
 
+    session_unset();
     session_destroy();
 
     header("Location: login.php");
