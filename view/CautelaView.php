@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../verificasessaoativa.php';
+include '../validasessaoativa.php';
 include '../validasessao.php';
 include_once '../controller/CautelaController.php';
 include 'includes/header.html';

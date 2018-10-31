@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../verificasessaoativa.php';
+include '../validasessaoativa.php';
 include '../validasessao.php';
 include_once '../controller/SubunidadeController.php';
 include_once '../controller/UnidadeController.php';
