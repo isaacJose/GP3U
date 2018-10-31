@@ -1,13 +1,10 @@
 <?php
 session_start();
 include '../verificasessaoativa.php';
-//include '../validasessao.php';
+include '../validasessao.php';
 include 'includes/header.html';
-//include 'validalogout.php';
+include 'includes/style/PrincipialView.html'
 ?>
-  <?php
-  include 'includes/style/PrincipialView.html'
-  ?>
 
   <body id="page-top">
 
@@ -123,8 +120,8 @@ include 'includes/header.html';
 
         <!-- Sticky Footer -->
         <?php
-include 'includes/footer.html';
-?>
+        include 'includes/footer.html';
+        ?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -148,7 +145,7 @@ include 'includes/footer.html';
             </button>
           </div>
           <?php
-              include 'includes/logaout_in_navbar.html';
+          include 'includes/logaout_in_navbar.html';
           ?>
         </div>
       </div>
@@ -177,8 +174,8 @@ include 'includes/footer.html';
     </div>
 
     <?php
-include 'includes/script.html';
-?>
+    include 'includes/script.html';
+    ?>
 
   </body>
 
