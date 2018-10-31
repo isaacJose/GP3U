@@ -26,6 +26,21 @@ class CautelaDao {
             echo "0 results";
         }      
     }
+    //Funçao que irá recuperar o Id do operador a partir do nome funcional do mesmo, para logo após esse id ser cadastrado na cautela.
+    function recuperaIdOperador(conexao $conn, $nome_funcional) {
+        $query = "SELECT * FROM operador WHERE nome_funcional = '$nome_funcional'";
+        
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+                return $id;  
+            }
+        } else {
+            echo "0 results";
+        }      
+    }
     //ok
     function recuperaPolicial(conexao $conn) {
         $query = "SELECT * FROM cautela";
