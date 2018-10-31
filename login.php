@@ -1,6 +1,9 @@
 <?php
-session_unset();
-session_destroy();
+if (isset($_SESSION)) {
+  session_unset();
+  session_destroy();
+}
+
 include 'view\includes\headerpass.html';
 ?>
 
