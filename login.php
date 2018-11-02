@@ -22,13 +22,13 @@ include 'view\includes\headerpass.html';
           <form name="loginform" action="validalogin.php" method="post">
           <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" autofocus="autofocus" value="brunno.linkin@gmail.com" required>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" autofocus="autofocus" value="" required>
                 <label for="email">Endereço de email</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" id="password" name="senha" class="form-control" placeholder="Password" value="22222" required>
+                <input type="password" id="password" name="senha" class="form-control" placeholder="Password" value="" required>
                 <label for="password">Senha</label>
               </div>
             </div>
