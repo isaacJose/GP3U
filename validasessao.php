@@ -28,5 +28,5 @@ if (isset($_SESSION["sessiontime"]) && $_SESSION["sessiontime"] < time()) {
     session_destroy();
     header("Location: ../login.php");
 } else {
-    $_SESSION["sessiontime"] = time() + 25;
+    $_SESSION["sessiontime"] = time() + 3600;
 }

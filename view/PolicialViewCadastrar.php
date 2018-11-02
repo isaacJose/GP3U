@@ -94,6 +94,12 @@ include 'includes/style/PolicialViewCadastrar.html';
             <span class="spanmenu">Inspeções</span>
           </a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="LogAcessoView.php">
+          <i class="material-icons">how_to_reg</i>
+            <span class="spanmenu">Acessos</span>
+          </a>
+        </li>
       </ul>
 
       <div id="content-wrapper">

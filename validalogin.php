@@ -4,7 +4,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 include 'DAO/Conexao.php';
 
-$_SESSION["sessiontime"] = time() + 30;
+$_SESSION["sessiontime"] = time() + 3600;
 
 $conn = new conexao();
 $conexao = $conn->conecta();

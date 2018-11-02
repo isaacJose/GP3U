@@ -61,7 +61,7 @@ class PolicialDao {
 
     //done
     function listaSelect(conexao $conn) {
-        $query = "SELECT * FROM subunidade";
+        $query = "SELECT * FROM logacesso";
         $result = mysqli_query($conn->conecta(), $query);
 
         if (mysqli_num_rows($result) > 0) {

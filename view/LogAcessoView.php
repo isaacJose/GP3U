@@ -2,21 +2,19 @@
 session_start();
 include '../validasessaoativa.php';
 include '../validasessao.php';
-include_once '../controller/CautelaController.php';
+include_once '../controller/LogAcessoController.php';
 include 'includes/header.html';
 ?>
 
   <?php
-  include 'includes/style/CautelaViewCadastrar.html';
-  ?>
+include 'includes/style/PolicialView.html';
+?>
 
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
-
-      
 
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -35,7 +33,7 @@ include 'includes/header.html';
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -52,7 +50,7 @@ include 'includes/header.html';
         <li>
           <div class="imagem">
           <img src="../img/sigeplogo.png">
-          </div>                  
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="PrincipalView.php">
@@ -84,7 +82,7 @@ include 'includes/header.html';
             <span class="spanmenu">Itens</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="CautelaView.php">
           <i class="material-icons">attach_file</i>
             <span class="spanmenu">Cautelas</span>
@@ -111,82 +109,50 @@ include 'includes/header.html';
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="../view/CautelaView.php">Cautelas</a>
+              <a href="../view/LogAcessoView.php">Histórico de Acessos</a>
             </li>
-            <li class="breadcrumb-item active">Cadastrar</li>
+            <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
 
           <!-- DataTables Example -->
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Cautela - Formulário de cadastro</span>
+              <span class="spanmenu">Histórico de Acessos</span>
             </div>
             <div class="card-body">
-              <form action="../controller/CautelaController.php" method="post">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="panel panel-default">
-                      <div class="row">
-                        <div class="col-lg-3">
-                          <div class="form-group">
-                            <label>Policial</label>
-                            <input class="form-control" name="idPolicial" placeholder="Matrícula" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-2">
-                          <div class="form-group">
-                            <label>Armamento</label>
-                            <input class="form-control" name="Id" placeholder="Serial do armamento" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-2">
-                          <div class="form-group">
-                            <label>Quantidade</label>
-                            <input class="form-control" placeholder="Ex.: 10" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-3">
-                          <div class="form-group" align="center">
-                            <label>Tipo de cautela</label>
-                            <div class="radio">
-                              <label class="radio-inline">
-                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temporária
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Permanente
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-2">
-                          <div class="form-group">
-                            <label>Vencimento</label>
-                            <input class="form-control" name="vencimento" required>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- Tabela de acrodo com os docs do projeto -->
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Matrícula</th>
+                      <th>Nome Funcional</th>
+                      <th>Hora de Login</th>
+                      <th>Data de Login</th>
+                      <th>Hora de Logout</th>
+                      <th>Data de Logout</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                        $lista = new LogAcessoController();
+                        $lista->listaLogs();
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
         <br>
-        
+
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <?php
-        include 'includes/footer.html';
-        ?>
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -210,8 +176,8 @@ include 'includes/header.html';
             </button>
           </div>
           <?php
-          include 'includes/logaout_in_navbar.html';
-          ?>
+include 'includes/logaout_in_navbar.html';
+?>
         </div>
       </div>
     </div>
@@ -239,8 +205,8 @@ include 'includes/header.html';
     </div>
 
     <?php
-    include 'includes/script.html';
-    ?>
+include 'includes/script.html';
+?>
 
   </body>
 
