@@ -99,7 +99,7 @@ include 'includes/style/ItemViewCadastrar.html';
             <span class="spanmenu">Inspeções</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="LogAcessoView.php">
           <i class="material-icons">how_to_reg</i>
             <span class="spanmenu">Acessos</span>
