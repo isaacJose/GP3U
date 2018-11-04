@@ -5,7 +5,7 @@ include_once '../DAO/Conexao.php';
 include_once '../model/LogAcesso.php';
 
 class LogAcessoController {
-    //doing
+    //done
     public function listaLogs() {
         $conexao = new conexao();
         $LogAcessoDao = new LogAcessoDao();

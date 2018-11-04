@@ -102,6 +102,12 @@ include 'includes/style/ItemView.html';
             <span class="spanmenu">Acessos</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="OperadorView.php">
+          <i class="material-icons">group</i>
+            <span class="spanmenu">Operadores</span>
+          </a>
+        </li>
       </ul>
 
       <div id="content-wrapper">

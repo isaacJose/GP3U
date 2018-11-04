@@ -2,18 +2,12 @@
 session_start();
 include '../validasessaoativa.php';
 include '../validasessao.php';
-include_once '../controller/SubunidadeController.php';
-include_once '../controller/UnidadeController.php';
-include_once '../DAO/SubunidadeDao.php';
-include_once '../DAO/UnidadeDao.php';
-include_once '../model/Subunidade.php';
-include_once '../DAO/Conexao.php';
-
+include_once '../controller/OperadorController.php';
 include 'includes/header.html';
 ?>
 
-<?php
-include 'includes/style/SubunidadeViewEditar.html';
+  <?php
+include 'includes/style/PolicialView.html';
 ?>
 
   <body id="page-top">
@@ -34,7 +28,7 @@ include 'includes/style/SubunidadeViewEditar.html';
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="exit">
-            <i class="material-icons">menu</i>
+            <i class="material-icons" >menu</i>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
@@ -70,7 +64,7 @@ include 'includes/style/SubunidadeViewEditar.html';
             <span class="spanmenu">Unidades</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="SubunidadeView.php">
           <i class="material-icons">star_border</i>
             <span class="spanmenu">Subunidades</span>
@@ -106,7 +100,7 @@ include 'includes/style/SubunidadeViewEditar.html';
             <span class="spanmenu">Acessos</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="OperadorView.php">
           <i class="material-icons">group</i>
             <span class="spanmenu">Operadores</span>
@@ -121,9 +115,8 @@ include 'includes/style/SubunidadeViewEditar.html';
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="../view/SubunidadeView.php">Subunidades</a>
+              <a href="../view/LogAcessoView.php">Operadores</a>
             </li>
-            <li class="breadcrumb-item active">Editar</li>
             <!--<li class="breadcrumb-item active">Tables</li>-->
           </ol>
 
@@ -131,57 +124,29 @@ include 'includes/style/SubunidadeViewEditar.html';
           <div class="card mb-3">
             <div class="card-header">
             <i class="material-icons">grid_on</i>
-              <span class="spanmenu">Subunidade - Formulário de edição</span>
+              <span class="spanmenu">Operadores cadastrados</span>
             </div>
             <div class="card-body">
-              <form action="../controller/SubunidadeController.php" method="post">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <label>Unidade</label>
-                      <select name='unidade' class='form-control' required>
-                        <?php
-$idUnidade = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
-$conexao = new conexao();
-$unidade = SubunidadeDao::recuperaSiglaUnidade($conexao, $idUnidade);
-$sigla = UnidadeDao::recuperaSigla($conexao, $unidade);
-//echo"<option selected>".$sigla."</option>";
-$opt = new UnidadeController();
-$opt->listaOptionsEdicao($unidade);
-?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <label>Descrição</label>
-                      <?php
-$id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
-$conexao = new conexao();
-$subunidadeDao = new SubunidadeDao();
-$descricao = $subunidadeDao->recuperaDescricao($conexao, $id);
-echo "<input name='descricao' class='form-control' value='$descricao' placeholder='Ex.: 1ª Companhia de Policia Militar' required>";
-?>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <label>Sigla</label>
-                      <?php
-$subunidadeDao = new SubunidadeDao();
-$sigla = $subunidadeDao->recuperaSiglaSubunidade($conexao, $id);
-echo "<input name='sigla' class='form-control' value='$sigla' placeholder='Ex.: 1CPM' required>";
-echo '<input type="hidden" name="id" value="' . $id . '">';
-?>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary" id ="editar" name="editar" value="Editar">
-                  </div>
-                </div>
-              </form>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Matrícula</th>
+                      <th>Nome</th>
+                      <th>Graduação</th>
+                      <th>Nome Funcinal</th>
+                      <th>Ativo</th>
+                      <th>Tipo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                        $lista = new OperadorController();
+                        $lista->listaLogs();
+                    ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -191,13 +156,9 @@ echo '<input type="hidden" name="id" value="' . $id . '">';
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © UFRN 2018</span>
-            </div>
-          </div>
-        </footer>
+        <?php
+include 'includes/footer.html';
+?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -221,7 +182,7 @@ echo '<input type="hidden" name="id" value="' . $id . '">';
             </button>
           </div>
           <?php
-              include 'includes/logaout_in_navbar.html';
+            include 'includes/logaout_in_navbar.html';
           ?>
         </div>
       </div>
@@ -231,24 +192,9 @@ echo '<input type="hidden" name="id" value="' . $id . '">';
       include 'includes/modalabout.html'
     ?>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Page level plugin JavaScript-->
-    <script src="../vendor/chart.js/Chart.min.js"></script>
-    <script src="../vendor/datatables/jquery.dataTables.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin.min.js"></script>
-
-    <!-- Demo scripts for this page-->
-    <script src="../js/demo/datatables-demo.js"></script>
-    <script src="../js/demo/chart-area-demo.js"></script>
+    <?php
+include 'includes/script.html';
+?>
 
   </body>
 

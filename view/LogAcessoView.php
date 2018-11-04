@@ -95,9 +95,15 @@ include 'includes/style/PolicialView.html';
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="LogAcessoView.php">
+          <a class="nav-link" href="OperadorView.php"">
           <i class="material-icons">how_to_reg</i>
             <span class="spanmenu">Acessos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="OperadorView.php">
+          <i class="material-icons">group</i>
+            <span class="spanmenu">Operadores</span>
           </a>
         </li>
       </ul>
