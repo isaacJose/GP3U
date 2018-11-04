@@ -1,5 +1,6 @@
 <?php
     include 'view\includes\headerpass.html';
+    session_start();
 ?>
 
   <body class="bg-dark">
@@ -13,46 +14,57 @@
           </div>
         <!-- <div class="card-header">Register an Account</div> -->
         <div class="card-body">
-          <form>
+          <form action="validaregistro.php" method="post">
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="text" id="firstName" class="form-control" placeholder="Nome funcional" required="required" autofocus="autofocus">
-                    <label for="firstName">Nome funcional</label>
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome Completo" required="required" autofocus="autofocus">
+                    <label for="nome">Nome Completo</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="text" id="lastName" class="form-control" placeholder="Matrícula" required="required">
-                    <label for="lastName">Matrícula</label>
+                    <input type="text" id="nome_funcional" name="nome_funcional" class="form-control" placeholder="Nome Funcional" required="required">
+                    <label for="nome_funcional">Nome Funcional</label>
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required="required">
-                <label for="inputEmail">E-mail</label>
+              <div class="form-row">
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matrícula" required="required" autofocus="autofocus">
+                    <label for="matricula">Matrícula</label>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="form-label-group">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required="required">
+                    <label for="email">Email</label>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="required">
-                    <label for="inputPassword">Senha</label>
+                    <input type="password" id="senha" name="senha" class="form-control" placeholder="senha" required="required">
+                    <label for="senha">Senha</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirmar Senha" required="required">
-                    <label for="confirmPassword">Confirmar senha</label>
+                    <input type="password" id="csenha" class="form-control" placeholder="Confirmar Senha" required="required">
+                    <label for="csenha">Confirmar senha</label>
                   </div>
                 </div>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="#">Registrar</a>
+            <!-- <a class="btn btn-primary btn-block" href="#">Registrar</a> -->
+            <input type="submit" class="btn btn-primary btn-block" id="Registrar" name="Registrar" value="Registrar">
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="login.php">Página de login</a>
