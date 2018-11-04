@@ -1,6 +1,6 @@
 <?php
-    include 'view\includes\headerpass.html';
     session_start();
+    include 'view\includes\headerpass.html';
 ?>
 
   <body class="bg-dark">
@@ -35,7 +35,7 @@
               <div class="form-row">
                 <div class="col-md-4">
                   <div class="form-label-group">
-                    <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matrícula" required="required" autofocus="autofocus">
+                    <input id="matricula" name="matricula" class="form-control" placeholder="Ex.: 123456-0" required="required" autofocus="autofocus">
                     <label for="matricula">Matrícula</label>
                   </div>
                 </div>
@@ -73,13 +73,10 @@
         </div>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    
+    <?php
+			include 'view/includes/script.html';
+		?>
 
   </body>
 

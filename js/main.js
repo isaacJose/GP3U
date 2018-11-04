@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    $("#matricula").mask("000000-0");
+    $("#matricula").mask("000.000-0");
 });
 
 /*

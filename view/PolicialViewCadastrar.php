@@ -6,7 +6,7 @@ include_once '../controller/PolicialController.php';
 include 'includes/header.html';
 ?>
 
-  <?php
+<?php
 include 'includes/style/PolicialViewCadastrar.html';
 ?>
 
@@ -33,7 +33,8 @@ include 'includes/style/PolicialViewCadastrar.html';
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>
+            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="OperadorView.php">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -195,9 +196,9 @@ include 'includes/style/PolicialViewCadastrar.html';
                       <label>Lotação</label>
                       <select name="subunidade" class="form-control">
                         <?php
-$opt = new PolicialController();
-$opt->listaOptions();
-?>
+																							$opt = new PolicialController();
+																							$opt->listaOptions();
+																							?>
                       </select>
                     </div>
                   </div>
@@ -216,8 +217,8 @@ $opt->listaOptions();
 
         <!-- Footer -->
         <?php
-include 'includes/footer.html';
-?>
+							include 'includes/footer.html';
+							?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -241,19 +242,19 @@ include 'includes/footer.html';
             </button>
           </div>
           <?php
-              include 'includes/logaout_in_navbar.html';
-          ?>
+									include 'includes/logaout_in_navbar.html';
+									?>
         </div>
       </div>
     </div>
 
     <?php
-      include 'includes/modalabout.html'
-    ?>
+			include 'includes/modalabout.html'
+			?>
 
     <?php
-include 'includes/script.html';
-?>
+			include 'includes/script.html';
+		?>
 
   </body>
 

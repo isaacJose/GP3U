@@ -12,10 +12,7 @@ include 'includes/style/PrincipialView.html'
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
-
-      <!-- Modelo (alterável) download de documentos (se necessário) -->
-      <!-- <a class="fasc-button fasc-size-medium fasc-type-flat fasc-ico-before dashicons-admin-links" style="background-color:#33809e;color:#ffffff;" href="https://www.todoespacoonline.com/w/tuts/2014/10/dompdf.zip">Download DOMPDF (com exemplo)</a> -->
-
+      
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
@@ -34,7 +31,8 @@ include 'includes/style/PrincipialView.html'
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Operador</a>
+            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="OperadorView.php">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
