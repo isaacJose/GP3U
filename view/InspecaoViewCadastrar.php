@@ -38,6 +38,7 @@ if(!isset($_SESSION['nome_funcional'])){
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
+            <a class="dropdown-item" href="#">Perfil</a>
             <a class="dropdown-item" href="#">Operador</a>            
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
@@ -99,13 +100,6 @@ if(!isset($_SESSION['nome_funcional'])){
             <span class="spanmenu">Inspeções</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="InspecaoView.php">
-          <i class="material-icons">find_in_page</i>
-            <span class="spanmenu">Inspeções</span>
-          </a>
-        </li>
-
         <li class="nav-item">
           <a class="nav-link" href="LogAcessoView.php">
           <i class="material-icons">how_to_reg</i>

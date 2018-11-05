@@ -12,7 +12,7 @@ $conexao = $conn->conecta();
 $email = $_POST["email"];
 $senha = $_POST["senha"];
 
-$query = "SELECT matricula, nome_funcional FROM operador WHERE email = '$email' AND senha = '$senha' ";
+$query = "SELECT matricula, nome_funcional, tipo FROM operador WHERE email = '$email' AND senha = '$senha' ";
 
 $sql = mysqli_query($conexao, $query) or die(mysqli_error());
 $row = mysqli_num_rows($sql);
@@ -33,6 +33,9 @@ if ($row > 0) {
 
     $_SESSION['nome_funcional'] = $result['nome_funcional'];
     $nomeFacesso = $_SESSION['nome_funcional'];
+
+    $_SESSION['tipo'] = $result['tipo'];
+    $tipo = $_SESSION['tipo'];
 
     $horaAcesso = "$hra:$min:$seg";
     $dataAcesso = "$dia/$mes/$ano";

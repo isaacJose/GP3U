@@ -2,7 +2,7 @@
 session_start();
 include '../validasessaoativa.php';
 include '../validasessao.php';
-include_once '../controller/PolicialController.php';
+include_once '../controller/SubunidadeController.php';
 include 'includes/header.html';
 ?>
 
@@ -196,7 +196,7 @@ include 'includes/style/PolicialViewCadastrar.html';
                       <label>Lotação</label>
                       <select name="subunidade" class="form-control">
                         <?php
-													$opt = new PolicialController();
+													$opt = new SubunidadeController();
 													$opt->listaOptions();
 												?>
                       </select>
