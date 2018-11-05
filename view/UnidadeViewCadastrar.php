@@ -7,8 +7,8 @@ include 'includes/header.html';
 ?>
 
   <?php
-include 'includes/style/UnidadeViewCadastrar.html';
-?>
+  include 'includes/style/UnidadeViewCadastrar.html';
+  ?>
 
   <body id="page-top">
 
@@ -147,6 +147,7 @@ include 'includes/style/UnidadeViewCadastrar.html';
                 <div class="row">
                   <div class="col-lg-6">
                     <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+                    <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                   </div>
                 </div>
               </form>
@@ -158,8 +159,8 @@ include 'includes/style/UnidadeViewCadastrar.html';
 
         <!-- Sticky Footer -->
         <?php
-include 'includes/footer.html';
-?>
+        include 'includes/footer.html';
+        ?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -183,20 +184,20 @@ include 'includes/footer.html';
             </button>
           </div>
           <?php
-              include 'includes/logaout_in_navbar.html';
+          include 'includes/logaout_in_navbar.html';
           ?>
         </div>
       </div>
     </div>
 
     <?php
-      include 'includes/modalabout.html'
+    include 'includes/modalabout.html'
     ?>
 
 
     <?php
-include 'includes/script.html';
-?>
+    include 'includes/script.html';
+    ?>
 
   </body>
 

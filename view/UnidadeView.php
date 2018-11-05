@@ -138,9 +138,9 @@ include 'includes/style/UnidadeView.html';
                   </thead>
                   <tbody>
                     <?php
-$lista = new UnidadeController();
-$lista->listaUnidade();
-?>
+                      $lista = new UnidadeController();
+                      $lista->listaUnidade();
+                    ?>
                   </tbody>
                 </table>
               </div>

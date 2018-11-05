@@ -141,12 +141,12 @@ include 'includes/style/PolicialViewCadastrar.html';
                     <div class="form-group">
                       <label>Nome</label>
                       <?php
-$id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
-$conexao = new conexao();
-$policialDao = new PolicialDao();
-$nome = $policialDao->recuperaNome($conexao, $id);
-echo "<input name='nome' value='$nome' class='form-control' placeholder='Nome completo do policial' required>"
-?>
+                        $id = filter_input(INPUT_POST, "id", FILTER_SANITIZE_STRING);
+                        $conexao = new conexao();
+                        $policialDao = new PolicialDao();
+                        $nome = $policialDao->recuperaNome($conexao, $id);
+                        echo "<input name='nome' value='$nome' class='form-control' placeholder='Nome completo do policial' required>"
+                      ?>
                     </div>
                   </div>
                   <div class="col-lg-2">
@@ -220,20 +220,20 @@ $selecionar = 'selected="selected"';
                     <div class="form-group">
                       <label>Nome Funcional</label>
                       <?php
-$policialDao = new PolicialDao();
-$nome_funcional = $policialDao->recuperaNomeFuncional($conexao, $id);
-echo "<input name='nome_funcional' value='$nome_funcional' class='form-control' required>";
-?>
+                        $policialDao = new PolicialDao();
+                        $nome_funcional = $policialDao->recuperaNomeFuncional($conexao, $id);
+                        echo "<input name='nome_funcional' value='$nome_funcional' class='form-control' required>";
+                      ?>
                     </div>
                   </div>
                   <div class="col-lg-2">
                     <div class="form-group">
                       <label>Matrícula</label>
                       <?php
-$policialDao = new PolicialDao();
-$matricula = $policialDao->recuperaMatricula($conexao, $id);
-echo "<input name='matricula' value='$matricula' class='form-control' placeholder='Ex.: 123456-0' required>";
-?>
+                        $policialDao = new PolicialDao();
+                        $matricula = $policialDao->recuperaMatricula($conexao, $id);
+                        echo "<input name='matricula' id='matricula' value='$matricula' class='form-control' placeholder='Ex.: 123456-0' required>";
+                      ?>
                     </div>
                   </div>
                 </div>
@@ -242,10 +242,10 @@ echo "<input name='matricula' value='$matricula' class='form-control' placeholde
                     <div class="form-group">
                       <label>E-mail</label>
                       <?php
-$policialDao = new PolicialDao();
-$email = $policialDao->recuperaEmail($conexao, $id);
-echo "<input type='email' name='email' class='form-control' value='$email' placeholder='Ex.: email@exemplo.com' required>";
-?>
+                        $policialDao = new PolicialDao();
+                        $email = $policialDao->recuperaEmail($conexao, $id);
+                        echo "<input type='email' name='email' class='form-control' value='$email' placeholder='Ex.: email@exemplo.com' required>";
+                      ?>
                     </div>
                   </div>
                   <div class="col-lg-4" >
@@ -254,19 +254,19 @@ echo "<input type='email' name='email' class='form-control' value='$email' place
                       <div class="radio">
                         <label class="radio-inline">
                           <?php
-$policialDao = new PolicialDao();
-$situacao = $policialDao->recuperaSituacao($conexao, $id);
-?>
+                            $policialDao = new PolicialDao();
+                            $situacao = $policialDao->recuperaSituacao($conexao, $id);
+                          ?>
                           <input type="radio" name="situacao" id="optionsRadiosInline1" value="Apto" <?php if ($situacao == "Apto") {
-    echo "checked";
-}
-?>> Operacional
+                            echo "checked";
+                          }
+                          ?>> Operacional
                         </label>
                         <label class="radio-inline">
                           <input type="radio" name="situacao" id="optionsRadiosInline2" value="Junta psiquiátrica" <?php if ($situacao == "Junta psiquiátrica") {
-    echo "checked";
-}
-?>> Junta psiquiátrica
+                              echo "checked";
+                          }
+                          ?>> Junta psiquiátrica
                         </label>
                       </div>
                     </div>
@@ -276,13 +276,13 @@ $situacao = $policialDao->recuperaSituacao($conexao, $id);
                       <label>Lotação</label>
                       <select name="subunidade" class="form-control">
                         <?php
-$subunidadeId = PolicialDao::recuperaIdSubunidade($conexao, $id);
-$subunidade = PolicialDao::recuperaSiglaSubunidade($conexao, $subunidadeId);
-////////////////echo"<option selected>".$subunidade."</option>";
-$opt = new PolicialController();
-$opt->listaOptionsEdicao($subunidade);
-echo '<input type="hidden" name="id" value="' . $id . '">';
-?>
+                          $subunidadeId = PolicialDao::recuperaIdSubunidade($conexao, $id);
+                          $subunidade = PolicialDao::recuperaSiglaSubunidade($conexao, $subunidadeId);
+                          ////////////////echo"<option selected>".$subunidade."</option>";
+                          $opt = new PolicialController();
+                          $opt->listaOptionsEdicao($subunidade);
+                          echo '<input type="hidden" name="id" value="' . $id . '">';
+                        ?>
                       </select>
                     </div>
                   </div>
@@ -290,6 +290,7 @@ echo '<input type="hidden" name="id" value="' . $id . '">';
                 <div class="row">
                   <div class="col-lg-12">
                     <input type="submit" name="editar" value="Editar" class="btn btn-primary">
+                    <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                   </div>
                 </div>
               </form>
@@ -302,8 +303,8 @@ echo '<input type="hidden" name="id" value="' . $id . '">';
 
         <!-- Sticky Footer -->
         <?php
-include 'includes/footer.html';
-?>
+          include 'includes/footer.html';
+        ?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -336,10 +337,13 @@ include 'includes/footer.html';
     <?php
       include 'includes/modalabout.html'
     ?>
+    
+    <script src="vendor/bootstrap/js/main.js"></script>
+    <script src="vendor/bootstrap/js/jquery.mask.min.js"></script>
 
     <?php
-include 'includes/script.html';
-?>
+      include 'includes/script.html';
+    ?>
 
   </body>
 

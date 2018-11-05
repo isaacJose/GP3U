@@ -161,13 +161,13 @@ include 'includes/style/PolicialViewCadastrar.html';
                   <div class="col-lg-3">
                     <div class="form-group">
                       <label>Nome Funcional</label>
-                      <input name="nome_funcional" class="form-control" placeholder="Nome de guerra">
+                      <input name="nome_funcional" class="form-control" placeholder="Nome de guerra" required="required">
                     </div>
                   </div>
                   <div class="col-lg-2">
                     <div class="form-group">
                       <label>Matrícula</label>
-                      <input id="matricula" name="matricula" class="form-control" placeholder="Ex.: 123456-0">
+                      <input id="matricula" name="matricula" class="form-control" placeholder="Ex.: 123.456-0" required="required">
                     </div>
                   </div>
                 </div>
@@ -175,7 +175,7 @@ include 'includes/style/PolicialViewCadastrar.html';
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label>E-mail</label>
-                      <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com">
+                      <input name="email" class="form-control" placeholder="Ex.: email@exemplo.com" required="required">
                     </div>
                   </div>
                   <div class="col-lg-4" >
@@ -196,9 +196,9 @@ include 'includes/style/PolicialViewCadastrar.html';
                       <label>Lotação</label>
                       <select name="subunidade" class="form-control">
                         <?php
-																							$opt = new PolicialController();
-																							$opt->listaOptions();
-																							?>
+													$opt = new PolicialController();
+													$opt->listaOptions();
+												?>
                       </select>
                     </div>
                   </div>
@@ -206,6 +206,7 @@ include 'includes/style/PolicialViewCadastrar.html';
                 <div class="row">
                   <div class="col-lg-12">
                     <input type="submit" name="cadastrar" value="Cadastrar" class="btn btn-success">
+                    <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                   </div>
                 </div>
               </form>
@@ -216,9 +217,9 @@ include 'includes/style/PolicialViewCadastrar.html';
         <!-- /.container-fluid -->
 
         <!-- Footer -->
-        <?php
-							include 'includes/footer.html';
-							?>
+				<?php
+					include 'includes/footer.html';
+				?>
 
       </div>
       <!-- /.content-wrapper -->

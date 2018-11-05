@@ -5,12 +5,12 @@ $(document).ready(function () {
 
 /*
 $(function(){
-    var input = $('#[SEU_ID]');
+    var input = $("#matricula");
     input.on('focusin', function() {
-        input.mask('[TAMANHO_MASCARA]', {reverse: true});
+        input.mask('0000000', {reverse: true});
     });
     input.on('focusout', function() {
-        input.mask('[SUA_MASCARA_FORMATADA]', {reverse: true});
+        input.mask('000.000-0', {reverse: true});
     });
 });
 */

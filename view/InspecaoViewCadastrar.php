@@ -166,6 +166,7 @@ include 'includes/header.html';
                 <div class="row">
                   <div class="col-lg-12">
                     <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+                    <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                   </div>
                 </div>
               </form>

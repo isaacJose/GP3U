@@ -298,7 +298,8 @@ include 'includes/header.html';
 
                 <div class="row">
                   <div class="col-lg-12">
-                    <input type="submit"name="editar" value="Editar" class="btn btn-primary" >
+                    <input type="submit"name="editar" value="Editar" class="btn btn-primary">
+                    <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                   </div>
                 </div>
               </form>
