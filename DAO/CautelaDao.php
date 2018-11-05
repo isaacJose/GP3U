@@ -204,4 +204,32 @@ class CautelaDao {
         }
         
     }
+
+    function listaCautelaItem(conexao $conn, $id) {
+        $query = "SELECT * FROM cautela WHERE id = $id";
+        
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                echo '<tr>';
+                echo '<td>' . $row["permanente"] . '</td>';
+                echo '<td>' . $row["aberta"] . '</td>';             
+                echo    '<td align="center">
+                                <form name="formpolicial1" action="../view/CautelaViewCadastrarItem.php" method="POST">
+                                    <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Itens</button>
+                                    <input type="hidden" name="id" value="'.$row["id"].'">
+                                </form>
+                            </td>';
+                    
+                    //Modal para confirmar a exclusão dos itens selecionados
+                    //Devemos passar tanto o ID como a SIGLA para que o modal possa exibir e exluir o item
+                    
+                echo '</tr>';                
+            }
+        } else {
+            echo "0 results";
+        }
+        
+    }
 }

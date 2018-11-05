@@ -149,7 +149,27 @@ include 'includes/header.html';
                         </div>  
                       </div>
                       <!-- Tabela de acrodo com os docs do projeto -->
+                      <div class="card mb-3">
+                        
+                        <div class="card-body">
+                          <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                <tr>
+                                  <th>Item</th>
+                                  <th>Quantidade</th>
+                                  <th></th>
+                                </tr>
+                              </thead>            
+                              <tbody>
+                                <!-- TListar Itens -->
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    
                     <div class="row">
                       <div class="col-lg-12">
                         <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
