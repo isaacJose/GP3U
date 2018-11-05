@@ -135,33 +135,18 @@ include 'includes/header.html';
                   <div class="col-lg-12">
                     <div class="panel panel-default">
                       <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                           <div class="form-group">
-                            <label>Policial</label>
-                            <input class="form-control" name="idPolicial" required>
+                            <label>Item</label>
+                            <input class="form-control" name="idPolicial" placeholder="" required>
                           </div>
                         </div>
-                      
-                        <div class="col-lg-4">
-                          <div class="form-group" align="center">
-                            <label>Tipo de cautela</label>
-                            <div class="radio">
-                              <label class="radio-inline">
-                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temporária
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Permanente
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                           <div class="form-group">
-                            <label>Vencimento</label>
-                            <input class="form-control" name="vencimento" required>
+                            <label>Quantidade</label>
+                            <input class="form-control" name="Id" placeholder="" required>
                           </div>
-                        </div>
-                        
+                        </div>  
                       </div>
                       <!-- Tabela de acrodo com os docs do projeto -->
                     </div>

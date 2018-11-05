@@ -141,7 +141,6 @@ include 'includes/header.html';
                       <th>Despachante</th>
                       <th>Recebedor</th>
                       <th></th>
-                      <th></th>
                     </tr>
                   </thead>            
                   <tbody>
