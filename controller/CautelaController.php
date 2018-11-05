@@ -7,8 +7,14 @@ class CautelaController {
     //funções
     public function listaCautela() {
         $conexao = new conexao();
-        $policialDao = new CautelaDao();
-        $policialDao->lista($conexao);
+        $cautelaDao = new CautelaDao();
+        $cautelaDao->lista($conexao);
+    }
+
+    public function listaCautelaItem($id) {
+        $conexao = new conexao();
+        $cautelaDao = new CautelaDao();
+        $cautelaDao->listaCautelaItemDao($conexao, $id);
     }
 
     //done

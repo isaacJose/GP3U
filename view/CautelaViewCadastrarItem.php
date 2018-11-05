@@ -162,7 +162,13 @@ include 'includes/header.html';
                                 </tr>
                               </thead>            
                               <tbody>
-                                <!-- TListar Itens -->
+                                <!-- Listar Itens -->
+                                <?php
+                                $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
+                                //var_dump($id);
+                                $lista = new CautelaController();
+                                $lista->listaCautelaItem($id);
+                                ?>
                               </tbody>
                             </table>
                           </div>
