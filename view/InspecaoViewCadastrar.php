@@ -1,9 +1,12 @@
 <?php
 session_start();
-include '../validasessaoativa.php';
-include '../validasessao.php';
-include_once '../controller/InspecaoController.php';
-include 'includes/header.html';
+if(!isset($_SESSION['nome_funcional'])){
+  header('Location: ../login.php');
+}
+    include_once '../controller/InspecaoController.php';
+    include_once '../controller/PolicialController.php';
+    include_once '../controller/CautelaController.php';
+    include 'includes/header.html';
 ?>
 
   <?php 
@@ -35,8 +38,7 @@ include 'includes/header.html';
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Perfil</a>
-            <a class="dropdown-item" href="OperadorView.php">Operador</a>            
+            <a class="dropdown-item" href="#">Operador</a>            
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -98,6 +100,13 @@ include 'includes/header.html';
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="InspecaoView.php">
+          <i class="material-icons">find_in_page</i>
+            <span class="spanmenu">Inspeções</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="LogAcessoView.php">
           <i class="material-icons">how_to_reg</i>
             <span class="spanmenu">Acessos</span>
@@ -132,41 +141,44 @@ include 'includes/header.html';
             <div class="card-body">
               <form action="../controller/InspecaoController.php" method="post">
                 <div class="row">
-                  <div class="col-lg-6"> 
+                  
+                  <div class="col-lg-2"> 
                     <div class="form-group">
                       <label>Cautela</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                      <select id="idCautela" name="idCautela" class="form-control" required>
+                        <?php
+                        $opt = new CautelaController();
+                        $opt->listaOptions(); 
+                        ?> 
+                      </select>  
                     </div>
                   </div>
-                  <div class="col-lg-6"> 
-                    <div class="form-group">
-                      <label>Policial</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
-                    </div>
-                  </div>
-                  <div class="col-lg-4"> 
+                                    
+                  <div class="col-lg-3"> 
                     <div class="form-group">
                       <label>Última inspeção</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                      <input id="dataUltima" type="date" name="dataUltima" class="form-control">
                     </div>
                   </div>
-                  <div class="col-lg-4"> 
+                  
+                  <!--div class="col-lg-3"> 
                     <div class="form-group">
                       <label>Próxima inspeção</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                      <input id="dataProxima" type="date" name="dataProxima" class="form-control">
                     </div>
-                  </div>
+                  </div> -->
+                  
                   <div class="col-lg-4"> 
                     <div class="form-group">
                       <label>Situação</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                      <input id="situacao" type="text" name="situacao" class="form-control">
                     </div>
                   </div>
                 </div>
+                
                 <div class="row">
                   <div class="col-lg-12">
                     <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
-                    <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                   </div>
                 </div>
               </form>
@@ -208,11 +220,30 @@ include 'includes/header.html';
         </div>
       </div>
     </div>
-    
-    <?php
-    include 'includes/modalabout.html'
-    ?>
-    
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Sobre</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" align="justify">O Sistema de Gerenciamento de Equipamentos para Proteção policial - SIGEP,
+            foi desenvolvido como parte de requisito de nota para a disciplina de Gestão de Projetos por:
+            <br/> <br/> Bruno Silva <br/>
+            Isaac José <br/>
+            Rodrigo Aggeu <br/>
+            Vanderson Fábio <br/></div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <?php
       include 'includes/script.html';
     ?>

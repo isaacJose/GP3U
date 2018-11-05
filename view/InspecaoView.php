@@ -1,7 +1,8 @@
 <?php
 session_start();
-include '../validasessaoativa.php';
-include '../validasessao.php';
+if (!isset($_SESSION['nome_funcional'])) {
+  header('Location: ../login.php');
+}
 include_once '../controller/InspecaoController.php';
 include 'includes/header.html';
 ?>
@@ -33,8 +34,7 @@ include 'includes/style/InspecaoView.html';
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Perfil</a>
-            <a class="dropdown-item" href="OperadorView.php">Operador</a>
+            <a class="dropdown-item" href="#">Operador</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
@@ -95,6 +95,7 @@ include 'includes/style/InspecaoView.html';
             <span class="spanmenu">Inspeções</span>
           </a>
         </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="LogAcessoView.php">
           <i class="material-icons">how_to_reg</i>
@@ -133,16 +134,16 @@ include 'includes/style/InspecaoView.html';
                   <thead>
                     <tr>
                       <th>Cautela</th>
-                      <th>Policial</th>
                       <th>Última inspeção</th>
                       <th>Próxima inspeção</th>
                       <th>Situação</th>
-                      <th></th>
-                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- faltando o controller ainda -->
+                  <?php
+                    $lista = new  InspecaoController();
+                    $lista->listaInspecao();
+                  ?>
                   </tbody>
                 </table>
               </div>
@@ -194,9 +195,28 @@ include 'includes/style/InspecaoView.html';
       </div>
     </div>
 
-    <?php
-    include 'includes/modalabout.html'
-    ?>
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Sobre</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" align="justify">O Sistema de Gerenciamento de Equipamentos para Proteção policial - SIGEP,
+            foi desenvolvido como parte de requisito de nota para a disciplina de Gestão de Projetos por:
+            <br/> <br/> Bruno Silva <br/>
+            Isaac José <br/>
+            Rodrigo Aggeu <br/>
+            Vanderson Fábio <br/></div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <?php
     include 'includes/script.html';

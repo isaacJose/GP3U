@@ -1,23 +1,29 @@
 <?php
 
-class InspecaoController {
-    //Função que lista na tabela os dados das inpeções, situaçao - terminada;
+use Symfony\Component\VarDumper\VarDumper;
+
+include_once '../DAO/InspecaoDao.php';
+include_once '../DAO/Conexao.php';
+include_once '../model/Inspecao.php';
+
+class InspecaoController { //Função que lista na tabela os dados das inpeções, situaçao - terminada;
+    
     public function listaInspecao() {
-        //Instanciando conexão;
-        $conexao = new conexao();
-        //Chamada da função na DAO;
-        $inspecaoDao = new InspecaoDao();
+        
+        $conexao = new conexao(); //Instanciando conexão;
+        $inspecaoDao = new InspecaoDao(); //Chamada da função na DAO;
         $inspecaoDao->lista($conexao);
     }
     //Função que insere uma nova inspeçao no BD, situação - fazendo;
     public function insereInspecao() {
         //recuperaçao de dados via input's;
         $dataUltima = filter_input(INPUT_POST,"dataUltima",FILTER_SANITIZE_STRING);
-        $dataProxima = filter_input(INPUT_POST,"dataProxima",FILTER_SANITIZE_STRING);
+        $dataProxima = date("Y/m/d",strtotime(date("Y-m-d", strtotime($dataUltima)) . " +3 month")); //somando três meses a dataUltima
         $situacao = filter_input(INPUT_POST,"situacao",FILTER_SANITIZE_STRING);
         $idCautela = filter_input(INPUT_POST,"idCautela",FILTER_SANITIZE_STRING);
-        //Instanciando conexão;
-        $conexao = new conexao();  
+        
+        $conexao = new conexao();   //Instanciando conexão;
+        
         //Setando infos e add;
         $inspecao = new inspecao();
         $inspecao->setDataUltima($dataUltima);
@@ -27,8 +33,8 @@ class InspecaoController {
         $inspecaoDao = new InspecaoDao();
         $inspecaoDao->adiciona($conexao, $inspecao);      
     }
-    //Função para excluir inpeções do BD, situação - fazendo
-    public function excluiInspecao() {
+    
+    public function excluiInspecao() { //Função para excluir inpeções do BD, situação - fazendo
         //recuperaçao de dados via input's;
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
         //Instanciando conexão;
@@ -46,7 +52,7 @@ class InspecaoController {
         //recuperação de dados via input's
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);//vindo do input hidden.
         $dataUltima = filter_input(INPUT_POST,"dataUltima",FILTER_SANITIZE_STRING);
-        $dataProxima = filter_input(INPUT_POST,"dataProxima",FILTER_SANITIZE_STRING);
+        $dataProxima = date("Y/m/d",strtotime(date("Y-m-d", strtotime($dataUltima)) . " +3 month")); //somando três meses a dataUltima
         $situacao = filter_input(INPUT_POST,"situacao",FILTER_SANITIZE_STRING);
         $idCautela = filter_input(INPUT_POST,"idCautela",FILTER_SANITIZE_STRING);
         //Setando valores;    
@@ -56,6 +62,7 @@ class InspecaoController {
         $inspecao->setDataProxima($dataProxima);
         $inspecao->setSituacao($situacao);
         $inspecao->setIdCautela($idCautela);
+        
         $inspecaoDao = new InspecaoDao();
         $inspecaoDao->edita($conexao, $inspecao);
     }

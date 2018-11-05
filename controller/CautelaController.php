@@ -11,6 +11,13 @@ class CautelaController {
         $policialDao->lista($conexao);
     }
 
+    //done
+    public function listaOptions() {
+        $conexao = new conexao();
+        $cautelaDao = new cautelaDao();
+        $cautelaDao->listaSelect($conexao);
+    }
+
     public function excluiCautela() {
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
         $conexao = new conexao();

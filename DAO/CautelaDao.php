@@ -30,6 +30,21 @@ class CautelaDao {
             echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
         }
     }
+
+    function listaSelect(conexao $conn) {
+        $query = "SELECT id FROM cautela";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                echo '<option value='. $row["id"].'>'. $row["id"].'</option>';
+
+            }
+        } else {
+            echo "0 results";
+        }
+    }
+
     //ok
     function recuperaId(conexao $conn) {
         $query = "SELECT * FROM cautela";
