@@ -17,7 +17,7 @@
             <h4>Esqueceu a sua senha?</h4>
             <p>Digite o seu email e enviaremos para você instruções de como recuperar a sua sennha.</p>
           </div>
-          <form action="email.php" name="sendemail" method="post">
+          <form action="recuperaemail.php" name="sendemail" method="post">
             <div class="form-group">
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus" name="email">
