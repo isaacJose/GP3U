@@ -20,11 +20,11 @@ class LogAcessoDao
                 $stringModal = $uteis->sanitizeString($row["nomedoacesso"]);
                 echo '<td>' . $row["matricula"] . '</td>';
                 echo '<td>' . $row["nomedoacesso"] . '</td>';
-                echo '<td>' . $row["horalogin"] . '</td>';
-                echo '<td>' . $row["horalogout"] . '</td>';
                 echo '<td>' . $row["datalogin"] . '</td>';
+                echo '<td>' . $row["horalogin"] . '</td>';
                 echo '<td>' . $row["datalogout"] . '</td>';
-            }
+                echo '<td>' . $row["horalogout"] . '</td>';
+                        }
         } else {
             echo "0 results";
         }

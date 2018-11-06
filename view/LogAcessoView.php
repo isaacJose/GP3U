@@ -134,10 +134,10 @@ include 'includes/style/PolicialView.html';
                     <tr>
                       <th>Matrícula</th>
                       <th>Nome Funcional</th>
-                      <th>Hora de Login</th>
-                      <th>Hora de Logout</th>
                       <th>Data de Login</th>
+                      <th>Hora de Login</th>
                       <th>Data de Logout</th>
+                      <th>Hora de Logout</th>
                     </tr>
                   </thead>
                   <tbody>

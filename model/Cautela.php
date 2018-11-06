@@ -2,6 +2,8 @@
 
 class Cautela {
     public $id, $permanente, $aberta, $dataRetirada, $vencimento, $dataEntrega, $idPolicial, $idDespachante, $idRecebedor;
+    
+    
     function getId() {
         return $this->id;
     }

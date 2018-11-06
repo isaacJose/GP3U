@@ -10,7 +10,7 @@ class PolicialController {
     public function listaOptions() {
         $conexao = new conexao();
         $policialDao = new PolicialDao();
-        $policialDao->listaSelect($conexao);
+        $policialDao->selectPolicial($conexao);
     }
 
     //done
