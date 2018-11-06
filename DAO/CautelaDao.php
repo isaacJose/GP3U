@@ -17,7 +17,7 @@ class CautelaDao {
             NULL,
             {$cautela->getPermanente()},
             {$cautela->getAberta()},
-            {$cautela->getRetirada()},
+            {$cautela->getDataRetirada()},
             {$cautela->getVencimento()},
             {$cautela->getDataEntrega()},
             {$cautela->getIdPolicial()},
