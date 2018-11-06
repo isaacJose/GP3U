@@ -118,7 +118,7 @@ class PolicialDao {
                 echo '<tr>';
                 $uteis = new Uteis();
                 $stringModal = $uteis->sanitizeString($row["nome_funcional"]);        
-                    echo '<td>' . $row["nome"] . '</td>';
+                    echo '<td>' . $row["nome_funcional"] . '</td>';
                     echo '<td>' . $row["graduacao"] . '</td>';
                     echo '<td>' . $row["matricula"] . '</td>';
                     echo '<td>' . $row["situacao"] . '</td>';
