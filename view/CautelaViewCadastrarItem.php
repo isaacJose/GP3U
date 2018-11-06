@@ -149,31 +149,6 @@ include 'includes/header.html';
                         </div>  
                       </div>
                       <!-- Tabela de acrodo com os docs do projeto -->
-                      <div class="card mb-3">
-                        
-                        <div class="card-body">
-                          <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
-                              <thead>
-                                <tr>
-                                  <th>Item</th>
-                                  <th>Quantidade</th>
-                                  <th></th>
-                                </tr>
-                              </thead>            
-                              <tbody>
-                                <!-- Listar Itens -->
-                                <?php
-                                $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
-                                //var_dump($id);
-                                $lista = new CautelaController();
-                                $lista->listaCautelaItem($id);
-                                ?>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                     
                     <div class="row">
@@ -187,6 +162,30 @@ include 'includes/header.html';
               </form>
             </div>
           </div>
+          <div class="card mb-3">                        
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Quantidade</th>
+                      <th></th>
+                    </tr>
+                  </thead>            
+                  <tbody>
+                    <!-- Listar Itens -->
+                    <?php
+                    $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
+                    //var_dump($id);
+                    $lista = new CautelaController();
+                    $lista->listaCautelaItem($id);
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>  
         </div>
         <br>
         
