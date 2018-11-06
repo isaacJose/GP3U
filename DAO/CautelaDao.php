@@ -17,9 +17,9 @@ class CautelaDao {
             NULL,
             {$cautela->getPermanente()},
             {$cautela->getAberta()},
-            NOW(),
-            NOW(),
-            NOW(),
+            {$cautela->getRetirada()},
+            {$cautela->getVencimento()},
+            {$cautela->getDataEntrega()},
             {$cautela->getIdPolicial()},
             {$cautela->getIdDespachante()},
             {$cautela->getIdRecebedor()})";
@@ -191,12 +191,12 @@ class CautelaDao {
       c.vencimento AS vencimento, 
       c.dataEntrega AS dataEntrega, 
       p1.nome_funcional AS policial,
-      p2.nome_funcional AS despachante,
-      p3.nome_funcional AS recebedor
+      o2.nome_funcional AS despachante,
+      o2.nome_funcional AS recebedor
       
-      FROM cautela c, policial p1, policial p2, policial p3
+      FROM cautela c, policial p1, operador o1, operador o2
       
-      WHERE c.idPolicial = p1.id and c.idDespachante = p2.id and c.idRecebedor = p3.id"; 
+      WHERE c.idPolicial = p1.id and c.idDespachante = o1.id and c.idRecebedor = o2.id"; 
         
        /* $query = "SELECT FROM cautela c, policial p1, 
                   WHERE c.idPolicial = p1.id and c.idDespachante = p2.id and c.idDespachante = p3.id";*/
