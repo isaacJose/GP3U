@@ -144,9 +144,9 @@ include 'includes/style/PolicialViewCadastrar.html';
                       <select name="patente" class="form-control">
                           <option value="SD">Soldado</option>
                           <option value="CB">Cabo</option>
-                          <option value="3SGT">Sargento</option>
-                          <option value="2SGT">Sargento</option>
-                          <option value="1SGT">Sargento</option>
+                          <option value="3SGT">3º Sargento</option>
+                          <option value="2SGT">2º Sargento</option>
+                          <option value="1SGT">1º Sargento</option>
                           <option value="ST">Subtenente</option>
                           <option value="ASP">Aspirante</option>
                           <option value="2TEN">Segundo-tenente</option>

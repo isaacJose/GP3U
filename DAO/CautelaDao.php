@@ -17,9 +17,9 @@ class CautelaDao {
             NULL,
             {$cautela->getPermanente()},
             {$cautela->getAberta()},
-            NOW(),
-            NOW(),
-            NOW(),
+            {$cautela->getDataRetirada()},
+            {$cautela->getVencimento()},
+            {$cautela->getDataEntrega()},
             {$cautela->getIdPolicial()},
             {$cautela->getIdDespachante()},
             {$cautela->getIdRecebedor()})";
@@ -62,7 +62,7 @@ class CautelaDao {
     }
     //Funçao que irá recuperar o Id do operador a partir do nome funcional do mesmo, para logo após esse id ser cadastrado na cautela.
     function recuperaIdOperador(conexao $conn, $nome_funcional) {
-        $query = "SELECT * FROM operador WHERE nome_funcional = '$nome_funcional'";
+        $query = "SELECT * FROM operador WHERE nome_funcional = ".$nome_funcional;
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -181,42 +181,58 @@ class CautelaDao {
         }
     }
     
+    //done
     function lista(conexao $conn) {
-        $query = "SELECT * FROM cautela";
+        
+      $query = "SELECT c.id AS id, 
+      c.permanente AS permanente, 
+      c.aberta AS aberta, 
+      c.dataRetirada AS dataRetirada, 
+      c.vencimento AS vencimento, 
+      c.dataEntrega AS dataEntrega, 
+      p1.nome_funcional AS policial,
+      o2.nome_funcional AS despachante,
+      o2.nome_funcional AS recebedor
+      
+      FROM cautela c, policial p1, operador o1, operador o2
+      
+      WHERE c.idPolicial = p1.id and c.idDespachante = o1.id and c.idRecebedor = o2.id"; 
+        
+       /* $query = "SELECT FROM cautela c, policial p1, 
+                  WHERE c.idPolicial = p1.id and c.idDespachante = p2.id and c.idDespachante = p3.id";*/
         
         $result = mysqli_query($conn->conecta(), $query);
 
         if (mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
+            //while($row = mysqli_fetch_assoc($result)) {  
+            while($row = mysqli_fetch_assoc($result)) { 
                 echo '<tr>';
-                echo '<td>' . $row["permanente"] . '</td>';
-                echo '<td>' . $row["aberta"] . '</td>';
-                echo '<td>' . $row["dataRetirada"] . '</td>';
-                echo '<td>' . $row["vencimento"] . '</td>';
-                echo '<td>' . $row["dataEntrega"] . '</td>';
-                echo '<td>' . $row["idPolicial"] . '</td>';
-                echo '<td>' . $row["idDespachante"] . '</td>';
-                echo '<td>' . $row["idRecebedor"] . '</td>';              
-                echo    '<td align="center">
-                                <form name="formpolicial1" action="../view/CautelaViewCadastrarItem.php" method="POST">
-                                    <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Itens</button>
+                //$uteis = new Uteis();
+               // $stringModal = $uteis->sanitizeString($row["nome_funcional"]);        
+                    echo '<td>' . $row["permanente"] . '</td>';
+                    echo '<td>' . $row["aberta"] . '</td>';
+                    echo '<td>' . $row["dataRetirada"] . '</td>';
+                    echo '<td>' . $row["vencimento"] . '</td>';
+                    echo '<td>' . $row["dataEntrega"] . '</td>';
+                    echo '<td>' . $row["policial"] . '</td>';
+                    echo '<td>' . $row["despachante"] . '</td>';
+                    echo '<td>' . $row["recebedor"] . '</td>';
+                    
+                    echo    '<td align="center">
+                                <form name="formCautela1" action="../view/CautelaViewEditar.php" method="POST">
+                                    <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
                                     <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>
-                            </td>';
-                    
-                    //Modal para confirmar a exclusão dos itens selecionados
-                    //Devemos passar tanto o ID como a SIGLA para que o modal possa exibir e exluir o item
-                    
-                echo '</tr>';                
-            }
-        } else {
-            echo "0 results";
+                            </td>';       
+                }
+            } else {
+                echo "0 results";
+            }    
+
         }
-        
-    }
 
     function listaCautelaItemDao(conexao $conn, $id) {
-        $query = "SELECT * FROM item_cautela WHERE idCautela = $id";
+        $query = "SELECT * FROM item_cautela WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -228,7 +244,7 @@ class CautelaDao {
                 echo    '<td align="center">
                                 <form name="formpolicial1" action="../view/CautelaController.php" method="POST">
                                     <button type="submit" name="excluiritem" value="" class="btn btn-primary btn-xs">Excluir</button>
-                                    <input type="hidden" name="id" value="'.$row["idCautela"].'">
+                                    <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>
                             </td>';
                 echo '</tr>';                

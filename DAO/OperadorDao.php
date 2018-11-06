@@ -31,4 +31,18 @@ class OperadorDao
             echo "0 results";
         }
     }
+
+    function recuperaId(conexao $conn, $nome_funcional) {
+        $query = "SELECT o.id as id FROM operador o WHERE o.nome_funcional = '$nome_funcional'";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+                return $id;  
+            }
+        } else {
+            echo "0 results";
+        }      
+    }
 }

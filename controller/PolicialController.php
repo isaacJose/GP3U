@@ -10,7 +10,7 @@ class PolicialController {
     public function listaOptions() {
         $conexao = new conexao();
         $policialDao = new PolicialDao();
-        $policialDao->listaSelect($conexao);
+        $policialDao->selectPolicial($conexao);
     }
 
     //done
@@ -24,35 +24,24 @@ class PolicialController {
     public function inserePolicial() {
         //recuperando os dados do formulário
         $nome = filter_input(INPUT_POST,"nome",FILTER_SANITIZE_STRING);
-        var_dump($nome);
         $patente = filter_input(INPUT_POST,"patente",FILTER_SANITIZE_STRING);
-        var_dump($patente);
         $nome_funcional = filter_input(INPUT_POST,"nome_funcional",FILTER_SANITIZE_STRING);
-        var_dump($nome_funcional);
         $matricula = filter_input(INPUT_POST,"matricula",FILTER_SANITIZE_STRING);
-        var_dump($matricula);
         $email = filter_input(INPUT_POST,"email",FILTER_SANITIZE_STRING);
-        var_dump($email);
         $situacao = filter_input(INPUT_POST,"situacao",FILTER_SANITIZE_STRING);
-        var_dump($situacao);
         $subunidade = filter_input(INPUT_POST,"subunidade",FILTER_SANITIZE_STRING);
-        var_dump($subunidade);
-        $id = filter_input(INPUT_POST,"nome",FILTER_SANITIZE_STRING);
-        var_dump($id);
 
         $conexao = new conexao();
-
-        $idSub = PolicialDao::recuperaIdSubunidade2($conexao, $subunidade);
-        var_dump($idSub);
+    
         $policial = new Policial();
-        $policial->setId($id);
         $policial->setNome($nome);
         $policial->setGraduacao($patente);
         $policial->setNome_funcional($nome_funcional);
         $policial->setMatricula($matricula);
         $policial->setEmail($email);
         $policial->setSituacao($situacao);
-        $policial->setId_subunidade($idSub);
+        $policial->setId_subunidade($subunidade);
+        var_dump($policial);
         $policialDao = new PolicialDao();
         $policialDao->adiciona($conexao, $policial);
     }

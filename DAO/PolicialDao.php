@@ -59,6 +59,21 @@ class PolicialDao {
         }      
     }
 
+    function selectPolicial(conexao $conn) {
+        $query = "SELECT id, nome_funcional FROM policial";
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+
+                echo '<option value='. $row["id"].'>'. $row["nome_funcional"].'</option>';
+
+            }
+        } else {
+            echo "0 results";
+        }
+    }
+
     //done
     function listaSelect(conexao $conn) {
         $query = "SELECT * FROM logacesso";
@@ -103,7 +118,7 @@ class PolicialDao {
                 echo '<tr>';
                 $uteis = new Uteis();
                 $stringModal = $uteis->sanitizeString($row["nome_funcional"]);        
-                    echo '<td>' . $row["nome"] . '</td>';
+                    echo '<td>' . $row["nome_funcional"] . '</td>';
                     echo '<td>' . $row["graduacao"] . '</td>';
                     echo '<td>' . $row["matricula"] . '</td>';
                     echo '<td>' . $row["situacao"] . '</td>';
