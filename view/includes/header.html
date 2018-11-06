@@ -46,7 +46,19 @@
         var senha = formuser.senha.value;
         var rep_senha = formuser.csenha.value;
 
-        if (senha != rep_senha) {
+        if (document.getElementById('nome').value == '') {
+            alert('Campo vazio, preencha antes de registrar!');
+        } else if (document.getElementById('nome_funcional').value == '') {
+            alert('Campo vazio, preencha antes de registrar!');
+        } else if (document.getElementById('matricula').value == '') {
+            alert('Campo vazio, preencha antes de registrar!');
+        } else if (document.getElementById('email').value == '') {
+            alert('Campo vazio, preencha antes de registrar!');
+        } else if (document.getElementById('senha').value == '') {
+            alert('Campo vazio, preencha antes de registrar!');
+        } else if (document.getElementById('csenha').value == '') {
+            alert('Campo vazio, preencha antes de registrar!');
+        } else if (senha != rep_senha) {
             alert('Senha não são iguais, favor inserir novamente!');
             document.getElementById('senha').value='';
             document.getElementById('csenha').value='';
