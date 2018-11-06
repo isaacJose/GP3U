@@ -68,7 +68,7 @@ class CautelaController {
         $cautela->setIdPolicial($idPolicial);
         $cautela->setIdDespachante($idDespachante);
         $cautela->setIdRecebedor($idRecebedor);
-        //var_dump($cautela);
+        var_dump($cautela);
         $cautelaDao = new CautelaDao();
         $cautelaDao->adiciona($conexao, $cautela);
     }
