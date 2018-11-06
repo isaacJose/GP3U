@@ -4,6 +4,7 @@ if (isset($_SESSION)) {
   session_destroy();
 }
 include 'view\includes\headerpass.html';
+include 'view\includes\header.html';
 ?>
 
   <body class="bg-dark">
@@ -17,7 +18,7 @@ include 'view\includes\headerpass.html';
           </div>
         <!-- <div class="card-header">Register an Account</div> -->
         <div class="card-body">
-          <form action="validaregistro.php" method="post">
+          <form action="validaregistro.php" name="formuser" method="post">
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
@@ -67,7 +68,7 @@ include 'view\includes\headerpass.html';
               </div>
             </div>
             <!-- <a class="btn btn-primary btn-block" href="#">Registrar</a> -->
-            <input type="submit" class="btn btn-primary btn-block" id="Registrar" name="Registrar" value="Registrar">
+            <input type="submit" class="btn btn-primary btn-block" id="Registrar" name="Registrar" onClick="return validar()" value="Registrar">
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="login.php">Página de login</a>

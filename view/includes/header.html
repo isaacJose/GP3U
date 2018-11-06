@@ -41,4 +41,22 @@
     }
 </script> -->
 
+<script type="text/javascript">
+    function validar() {
+        var senha = formuser.senha.value;
+        var rep_senha = formuser.csenha.value;
+
+        if (senha != rep_senha) {
+            alert('Senha não são iguais, favor inserir novamente!');
+            document.getElementById('senha').value='';
+            document.getElementById('csenha').value='';
+            formuser.senha.focus();
+            return false;
+        } else {
+            alert('Usuário(a) cadastrado com sucesso!');
+            window.location.href = "../../login.php";
+        }
+    }
+</script>
+
 </head>
