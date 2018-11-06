@@ -6,7 +6,7 @@ $nome = "Olá usuário(a).";
 
 //dados do email
 $email = 'contatosigp@gmail.com';
-$senha = '1245788956230sigp';
+$senha = 'senha';
 $assunto = "Atendimento SIGEP";
 
 //dados do server
