@@ -148,10 +148,11 @@ CREATE TABLE IF NOT EXISTS `item` (
 
 DROP TABLE IF EXISTS `item_cautela`;
 CREATE TABLE IF NOT EXISTS `item_cautela` (
+   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `idCautela` bigint(20) NOT NULL,
   `idItem` bigint(20) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  PRIMARY KEY (`idCautela`,`idItem`)
+   PRIMARY KEY (`id`)
 
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -349,6 +350,8 @@ alter table alteracao_cautela add CONSTRAINT fk_cautela FOREIGN key (idCautela) 
 alter table alteracao_cautela add CONSTRAINT fk_Item FOREIGN key (idItem) REFERENCES item (id);
 
 alter table inspecao add CONSTRAINT fk_Cautela FOREIGN key (idCautela) REFERENCES cautela (id);
+
+alter table item_cautela add CONSTRAINT fk_Cautela FOREIGN key (idCautela) REFERENCES cautela (id);
 
 alter table item_cautela add CONSTRAINT fk_Item FOREIGN key (idItem) REFERENCES item (id);
 

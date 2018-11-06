@@ -7,7 +7,7 @@ include 'includes/header.html';
 ?>
 
   <?php
-  include 'includes/style/CaltelaView.html';
+  include 'includes/style/CautelaView.html';
   ?>
 
   <body id="page-top">

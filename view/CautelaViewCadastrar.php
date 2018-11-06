@@ -3,6 +3,7 @@ session_start();
 include '../validasessaoativa.php';
 include '../validasessao.php';
 include_once '../controller/CautelaController.php';
+include_once '../controller/PolicialController.php';
 include 'includes/header.html';
 ?>
 
@@ -134,34 +135,86 @@ include 'includes/header.html';
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="panel panel-default">
-                      <div class="row">
-                        <div class="col-lg-4">
-                          <div class="form-group">
+                    <div class="row">   
+                    
+                  
+                    <div class="col-lg-4">
+                         <div class="form-group">
                             <label>Policial</label>
-                            <input class="form-control" name="idPolicial" required>
-                          </div>
+                            <select id="idPolicial" name="idPolicial" class="form-control" required>
+                            <?php
+                              $opt = new PolicialController();
+                              $opt->listaOptions();
+                            ?>
+                            </select>
                         </div>
+                      </div>
+
+                    <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Tipo de Cautela</label>
+                      <select id="permanente" name="permanente" class="form-control">
+                          <option value="1">Permanente</option>
+                          <option value="0">Temporária</option>
+                      </select>
+                    </div>
+                  </div>
+
+                   <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Situação</label>
+                      <select id="aberta" name="aberta" class="form-control">
+                          <option value="1">Aberta</option>
+                          <option value="0">Fechada</option>
+                      </select>
+                    </div>
+                  </div>
                       
                         <div class="col-lg-4">
-                          <div class="form-group" align="center">
-                            <label>Tipo de cautela</label>
-                            <div class="radio">
-                              <label class="radio-inline">
-                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Temporária
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">Permanente
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
                           <div class="form-group">
-                            <label>Vencimento</label>
-                            <input class="form-control" name="vencimento" required>
+                            <label>Data de Retirada</label>
+                            <input type="date" class="form-control" id="dataRetirada" name="dataRetirada" required>
                           </div>
                         </div>
                         
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label>Vencimento</label>
+                            <input type="date" class="form-control" id="vencimento" name="vencimento" required>
+                          </div>
+                        </div>
+
+                         <div class="col-lg-4">
+                          <div class="form-group">
+                            <label>Data de Entrega</label>
+                            <input type="date" class="form-control" id="dataEntrega" name="dataEntrega" required>
+                          </div>
+                        </div>
+                    
+                     <!-- <div class="col-lg-4">
+                         <div class="form-group">
+                            <label>Despachante</label>
+                            <select id="idDespachante" id="idDespachante" name="idDespachante" class="form-control" required>
+                            <?php
+                              //$opt = new PolicialController();
+                              //$opt->listaOptions();
+                            ?>
+                            </select>
+                        </div>
+                      </div> 
+
+                      <div class="col-lg-4">
+                         <div class="form-group">
+                            <label>Recebedor</label>
+                            <select id="idRecebedor" id="idRecebedor"name="idRecebedor" class="form-control" required>
+                            <?php
+                             // $opt = new PolicialController();
+                             // $opt->listaOptions();
+                            ?>
+                            </select>
+                        </div>
+                      </div>  -->
+
                       </div>
                       <!-- Tabela de acrodo com os docs do projeto -->
                     </div>
