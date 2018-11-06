@@ -160,6 +160,16 @@ class CautelaDao {
             echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
         }
     }
+    //funçao que exclui o item de uma cautela
+    function excluiItemCautela(conexao $conn, $id) {
+        $query = "DELETE FROM item_cautela WHERE idCautela = $id";
+
+        if (mysqli_query($conn->conecta(), $query)) {
+            echo "Registro excluído com sucesso!";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        }
+    }
     //done
     function edita(conexao $conn, Cautela $cautela) {
         $query = "";
@@ -216,8 +226,9 @@ class CautelaDao {
                 echo '<td>' . $row["idItem"] . '</td>';
                 echo '<td>' . $row["quantidade"] . '</td>';             
                 echo    '<td align="center">
-                                <form name="formpolicial1" action="../view/CautelaViewCadastrarItem.php" method="POST">
+                                <form name="formpolicial1" action="../view/CautelaController.php" method="POST">
                                     <button type="submit" name="excluiritem" value="" class="btn btn-primary btn-xs">Excluir</button>
+                                    <input type="hidden" name="id" value="'.$row["idCautela"].'">
                                 </form>
                             </td>';
                 echo '</tr>';                

@@ -10,11 +10,17 @@ class CautelaController {
         $cautelaDao = new CautelaDao();
         $cautelaDao->lista($conexao);
     }
-
+    //função que lista os item dentro de uma cautela
     public function listaCautelaItem($id) {
         $conexao = new conexao();
         $cautelaDao = new CautelaDao();
         $cautelaDao->listaCautelaItemDao($conexao, $id);
+    }
+    //função que exclui item de uma cautela
+    public function excluiCautelaItem($id) {
+        $conexao = new conexao();
+        $cautelaDao = new CautelaDao();
+        $cautelaDao->excluiItemCautela($conexao, $cautela);
     }
 
     //done
