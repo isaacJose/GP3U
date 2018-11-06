@@ -1,4 +1,4 @@
-s<?php
+<?php
 require_once "../controller/Uteis.php";
 class CautelaDao {
     function adiciona(conexao $conn, Cautela $cautela) {
