@@ -216,7 +216,7 @@ class CautelaDao {
     }
 
     function listaCautelaItemDao(conexao $conn, $id) {
-        $query = "SELECT * FROM item_cautela WHERE idCautela = $id";
+        $query = "SELECT * FROM item_cautela WHERE id = $id";
         
         $result = mysqli_query($conn->conecta(), $query);
 
@@ -228,7 +228,7 @@ class CautelaDao {
                 echo    '<td align="center">
                                 <form name="formpolicial1" action="../view/CautelaController.php" method="POST">
                                     <button type="submit" name="excluiritem" value="" class="btn btn-primary btn-xs">Excluir</button>
-                                    <input type="hidden" name="id" value="'.$row["idCautela"].'">
+                                    <input type="hidden" name="id" value="'.$row["id"].'">
                                 </form>
                             </td>';
                 echo '</tr>';                
