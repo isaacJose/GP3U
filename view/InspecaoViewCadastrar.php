@@ -24,7 +24,7 @@ if(!isset($_SESSION['nome_funcional'])){
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <a class="navbar-brand mr-1" href="">Bem vindo(a), <?php echo ($_SESSION['nome_funcional']); ?></a>
+          <a class="navbar-brand mr-1" href="">Bem vindo(a), <?php echo $_SESSION['nome_funcional']; ?></a>
         </div>
       </form>
 
@@ -173,6 +173,7 @@ if(!isset($_SESSION['nome_funcional'])){
                 <div class="row">
                   <div class="col-lg-12">
                     <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+                    <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                   </div>
                 </div>
               </form>

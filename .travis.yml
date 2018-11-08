@@ -1,11 +1,7 @@
-sudo:          false
-language:      node_js
+language: node_js
 node_js:
-  - "node"
-install:       npm install
-script:
-  - npm test
-  - gulp
-cache:
-  directories:
-    - node_modules
+  - v11
+  - v10
+  - v8
+  - v6
+  - v4
