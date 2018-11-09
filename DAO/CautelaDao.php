@@ -192,7 +192,11 @@ class CautelaDao {
       c.dataEntrega AS dataEntrega, 
       p1.nome_funcional AS policial,
       o2.nome_funcional AS despachante,
-      o2.nome_funcional AS recebedor
+      o2.nome_funcional AS recebedor,
+      date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
+      date_format(vencimento,'%d/%m/%Y') AS dataencimentoFormatada,
+      date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada
+
       
       FROM cautela c, policial p1, operador o1, operador o2
       
@@ -209,9 +213,9 @@ class CautelaDao {
                         
                     echo '<td>' . $row["permanente"] . '</td>';
                     echo '<td>' . $row["aberta"] . '</td>';
-                    echo '<td>' . $row["dataRetirada"] . '</td>';
-                    echo '<td>' . $row["vencimento"] . '</td>';
-                    echo '<td>' . $row["dataEntrega"] . '</td>';
+                    echo '<td>' . $row["dataRetiradaFormatada"] . '</td>';
+                    echo '<td>' . $row["dataencimentoFormatada"] . '</td>';
+                    echo '<td>' . $row["dataEntregaFormatada"] . '</td>';
                     echo '<td>' . $row["policial"] . '</td>';
                     echo '<td>' . $row["despachante"] . '</td>';
                     echo '<td>' . $row["recebedor"] . '</td>';
