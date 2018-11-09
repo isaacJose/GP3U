@@ -52,7 +52,7 @@ class CautelaController {
         //somente se a cautela for temporaria.
         $dataRetirada = filter_input(INPUT_POST,"dataRetirada",FILTER_SANITIZE_STRING);
         $vencimento = filter_input(INPUT_POST,"vencimento",FILTER_SANITIZE_STRING);
-        //sera feito com update inserindo a função NOW(), no proprio sql do campo em questao.
+                //sera feito com update inserindo a função NOW(), no proprio sql do campo em questao.
         $dataEntrega = filter_input(INPUT_POST,"dataEntrega",FILTER_SANITIZE_STRING);
         $despachante = $_SESSION['nome_funcional'];
         $operadorDao = new OperadorDao();
