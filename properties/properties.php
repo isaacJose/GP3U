@@ -6,7 +6,7 @@ $p_nome = "Olá usuário(a).";
 
 //dados do email
 $p_email = 'contatosigp@gmail.com';
-$p_senha = '1245788956230sigp';
+$p_senha = 'sigp';
 $p_assunto = "Atendimento SIGEP";
 
 //dados do server
