@@ -204,11 +204,9 @@ class CautelaDao {
         $result = mysqli_query($conn->conecta(), $query);
 
         if (mysqli_num_rows($result) > 0) {
-            //while($row = mysqli_fetch_assoc($result)) {  
             while($row = mysqli_fetch_assoc($result)) { 
                 echo '<tr>';
-                //$uteis = new Uteis();
-               // $stringModal = $uteis->sanitizeString($row["nome_funcional"]);        
+                        
                     echo '<td>' . $row["permanente"] . '</td>';
                     echo '<td>' . $row["aberta"] . '</td>';
                     echo '<td>' . $row["dataRetirada"] . '</td>';
@@ -217,13 +215,7 @@ class CautelaDao {
                     echo '<td>' . $row["policial"] . '</td>';
                     echo '<td>' . $row["despachante"] . '</td>';
                     echo '<td>' . $row["recebedor"] . '</td>';
-                    
-                    echo    '<td align="center">
-                                <form name="formCautela1" action="../view/CautelaViewEditar.php" method="POST">
-                                    <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
-                                    <input type="hidden" name="id" value="'.$row["id"].'">
-                                </form>
-                            </td>';       
+                       
                 }
             } else {
                 echo "0 results";
@@ -241,6 +233,7 @@ class CautelaDao {
                 echo '<tr>';
                 echo '<td>' . $row["idItem"] . '</td>';
                 echo '<td>' . $row["quantidade"] . '</td>';             
+                
                 echo    '<td align="center">
                                 <form name="formpolicial1" action="../view/CautelaController.php" method="POST">
                                     <button type="submit" name="excluiritem" value="" class="btn btn-primary btn-xs">Excluir</button>

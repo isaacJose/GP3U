@@ -140,7 +140,6 @@ include 'includes/header.html';
                       <th>Policial</th>
                       <th>Despachante</th>
                       <th>Recebedor</th>
-                      <th></th>
                     </tr>
                   </thead>            
                   <tbody>
