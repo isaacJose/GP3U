@@ -1,21 +1,21 @@
 <?php
 
 //dados da empresa
-$empresa = "Atendimento SIGEP";
-$nome = "Olá usuário(a).";
+$p_empresa = "Atendimento SIGEP";
+$p_nome = "Olá usuário(a).";
 
 //dados do email
-$email = 'contatosigp@gmail.com';
-$senha = 'senha';
-$assunto = "Atendimento SIGEP";
+$p_email = 'contatosigp@gmail.com';
+$p_senha = '1245788956230sigp';
+$p_assunto = "Atendimento SIGEP";
 
 //dados do server
-$host = 'smtp.gmail.com';
-$smtpauth = true;
-$smtpsecure = 'tls';
-$username = $email;
-$password = $senha;
-$port = 587;
+$p_host = 'smtp.gmail.com';
+$p_smtpauth = true;
+$p_smtpsecure = 'tls';
+$p_username = $p_email;
+$p_password = $p_senha;
+$p_port = 587;
 
 //charset do email
-$charset = 'UTF-8';
+$p_charset = 'UTF-8';

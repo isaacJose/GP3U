@@ -4,14 +4,15 @@ session_start();
 require_once 'PHPMailer/src/PHPMailer.php';
 require_once 'PHPMailer/src/SMTP.php';
 require_once 'PHPMailer/src/Exception.php';
+
 include 'properties/properties.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 //From settings
-$assunto = $assunto;
-$nome = $nome;
+$assunto = $p_assunto;
+$nome = $p_nome;
 
 $email = $_POST["email"];
 
@@ -24,18 +25,17 @@ $mensagem = "Código de recuperação: " . $codp1 . "-" . $codp2;
 $mail = new PHPMailer(true);
 try {
     //Server settings
-    $mail->CharSet = $charset;
+    $mail->CharSet = $p_charset;
     // $mail->SMTPDebug = 2; // mostra a saída do processo na tela
     $mail->isSMTP();
-    $mail->Host = $host;
+    $mail->Host = $p_host;
     $mail->SMTPAuth = true;
-    $mail->Username = $username; // seu email (no caso, google)
-    $mail->Password = $password; // sua senha do email
-    $mail->SMTPSecure = $smtpsecure;
-    $mail->Port = $port;
+    $mail->Username = $p_username; // seu email (no caso, google)
+    $mail->Password = $p_password; // sua senha do email
+    $mail->SMTPSecure = $p_smtpsecure;
+    $mail->Port = $p_port;
 
     //From:
-    //$mail->SetFrom($mail->Username, 'Bruno Silva');
     $mail->SetFrom($mail->Username, $assunto);
     
     //To:
@@ -47,13 +47,11 @@ try {
 
     if ($mail->send()) {
         $_SESSION["success"] = "Mensagem enviada com sucesso";
-        // header("Location: deucerto.php");
         echo 'Mensagem enviada com sucesso!';
         header('Location: login.php');
 
     } else {
         $_SESSION["danger"] = "Erro ao enviar mensagem " . $mail->ErrorInfo;
-        // header("Location: deuerrado.php");
         echo 'Mensagem não foi enviada!';
         header('Location: login.php');
     }
