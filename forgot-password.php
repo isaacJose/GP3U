@@ -1,7 +1,6 @@
 <?php
     include 'view\includes\headerpass.html';
 ?>
-
   <body class="bg-dark">
 
     <div class="container">

@@ -40,7 +40,7 @@ if ($row > 0) {
     $sql = mysqli_query($conexao, $passquery) or die(mysqli_error());
     $row = mysqli_num_rows($sql);
 } else {
-    //email não cadastrado (fazer algo a respeito)
+    header("Location: view\includes\login.html");//email não cadastrado (fazer algo a respeito)
 }
 
 $mail = new PHPMailer(true);

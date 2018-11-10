@@ -232,12 +232,4 @@ bh_unicode_properties.cache
 # https://packagecontrol.io/packages/sublime-github
 GitHub.sublime-settings
 
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-
 # End of https://www.gitignore.io/api/netbeans,phpstorm,notepadpp,sublimetext,phpstorm+all,phpstorm+iml,phpcodesniffer,visualstudiocode
