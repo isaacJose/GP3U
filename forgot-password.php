@@ -1,5 +1,5 @@
 <?php
-    include 'view\includes\headerpass.html';
+include 'view\includes\headerpass.html';
 ?>
   <body class="bg-dark">
 
@@ -16,11 +16,11 @@
             <h4>Esqueceu a sua senha?</h4>
             <p>Digite o seu email e enviaremos para você instruções de como recuperar a sua sennha.</p>
           </div>
-          <form action="recuperaemail.php" name="sendemail" method="post">
+          <form name="sendemail" id="sendemail" method="post">
             <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus" name="email">
-                <label id="email" for="inputEmail">Digite seu endereço de email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter email address" required="required" autofocus="autofocus" name="email">
+                <label id="email" for="email">Digite seu endereço de email</label>
               </div>
             </div>
             <!-- <a class="btn btn-primary btn-block" href="login.php">Resetar senha</a> -->
@@ -42,6 +42,34 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <script>
+    $(function () {
+      $('#sendemail').submit(function (e) {
+        $.ajax
+          ({
+            url: 'script.php',
+            type: 'POST',
+            data: new FormData(this),
+            contentType: false,
+            cache: true,
+            processData: false,
+            success: function (data, textStatus, jqXHR) {
+              if (data == "falha") {
+                alert("Email não existe no banco de dados!");
+                document.getElementById('email').value='';
+              }
+              if (data == "sucesso") {
+                alert("Enviamos uma senha provisória para o seu email, use-a para logar no sistema, em caso de erro, contatar o administrador.");
+                document.getElementById('email').value='';
+                window.location.href = "login.php";
+              }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            }
+          });
+        e.preventDefault();
+      });
+    });
+  </script>
   </body>
-
 </html>
