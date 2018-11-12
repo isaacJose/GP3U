@@ -137,8 +137,8 @@ include 'includes/header.html';
                     <div class="panel panel-default">
                     <div class="row">   
                     
-                  
-                    <div class="col-lg-4">
+                    
+                    <div class="col-lg-6">
                          <div class="form-group">
                             <label>Policial</label>
                             <select id="idPolicial" name="idPolicial" class="form-control" required>
@@ -149,8 +149,8 @@ include 'includes/header.html';
                             </select>
                         </div>
                       </div>
-
-                    <div class="col-lg-4">
+                    
+                    <div class="col-lg-6">
                     <div class="form-group">
                       <label>Tipo de Cautela</label>
                       <select id="permanente" name="permanente" class="form-control">
@@ -159,7 +159,7 @@ include 'includes/header.html';
                       </select>
                     </div>
                   </div>
-
+                  <!--
                    <div class="col-lg-4">
                     <div class="form-group">
                       <label>Situação</label>
@@ -191,7 +191,7 @@ include 'includes/header.html';
                           </div>
                         </div>
                     
-                     <!-- <div class="col-lg-4">
+                     <div class="col-lg-4">
                          <div class="form-group">
                             <label>Despachante</label>
                             <select id="idDespachante" id="idDespachante" name="idDespachante" class="form-control" required>

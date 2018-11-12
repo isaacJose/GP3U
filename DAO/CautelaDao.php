@@ -16,13 +16,13 @@ class CautelaDao {
         )VALUES(
             NULL,
             '{$cautela->getPermanente()}',
-            '{$cautela->getAberta()}',
-            '{$cautela->getDataRetirada()}',
-            '{$cautela->getVencimento()}',
-            '{$cautela->getDataEntrega()}',
+            1,
+            CURDATE(),
+            CURDATE()+1,
+            NULL,
             '{$cautela->getIdPolicial()}',
             '{$cautela->getIdDespachante()}',
-            '{$cautela->getIdRecebedor()}')";
+            NULL)";
         
         if (mysqli_query($conn->conecta(), $query)) {
             echo "Novo cadastro realizado com sucesso!";
@@ -183,24 +183,44 @@ class CautelaDao {
     
     //done
     function lista(conexao $conn) {
-        
-      $query = "SELECT c.id AS id, 
-      c.permanente AS permanente, 
-      c.aberta AS aberta, 
-      c.dataRetirada AS dataRetirada, 
-      c.vencimento AS vencimento, 
-      c.dataEntrega AS dataEntrega, 
-      p1.nome_funcional AS policial,
-      o2.nome_funcional AS despachante,
-      o2.nome_funcional AS recebedor,
-      date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
-      date_format(vencimento,'%d/%m/%Y') AS dataencimentoFormatada,
-      date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada
 
       
-      FROM cautela c, policial p1, operador o1, operador o2
+        $query = "SELECT
+        id,
+        IF(permanente=1, 'Permanente', 'Temporária') AS permanente,
+        IF(aberta=1, 'Aberta', 'Fechada') AS aberta,
+        dataRetirada,
+        vencimento,
+        dataEntrega,
+        idPolicial,
+        idDespachante,
+        idRecebedor,
+        date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
+        date_format(vencimento,'%d/%m/%Y') AS dataencimentoFormatada,
+        date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada,
+        --IF(permanente=1, 'Aberta', 'Fechada')
+    FROM
+        cautela
+    WHERE
+        1";
+        
+      //$query = "SELECT c.id AS id, 
+      //c.permanente AS permanente, 
+      //c.aberta AS aberta, 
+      //c.dataRetirada AS dataRetirada, 
+      //c.vencimento AS vencimento, 
+      //c.dataEntrega AS dataEntrega, 
+      //p1.nome_funcional AS policial,
+      //o2.nome_funcional AS despachante,
+      //o2.nome_funcional AS recebedor,
+      //date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
+      //date_format(vencimento,'%d/%m/%Y') AS dataencimentoFormatada,
+      //date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada
+
       
-      WHERE c.idPolicial = p1.id and c.idDespachante = o1.id and c.idRecebedor = o2.id"; 
+      //FROM cautela c, policial p1, operador o1, operador o2
+      
+      //WHERE c.idPolicial = p1.id and c.idDespachante = o1.id and c.idRecebedor = o2.id"; 
         
        /* $query = "SELECT FROM cautela c, policial p1, 
                   WHERE c.idPolicial = p1.id and c.idDespachante = p2.id and c.idDespachante = p3.id";*/
@@ -216,9 +236,15 @@ class CautelaDao {
                     echo '<td>' . $row["dataRetiradaFormatada"] . '</td>';
                     echo '<td>' . $row["dataencimentoFormatada"] . '</td>';
                     echo '<td>' . $row["dataEntregaFormatada"] . '</td>';
-                    echo '<td>' . $row["policial"] . '</td>';
-                    echo '<td>' . $row["despachante"] . '</td>';
-                    echo '<td>' . $row["recebedor"] . '</td>';
+                    echo '<td>' . $row["idPolicial"] . '</td>';
+                    echo '<td>' . $row["idDespachante"] . '</td>';
+                    echo '<td>' . $row["idRecebedor"] . '</td>';
+                    echo '<td align="center">
+                            <form name="formItem1" action="../view/ItemViewEditar.php" method="POST">
+                                <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Devolver</button>
+                                <input type="hidden" name="id" value="'.$row["id"].'">
+                            </form>
+                         </td>';
                        
                 }
             } else {

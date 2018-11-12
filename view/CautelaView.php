@@ -132,14 +132,15 @@ include 'includes/header.html';
                 <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>permanente</th>
-                      <th>aberta</th>
+                      <th>Tipo</th>
+                      <th>Situação</th>
                       <th>Retirada</th>
                       <th>vencimento</th>
                       <th>Entrega</th>
                       <th>Policial</th>
                       <th>Despachante</th>
                       <th>Recebedor</th>
+                      <th></th>
                     </tr>
                   </thead>            
                   <tbody>
