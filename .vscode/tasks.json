@@ -1,0 +1,7 @@
+{
+    "version": "2.0.0",
+    "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    "args": [
+        "localhost/sigep/index.php"
+    ]
+}
