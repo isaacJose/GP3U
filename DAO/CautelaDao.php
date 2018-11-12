@@ -241,7 +241,7 @@ class CautelaDao {
                     echo '<td>' . $row["idRecebedor"] . '</td>';
                     echo '<td align="center">
                             <form name="formItem1" action="../view/ItemViewEditar.php" method="POST">
-                                <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Devolveramanda12</button>
+                                <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Devolver</button>
                                 <input type="hidden" name="id" value="'.$row["id"].'">
                             </form>
                          </td>';
