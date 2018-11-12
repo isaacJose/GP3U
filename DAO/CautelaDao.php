@@ -31,6 +31,21 @@ class CautelaDao {
         }
     }
 
+    function devolver(conexao $conn, Cautela $cautela) {
+          
+        $query =    "UPDATE cautela SET
+                        aberta = 0,
+                        dataEntrega = CURDATE(),
+                        idRecebedor = '{$cautela->getIdRecebedor()}'
+                    WHERE id = '{$cautela->getId()}'";
+        
+        if (mysqli_query($conn->conecta(), $query)) {
+            echo "Update realizado com sucesso!";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        }
+    }
+
     function listaSelect(conexao $conn) {
         $query = "SELECT id FROM cautela";
         $result = mysqli_query($conn->conecta(), $query);
@@ -171,15 +186,15 @@ class CautelaDao {
         }
     }
     //done
-    function edita(conexao $conn, Cautela $cautela) {
-        $query = "";
+    //function edita(conexao $conn, Cautela $cautela) {
+        //$query = "";
         
-        if (mysqli_query($conn->conecta(), $query)) {
-            echo "Registro editado com sucesso!";
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
-        }
-    }
+        //if (mysqli_query($conn->conecta(), $query)) {
+            //echo "Registro editado com sucesso!";
+        //} else {
+          //  echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        ///}
+    //}
     
     //done
     function lista(conexao $conn) {
@@ -240,8 +255,8 @@ class CautelaDao {
                     echo '<td>' . $row["idDespachante"] . '</td>';
                     echo '<td>' . $row["idRecebedor"] . '</td>';
                     echo '<td align="center">
-                            <form name="formItem1" action="../view/ItemViewEditar.php" method="POST">
-                                <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Devolver</button>
+                            <form name="formItem1" action="../controller/CautelaController.php" method="POST">
+                                <button type="submit" name="devolver" value="" class="btn btn-primary btn-xs">Devolver</button>
                                 <input type="hidden" name="id" value="'.$row["id"].'">
                             </form>
                          </td>';
