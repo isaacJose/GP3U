@@ -45,29 +45,32 @@ class CautelaController {
         $conexao = new conexao(); 
 
         $idPolicial = filter_input(INPUT_POST,"idPolicial",FILTER_SANITIZE_STRING);
+        var_dump($idPolicial);
         $permanente = filter_input(INPUT_POST,"permanente",FILTER_SANITIZE_STRING);
+        var_dump($permanente);
         //Ao realizar o cadastro, a cautela fica como aberta automaticamente, ao ser finalizada a cautela, o valor sera atualizado para 0.
         //$aberta = 1;
-        $aberta = filter_input(INPUT_POST,"aberta",FILTER_SANITIZE_STRING);
+        //$aberta = filter_input(INPUT_POST,"aberta",FILTER_SANITIZE_STRING);
         //somente se a cautela for temporaria.
-        $dataRetirada = filter_input(INPUT_POST,"dataRetirada",FILTER_SANITIZE_STRING);
-        $vencimento = filter_input(INPUT_POST,"vencimento",FILTER_SANITIZE_STRING);
-        //sera feito com update inserindo a função NOW(), no proprio sql do campo em questao.
-        $dataEntrega = filter_input(INPUT_POST,"dataEntrega",FILTER_SANITIZE_STRING);
+        //$dataRetirada = filter_input(INPUT_POST,"dataRetirada",FILTER_SANITIZE_STRING);
+        //$vencimento = filter_input(INPUT_POST,"vencimento",FILTER_SANITIZE_STRING);
+                //sera feito com update inserindo a função NOW(), no proprio sql do campo em questao.
+        //$dataEntrega = filter_input(INPUT_POST,"dataEntrega",FILTER_SANITIZE_STRING);
         $despachante = $_SESSION['nome_funcional'];
         $operadorDao = new OperadorDao();
         $idDespachante = $operadorDao->recuperaId($conexao, $despachante);
-        $idRecebedor = $idDespachante;
+        var_dump($idDespachante);
+        //$idRecebedor = $idDespachante;
 
         $cautela = new Cautela();
         $cautela->setPermanente($permanente);
-        $cautela->setAberta($aberta);
-        $cautela->setVencimento($vencimento);
-        $cautela->setDataEntrega($dataEntrega);
-        $cautela->setDataRetirada($dataRetirada);        
+        //$cautela->setAberta($aberta);
+        //$cautela->setVencimento($vencimento);
+        //$cautela->setDataEntrega($dataEntrega);
+        //$cautela->setDataRetirada($dataRetirada);        
         $cautela->setIdPolicial($idPolicial);
         $cautela->setIdDespachante($idDespachante);
-        $cautela->setIdRecebedor($idRecebedor);
+        //$cautela->setIdRecebedor($idRecebedor);
         var_dump($cautela);
         $cautelaDao = new CautelaDao();
         $cautelaDao->adiciona($conexao, $cautela);
@@ -107,16 +110,39 @@ class CautelaController {
         $cautelaDao = new CautelaDao();
         $cautelaDao->edita($conexao, $cautela);
     }
+
+    public function devolveCautela() {
+        $conexao = new conexao();       
+        $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
+        var_dump($id);
+        $recebedor = $_SESSION['nome_funcional'];
+        $operadorDao = new OperadorDao();
+        $idRecebedor = $operadorDao->recuperaId($conexao, $recebedor);
+        var_dump($idRecebedor);
+        
+        
+        $cautela = new Cautela();
+        $cautela->setId($id);
+        $cautela->setIdRecebedor($idRecebedor);
+        $cautelaDao = new CautelaDao();
+        $cautelaDao->devolver($conexao, $cautela);
+    }
 }
 
 $cautela = new CautelaController();
 
 $cadastrar = filter_input(INPUT_POST,"cadastrar",FILTER_SANITIZE_STRING);
+$devolver = filter_input(INPUT_POST,"devolver",FILTER_SANITIZE_STRING);
 $excluir = filter_input(INPUT_POST,"excluir",FILTER_SANITIZE_STRING);
 $editar = filter_input(INPUT_POST,"editar",FILTER_SANITIZE_STRING);
 
 if (isset($cadastrar)) {
     $cautela->insereCautela();
+    header("Location: ../view/CautelaView.php");
+}
+
+if (isset($devolver)) {
+    $cautela->devolveCautela();
     header("Location: ../view/CautelaView.php");
 }
 
