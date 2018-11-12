@@ -217,7 +217,7 @@ class CautelaDao {
     FROM
         cautela
     WHERE
-        1";
+        aberta = 1";
         
       //$query = "SELECT c.id AS id, 
       //c.permanente AS permanente, 
