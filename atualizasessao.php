@@ -26,6 +26,4 @@ mysqli_query($conexao, $inseresaida) or die(mysqli_error($conexao));
 
 echo "att";
 
-header ("Location: www.google.com");
-
 //atualizasessao.php

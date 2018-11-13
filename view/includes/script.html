@@ -23,3 +23,15 @@
 
 <script src="vendor/bootstrap/js/main.js"></script>
 <script src="vendor/bootstrap/js/jquery.mask.min.js"></script>
+
+<script>
+    setInterval(function attbanco(){
+        $.ajax({
+            url:"../atualizasessao.php",
+            type:"post",
+            success:function(response,status,request){
+                console.log(response)
+            }
+        });
+    }, 5000);
+</script>
