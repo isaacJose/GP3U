@@ -25,6 +25,16 @@
 <script src="vendor/bootstrap/js/jquery.mask.min.js"></script>
 
 <script>
+    $(document).ready(function(){
+        $.ajax({
+            url:"../atualizasessao.php",
+            type:"post",
+            success:function(response,status,request){
+                console.log(response)
+            }
+        });
+    });
+
     setInterval(function attbanco(){
         $.ajax({
             url:"../atualizasessao.php",

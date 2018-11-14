@@ -10,7 +10,7 @@ include 'includes/header.html';
     include 'includes/style/PolicialView.html';
   ?>
 
-  <body id="page-top">
+  <body id="page-top" onload="attbanco();">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
