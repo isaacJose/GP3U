@@ -263,6 +263,12 @@ class CautelaDao {
                     echo '<td>' . $row["grad_despachante"] ." ". $row["despachante"] . '</td>';
                     //echo '<td>' . $row["recebedor"] . '</td>';
                     echo '<td align="center">
+                            <form name="formItem1" action="../view/CautelaViewCadastrarItem.php" method="POST">
+                                <button type="submit" name="itens" value="" class="btn btn-primary btn-xs">Itens</button>
+                                <input type="hidden" name="id" value="'.$row["id"].'">
+                            </form>
+                         </td>';
+                    echo '<td align="center">
                             <form name="formItem1" action="../controller/CautelaController.php" method="POST">
                                 <button type="submit" name="devolver" value="" class="btn btn-primary btn-xs">Devolver</button>
                                 <input type="hidden" name="id" value="'.$row["id"].'">
