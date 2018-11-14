@@ -355,6 +355,18 @@ alter table item_cautela add CONSTRAINT fk_Cautela FOREIGN key (idCautela) REFER
 
 alter table item_cautela add CONSTRAINT fk_Item FOREIGN key (idItem) REFERENCES item (id);
 
+CREATE TRIGGER `tgr_Inspecao_add` AFTER INSERT ON `cautela`
+ FOR EACH ROW BEGIN
+	IF NEW.permanente = 1 THEN 
+		INSERT INTO Inspecao (idCautela, dataUltima, dataProxima, situacao) 
+			values (	NEW.id, 
+                    	CURDATE(), 
+                    	DATE_ADD(CURDATE(), INTERVAL 3 MONTH), 
+                    	'Em dia'
+                   );
+	END IF;
+END
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

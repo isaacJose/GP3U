@@ -19,6 +19,21 @@ class InspecaoDao {
         }
     }
 
+    function realizaInspecao(conexao $conn, Inspecao $inspecao){
+        $query = "UPDATE inspecao SET 
+                dataUltima = CURDATE(), 
+                dataProxima = DATE_ADD(CURDATE(), INTERVAL 3 MONTH), 
+                situacao = 'Em dia'
+                WHERE id = '{$inspecao->getId()}'";
+        
+        
+        if (mysqli_query($conn->conecta(), $query)) {
+            echo "Atualização realizada com sucesso!";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        }
+    }
+
     function recuperaIdCautela(conexao $conn, $id) {
         $query = "SELECT idCautela FROM inspecao WHERE id = ".$id;
         
