@@ -154,8 +154,8 @@ include 'includes/header.html';
                     <div class="form-group">
                       <label>Tipo de Cautela</label>
                       <select id="permanente" name="permanente" class="form-control">
-                          <option value="1">Permanente</option>
                           <option value="0">Temporária</option>
+                          <option value="1">Permanente</option>
                       </select>
                     </div>
                   </div>

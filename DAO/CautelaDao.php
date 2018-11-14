@@ -202,28 +202,30 @@ class CautelaDao {
       
         $query = "SELECT a.*, b.nome_funcional as recebedor 
         FROM (SELECT
-                c.id,
-                IF(c.permanente=1, 'Permanente', 'Temporária') AS permanente,
-                IF(c.aberta=1, 'Aberta', 'Fechada') AS aberta,
-                c.dataRetirada,
-                c.vencimento,
-                c.dataEntrega,
-                c.idPolicial,
-                c.idDespachante,
-                c.idRecebedor,
-                o.graduacao as grad_despachante,
-                o.nome_funcional as despachante,
-                p.nome_funcional as nome_policial,
-                p.graduacao as grad_policial,
-                date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
-                date_format(vencimento,'%d/%m/%Y') AS dataVencimentoFormatada,
-                date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada,
-                --IF(permanente=1, 'Aberta', 'Fechada')
-            FROM
-                cautela c, policial p, operador o
-            WHERE
-                c.aberta = 1 and p.id = c.idPolicial and o.id = idDespachante) a LEFT JOIN operador b
-                ON a.idRecebedor = b.id";
+                    c.id,
+                    IF(c.permanente=1, 'Permanente', 'Temporária') AS permanente,
+                    IF(c.aberta=1, 'Aberta', 'Fechada') AS aberta,
+                    c.dataRetirada,
+                    c.vencimento,
+                    c.dataEntrega,
+                    c.idPolicial,
+                    c.idDespachante,
+                    c.idRecebedor,
+                    o.graduacao as grad_despachante,
+                    o.nome_funcional as despachante,
+                    p.nome_funcional as nome_policial,
+                    p.graduacao as grad_policial,
+                    date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
+                    date_format(vencimento,'%d/%m/%Y') AS dataVencimentoFormatada,
+                    date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada,
+                    --IF(permanente=1, 'Aberta', 'Fechada')
+                FROM
+                    cautela c, policial p, operador o
+                WHERE
+                    c.aberta = 1 and p.id = c.idPolicial and o.id = idDespachante
+                ORDER BY c.id DESC) a LEFT JOIN operador b
+            ON a.idRecebedor = b.id
+            ORDER BY a.id DESC";
         
       //$query = "SELECT c.id AS id, 
       //c.permanente AS permanente, 
