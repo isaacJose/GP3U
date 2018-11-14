@@ -135,11 +135,11 @@ include 'includes/header.html';
                       <th>Tipo</th>
                       <th>Situação</th>
                       <th>Retirada</th>
-                      <th>vencimento</th>
-                      <th>Entrega</th>
+                      <th>Vencimento</th>
+                      <!-- <th>Entrega</th> -->
                       <th>Policial</th>
                       <th>Despachante</th>
-                      <th>Recebedor</th>
+                      <!-- <th>Recebedor</th> -->
                       <th></th>
                     </tr>
                   </thead>            

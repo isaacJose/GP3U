@@ -18,7 +18,7 @@ class CautelaDao {
             '{$cautela->getPermanente()}',
             1,
             CURDATE(),
-            CURDATE()+1,
+            IF('{$cautela->getPermanente()}' = 0, CURDATE()+1, NULL),
             NULL,
             '{$cautela->getIdPolicial()}',
             '{$cautela->getIdDespachante()}',
@@ -200,24 +200,30 @@ class CautelaDao {
     function lista(conexao $conn) {
 
       
-        $query = "SELECT
-        id,
-        IF(permanente=1, 'Permanente', 'Temporária') AS permanente,
-        IF(aberta=1, 'Aberta', 'Fechada') AS aberta,
-        dataRetirada,
-        vencimento,
-        dataEntrega,
-        idPolicial,
-        idDespachante,
-        idRecebedor,
-        date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
-        date_format(vencimento,'%d/%m/%Y') AS dataencimentoFormatada,
-        date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada,
-        --IF(permanente=1, 'Aberta', 'Fechada')
-    FROM
-        cautela
-    WHERE
-        aberta = 1";
+        $query = "SELECT a.*, b.nome_funcional as recebedor 
+        FROM (SELECT
+                c.id,
+                IF(c.permanente=1, 'Permanente', 'Temporária') AS permanente,
+                IF(c.aberta=1, 'Aberta', 'Fechada') AS aberta,
+                c.dataRetirada,
+                c.vencimento,
+                c.dataEntrega,
+                c.idPolicial,
+                c.idDespachante,
+                c.idRecebedor,
+                o.graduacao as grad_despachante,
+                o.nome_funcional as despachante,
+                p.nome_funcional as nome_policial,
+                p.graduacao as grad_policial,
+                date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
+                date_format(vencimento,'%d/%m/%Y') AS dataVencimentoFormatada,
+                date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada,
+                --IF(permanente=1, 'Aberta', 'Fechada')
+            FROM
+                cautela c, policial p, operador o
+            WHERE
+                c.aberta = 1 and p.id = c.idPolicial and o.id = idDespachante) a LEFT JOIN operador b
+                ON a.idRecebedor = b.id";
         
       //$query = "SELECT c.id AS id, 
       //c.permanente AS permanente, 
@@ -242,18 +248,18 @@ class CautelaDao {
         
         $result = mysqli_query($conn->conecta(), $query);
 
-        if (mysqli_num_rows($result) > 0) {
+        if ($result){
             while($row = mysqli_fetch_assoc($result)) { 
                 echo '<tr>';
                         
                     echo '<td>' . $row["permanente"] . '</td>';
                     echo '<td>' . $row["aberta"] . '</td>';
                     echo '<td>' . $row["dataRetiradaFormatada"] . '</td>';
-                    echo '<td>' . $row["dataencimentoFormatada"] . '</td>';
-                    echo '<td>' . $row["dataEntregaFormatada"] . '</td>';
-                    echo '<td>' . $row["idPolicial"] . '</td>';
-                    echo '<td>' . $row["idDespachante"] . '</td>';
-                    echo '<td>' . $row["idRecebedor"] . '</td>';
+                    echo '<td>' . $row["dataVencimentoFormatada"] . '</td>';
+                    //echo '<td>' . $row["dataEntregaFormatada"] . '</td>';
+                    echo '<td>' . $row["grad_policial"] ." ". $row["nome_policial"] . '</td>';
+                    echo '<td>' . $row["grad_despachante"] ." ". $row["despachante"] . '</td>';
+                    //echo '<td>' . $row["recebedor"] . '</td>';
                     echo '<td align="center">
                             <form name="formItem1" action="../controller/CautelaController.php" method="POST">
                                 <button type="submit" name="devolver" value="" class="btn btn-primary btn-xs">Devolver</button>

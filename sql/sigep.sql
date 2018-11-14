@@ -76,11 +76,11 @@ CREATE TABLE IF NOT EXISTS `cautela` (
   `permanente` tinyint(1) NOT NULL,
   `aberta` tinyint(1) NOT NULL,
   `dataRetirada` date NOT NULL,
-  `vencimento` date NOT NULL,
+  `vencimento` date,
   `dataEntrega` date,
-  `idPolicial` bigint(20) NOT NULL,
-  `idDespachante` bigint(20) NOT NULL,
-  `idRecebedor` bigint(20) NOT NULL,
+  `idPolicial` bigint(20),
+  `idDespachante` bigint(20),
+  `idRecebedor` bigint(20),
   PRIMARY KEY (`id`)
 
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
