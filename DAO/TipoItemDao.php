@@ -7,7 +7,7 @@ if(!isset($_SESSION)){
 class TipoItemDao{    
     
     function listaSelect(conexao $conn) {
-        $query = "SELECT id, descricao FROM tipo_item";
+        $query = "SELECT id, descricao FROM tipo_item ORDER BY descricao";
         $result = mysqli_query($conn->conecta(), $query);
 
         if (mysqli_num_rows($result) > 0) {

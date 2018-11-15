@@ -12,6 +12,7 @@ include 'includes/header.html';
 <?php
 include 'includes/style/ItemViewCadastrar.html';
 ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <body id="page-top">
 
@@ -178,7 +179,7 @@ include 'includes/style/ItemViewCadastrar.html';
                     </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div id="div_validade" class="col-lg-4">
                     <div class="form-group">
                       <label>Validade</label>
                       <input type="date" id="validade" name="validade" class="form-control" required>
@@ -240,6 +241,8 @@ include 'includes/style/ItemViewCadastrar.html';
           </div>
         </div>
         <br>
+        
+        
 
 
         <!-- /.container-fluid -->
@@ -278,6 +281,8 @@ include 'includes/style/ItemViewCadastrar.html';
       </div>
     </div>
 
+    
+
     <?php
       include 'includes/modalabout.html'
     ?>
@@ -289,3 +294,16 @@ include 'includes/style/ItemViewCadastrar.html';
   </body>
 
 </html>
+
+<script language="javascript">
+$(document).ready(function() {
+    $('#div_validade').hide(); 
+    $('#id_tipo_item').change(function(){
+        if($('#id_tipo_item').val() == "1") { //O código do Colete Balístico é 1
+            $('#div_validade').show(); 
+        } else {
+            $('#div_validade').hide(); 
+        } 
+    });
+});
+</script>
