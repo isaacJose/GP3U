@@ -355,6 +355,10 @@ alter table item_cautela add CONSTRAINT fk_Cautela FOREIGN key (idCautela) REFER
 
 alter table item_cautela add CONSTRAINT fk_Item FOREIGN key (idItem) REFERENCES item (id);
 
+-- Cria um registro na tabela inspeção logo após a criação de uma cautela permanente
+-- O trigger também seta a data da próxima inspeção para 3 meses depois
+DELIMITER $$
+DROP TRIGGER IF EXISTS `tgr_Inspecao_add`;
 CREATE TRIGGER `tgr_Inspecao_add` AFTER INSERT ON `cautela`
  FOR EACH ROW BEGIN
 	IF NEW.permanente = 1 THEN 
@@ -365,7 +369,39 @@ CREATE TRIGGER `tgr_Inspecao_add` AFTER INSERT ON `cautela`
                     	'Em dia'
                    );
 	END IF;
-END
+END $$
+DELIMITER ;
+
+-- Deleta a inspeção após fechar a cautela permanente
+DELIMITER $$
+DROP TRIGGER IF EXISTS `tgr_Inspecao_delete`;
+CREATE TRIGGER `tgr_Inspecao_delete` AFTER UPDATE ON `cautela`
+ FOR EACH ROW BEGIN
+	IF NEW.aberta = 0 and NEW.permanente = 1 THEN 
+		DELETE FROM Inspecao
+        WHERE idCautela = NEW.id;
+	END IF;
+END $$
+DELIMITER ;
+
+-- Privilégios para que os eventos possam rodar
+SET GLOBAL event_scheduler := 1;
+
+-- Rotina diária de verificação das inspeções vencidas
+-- Executada todos os dias às 6 da manhã
+DELIMITER $$
+DROP EVENT IF EXISTS `InspecaoVencida`;
+CREATE DEFINER=`root`@`localhost` EVENT `InspecaoVencida`
+ON SCHEDULE 
+EVERY 1 DAY 
+STARTS '2018-11-14 06:00:00' 
+ON COMPLETION PRESERVE ENABLE 
+DO 
+BEGIN
+  UPDATE inspecao SET situacao = 'Atrasada'
+  WHERE situacao = 'Em dia' and dataProxima <= CURDATE();
+END $$
+DELIMITER ;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
