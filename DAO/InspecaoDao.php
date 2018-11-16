@@ -135,45 +135,7 @@ class InspecaoDao {
                     echo '<td>' . $row["dataUltima"] . '</td>';
                     echo '<td>' . $row["dataProxima"] . '</td>';
                     echo '<td>' . $row["situacao"] . '</td>';
-                    
-                    /*echo '<td align="center">
-                    <form name="formInspecao1" action="../view/InspecaoViewEditar.php" method="POST">
-                           <button type="submit" name="editar1" value="" class="btn btn-primary btn-xs">Editar</button>
-                           <input type="hidden" name="id" value="'.$row["idInspecao"].'">
-                           </form>
-                        </td>';
-
-                    echo '<td align="center">                                
-                    <button name="excluir" value="" class="btn btn-danger btn-xs"
-                    type="button" data-toggle="modal" data-target="#modalDeleteItem'.$row["idInspecao"].'">Excluir</button>                                    
-                     </td>';
-
-           //Modal para confirmar a exclusão dos itens selecionados
-           //Devemos passar tanto o ID como a SIGLA para que o modal possa exibir e exluir o item
-           echo        '<!-- Modal -->
-                       <div class="modal fade" id="modalDeleteInspecao'.$row["idInspecao"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-                       <div class="modal-dialog modal-dialog-centered" role="document">
-                           <div class="modal-content">
-                           <div class="modal-header">
-                               <h5 class="modal-title" id="TituloModalCentralizado">Aviso de exclusão</h5>
-                               <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                               <span aria-hidden="true">&times;</span>
-                               </button>
-                           </div>
-                           <div class="modal-body">
-                               Deseja realmente excluir a inspeção <strong>'.$row["idInspecao"].'</strong>?
-                           </div>
-                           <div class="modal-footer">
-                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                               <form name="formunidade2" action="../controller/InspecaoController.php" method="POST">
-                                   <button type="submit" name="excluir" value="" class="btn btn-danger">Excluir</button>
-                                   <input type="hidden" name="id" value="'.$row["idInspecao"].'">
-                               </form>
-                           </div>
-                           </div>
-                       </div>
-                       </div>';
-           echo    '</tr>';  */
+                                     
         }  
         } else {
             echo "0 results";
