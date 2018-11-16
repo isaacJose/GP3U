@@ -182,7 +182,7 @@ include 'includes/style/ItemViewCadastrar.html';
                 <div id="div_validade" class="col-lg-4">
                     <div class="form-group">
                       <label>Validade</label>
-                      <input type="date" id="validade" name="validade" class="form-control" required>
+                      <input type="date" id="validade" name="validade" class="form-control">
                     </div>
                 </div>
 
@@ -301,8 +301,10 @@ $(document).ready(function() {
     $('#id_tipo_item').change(function(){
         if($('#id_tipo_item').val() == "1") { //O código do Colete Balístico é 1
             $('#div_validade').show(); 
+            $('#validade').prop('required',true);
         } else {
-            $('#div_validade').hide(); 
+            $('#div_validade').hide();
+            $('#validade').prop('required',false); 
         } 
     });
 });
