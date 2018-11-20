@@ -4,6 +4,7 @@ include '../validasessaoativa.php';
 include '../validasessao.php';
 include_once '../controller/CautelaController.php';
 include_once '../controller/PolicialController.php';
+include_once '../controller/ItemController.php';
 include 'includes/header.html';
 ?>
 
@@ -159,6 +160,12 @@ include 'includes/header.html';
                       </select>
                     </div>
                   </div>
+                  <div class="row">
+                      <div class="col-lg-5">
+                        
+                      </div>
+                  </div>                  
+          
                   <!--
                    <div class="col-lg-4">
                     <div class="form-group">
@@ -221,6 +228,7 @@ include 'includes/header.html';
                     <div class="row">
                       <div class="col-lg-12">
                         <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
+                        <button type="button" data-toggle="modal" data-target="#modalAddItem" name="addItem" class="btn btn-primary">Adicionar Item</button>
                         <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                       </div>
                     </div>
@@ -278,3 +286,57 @@ include 'includes/header.html';
   </body>
 
 </html>
+
+<div id="modalAddItem" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+        <h4 class="modal-title" id="classModalLabel">
+              Class Info
+            </h4>
+      </div>
+      <div class="modal-body">
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+            <i class="material-icons">grid_on</i>
+              <span class="spanmenu">Itens cadastrados</span>
+            </div>
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Tipo</th>
+                      <th>Fabricante</th>
+                      <th>Modelo</th>
+                      <th>Serial</th>
+                      <th>Qtd</th>
+                      <th>Situação</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      $lista = new ItemController();
+                      $lista->listaItemModal();
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
