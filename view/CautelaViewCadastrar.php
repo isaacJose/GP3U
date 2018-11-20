@@ -143,6 +143,7 @@ include 'includes/header.html';
                          <div class="form-group">
                             <label>Policial</label>
                             <select id="idPolicial" name="idPolicial" class="form-control" required>
+                              <option value="">-- Selecione um policial --</option>
                             <?php
                               $opt = new PolicialController();
                               $opt->listaOptions();
@@ -154,7 +155,8 @@ include 'includes/header.html';
                     <div class="col-lg-6">
                     <div class="form-group">
                       <label>Tipo de Cautela</label>
-                      <select id="permanente" name="permanente" class="form-control">
+                      <select id="permanente" name="permanente" class="form-control" required>
+                          <option value="">-- Selecione o tipo --</option>
                           <option value="0">Temporária</option>
                           <option value="1">Permanente</option>
                       </select>
@@ -238,7 +240,42 @@ include 'includes/header.html';
             </div>
           </div>
         </div>
-        <br>
+
+                  <div class="container-fluid">
+
+           
+            <!-- DataTables Example -->
+            <div class="card mb-3">
+              <div class="card-header">
+              <i class="material-icons">grid_on</i>
+                <span class="spanmenu">Itens cadastrados</span>
+              </div>
+
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Tipo</th>
+                        <th>Fabricante</th>
+                        <th>Modelo</th>
+                        <th>Serial</th>
+                        <th>Qtd</th>                                                
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        $lista = new ItemController();
+                        $lista->listaItemTeste();
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>            
+            </div>
+          
         
         <!-- /.container-fluid -->
 

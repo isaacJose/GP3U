@@ -334,24 +334,62 @@ class ItemDao {
       
       $result = mysqli_query($conn->conecta(), $query);
 
-      if ($result) {
-          while($row = mysqli_fetch_assoc($result)) {
-              echo '<tr>';
-                  echo '<td>' . $row["tipo"] . '</td>';
-                  echo '<td>' . $row["fabricante"] . '</td>';
-                  echo '<td>' . $row["modelo"] . '</td>';
-                  echo '<td>' . $row["serial"] . '</td>';
-                  echo '<td>' . $row["quantidade"] . '</td>';
-                  echo '<td>' . $row["situacao"] . '</td>';
+    if ($result) {
+        while($row = mysqli_fetch_assoc($result)) {
+            echo '<tr>';
+                echo '<td>' . $row["tipo"] . '</td>';
+                echo '<td>' . $row["fabricante"] . '</td>';
+                echo '<td>' . $row["modelo"] . '</td>';
+                echo '<td>' . $row["serial"] . '</td>';
+                echo '<td>' . $row["quantidade"] . '</td>';
+                echo '<td>' . $row["situacao"] . '</td>';
 
-                  echo '<td align="center">                                
-                      <button name="adicionar" value="" class="btn btn-success btn-xs"
-                      type="button">Adicionar</button>                                    
-                   </td>';                             
+                echo '<td align="center">                                
+                    <button name="adicionar" value="" class="btn btn-success btn-xs"
+                    type="button">Adicionar</button>                                    
+                </td>';                             
               }
-              } else {
-                  echo "0 results";
-              }  
-      
-  } 
+    } else {
+        echo "0 results";
+    }      
+  }
+
+  function listaTeste(conexao $conn) {
+        
+        $query = "SELECT i.id AS id, 
+                i.serial AS serial, 
+                i.modelo AS modelo, 
+                i.estoque AS quantidade, 
+                i.estoque_danificado AS estoque_danificado, 
+                i.situacao AS situacao, 
+                i.validade AS validade, 
+                i.observacoes AS observacoes, 
+                i.id_subunidade AS id_subunidade, 
+                i.id_tipo_item AS id_tipo_item, 
+                i.id_fabricante AS id_fabricante, 
+                t.descricao AS tipo, 
+                f.descricao AS fabricante 
+                FROM item i, tipo_item t, fabricante f 
+                WHERE i.id_tipo_item = t.id AND i.id_fabricante = f.id and i.estoque > 0";
+    
+    $result = mysqli_query($conn->conecta(), $query);
+
+    if ($result) {
+        while($row = mysqli_fetch_assoc($result)) {
+            echo '<tr>';
+                echo '<td>' . $row["tipo"] . '</td>';
+                echo '<td>' . $row["fabricante"] . '</td>';
+                echo '<td>' . $row["modelo"] . '</td>';
+                echo '<td>' . $row["serial"] . '</td>';
+                echo '<td>' . $row["quantidade"] . '</td>';                
+
+                echo '<td align="center">                                
+                    <button name="adicionar" value="" class="btn btn-danger btn-xs"
+                    type="button">Remover</button>                                    
+                </td>';                             
+            }
+    } else {
+        echo "0 results";
+    }      
+    } 
 }

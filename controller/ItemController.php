@@ -19,6 +19,12 @@ class ItemController {
         $itemDao = new ItemDao();
         $itemDao->listaModal($conexao);
     }
+
+    public function listaItemTeste() {
+        $conexao = new conexao();
+        $itemDao = new ItemDao();
+        $itemDao->listaTeste($conexao);
+    }
     
     //done
     public function insereItem() {
