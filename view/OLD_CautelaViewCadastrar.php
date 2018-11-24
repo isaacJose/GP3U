@@ -166,29 +166,72 @@ include 'includes/header.html';
                       <div class="col-lg-5">
                         
                       </div>
-                  </div>
-
-                  <div class="input-group mb-3 col-lg-6">
-                        <input id="serialItem" type="text" class="form-control" placeholder="Nº de série ou código do item" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <input id="qtdItem" type="text" class="form-control" placeholder="Quantidade" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button id="btnAdicionarItem" class="btn btn-outline-success" type="button">Adicionar item</button>                            
-                        </div>
-                    </div>                  
+                  </div>                  
           
-                  
+                  <!--
+                   <div class="col-lg-4">
+                    <div class="form-group">
+                      <label>Situação</label>
+                      <select id="aberta" name="aberta" class="form-control">
+                          <option value="1">Aberta</option>
+                          <option value="0">Fechada</option>
+                      </select>
+                    </div>
+                  </div>
+                      
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label>Data de Retirada</label>
+                            <input type="date" class="form-control" id="dataRetirada" name="dataRetirada" required>
+                          </div>
+                        </div>
+                        
+                        <div class="col-lg-4">
+                          <div class="form-group">
+                            <label>Vencimento</label>
+                            <input type="date" class="form-control" id="vencimento" name="vencimento" required>
+                          </div>
+                        </div>
+
+                         <div class="col-lg-4">
+                          <div class="form-group">
+                            <label>Data de Entrega</label>
+                            <input type="date" class="form-control" id="dataEntrega" name="dataEntrega" required>
+                          </div>
+                        </div>
+                    
+                     <div class="col-lg-4">
+                         <div class="form-group">
+                            <label>Despachante</label>
+                            <select id="idDespachante" id="idDespachante" name="idDespachante" class="form-control" required>
+                            <?php
+                              //$opt = new PolicialController();
+                              //$opt->listaOptions();
+                            ?>
+                            </select>
+                        </div>
+                      </div> 
+
+                      <div class="col-lg-4">
+                         <div class="form-group">
+                            <label>Recebedor</label>
+                            <select id="idRecebedor" id="idRecebedor"name="idRecebedor" class="form-control" required>
+                            <?php
+                             // $opt = new PolicialController();
+                             // $opt->listaOptions();
+                            ?>
+                            </select>
+                        </div>
+                      </div>  -->
 
                       </div>
                       <!-- Tabela de acrodo com os docs do projeto -->
                     </div>
-
-                    
-
                     <div class="row">
                       <div class="col-lg-12">
-                        <button type="submit" name="cadastrar" class="btn btn-success">Finalizar cautela</button>
-                        <!-- <button type="button" data-toggle="modal" data-target="#modalAddItem" name="addItem" class="btn btn-primary">Adicionar Item</button> -->
-                        <input type="reset" class="btn btn-secundary" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
+                        <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
+                        <button type="button" data-toggle="modal" data-target="#modalAddItem" name="addItem" class="btn btn-primary">Adicionar Item</button>
+                        <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                       </div>
                     </div>
                   </div>
@@ -205,7 +248,7 @@ include 'includes/header.html';
             <div class="card mb-3">
               <div class="card-header">
               <i class="material-icons">grid_on</i>
-                <span class="spanmenu">Itens inseridos</span>
+                <span class="spanmenu">Itens cadastrados</span>
               </div>
 
               <div class="card-body">
@@ -224,7 +267,7 @@ include 'includes/header.html';
                     <tbody>
                       <?php
                         $lista = new ItemController();
-                        //$lista->listaItemTeste();
+                        $lista->listaItemTeste();
                       ?>
                     </tbody>
                   </table>
@@ -281,20 +324,56 @@ include 'includes/header.html';
 
 </html>
 
-<script>
-    btnAdicionarItem.on('click', (event)=>{
-        var serial_entrada = $('input[name=serialItem]');
-        var quantidade_entrada = $('input[name=qtdItem]');
+<div id="modalAddItem" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+        <h4 class="modal-title" id="classModalLabel">
+              Class Info
+            </h4>
+      </div>
+      <div class="modal-body">
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+            <i class="material-icons">grid_on</i>
+              <span class="spanmenu">Itens cadastrados</span>
+            </div>
 
-        $.ajax({
-            url: '#', //controller de processamento
-            type: 'POST';
-            data: {
-
-            },
-
-            dataType: 
-        });
-    });
-<script>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Tipo</th>
+                      <th>Fabricante</th>
+                      <th>Modelo</th>
+                      <th>Serial</th>
+                      <th>Qtd</th>
+                      <th>Situação</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                      $lista = new ItemController();
+                      $lista->listaItemModal();
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
