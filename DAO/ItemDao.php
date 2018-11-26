@@ -392,4 +392,29 @@ class ItemDao {
         echo "0 results";
     }      
     } 
+
+    public function getBySerialForCautela(conexao $conn, $serial, $quantidade){
+        
+        $encontrado = new Item();
+        $query = "SELECT * FROM item WHERE serial = $serial and (estoque > $quantidade or estoque = $quantidade)";
+        
+        $result = mysqli_query($conn->conecta(), $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $encontrado->setId($row['id']);
+                $encontrado->setSerial($serial);
+                $encontrado->setModelo($row['modelo']);
+                $encontrado->setEstoque($row['estoque']);
+                $encontrado->setEstoque_danificado($row['estoque_danificado']);
+                $encontrado->setSituacao($row['situacao']);
+                $encontrado->setValidade($row['validade']);
+                $encontrado->setObservacoes($row['observacoes']);
+                $encontrado->setId_fabricante($row['id_fabricante']);
+                $encontrado->setId_subunidade($row['id_subunidade']);
+                $encontrado->setId_tipo_item($row['id_tipo_item']);
+            }
+        }         
+        return $encontrado;
+    }
 }

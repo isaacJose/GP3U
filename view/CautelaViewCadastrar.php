@@ -282,6 +282,7 @@ include 'includes/header.html';
 </html>
 
 <script>
+$(document).ready(function(){
     btnAdicionarItem.on('click', (event)=>{
         var serial_entrada = $('input[name=serialItem]');
         var quantidade_entrada = $('input[name=qtdItem]');
@@ -296,5 +297,6 @@ include 'includes/header.html';
             dataType: 
         });
     });
+  });
 <script>
 
