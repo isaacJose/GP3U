@@ -11,7 +11,7 @@ include 'includes/header.html';
   <?php
   include 'includes/style/CautelaViewCadastrar.html';
   ?>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -210,7 +210,7 @@ include 'includes/header.html';
 
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+                  <table class="table table-bordered table-hover table-sm" id="dataTableItems" width="100%" cellspacing="0">
                     <thead>
                       <tr>
                         <th>Tipo</th>
@@ -283,20 +283,43 @@ include 'includes/header.html';
 
 <script>
 $(document).ready(function(){
-    btnAdicionarItem.on('click', (event)=>{
-        var serial_entrada = $('input[name=serialItem]');
-        var quantidade_entrada = $('input[name=qtdItem]');
-
-        $.ajax({
-            url: '#', //controller de processamento
-            type: 'POST';
-            data: {
-
-            },
-
-            dataType: 
-        });
+    
+    $('#btnAdicionarItem').on('click', function(){
+        var serialItem = $('#serialItem').val();
+        var qtdItem = $('#qtdItem').val();
+        $.ajax
+            ({
+                type: 'POST',
+                dataType: 'json',
+                url: '../controller/ItemCautelaController.php',
+                data:
+                {
+                    serialItem: serialItem,
+                    qtdItem: qtdItem
+                },
+                success: function(data)
+                {                    
+                    $('#dataTableItems tbody:last-child').append
+                    (
+                        '<tr>' +
+                            '<td>' + data[0].id_tipo_item + '</td>' +
+                            '<td>' + data[0].id_fabricante + '</td>' +
+                            '<td>' + data[0].modelo + '</td>' +
+                            '<td>' + data[0].serial + '</td>' +
+                            '<td>' + qtdItem + '</td>' +
+                            '<td>' + 'Botão' + '</td>' +
+                        '</tr>'
+                    );
+                    alert("Item adicionado");
+                    $('#serialItem').val('');
+                    $('#qtdItem').val('');
+                },
+                error: function()
+                {
+                    alert("Deu alguma merda");
+                }
+            });
     });
-  });
-<script>
+});
+</script>
 
