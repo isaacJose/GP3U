@@ -12,6 +12,7 @@ include 'includes/header.html';
   include 'includes/style/CautelaViewCadastrar.html';
   ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -186,8 +187,8 @@ include 'includes/header.html';
 
                     <div class="row">
                       <div class="col-lg-12">
-                        <button type="submit" name="cadastrar" class="btn btn-success">Finalizar cautela</button>
-                        <!-- <button type="button" data-toggle="modal" data-target="#modalAddItem" name="addItem" class="btn btn-primary">Adicionar Item</button> -->
+                        <button id="btnCadastrarCautela" type="submit" name="cadastrar" class="btn btn-success">Finalizar cautela</button>
+                        <button type="button" id="teste" name="teste" class="btn btn-primary">Teste DB</button> -->
                         <input type="reset" class="btn btn-secundary" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                       </div>
                     </div>
@@ -213,12 +214,11 @@ include 'includes/header.html';
                   <table class="table table-bordered table-hover table-sm" id="dataTableItems" width="100%" cellspacing="0">
                     <thead>
                       <tr>
-                        <th>Tipo</th>
-                        <th>Fabricante</th>
+                        <th>Id</th>
                         <th>Modelo</th>
                         <th>Serial</th>
                         <th>Qtd</th>                                                
-                        <th></th>
+                        <th>Ações</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -287,6 +287,7 @@ $(document).ready(function(){
     $('#btnAdicionarItem').on('click', function(){
         var serialItem = $('#serialItem').val();
         var qtdItem = $('#qtdItem').val();
+        var botaoRemove = '<button class="btn btn-danger btn-xs remove">Remover item</button>';
         $.ajax
             ({
                 type: 'POST',
@@ -302,12 +303,11 @@ $(document).ready(function(){
                     $('#dataTableItems tbody:last-child').append
                     (
                         '<tr>' +
-                            '<td>' + data[0].id_tipo_item + '</td>' +
-                            '<td>' + data[0].id_fabricante + '</td>' +
+                            '<td>' + data[0].id + '</td>' +
                             '<td>' + data[0].modelo + '</td>' +
                             '<td>' + data[0].serial + '</td>' +
                             '<td>' + qtdItem + '</td>' +
-                            '<td>' + 'Botão' + '</td>' +
+                            '<td align="center">' + botaoRemove + '</td>' +
                         '</tr>'
                     );
                     alert("Item adicionado");
@@ -319,6 +319,51 @@ $(document).ready(function(){
                     alert("Deu alguma merda");
                 }
             });
+    });
+
+    //remover linha dos itens inseridos
+    $(document).on('click', '.remove', function(){
+        $(this).parents('tr').remove();
+        swal("Item removido!")
+    });
+
+    //botão finalizar cautela
+    $('#teste').on('click', function(){
+        var table_data = [];
+        
+        //foreach para pegar os dados
+        $('#dataTableItems tr').each(function(row, tr){
+            
+            if($(tr).find('td:eq(0)').text() == ""){
+
+            }
+            else{
+                var sub = {
+                    'permanente' : $('#permanente').val(),
+                    'id_policial' : $('#idPolicial').val(),
+                    'id_item' : $(tr).find('td:eq(0)').text(),
+                    'quantidade' : $(tr).find('td:eq(3)').text()
+                };
+
+                table_data.push(sub);
+                console.log(table_data);
+            }
+        });
+
+        $.ajax
+            ({
+                type: 'POST',
+                dataType: 'json',
+                url: '../controller/VandersonController.php',
+                data:
+                {
+                    table_data: table_data
+                },
+                success: function(response)
+                {                    
+                    swal("Parece que deu certo!");
+                }
+            });        
     });
 });
 </script>
