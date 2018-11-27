@@ -33,7 +33,7 @@ class ItemDao {
         if (mysqli_query($conn->conecta(), $query)) {
             echo "Novo cadastro realizado com sucesso!";
         } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+            echo "Error: " . $query . "<br>" . mysqli_error($conexao->conecta());
         }
     }
     //ok

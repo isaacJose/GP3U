@@ -310,7 +310,7 @@ $(document).ready(function(){
                             '<td align="center">' + botaoRemove + '</td>' +
                         '</tr>'
                     );
-                    alert("Item adicionado");
+                    //alert("Item adicionado");
                     $('#serialItem').val('');
                     $('#qtdItem').val('');
                 },
@@ -345,25 +345,45 @@ $(document).ready(function(){
                     'quantidade' : $(tr).find('td:eq(3)').text()
                 };
 
-                table_data.push(sub);
-                console.log(table_data);
+                var permanente = $('#permanente').val();
+                var id_policial = $('#idPolicial').val();
+                var id_item = $(tr).find('td:eq(0)').text();
+                var quantidade = $(tr).find('td:eq(3)').text();
+                $.ajax({
+                        url: '../controller/VandersonController.php',
+                        method: 'POST',
+                        data : 
+                        { 
+                            permanente : permanente,
+                            id_policial : id_policial,
+                            id_item : id_item,
+                            quantidade : quantidade
+                        }
+                    }); 
+              /*  $.post('VandersonController.php', { 
+                            permanente : $('#permanente').val(),
+                            id_policial : $('#idPolicial').val(),
+                            id_item : $(tr).find('td:eq(0)').text(),
+                            quantidade : $(tr).find('td:eq(3)').text()
+                        }).done(function(data){
+                          swal("VAI POOOORRA");
+                        });*/
+                table_data.push(sub);                
             }
         });
-
-        $.ajax
-            ({
-                type: 'POST',
-                dataType: 'json',
-                url: '../controller/VandersonController.php',
-                data:
-                {
-                    table_data: table_data
-                },
-                success: function(response)
-                {                    
-                    swal("Parece que deu certo!");
-                }
-            });        
+        console.log(table_data);
+        swal("Fim do laço");
+/*        $.ajax({
+            url: '../controller/VandersonController.php',
+            type: 'POST',
+            data : 
+            { 
+                dados : table_data
+            },
+            success : function (data){
+              swal("DISGRAAAAAAAAAAÇA");
+            }
+        }); */
     });
 });
 </script>
