@@ -76,15 +76,16 @@ CREATE TABLE IF NOT EXISTS `cautela` (
   `permanente` tinyint(1) NOT NULL,
   `aberta` tinyint(1) NOT NULL,
   `dataRetirada` date NOT NULL,
-  `vencimento` date,
-  `dataEntrega` date,
-  `idPolicial` bigint(20),
-  `idDespachante` bigint(20),
-  `idRecebedor` bigint(20),
+  `vencimento` date DEFAULT NULL,
+  `dataEntrega` date DEFAULT NULL,
+  `idPolicial` bigint(20) DEFAULT NULL,
+  `idDespachante` bigint(20) DEFAULT NULL,
+  `idRecebedor` bigint(20) DEFAULT NULL,
+  `idItem` bigint(20) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-
+  
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
 
 --
@@ -149,9 +150,9 @@ CREATE TABLE IF NOT EXISTS `item` (
 DROP TABLE IF EXISTS `item_cautela`;
 CREATE TABLE IF NOT EXISTS `item_cautela` (
    `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `idCautela` bigint(20) NOT NULL,
-  `idItem` bigint(20) NOT NULL,
-  `quantidade` int(11) NOT NULL,
+  `idCautela` bigint(20),
+  `idItem` bigint(20),
+  `quantidade` int(11),
    PRIMARY KEY (`id`)
 
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -345,6 +346,8 @@ alter table cautela add CONSTRAINT fk_Despachante FOREIGN key (idDespachante) RE
 
 alter table cautela add CONSTRAINT fk_Recebedor FOREIGN key (idRecebedor) REFERENCES policial (id);
 
+alter table cautela add CONSTRAINT fk_item FOREIGN key (idItem) REFERENCES item (id);
+
 alter table alteracao_cautela add CONSTRAINT fk_cautela FOREIGN key (idCautela) REFERENCES cautela (id);
 
 alter table alteracao_cautela add CONSTRAINT fk_Item FOREIGN key (idItem) REFERENCES item (id);
@@ -358,7 +361,7 @@ alter table item_cautela add CONSTRAINT fk_Item FOREIGN key (idItem) REFERENCES 
 -- Cria um registro na tabela inspeção logo após a criação de uma cautela permanente
 -- O trigger também seta a data da próxima inspeção para 3 meses depois
 DELIMITER $$
-DROP TRIGGER IF EXISTS `tgr_Inspecao_add`;
+-- DROP TRIGGER IF EXISTS `tgr_Inspecao_add`;
 CREATE TRIGGER `tgr_Inspecao_add` AFTER INSERT ON `cautela`
  FOR EACH ROW BEGIN
 	IF NEW.permanente = 1 THEN 
@@ -372,9 +375,22 @@ CREATE TRIGGER `tgr_Inspecao_add` AFTER INSERT ON `cautela`
 END $$
 DELIMITER ;
 
+-- Gatilho para subtrair do estoque a quantidade de itens cadastrados na cautela
+-- Quando uma cautela é cadastrada o gatilho dispara
+DELIMITER $$
+-- DROP TRIGGER IF EXISTS `tgr_Inspecao_add`;
+CREATE TRIGGER `tgr_subtrair` AFTER INSERT ON `cautela`
+ FOR EACH ROW BEGIN 
+		UPDATE `item` i set i.estoque = i.estoque - new.quantidade 
+        WHERE i.id = new.idItem;
+END $$
+DELIMITER ;
+
+
+
 -- Deleta a inspeção após fechar a cautela permanente
 DELIMITER $$
-DROP TRIGGER IF EXISTS `tgr_Inspecao_delete`;
+-- DROP TRIGGER IF EXISTS `tgr_Inspecao_delete`;
 CREATE TRIGGER `tgr_Inspecao_delete` AFTER UPDATE ON `cautela`
  FOR EACH ROW BEGIN
 	IF NEW.aberta = 0 and NEW.permanente = 1 THEN 
@@ -390,7 +406,7 @@ SET GLOBAL event_scheduler := 1;
 -- Rotina diária de verificação das inspeções vencidas
 -- Executada todos os dias às 6 da manhã
 DELIMITER $$
-DROP EVENT IF EXISTS `InspecaoVencida`;
+-- DROP EVENT IF EXISTS `InspecaoVencida`;
 CREATE DEFINER=`root`@`localhost` EVENT `InspecaoVencida`
 ON SCHEDULE 
 EVERY 1 DAY 
