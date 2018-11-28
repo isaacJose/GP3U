@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Nov-2018 às 15:43
+-- Generation Time: 28-Nov-2018 às 18:46
 -- Versão do servidor: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -46,31 +46,26 @@ CREATE TABLE `cautela` (
   `id` bigint(20) NOT NULL,
   `permanente` tinyint(1) NOT NULL,
   `aberta` tinyint(1) NOT NULL,
-  `dataRetirada` date NOT NULL,
-  `vencimento` date DEFAULT NULL,
-  `dataEntrega` date DEFAULT NULL,
+  `dataRetirada` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `vencimento` datetime DEFAULT NULL,
+  `dataEntrega` datetime DEFAULT NULL,
   `idPolicial` bigint(20) NOT NULL,
+  `idItem` bigint(11) DEFAULT NULL,
+  `quantidade` int(11) NOT NULL,
   `idDespachante` bigint(20) DEFAULT NULL,
-  `idRecebedor` bigint(20) DEFAULT NULL,
-  `idItem` int(11) NOT NULL,
-  `quantidade` int(11) NOT NULL
+  `idRecebedor` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `cautela`
 --
 
-INSERT INTO `cautela` (`id`, `permanente`, `aberta`, `dataRetirada`, `vencimento`, `dataEntrega`, `idPolicial`, `idDespachante`, `idRecebedor`, `idItem`, `quantidade`) VALUES
-(37, 1, 0, '2018-11-28', '2018-11-29', NULL, 2, 1, NULL, 7, 14),
-(36, 1, 0, '2018-11-28', '2018-11-29', NULL, 2, 1, NULL, 6, 7),
-(35, 1, 0, '2018-11-28', '2018-11-29', NULL, 5, 1, NULL, 2, 1),
-(34, 1, 0, '2018-11-28', '2018-11-29', NULL, 5, 1, NULL, 1, 1),
-(38, 1, 0, '2018-11-28', '2018-11-29', NULL, 20, 1, NULL, 4, 1),
-(39, 1, 0, '2018-11-28', '2018-11-29', NULL, 1, 1, NULL, 6, 18),
-(40, 1, 0, '2018-11-28', '2018-11-29', NULL, 5, 1, NULL, 10, 1),
-(41, 1, 0, '2018-11-28', '2018-11-29', NULL, 16, 1, NULL, 10, 10),
-(42, 1, 0, '2018-11-28', '2018-11-29', NULL, 24, 1, NULL, 10, 70),
-(43, 1, 0, '2018-11-28', '2018-11-29', NULL, 22, 1, NULL, 10, 15);
+INSERT INTO `cautela` (`id`, `permanente`, `aberta`, `dataRetirada`, `vencimento`, `dataEntrega`, `idPolicial`, `idItem`, `quantidade`, `idDespachante`, `idRecebedor`) VALUES
+(29, 1, 0, '2018-11-28 00:00:00', '2018-11-29 00:00:00', NULL, 1, 3, 2, 1, NULL),
+(30, 1, 0, '2018-11-28 00:00:00', '2018-11-29 00:00:00', NULL, 1, 4, 10, 1, NULL),
+(31, 1, 0, '2018-11-28 00:00:00', '2018-11-29 00:00:00', NULL, 4, 3, 5, 1, NULL),
+(32, 1, 0, '2018-11-28 00:00:00', '2018-11-29 00:00:00', NULL, 4, 4, 3, 1, NULL),
+(33, 1, 1, '2018-11-28 00:00:00', '2018-11-29 00:00:00', NULL, 1, 3, 12, 1, NULL);
 
 --
 -- Acionadores `cautela`
@@ -101,7 +96,7 @@ CREATE TRIGGER `tgr_Cautela_update` AFTER UPDATE ON `cautela` FOR EACH ROW BEGIN
         
 	END IF;
     
-    IF NEW.permanente = 0 and NEW.aberta = 0 THEN
+    IF NEW.permanente = 1 and NEW.aberta = 0 THEN
         
         DELETE FROM Inspecao
         WHERE idCautela = NEW.id;
@@ -155,7 +150,7 @@ CREATE TABLE `inspecao` (
 --
 
 INSERT INTO `inspecao` (`id`, `dataUltima`, `dataProxima`, `situacao`, `idCautela`) VALUES
-(16, '2018-11-28', '2019-02-28', 'Em dia', 43);
+(18, '2018-11-28', '2019-02-28', 'Em dia', 33);
 
 -- --------------------------------------------------------
 
@@ -182,16 +177,21 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id`, `serial`, `modelo`, `estoque`, `estoque_danificado`, `situacao`, `validade`, `observacoes`, `id_subunidade`, `id_tipo_item`, `id_fabricante`) VALUES
-(1, 'SWI048144', 'Tamanho G', 3, 0, 'Operacional', '2018-09-12', 'Sem observações', 1, 1, 1),
-(3, 'lhklhjkljkljkljlkKK', 'HJKHHJK', 1, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 4, 1),
-(4, 'bbb', 'M5', 5, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 8, 2),
-(5, 'aaa', 'SAFEGUARD 844', 10, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 9, 1),
-(6, 'MUN40', 'Munição .40', 150, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 11, 3),
-(7, 'MUN380', 'Munição .380', 100, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 11, 3),
-(8, 'SPRAY_PIMENTA', 'Espargidor de pimenta', 5, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 14, 6),
-(9, 'SPRAY_LACRIMO', 'Espargidor lacrimogênico', 2, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 14, 6),
-(10, 'TONFA', 'Tonfa plástica', 90, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 15, 8),
-(11, 'CB001', 'Tamanho M', 1, 0, 'Operacional', '2019-07-31', 'Sem observações', 1, 1, 4);
+(1, 'SWI048144', 'PT 001', 1, 0, 'Operacional', '2018-09-12', 'teste', 1, 1, 1),
+(2, 'SSAGD8mmmm', 'PT-8000', 0, 1, 'Operacional', '2018-11-23', 'Sem observações', 1, 2, 1),
+(3, 'ALG', 'Oxidada', 23, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 3, 1),
+(4, 'ALGEMA', 'shhsa', 100, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 4, 1),
+(5, 'tttttttt', 'ttttttttttttt', 6, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 6, 3),
+(6, 'SWI048148', 'Tamanho G', 3, 0, 'Operacional', '2018-09-12', 'Sem observações', 1, 1, 1),
+(7, 'lhklhjkljkljkljlkKK', 'HJKHHJK', 1, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 4, 1),
+(8, 'bbb', 'M5', 5, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 8, 2),
+(9, 'aaa', 'SAFEGUARD 844', 10, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 9, 1),
+(10, 'MUN40', 'Munição .40', 150, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 11, 3),
+(11, 'MUN380', 'Munição .380', 100, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 11, 3),
+(12, 'SPRAY_PIMENTA', 'Espargidor de pimenta', 5, 0, 'Operacional', '2018-11-28', 'Sem observações', 1, 6, 6),
+(13, 'SPRAY_LACRIMO', 'Espargidor lacrimogênico', 2, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 14, 6),
+(14, 'TONFA', 'Tonfa plástica', 90, 0, 'Operacional', '0000-00-00', 'Sem observações', 1, 15, 8),
+(15, 'CB001', 'Tamanho M', 1, 0, 'Operacional', '2019-07-31', 'Sem observações', 1, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -201,17 +201,20 @@ INSERT INTO `item` (`id`, `serial`, `modelo`, `estoque`, `estoque_danificado`, `
 
 CREATE TABLE `item_cautela` (
   `id` bigint(20) NOT NULL,
-  `permanente` int(11) DEFAULT NULL,
-  `aberta` int(11) DEFAULT NULL,
-  `idPolicial` int(11) DEFAULT NULL,
-  `dataRetirada` date DEFAULT NULL,
-  `vencimento` date DEFAULT NULL,
-  `dataEntrega` date DEFAULT NULL,
-  `idDespachante` int(11) DEFAULT NULL,
-  `idRecebedor` int(11) DEFAULT NULL,
+  `idCautela` bigint(20) DEFAULT NULL,
   `idItem` bigint(20) NOT NULL,
-  `quantidade` int(11) DEFAULT NULL
+  `quantidade` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `item_cautela`
+--
+
+INSERT INTO `item_cautela` (`id`, `idCautela`, `idItem`, `quantidade`) VALUES
+(10, NULL, 4, 11),
+(9, NULL, 3, 12),
+(8, NULL, 5, 1),
+(7, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -234,16 +237,27 @@ CREATE TABLE `logacesso` (
 --
 
 INSERT INTO `logacesso` (`id`, `matricula`, `nomedoacesso`, `horalogin`, `horalogout`, `datalogin`, `datalogout`) VALUES
-(1, '205.020-0', 'VANDERSON', '09:16:07', '12:43:37', '16/11/2018', '28/11/2018'),
-(2, '205.020-0', 'VANDERSON', '10:21:03', '12:43:37', '16/11/2018', '28/11/2018'),
-(3, '205.020-0', 'VANDERSON', '11:55:00', '12:43:37', '16/11/2018', '28/11/2018'),
-(4, '205.020-0', 'VANDERSON', '08:13:17', '12:43:37', '19/11/2018', '28/11/2018'),
-(5, '205.020-0', 'VANDERSON', '08:13:45', '12:43:37', '20/11/2018', '28/11/2018'),
-(6, '205.020-0', 'VANDERSON', '08:04:48', '12:43:37', '24/11/2018', '28/11/2018'),
-(7, '205.020-0', 'VANDERSON', '09:44:57', '12:43:37', '24/11/2018', '28/11/2018'),
-(8, '205.020-0', 'VANDERSON', '11:03:56', '12:43:37', '24/11/2018', '28/11/2018'),
-(9, '205.020-0', 'VANDERSON', '08:29:51', '12:43:37', '27/11/2018', '28/11/2018'),
-(10, '205.020-0', 'VANDERSON', '09:46:25', '12:43:37', '28/11/2018', '28/11/2018');
+(1, '205.020-0', 'vanderson', '15:17:17', '15:45:49', '09/11/2018', '28/11/2018'),
+(2, '205.020-0', 'vanderson', '15:28:58', '15:45:49', '09/11/2018', '28/11/2018'),
+(3, '205.020-0', 'vanderson', '14:33:42', '15:45:49', '12/11/2018', '28/11/2018'),
+(4, '205.020-0', 'vanderson', '15:36:49', '15:45:49', '13/11/2018', '28/11/2018'),
+(5, '205.020-0', 'vanderson', '18:06:43', '15:45:49', '13/11/2018', '28/11/2018'),
+(6, '205.020-0', 'vanderson', '16:14:28', '15:45:49', '14/11/2018', '28/11/2018'),
+(7, '205.020-0', 'vanderson', '08:49:19', '15:45:49', '15/11/2018', '28/11/2018'),
+(8, '205.020-0', 'vanderson', '10:05:40', '15:45:49', '15/11/2018', '28/11/2018'),
+(9, '205.020-0', 'vanderson', '14:35:31', '15:45:49', '15/11/2018', '28/11/2018'),
+(10, '205.020-0', 'vanderson', '16:12:19', '15:45:49', '15/11/2018', '28/11/2018'),
+(11, '205.020-0', 'vanderson', '15:27:35', '15:45:49', '16/11/2018', '28/11/2018'),
+(12, '205.020-0', 'vanderson', '14:33:08', '15:45:49', '19/11/2018', '28/11/2018'),
+(13, '205.020-0', 'vanderson', '18:30:00', '15:45:49', '19/11/2018', '28/11/2018'),
+(14, '205.020-0', 'vanderson', '14:17:57', '15:45:49', '20/11/2018', '28/11/2018'),
+(15, '205.020-0', 'vanderson', '15:48:46', '15:45:49', '20/11/2018', '28/11/2018'),
+(16, '205.020-0', 'vanderson', '14:29:34', '15:45:49', '26/11/2018', '28/11/2018'),
+(17, '205.020-0', 'vanderson', '14:08:52', '15:45:49', '27/11/2018', '28/11/2018'),
+(18, '205.020-0', 'vanderson', '14:23:39', '15:45:49', '27/11/2018', '28/11/2018'),
+(19, '205.020-0', 'vanderson', '15:58:25', '15:45:49', '27/11/2018', '28/11/2018'),
+(20, '205.020-0', 'vanderson', '17:39:00', '15:45:49', '27/11/2018', '28/11/2018'),
+(21, '205.020-0', 'vanderson', '14:17:23', '15:45:49', '28/11/2018', '28/11/2018');
 
 -- --------------------------------------------------------
 
@@ -268,10 +282,7 @@ CREATE TABLE `operador` (
 --
 
 INSERT INTO `operador` (`id`, `nome`, `graduacao`, `nome_funcional`, `matricula`, `email`, `senha`, `ativo`, `tipo`) VALUES
-(1, 'Vanderson Fábio de Araújo', 'SD', 'VANDERSON', '205.020-0', 'vanderson.fabio@gmail.com', '11111', 1, 'admin'),
-(2, 'Rodrigo Aggeu de Medeiros Lopes', 'SD', 'AGGEU', '111.111-0', 'rodrigoaggeu@gmail.com', '11111', 1, 'admin'),
-(3, 'Isaac José de Oliveira Santos', 'SD', 'ISAAC', '123.321-0', 'oliveiira99.i@gmail.com', '11111', 1, 'admin'),
-(4, 'Bruno Borges da Silva', 'SD', 'Bruno', '321.321-0', 'brunosilv_a@outlook.com', '11111', 1, 'admin');
+(1, 'Vanderson Fábio de Araújo', 'sd', 'vanderson', '205.020-0', 'vanderson.fabio@gmail.com', '11111', 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -295,21 +306,24 @@ CREATE TABLE `policial` (
 --
 
 INSERT INTO `policial` (`id`, `nome`, `graduacao`, `nome_funcional`, `matricula`, `email`, `situacao`, `id_subunidade`) VALUES
-(1, 'Isaac José', 'CB', 'ISAAC JOSÉ', '844.515-1', 'fulano@gmail.com', 'Apto', 1),
-(2, 'Nardiele Mariz Alves', 'MAJ', 'NARDIELE', '999.999-9', 'nardiele.mariz@gmail.com', 'Apto', 7),
-(3, 'SEVERINO PAULINO NETO', '3SGT', 'PAULINO', '555.555-5', 'sgtpaulino@hotmail.com', 'Apto', 2),
-(4, 'DAMIÃO BENVINDO DE LIMA', '2SGT', 'DE LIMA', '425.785-6', 'damiaobenvindo@hotmail.com', 'Apto', 1),
-(5, 'Vanderson Fábio de Araújo', 'CB', 'VANDERSON', '919.000-0', 'vanderson.fabio@gmail.com', 'Apto', 1),
-(16, 'Steven Grant Rogers', 'CAP', 'AMÉRICA', '111.123-0', 'steve@marvel.com', 'Apto', 1),
-(17, 'Thor Odinson', 'ST', 'THOR', '111.123-1', 'thor@marvel.com', 'Apto', 1),
-(18, 'Anthony Edward Stark', 'TC', 'STARK', '111.123-2', 'si@marvel.com', 'Apto', 1),
-(19, 'Robert Bruce Banner', 'CEL', 'HULK', '111.123-3', 'bbanner@marvel.com', 'Apto', 1),
-(20, 'Wanda Maximoff', 'CB', 'MAXIMOFF', '111.123-4', 'wanda@marvel.com', 'Apto', 1),
-(21, 'Natalia Alianovna Romanoff', '2TEN', 'NATASHA', '111.123-5', 'blackwidow@marvel.com', 'Apto', 1),
-(22, 'Peter Benjamin Parker', 'SD', 'PARKER', '111.123-6', 'ps2mj@marvel.com', 'Apto', 1),
-(23, 'Stephen Strange', 'CEL', 'STRANGE', '111.123-7', 'dr_strange@marvel.com', 'Apto', 1),
-(24, 'Thanos', 'CEL', 'THANOS', '111.123-8', 'stones@marvel.com', 'Apto', 1),
-(25, 'Nicholas Joseph Fury', 'CEL', 'FURY', '111.123-9', 'nickfury@marvel.com', 'Apto', 1);
+(1, 'Vanderson Fábio de Araújo', 'SD', 'VANDERSON', '205.020-0', 'vanderson.fabio@gmail.com', 'Apto', 1),
+(2, 'Francimar Lopes', '2TEN', 'FRANCIMAR', '789.789-7', 'email@email.com', 'Apto', 14),
+(4, 'Heitor Gordão', 'ST', 'BLASTOISE', '676.686-8', 'email4@email.com', 'Apto', 12),
+(5, 'Davi Victor Dantas Alves', 'SD', 'DAVI VICTOR', '121.212-1', 'davivictor@gmail.com', 'Apto', 1),
+(6, 'Isaac José', 'CB', 'ISAAC JOSÉ', '844.515-1', 'fulano@gmail.com', 'Apto', 1),
+(7, 'Nardiele Mariz Alves', 'MAJ', 'NARDIELE', '999.999-9', 'nardiele.mariz@gmail.com', 'Apto', 7),
+(8, 'SEVERINO PAULINO NETO', '3SGT', 'PAULINO', '555.555-5', 'sgtpaulino@hotmail.com', 'Apto', 2),
+(9, 'DAMIÃO BENVINDO DE LIMA', '2SGT', 'DE LIMA', '425.785-6', 'damiaobenvindo@hotmail.com', 'Apto', 1),
+(10, 'Steven Grant Rogers', 'CAP', 'AMÉRICA', '111.123-0', 'steve@marvel.com', 'Apto', 1),
+(11, 'Thor Odinson', 'ST', 'THOR', '111.123-1', 'thor@marvel.com', 'Apto', 1),
+(12, 'Anthony Edward Stark', 'TC', 'STARK', '111.123-2', 'si@marvel.com', 'Apto', 1),
+(13, 'Robert Bruce Banner', 'CEL', 'HULK', '111.123-3', 'bbanner@marvel.com', 'Apto', 1),
+(14, 'Wanda Maximoff', 'CB', 'MAXIMOFF', '111.123-4', 'wanda@marvel.com', 'Apto', 1),
+(15, 'Natalia Alianovna Romanoff', '2TEN', 'NATASHA', '111.123-5', 'blackwidow@marvel.com', 'Apto', 1),
+(16, 'Peter Benjamin Parker', 'SD', 'PARKER', '111.123-6', 'ps2mj@marvel.com', 'Apto', 1),
+(17, 'Stephen Strange', 'CEL', 'STRANGE', '111.123-7', 'dr_strange@marvel.com', 'Apto', 1),
+(18, 'Thanos', 'CEL', 'THANOS', '111.123-8', 'stones@marvel.com', 'Apto', 1),
+(19, 'Nicholas Joseph Fury', 'CEL', 'FURY', '111.123-9', 'nickfury@marvel.com', 'Apto', 1);
 
 -- --------------------------------------------------------
 
@@ -364,21 +378,21 @@ CREATE TABLE `tipo_item` (
 
 INSERT INTO `tipo_item` (`id`, `descricao`) VALUES
 (1, 'Colete Balístico'),
-(6, 'Pistola'),
+(2, 'Pistola'),
+(3, 'Fuzil'),
+(4, 'Algema'),
+(5, 'Carabina'),
+(6, 'Spray'),
 (7, 'Revólver'),
-(8, 'Fuzil'),
-(9, 'Escopeta'),
-(10, 'Carabina'),
-(11, 'Munição'),
-(12, 'Algema'),
-(13, 'Colete Reflexivo'),
-(14, 'Spray'),
-(15, 'Tonfa'),
-(16, 'Bastão'),
-(17, 'Carregador'),
-(18, 'Pistola de Choque'),
-(19, 'Capacete'),
-(20, 'Escudo');
+(8, 'Escopeta'),
+(9, 'Munição'),
+(10, 'Colete Reflexivo'),
+(11, 'Tonfa'),
+(12, 'Bastão'),
+(13, 'Carregador'),
+(14, 'Pistola de Choque'),
+(15, 'Capacete'),
+(16, 'Escudo');
 
 -- --------------------------------------------------------
 
@@ -422,8 +436,7 @@ ALTER TABLE `cautela`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_Policial` (`idPolicial`),
   ADD KEY `fk_Despachante` (`idDespachante`),
-  ADD KEY `fk_Recebedor` (`idRecebedor`),
-  ADD KEY `idItem` (`idItem`);
+  ADD KEY `fk_Recebedor` (`idRecebedor`);
 
 --
 -- Indexes for table `fabricante`
@@ -453,6 +466,7 @@ ALTER TABLE `item`
 --
 ALTER TABLE `item_cautela`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_Cautela` (`idCautela`),
   ADD KEY `fk_Item` (`idItem`);
 
 --
@@ -505,7 +519,7 @@ ALTER TABLE `unidade`
 -- AUTO_INCREMENT for table `cautela`
 --
 ALTER TABLE `cautela`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `fabricante`
@@ -517,37 +531,37 @@ ALTER TABLE `fabricante`
 -- AUTO_INCREMENT for table `inspecao`
 --
 ALTER TABLE `inspecao`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `item_cautela`
 --
 ALTER TABLE `item_cautela`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `logacesso`
 --
 ALTER TABLE `logacesso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `operador`
 --
 ALTER TABLE `operador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `policial`
 --
 ALTER TABLE `policial`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `subunidade`
@@ -559,7 +573,7 @@ ALTER TABLE `subunidade`
 -- AUTO_INCREMENT for table `tipo_item`
 --
 ALTER TABLE `tipo_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `unidade`
@@ -595,7 +609,7 @@ DELIMITER $$
 --
 -- Eventos
 --
-CREATE DEFINER=`root`@`localhost` EVENT `InspecaoVencida` ON SCHEDULE EVERY 1 DAY STARTS '2018-11-14 06:00:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
+CREATE DEFINER=`root`@`localhost` EVENT `InspecaoVencida` ON SCHEDULE EVERY 10 SECOND STARTS '2018-11-14 06:00:00' ON COMPLETION PRESERVE ENABLE DO BEGIN
   UPDATE inspecao SET situacao = 'Atrasada'
   WHERE situacao = 'Em dia' and dataProxima <= CURDATE();
 END$$
