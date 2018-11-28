@@ -187,8 +187,8 @@ include 'includes/header.html';
 
                     <div class="row">
                       <div class="col-lg-12">
-                        <button id="btnCadastrarCautela" type="submit" name="cadastrar" class="btn btn-success">Finalizar cautela</button>
-                        <button type="button" id="teste" name="teste" class="btn btn-primary">Teste DB</button> -->
+                        <button id="btnCadastrarCautela" type="button" name="cadastrar" class="btn btn-success">Finalizar cautela</button>
+                        <!-- <button type="button" id="teste" name="teste" class="btn btn-primary">Teste DB</button> -->
                         <input type="reset" class="btn btn-secundary" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                       </div>
                     </div>
@@ -328,7 +328,7 @@ $(document).ready(function(){
     });
 
     //botão finalizar cautela
-    $('#teste').on('click', function(){
+    $('#btnCadastrarCautela').on('click', function(){
         var table_data = [];
         
         //foreach para pegar os dados
@@ -349,6 +349,7 @@ $(document).ready(function(){
                 var id_policial = $('#idPolicial').val();
                 var id_item = $(tr).find('td:eq(0)').text();
                 var quantidade = $(tr).find('td:eq(3)').text();
+                
                 $.ajax({
                         url: '../controller/VandersonController.php',
                         method: 'POST',
@@ -359,31 +360,15 @@ $(document).ready(function(){
                             id_item : id_item,
                             quantidade : quantidade
                         }
-                    }); 
-              /*  $.post('VandersonController.php', { 
-                            permanente : $('#permanente').val(),
-                            id_policial : $('#idPolicial').val(),
-                            id_item : $(tr).find('td:eq(0)').text(),
-                            quantidade : $(tr).find('td:eq(3)').text()
-                        }).done(function(data){
-                          swal("VAI POOOORRA");
-                        });*/
+                    });               
                 table_data.push(sub);                
             }
         });
         console.log(table_data);
-        swal("Fim do laço");
-/*        $.ajax({
-            url: '../controller/VandersonController.php',
-            type: 'POST',
-            data : 
-            { 
-                dados : table_data
-            },
-            success : function (data){
-              swal("DISGRAAAAAAAAAAÇA");
-            }
-        }); */
+        swal("Tudo certo!", "Cautela cadastrada com sucesso.", "success");
+        setTimeout( function() {
+            window.location.replace("http://localhost/GP3U/view/CautelaView.php");
+        }, 3000 );
     });
 });
 </script>
