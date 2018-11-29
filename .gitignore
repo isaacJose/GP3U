@@ -21,7 +21,7 @@ nbdist/
 ### PHPCodeSniffer ###
 # CodeSniffer
 
-/vendor/*
+# /vendor/*
 /wpcs/*
 
 ### PhpStorm ###
