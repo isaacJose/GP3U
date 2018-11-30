@@ -134,10 +134,12 @@ include 'includes/style/InspecaoView.html';
                 <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Cautela</th>
+                      <th>Policial</th>
                       <th>Última inspeção</th>
                       <th>Próxima inspeção</th>
                       <th>Situação</th>
+                      <th> </th>
+                      <th> </th>
                     </tr>
                   </thead>
                   <tbody>
