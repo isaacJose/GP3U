@@ -120,6 +120,20 @@ class InspecaoDao {
         }
     }
 
+    function renova(conexao $conn, $id) {
+        $query = "UPDATE inspecao SET 
+                  dataUltima = CURDATE(), 
+                  dataProxima = DATE_ADD(CURDATE(), INTERVAL 3 MONTH), 
+                  situacao='Em dia'                  
+                  WHERE id = ".$id;
+        
+        if (mysqli_query($conn->conecta(), $query)) {
+            echo "Registro editado com sucesso!";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        }
+    }
+
     function lista(conexao $conn) {
         $query = "SELECT i.id,
         p.nome_funcional as policial, 
@@ -131,7 +145,9 @@ class InspecaoDao {
         c.quantidade as quantidade,
         item.serial as serialItem,
         item.modelo as modeloItem,
-        tipo.descricao as descricaoItem
+        tipo.descricao as descricaoItem,
+        date_format(dataUltima,'%d/%m/%Y') AS dataUltimaFormatada,
+        date_format(dataProxima,'%d/%m/%Y') AS dataProximaFormatada
         
         FROM inspecao i, cautela c , policial p, item item, tipo_item tipo
         
@@ -150,8 +166,8 @@ class InspecaoDao {
                 echo '<tr>'; 
                 
                     echo '<td>' . $row["policial"] . '</td>';       
-                    echo '<td>' . $row["dataUltima"] . '</td>';
-                    echo '<td>' . $row["dataProxima"] . '</td>';
+                    echo '<td>' . $row["dataUltimaFormatada"] . '</td>';
+                    echo '<td>' . $row["dataProximaFormatada"] . '</td>';
                     echo '<td>' . $row["situacao"] . '</td>';
                     
                     $stringDescricaoItem = $uteis->sanitizeString($row['descricaoItem']);
@@ -168,8 +184,8 @@ class InspecaoDao {
                     </td>';
                     //Botão realizar inspeção
                     echo '<td align="center">                            
-                                <button type="submit" name="itens" value="" class="btn btn-success btn-xs">
-                                Realizar inspeção</button>
+                                <button type="button" name="renovar" value="" class="btn btn-success btn-xs"
+                                data-toggle="modal" data-target="#modalRenovarInspecao'.$row["id"].'">Realizar inspeção</button>
                     </td>';
 
                     //Modal para ver o item
@@ -195,6 +211,30 @@ class InspecaoDao {
                                         Quantidade: <strong>'.$row["quantidade"].'</strong> </br>
                                     </div>
                                     
+                                    </div>
+                                </div>
+                                </div>';
+
+                    echo        '<!-- Modal -->
+                                <div class="modal fade" id="modalRenovarInspecao'.$row["id"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="TituloModalCentralizado">Confirmação de inspeção</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Confirma a inspeção da cautela?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <form name="formunidade2" action="../controller/InspecaoController.php" method="POST">
+                                            <button type="submit" name="renovar" value="" class="btn btn-primary">Inspeção realizada</button>
+                                            <input type="hidden" name="id" value="'.$row["id"].'">
+                                        </form>
+                                    </div>
                                     </div>
                                 </div>
                                 </div>';

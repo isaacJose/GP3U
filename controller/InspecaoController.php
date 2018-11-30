@@ -66,6 +66,15 @@ class InspecaoController { //Função que lista na tabela os dados das inpeçõe
         $inspecaoDao = new InspecaoDao();
         $inspecaoDao->edita($conexao, $inspecao);
     }
+
+    public function renovaInspecao() {
+        //Instanciando conexão;
+        $conexao = new conexao();
+        //recuperação de dados via input's
+        $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);//vindo do input hidden.        
+        $inspecaoDao = new InspecaoDao();
+        $inspecaoDao->renova($conexao, $id);
+    }
 }
 
 //Form quando solicitado via input tem seu tratamento realizado aqui 
@@ -74,6 +83,7 @@ $inspecao = new InspecaoController();
 $cadastrar = filter_input(INPUT_POST,"cadastrar",FILTER_SANITIZE_STRING);//Verifica o acionamento do botao cadastrar.
 $editar = filter_input(INPUT_POST,"editar",FILTER_SANITIZE_STRING);//Verifica o acionamento do botao editar.
 $excluir = filter_input(INPUT_POST,"excluir",FILTER_SANITIZE_STRING);//Verifica o acionamento do botao excluir.
+$renovar = filter_input(INPUT_POST,"renovar",FILTER_SANITIZE_STRING);//Verifica o acionamento do botao excluir.
 
 if (isset($cadastrar)) {
     $inspecao->insereInspecao();
@@ -87,5 +97,10 @@ if (isset($excluir)) {
 
 if(isset($editar)){
     $inspecao->editaInspecao();
+    header("Location: ../view/InspecaoView.php");
+}
+
+if(isset($renovar)){
+    $inspecao->renovaInspecao();
     header("Location: ../view/InspecaoView.php");
 }
