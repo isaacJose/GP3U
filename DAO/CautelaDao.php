@@ -200,14 +200,16 @@ class CautelaDao {
                 o.nome_funcional as despachante,
                 p.nome_funcional as nome_policial,
                 p.graduacao as grad_policial,
+                i.serial as serial,
+                c.quantidade as quantidade,
                 date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
                 date_format(vencimento,'%d/%m/%Y') AS dataVencimentoFormatada,
                 date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada,
                 --IF(permanente=1, 'Aberta', 'Fechada')
             FROM
-                cautela c, policial p, operador o
-            WHERE
-                c.aberta = 1 and p.id = c.idPolicial and o.id = idDespachante) a LEFT JOIN operador b
+                cautela c, policial p, operador o, item i
+            WHERE 
+                i.id = c.idItem and c.aberta = 1 and p.id = c.idPolicial and o.id = idDespachante) a LEFT JOIN operador b
                 ON a.idRecebedor = b.id";
         
       //$query = "SELECT c.id AS id, 
@@ -245,12 +247,35 @@ class CautelaDao {
                     echo '<td>' . $row["grad_policial"] ." ". $row["nome_policial"] . '</td>';
                     echo '<td>' . $row["grad_despachante"] ." ". $row["despachante"] . '</td>';
                     //echo '<td>' . $row["recebedor"] . '</td>';
-                    echo '<td align="center">
-                            <form name="formItem1" action="../view/CautelaViewCadastrarItem.php" method="POST">
-                                <button type="submit" name="itens" value="" class="btn btn-primary btn-xs">Itens</button>
-                                <input type="hidden" name="id" value="'.$row["id"].'">
-                            </form>
-                         </td>';
+                    
+                    echo'<td align="center">                                
+                    <button name="mostrarItem" value="" class="btn btn-cancel btn-xs"
+                    type="button" data-toggle="modal" data-target="#modalMostraItem'.$row["serial"].'">Mostrar Item</button>                                    
+                    </td>';
+
+                    echo'<!-- Modal -->
+                        <div class="modal fade" id="modalMostraItem'.$row["serial"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="TituloModalCentralizado">Item da cautela</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            '."<strong>Item :</strong> ".$row["serial"]."<br><strong>Quantidade:</strong> ".$row["quantidade"].'
+                            </div>
+                            </div>
+                            </div>
+                        </div>';
+                   
+                        echo '<td align="center">
+                         <form name="formItem2" action=" " method="POST">
+                             <button type="submit" name="devolver" value="" class="btn btn-danger btn-xs">Devolver</button>
+                             <input type="hidden" name="id" value="'.$row["id"].'">
+                         </form>
+                      </td>';
                        
                 }
             } else {
