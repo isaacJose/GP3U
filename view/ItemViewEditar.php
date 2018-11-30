@@ -221,7 +221,7 @@ include 'includes/header.html';
                     </div>
                   </div>
 
-                  <div class="col-lg-4">
+                  <div id="div_validade" class="col-lg-4">
                     <div class="form-group">
                       <label>Validade</label>
                       <?php
@@ -376,3 +376,18 @@ include 'includes/header.html';
   </body>
 
 </html>
+
+<script language="javascript">
+$(document).ready(function() {
+    $('#div_validade').hide(); 
+    $('#id_tipo_item').change(function(){
+        if($('#id_tipo_item').val() == "1") { //O código do Colete Balístico é 1
+            $('#div_validade').show(); 
+            $('#validade').prop('required',true);
+        } else {
+            $('#div_validade').hide();
+            $('#validade').prop('required',false); 
+        } 
+    });
+});
+</script>

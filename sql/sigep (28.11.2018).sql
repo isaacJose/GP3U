@@ -593,6 +593,12 @@ ALTER TABLE `item`
   ADD CONSTRAINT `fk_id_subunidade` FOREIGN KEY (`id_subunidade`) REFERENCES `subunidade` (`id`),
   ADD CONSTRAINT `fk_id_tipo_item` FOREIGN KEY (`id_tipo_item`) REFERENCES `tipo_item` (`id`);
 
+-- FOREIGN KEY PARA ITEM
+
+ALTER TABLE `cautela`
+  ADD CONSTRAINT `fk_id_item_cautela` FOREIGN KEY (`idItem`) 
+  REFERENCES `item` (`id`) on DELETE RESTRICT on UPDATE cascade;
+
 --
 -- Limitadores para a tabela `policial`
 --
