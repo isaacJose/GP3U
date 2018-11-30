@@ -114,18 +114,22 @@ class CautelaController {
     public function devolveCautela() {
         $conexao = new conexao();       
         $id = filter_input(INPUT_POST,"id",FILTER_SANITIZE_STRING);
-        var_dump($id);
         $recebedor = $_SESSION['nome_funcional'];
         $operadorDao = new OperadorDao();
         $idRecebedor = $operadorDao->recuperaId($conexao, $recebedor);
-        var_dump($idRecebedor);
         
-        
+        /*
         $cautela = new Cautela();
         $cautela->setId($id);
         $cautela->setIdRecebedor($idRecebedor);
         $cautelaDao = new CautelaDao();
         $cautelaDao->devolver($conexao, $cautela);
+        */
+
+        //Outra ótica para devolução
+        $cautelaDao = new CautelaDao();
+        $cautelaDao->devolucao($conexao, $id, $idRecebedor);
+
     }
 }
 
@@ -135,6 +139,8 @@ $cadastrar = filter_input(INPUT_POST,"cadastrar",FILTER_SANITIZE_STRING);
 $devolver = filter_input(INPUT_POST,"devolver",FILTER_SANITIZE_STRING);
 $excluir = filter_input(INPUT_POST,"excluir",FILTER_SANITIZE_STRING);
 $editar = filter_input(INPUT_POST,"editar",FILTER_SANITIZE_STRING);
+$devolver = filter_input(INPUT_POST,"devolver",FILTER_SANITIZE_STRING);
+
 
 if (isset($cadastrar)) {
     $cautela->insereCautela();
@@ -150,8 +156,9 @@ if (isset($excluir)) {
     $cautela->excluiCautela();
     header("Location: ../view/CautelaView.php");
 }
-
+/*
 if(isset($editar)){
     $cautela->editaSubunidade();
     header("Location: ../view/SubunidadeView.php");
 }
+*/

@@ -150,6 +150,20 @@ class CautelaDao {
             echo "0 results";
         }      
     }
+
+    function recuperaPermanente(conexao $conn, $id) {
+        $query = "SELECT * FROM cautela WHERE id = ".$id;
+        
+        $result = mysqli_query($conn->conecta(), $query);
+
+        $permanente = 0;
+        if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $permanente = $row['permanente'];
+            }
+        }
+        return $permanente;     
+    }
     //ok
     function exclui(conexao $conn, Cautela $cautela) {
         $query = "DELETE FROM cautela WHERE id = '{$cautela->getId()}'";
@@ -180,11 +194,28 @@ class CautelaDao {
             echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
         }
     }
+
+    function devolucao(conexao $conn, $idCautela, $idRecebedor) {
+        
+        $permanente = $this->recuperaPermanente($conn, $idCautela);
+
+        $query = "UPDATE cautela SET 
+                aberta = 0,
+                permanente = IF({$permanente} = 1, 1, 0),
+                dataEntrega = CURDATE(),
+                idRecebedor = {$idRecebedor}                
+                WHERE id = {$idCautela}";
+        
+        if (mysqli_query($conn->conecta(), $query)) {
+            echo "Registro editado com sucesso!";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn->conecta());
+        }
+    }
+
     
     //done
-    function lista(conexao $conn) {
-
-      
+    function lista(conexao $conn) {      
         $query = "SELECT a.*, b.nome_funcional as recebedor 
         FROM (SELECT
                 c.id,
@@ -201,39 +232,23 @@ class CautelaDao {
                 p.nome_funcional as nome_policial,
                 p.graduacao as grad_policial,
                 i.serial as serial,
+                i.modelo as modelo,
                 c.quantidade as quantidade,
+                tp.descricao as tipo_item,
                 date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
                 date_format(vencimento,'%d/%m/%Y') AS dataVencimentoFormatada,
                 date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada,
                 --IF(permanente=1, 'Aberta', 'Fechada')
             FROM
-                cautela c, policial p, operador o, item i
+                cautela c, policial p, operador o, item i, tipo_item tp
             WHERE 
-                i.id = c.idItem and c.aberta = 1 and p.id = c.idPolicial and o.id = idDespachante) a LEFT JOIN operador b
+                i.id = c.idItem and c.aberta = 1 and p.id = c.idPolicial and 
+                o.id = idDespachante and i.id_tipo_item = tp.id) a LEFT JOIN operador b
                 ON a.idRecebedor = b.id";
         
-      //$query = "SELECT c.id AS id, 
-      //c.permanente AS permanente, 
-      //c.aberta AS aberta, 
-      //c.dataRetirada AS dataRetirada, 
-      //c.vencimento AS vencimento, 
-      //c.dataEntrega AS dataEntrega, 
-      //p1.nome_funcional AS policial,
-      //o2.nome_funcional AS despachante,
-      //o2.nome_funcional AS recebedor,
-      //date_format(dataRetirada,'%d/%m/%Y') AS dataRetiradaFormatada,
-      //date_format(vencimento,'%d/%m/%Y') AS dataencimentoFormatada,
-      //date_format(dataEntrega,'%d/%m/%Y') AS dataEntregaFormatada
-
-      
-      //FROM cautela c, policial p1, operador o1, operador o2
-      
-      //WHERE c.idPolicial = p1.id and c.idDespachante = o1.id and c.idRecebedor = o2.id"; 
-        
-       /* $query = "SELECT FROM cautela c, policial p1, 
-                  WHERE c.idPolicial = p1.id and c.idDespachante = p2.id and c.idDespachante = p3.id";*/
-        
         $result = mysqli_query($conn->conecta(), $query);
+
+        $uteis = new Uteis();
 
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) { 
@@ -247,14 +262,38 @@ class CautelaDao {
                     echo '<td>' . $row["grad_policial"] ." ". $row["nome_policial"] . '</td>';
                     echo '<td>' . $row["grad_despachante"] ." ". $row["despachante"] . '</td>';
                     //echo '<td>' . $row["recebedor"] . '</td>';
-                    
+                
+                    $stringPolicial = $uteis->sanitizeString($row["nome_policial"]);
+                    $stringTipoItem = $uteis->sanitizeString($row["tipo_item"]);
+                    $stringModelo = $uteis->sanitizeString($row["modelo"]);
+                    $stringSerial = $uteis->sanitizeString($row["serial"]);                    
+
+
+                    //Botão mostrar item
                     echo'<td align="center">                                
-                    <button name="mostrarItem" value="" class="btn btn-cancel btn-xs"
-                    type="button" data-toggle="modal" data-target="#modalMostraItem'.$row["serial"].'">Mostrar Item</button>                                    
+                        <button name="mostrarItem" value="" class="btn btn-cancel btn-xs"
+                        type="button" data-toggle="modal" data-target="#modalMostraItem'.$stringTipoItem.
+                        $stringModelo.
+                        $stringSerial.
+                        $row["quantidade"].'">Mostrar Item</button>                                    
+                    </td>';
+
+                    //Botão dar baixa
+                    echo'<td align="center">                                
+                        <button name="devolverItem" value="" class="btn btn-success btn-xs"
+                        type="button" data-toggle="modal" data-target="#modalDevolverCautela'.$row["id"].
+                        $stringPolicial.
+                        $stringTipoItem.
+                        $stringModelo.
+                        $stringSerial.
+                        $row["quantidade"].'">Dar baixa</button>                                    
                     </td>';
 
                     echo'<!-- Modal -->
-                        <div class="modal fade" id="modalMostraItem'.$row["serial"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                        <div class="modal fade" id="modalMostraItem'.$stringTipoItem.
+                        $stringModelo.
+                        $stringSerial.
+                        $row["quantidade"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -264,18 +303,53 @@ class CautelaDao {
                                 </button>
                             </div>
                             <div class="modal-body">
-                            '."<strong>Item :</strong> ".$row["serial"]."<br><strong>Quantidade:</strong> ".$row["quantidade"].'
+                                Tipo: <strong>'.$stringTipoItem.'</strong> </br>
+                                Modelo: <strong>'.$stringModelo.'</strong> </br>
+                                Serial: <strong>'.$stringSerial.'</strong> </br>
+                                Quantidade: <strong>'.$row["quantidade"].'</strong> </br> </br>
                             </div>
                             </div>
                             </div>
                         </div>';
                    
-                        echo '<td align="center">
-                         <form name="formItem2" action=" " method="POST">
-                             <button type="submit" name="devolver" value="" class="btn btn-danger btn-xs">Devolver</button>
-                             <input type="hidden" name="id" value="'.$row["id"].'">
-                         </form>
-                      </td>';
+                        
+
+                         //Modal de devolução
+                         echo        '<!-- Modal -->
+                         <div class="modal fade" id="modalDevolverCautela'.$row["id"].
+                                $stringPolicial.
+                                $stringTipoItem.
+                                $stringModelo.
+                                $stringSerial.
+                                $row["quantidade"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered" role="document">
+                             <div class="modal-content">
+                             <div class="modal-header">
+                                 <h5 class="modal-title" id="TituloModalCentralizado">Confirmação de inspeção</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                             </div>
+                             <div class="modal-body">
+                                Policial: <strong>'.$stringPolicial.'</strong> </br> </br>
+                                Tipo: <strong>'.$stringTipoItem.'</strong> </br>
+                                Modelo: <strong>'.$stringModelo.'</strong> </br>
+                                Serial: <strong>'.$stringSerial.'</strong> </br>
+                                Quantidade: <strong>'.$row["quantidade"].'</strong> </br> </br>
+                                <center><strong>Confirma a devolução deste item?</strong></center>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                 <form name="formunidade2" action="../controller/CautelaController.php" method="POST">
+                                     <button type="submit" name="devolver" value="" class="btn btn-primary">Realizar devolução</button>
+                                     <input type="hidden" name="id" value="'.$row["id"].'">
+                                 </form>
+                             </div>
+                             </div>
+                         </div>
+                         </div>';
+
+                      echo '</td>';
                        
                 }
             } else {
