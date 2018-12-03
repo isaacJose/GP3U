@@ -365,6 +365,10 @@ $(document).ready(function(){
             alert("Por favor selecione o tipo de cautela");
             $('#permanente').focus();
         }
+        else if($('#dataTableItems tr').lenght = 1){
+          alert("Adicione itens à sua cautela antes de finalizar.");
+          $('#serialItem').focus();
+        }
         else{
             var table_data = [];
         
