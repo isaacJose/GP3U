@@ -243,7 +243,8 @@ class CautelaDao {
                 cautela c, policial p, operador o, item i, tipo_item tp
             WHERE 
                 i.id = c.idItem and c.aberta = 1 and p.id = c.idPolicial and 
-                o.id = idDespachante and i.id_tipo_item = tp.id) a LEFT JOIN operador b
+                o.id = idDespachante and i.id_tipo_item = tp.id
+                ORDER BY c.id DESC) a LEFT JOIN operador b
                 ON a.idRecebedor = b.id";
         
         $result = mysqli_query($conn->conecta(), $query);
@@ -254,6 +255,7 @@ class CautelaDao {
             while($row = mysqli_fetch_assoc($result)) { 
                 echo '<tr>';
                         
+                    echo '<td>' . $row["id"] . '</td>';
                     echo '<td>' . $row["permanente"] . '</td>';
                     echo '<td>' . $row["aberta"] . '</td>';
                     echo '<td>' . $row["dataRetiradaFormatada"] . '</td>';
@@ -289,6 +291,8 @@ class CautelaDao {
                         $row["quantidade"].'">Dar baixa</button>                                    
                     </td>';
 
+                    
+                    //Modal para mostrar os itens
                     echo'<!-- Modal -->
                         <div class="modal fade" id="modalMostraItem'.$stringTipoItem.
                         $stringModelo.

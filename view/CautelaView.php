@@ -132,16 +132,17 @@ include 'includes/header.html';
                 <table class="table table-bordered table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Tipo</th>
-                      <th>Situação</th>
-                      <th>Retirada</th>
-                      <th>Vencimento</th>
-                      <!-- <th>Entrega</th> -->
-                      <th>Policial</th>
-                      <th>Despachante</th>
-                      <!-- <th>Recebedor</th> -->
-                      <th></th>
-                      <th></th>
+                        <th>Id</th>  
+                        <th>Tipo</th>
+                        <th>Situação</th>
+                        <th>Retirada</th>
+                        <th>Vencimento</th>
+                        <!-- <th>Entrega</th> -->
+                        <th>Policial</th>
+                        <th>Despachante</th>
+                        <!-- <th>Recebedor</th> -->
+                        <th></th>
+                        <th></th>
                     </tr>
                   </thead>            
                   <tbody>
@@ -156,8 +157,9 @@ include 'includes/header.html';
           </div>
           <div class="row">
             <div class="col-lg-12">
-              <form action="CautelaViewCadastrar.php">
-                <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
+              <!--<form action="CautelaViewCadastrar.php">
+                <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar"> -->
+                <a href="CautelaViewCadastrar.php"><button class="btn btn-success">Cadastrar</button></a>
               </form>
             </div>
           </div>

@@ -285,10 +285,21 @@ include 'includes/header.html';
 $(document).ready(function(){
     
     $('#btnAdicionarItem').on('click', function(){
-        var serialItem = $('#serialItem').val();
+        
+        var serialItem = $('#serialItem').val();        
         var qtdItem = $('#qtdItem').val();
         var botaoRemove = '<button class="btn btn-danger btn-xs remove">Remover item</button>';
-        $.ajax
+
+        if($('#serialItem').val() == ''){
+            alert("Por favor informe o serial");
+            $('#serialItem').focus();
+        }
+        else if($('#qtdItem').val() == ''){
+            alert("Por favor selecione a quantidade");
+            $('#qtdItem').focus();
+        }
+        else{
+            $.ajax
             ({
                 type: 'POST',
                 dataType: 'json',
@@ -316,20 +327,44 @@ $(document).ready(function(){
                 },
                 error: function()
                 {
-                    alert("Deu alguma merda");
+                    //alert("Deu alguma merda"+data[0].erro);
+                    swal({
+                        title: "Ops! Tivemos um problema.",
+                        text: "Número de série incorreto ou a quantidade superior ao estoque. Verifique as informações inseridas",
+                        icon: "warning",
+                        buttons: false,
+                        dangerMode: true,
+                    })
                 }
             });
+        }        
     });
 
-    //remover linha dos itens inseridos
+
+
+    //--------- remover linha dos itens inseridos -------------------------
+
+    
     $(document).on('click', '.remove', function(){
         $(this).parents('tr').remove();
         swal("Item removido!")
     });
 
-    //botão finalizar cautela
+
+    // --------- botão finalizar cautela ----------------------------------
+
     $('#btnCadastrarCautela').on('click', function(){
-        var table_data = [];
+
+        if($('#idPolicial').val() == ''){
+            alert("Por favor selecione um policial");
+            $('#idPolicial').focus();
+        }
+        else if($('#permanente').val() == ''){
+            alert("Por favor selecione o tipo de cautela");
+            $('#permanente').focus();
+        }
+        else{
+            var table_data = [];
         
         //foreach para pegar os dados
         $('#dataTableItems tr').each(function(row, tr){
@@ -362,13 +397,14 @@ $(document).ready(function(){
                         }
                     });               
                 table_data.push(sub);                
-            }
-        });
-        console.log(table_data);
-        swal("Tudo certo!", "Cautela cadastrada com sucesso.", "success");
-        setTimeout( function() {
-            window.location.replace("http://localhost/GP3U/view/CautelaView.php");
-        }, 3000 );
+                }
+            });
+            console.log(table_data);
+            swal("Tudo certo!", "Cautela cadastrada com sucesso.", "success");
+            setTimeout( function() {
+                window.location.replace("http://localhost/GP3U/view/CautelaView.php");
+            }, 2000 );
+        }        
     });
 });
 </script>
