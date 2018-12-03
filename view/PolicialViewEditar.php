@@ -36,9 +36,11 @@ include 'includes/style/PolicialViewCadastrar.html';
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <!--
             <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="#">Perfil</a>            
             <a class="dropdown-item" href="OperadorView.php">Operador</a>
+            -->
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#aboutModal">Sobre</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
