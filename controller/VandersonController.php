@@ -49,7 +49,7 @@ $query = "INSERT INTO cautela
             ".$permanente.", 
             1, ".$id_policial.", 
             CURDATE(), 
-            IF(".$permanente." = 1, DATE_ADD(CURDATE(), INTERVAL 1 DAY), NULL), 
+            IF(".$permanente." = 1, NULL, DATE_ADD(CURDATE(), INTERVAL 1 DAY)), 
             ".$idDespachante."
         )";
 if (mysqli_query($conn, $query)) {

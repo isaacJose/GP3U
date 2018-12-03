@@ -154,7 +154,7 @@ include 'includes/header.html';
                     <div class="row">
                       <div class="col-lg-12">
                         <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
-                        <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
+                        <input type="reset" class="btn btn-secundary" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                       </div>
                     </div>
                   </div>

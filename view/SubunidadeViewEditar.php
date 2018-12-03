@@ -182,7 +182,7 @@ echo '<input type="hidden" name="id" value="' . $id . '">';
                 <div class="row">
                   <div class="col-lg-12">
                     <input type="submit" class="btn btn-primary" id ="editar" name="editar" value="Editar">
-                    <input type="reset" class="btn btn-danger" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
+                    <input type="reset" class="btn btn-secundary" id="voltar" name="voltar" value="Cancelar" onClick="history.go(-1)">
                   </div>
                 </div>
               </form>
