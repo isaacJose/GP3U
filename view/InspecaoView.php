@@ -196,27 +196,9 @@ include 'includes/style/InspecaoView.html';
       </div>
     </div>
 
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Sobre</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body" align="justify">O Sistema de Gerenciamento de Equipamentos para Proteção policial - SIGEP,
-            foi desenvolvido como parte de requisito de nota para a disciplina de Gestão de Projetos por:
-            <br/> <br/> Bruno Silva <br/>
-            Isaac José <br/>
-            Rodrigo Aggeu <br/>
-            Vanderson Fábio <br/></div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Fechar</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php
+    include 'includes/modalabout.html'
+    ?>
 
 
     <?php
