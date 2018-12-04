@@ -171,14 +171,14 @@ include 'includes/header.html';
                       </div>
                   </div>
                     <form>
-                  <div class="input-group mb-3 col-lg-6">
-                        <input id="serialItem" type="text" class="form-control" placeholder="Nº de série ou código do item" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <input id="qtdItem" type="text" class="form-control" placeholder="Quantidade" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button id="btnAdicionarItem" class="btn btn-outline-success" type="submit">Adicionar item</button>                            
+                        <div class="input-group mb-3 col-lg-6">
+                            <input id="serialItem" type="text" class="form-control" placeholder="Nº de série ou código do item" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input id="qtdItem" type="text" class="form-control" placeholder="Quantidade" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button id="btnAdicionarItem" class="btn btn-outline-success" type="submit">Adicionar item</button>                            
+                            </div>
                         </div>
-                    </div>                  
-</form>
+                    </form>
                   
 
                       </div>
