@@ -170,15 +170,15 @@ include 'includes/header.html';
                         
                       </div>
                   </div>
-
+                    <form>
                   <div class="input-group mb-3 col-lg-6">
                         <input id="serialItem" type="text" class="form-control" placeholder="Nº de série ou código do item" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <input id="qtdItem" type="text" class="form-control" placeholder="Quantidade" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button id="btnAdicionarItem" class="btn btn-outline-success" type="button">Adicionar item</button>                            
+                            <button id="btnAdicionarItem" class="btn btn-outline-success" type="submit">Adicionar item</button>                            
                         </div>
                     </div>                  
-          
+</form>
                   
 
                       </div>
@@ -287,7 +287,7 @@ include 'includes/header.html';
 $(document).ready(function(){
     
     $('#btnAdicionarItem').on('click', function(){
-        
+                
         var serialItem = $('#serialItem').val();        
         var qtdItem = $('#qtdItem').val();
         var botaoRemove = '<button class="btn btn-danger btn-xs remove">Remover item</button>';
@@ -326,6 +326,7 @@ $(document).ready(function(){
                     //alert("Item adicionado");
                     $('#serialItem').val('');
                     $('#qtdItem').val('');
+                    $('#serialItem').focus();
                 },
                 error: function()
                 {
@@ -365,9 +366,9 @@ $(document).ready(function(){
             alert("Por favor selecione o tipo de cautela");
             $('#permanente').focus();
         }
-        else if($('#dataTableItems tr').lenght = 1){
-          alert("Adicione itens à sua cautela antes de finalizar.");
-          $('#serialItem').focus();
+        else if($('#dataTableItems tr').lenght < 2){
+            alert("Adicione itens à sua cautela antes de finalizar.");
+            $('#serialItem').focus();
         }
         else{
             var table_data = [];
