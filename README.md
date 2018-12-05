@@ -2,9 +2,7 @@
 
 # SIGEP
 
-## Sistema de Gestão de Equipamentos para Proteção Policial
-
-[![Build Status](https://travis-ci.com/rodrigoaggeu/GP3U.svg?branch=master)](https://travis-ci.com/rodrigoaggeu/GP3U)
+## Sistema de Gestão de Equipamentos para Proteção 
 
 O Sistema de Gestão de Equipamentos para Proteção Policial (SIGEP) é um software de cadastro e gerenciamento de materiais bélicos e equipamentos de proteção individual (EPIs) presentes em cada organização policial militar (OPM), bem como o gerenciamento das cautelas¹ destes materiais pelos policiais de suas respectivas unidades.
 
