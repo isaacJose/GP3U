@@ -12,6 +12,9 @@ include 'includes/style/PolicialViewCadastrar.html';
 
   <body id="page-top">
 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+
       <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="PrincipalView.php">SIGEP</a>
@@ -262,3 +265,32 @@ include 'includes/style/PolicialViewCadastrar.html';
   </body>
 
 </html>
+
+
+<script type="text/javascript">
+$(function(){ 
+  $("input[name='matricula']").on('blur', function(){
+    var matricula = $("input[name='matricula']").val();
+    $.ajax
+            ({
+                type: 'POST',
+                dataType: 'json',
+                url: '../controller/MatriculaController.php',
+                data:
+                {
+                    matricula : matricula
+                },
+                success: function(data)
+                {                    
+                  swal({
+                        title: "Ops! Matrícula já existente.",
+                        text: "Por favor, verifique novamente a matrícula inserida",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                }
+            });
+  });
+});
+</script>
