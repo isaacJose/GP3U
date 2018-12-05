@@ -200,7 +200,6 @@ include 'includes/style/InspecaoView.html';
     include 'includes/modalabout.html'
     ?>
 
-
     <?php
     include 'includes/script.html';
     ?>

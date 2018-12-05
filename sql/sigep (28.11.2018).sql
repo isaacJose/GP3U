@@ -282,7 +282,19 @@ CREATE TABLE `operador` (
 --
 
 INSERT INTO `operador` (`id`, `nome`, `graduacao`, `nome_funcional`, `matricula`, `email`, `senha`, `ativo`, `tipo`) VALUES
-(1, 'Vanderson Fábio de Araújo', 'sd', 'vanderson', '205.020-0', 'vanderson.fabio@gmail.com', '11111', 1, 'admin');
+(1, 'Vanderson Fábio de Araújo', 'sd', 'Vanderon', '205.020-0', 'vanderson.fabio@gmail.com', '11111', 1, 'admin');
+
+INSERT INTO `operador` (`id`, `nome`, `graduacao`, `nome_funcional`, `matricula`, `email`, `senha`, `ativo`, `tipo`) VALUES
+(2, 'Bruno Borges da Silva', 'sd', 'Bruno', '654.020-0', 'brunno.linkin@gmail.com', '11111', 1, 'operador');
+
+INSERT INTO `operador` (`id`, `nome`, `graduacao`, `nome_funcional`, `matricula`, `email`, `senha`, `ativo`, `tipo`) VALUES
+(3, 'Rogrido Aggeu', 'sd', 'vanderson', '854.020-0', 'rodrigoaggeu@gmail.com', '11111', 1, 'operador');
+
+INSERT INTO `operador` (`id`, `nome`, `graduacao`, `nome_funcional`, `matricula`, `email`, `senha`, `ativo`, `tipo`) VALUES
+(4, 'Isaac José de Oliveira Santos', 'sd', 'Isaac', '852.020-0', 'oliveiira99.i@gmail.com', '11111', 1, 'admin');
+
+INSERT INTO `operador` (`id`, `nome`, `graduacao`, `nome_funcional`, `matricula`, `email`, `senha`, `ativo`, `tipo`) VALUES
+(5, 'Joaquim Heitor', 'sd', 'Gôdu', '999.020-0', 'kinkacaico@gmail.com', '11111', 1, 'operador');
 
 -- --------------------------------------------------------
 

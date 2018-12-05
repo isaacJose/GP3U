@@ -43,7 +43,7 @@ if ($row > 0) {
         // $mail->SMTPDebug = 2; // mostra a saída do processo na tela
         $mail->isSMTP();
         $mail->Host = $p_host;
-        $mail->SMTPAuth = true;
+        $mail->SMTPAuth = $p_smtpauth;
         $mail->Username = $p_username; // seu email (no caso, google)
         $mail->Password = $p_password; // sua senha do email
         $mail->SMTPSecure = $p_smtpsecure;
@@ -56,6 +56,7 @@ if ($row > 0) {
         $mail->AddAddress($email, $nome);
 
         $mail->Subject = "Recuperação de senha!";
+        
         $mail->msgHTML("<html><br/>{$nome}<br/>Enviamos um email de recuperação para: {$email}<br/> <!-- Mensagem: --> {$mensagem}</html>");
         $mail->AltBody = "de: {$nome}\nemail:{$email}\nmensagem: {$mensagem}";
 

@@ -18,9 +18,10 @@ $seg = date("s");
 $horaSaida = "$hra:$min:$seg";
 $dataSaida = "$dia/$mes/$ano";
 
-$matricula = $_SESSION['matricula'];
+//$matricula = $_SESSION['matricula'];
+$idlogoff = $_SESSION['iddoacesso'];
 
-$inseresaida = "UPDATE logacesso SET horalogout = '$horaSaida', datalogout = '$dataSaida' WHERE matricula = '$matricula'";
+$inseresaida = "UPDATE logacesso SET horalogout = '$horaSaida', datalogout = '$dataSaida' WHERE id = '$idlogoff'";
 
 mysqli_query($conexao, $inseresaida) or die(mysqli_error($conexao));
 
