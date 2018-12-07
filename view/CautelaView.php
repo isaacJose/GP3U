@@ -162,7 +162,7 @@ include 'includes/header.html';
               <!--<form action="CautelaViewCadastrar.php">
                 <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar"> -->
                 <a href="CautelaViewCadastrar.php"><button class="btn btn-success">Cadastrar</button></a>
-              </form>
+              <!-- </form> -->
             </div>
           </div>
         </div>

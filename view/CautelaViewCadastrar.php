@@ -410,7 +410,7 @@ $(document).ready(function(){
             console.log(table_data);
             swal("Tudo certo!", "Cautela cadastrada com sucesso.", "success");
             setTimeout( function() {
-                window.location.replace("http://localhost/sigep/view/CautelaView.php");
+                window.location.replace("http://localhost/GP3U/view/CautelaView.php");
                 //window.location.replace("http://localhost/sigep/view/CautelaView.php");
             }, 2000 );
         }        

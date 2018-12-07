@@ -135,8 +135,8 @@ include 'includes/header.html';
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <label>Unidade</label>
-                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente a unidade">
+                      <label>Descrição</label>
+                      <input id="unidade" type="text" name="descricao" class="form-control" placeholder="Ex.: 6º Batalhão de Policia Militar" title="Campo referente à descrição">
                     </div>
                   </div>
                   <div class="col-lg-6">

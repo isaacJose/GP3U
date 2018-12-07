@@ -1,6 +1,6 @@
 <?php
 // session_start();
- 
+require_once "../controller/Uteis.php";
 class ItemDao {
 
     function adiciona(conexao $conn, Item $item) {
@@ -259,6 +259,8 @@ class ItemDao {
         
         $result = mysqli_query($conn->conecta(), $query);
 
+        $uteis = new Uteis();
+
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 echo '<tr>';
@@ -268,6 +270,8 @@ class ItemDao {
                     echo '<td>' . $row["serial"] . '</td>';
                     echo '<td>' . $row["quantidade"] . '</td>';
                     echo '<td>' . $row["situacao"] . '</td>';
+
+                    $stringModelo = $uteis->sanitizeString($row["modelo"]);
                     
                     echo '<td align="center">
                              <form name="formItem1" action="../view/ItemViewEditar.php" method="POST">
@@ -278,13 +282,13 @@ class ItemDao {
 
                     echo        '<td align="center">                                
                         <button name="excluir" value="" class="btn btn-danger btn-xs"
-                        type="button" data-toggle="modal" data-target="#modalDeleteItem'.$row["id"].$row["modelo"].'">Excluir</button>                                    
+                        type="button" data-toggle="modal" data-target="#modalDeleteItem'.$row["id"].$stringModelo.'">Excluir</button>                                    
                      </td>';
     
                     //Modal para confirmar a exclusão dos itens selecionados
                     //Devemos passar tanto o ID como a SIGLA para que o modal possa exibir e exluir o item
                     echo        '<!-- Modal -->
-                                <div class="modal fade" id="modalDeleteItem'.$row["id"].$row["modelo"].'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                <div class="modal fade" id="modalDeleteItem'.$row["id"].$stringModelo.'" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
@@ -294,7 +298,7 @@ class ItemDao {
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Deseja realmente excluir o item <strong>'.$row["modelo"].'</strong>?
+                                        Deseja realmente excluir o item <strong>'.$stringModelo.'</strong>?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

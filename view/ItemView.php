@@ -159,9 +159,10 @@ $lista->listaItem();
           </div>
           <div class="row">
             <div class="col-lg-12">
-            <form action="ItemViewCadastrar.php">
-              <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar">
-            </form>
+            <!--<form action="CautelaViewCadastrar.php">
+                <input type="submit" class="btn btn-success" id="cadastrar" name="cadastrar" value="Cadastrar"> -->
+                <a href="ItemViewCadastrar.php"><button class="btn btn-success">Cadastrar</button></a>
+              <!-- </form> -->
             </div>
           </div>
         </div>
