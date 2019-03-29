@@ -1,0 +1,49 @@
+if(tipoIndiceInicial.equals("ao ano")){
+            if(tipoIndiceFinal.equals("ao semestre")){
+
+                base = valorIndiceInicial/100 + 1;
+                expoente = 1.0/2.0;
+
+                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+            }
+            else if(tipoIndiceFinal.equals("ao trimestre")){
+
+                base = valorIndiceInicial/100 + 1;
+                expoente = 1.0/4.0;
+
+                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+            }
+            else if(tipoIndiceFinal.equals("ao bimestre")){
+
+                base = valorIndiceInicial/100 + 1;
+                expoente = 1.0/6.0;
+
+                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+            }
+            else if(tipoIndiceFinal.equals("ao mês")){
+
+                base = valorIndiceInicial/100 + 1;
+                expoente = 1.0/12.0;
+
+                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+            }
+            else if(tipoIndiceFinal.equals("ao dia")){
+
+                base = valorIndiceInicial/100 + 1;
+                expoente = 1.0/360.0;
+
+                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+            }
+        }
+        else if(tipoIndiceInicial.equals("ao semestre")) {
+        
+        }
+        else if(tipoIndiceInicial.equals("ao trimestre")) {
+
+        }
+        else if(tipoIndiceInicial.equals("ao mês")) {
+
+        }
+        else{
+            
+        }
