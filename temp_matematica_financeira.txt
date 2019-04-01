@@ -1,83 +1,305 @@
-if(tipoIndiceInicial.equals("ao ano")){
-            if(tipoIndiceFinal.equals("ao semestre")){
+botaoCalcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/2.0;
+                final AlertDialog.Builder alertaErro = new AlertDialog.Builder(MainActivity.this);
+                int countErrors = 0;
+                String errorDescription = "";
 
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+                //VERIFICAÇÕES DE NULIDADE
+                if(txtIndiceAtual.getText().toString().equals("")){
+                    countErrors++;
+                    errorDescription = "Insira o valor do índice inicial.";
+                }
+                else if(tipoIndiceInicial.equals("-- Selecione o período")){
+                    countErrors++;
+                    errorDescription = "Selecione o período do índice inicial.";
+                }
+                else if(tipoIndiceFinal.equals("-- Selecione o período")){
+                    countErrors++;
+                    errorDescription = "Selecione o período do índice que deseja converter.";
+                }
+                else if(tipoIndiceFinal.equals(tipoIndiceInicial)){
+                    countErrors++;
+                    errorDescription = "Os períodos devem ser distintos.";
+                }
+
+                if(countErrors>0){
+                    alertaErro.setTitle("Erro").setMessage(errorDescription)
+                            .setPositiveButton("Voltar", null)
+                            .setIcon(R.drawable.ic_error_outline_black_24dp)
+                            .create()
+                            .show();
+                }
+                else{
+                    realizarCalculo();
+                }
             }
-            else if(tipoIndiceFinal.equals("ao trimestre")){
+        });
+        
+public void realizarCalculo(){
 
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/4.0;
+        final AlertDialog.Builder alertaResultado = new AlertDialog.Builder(MainActivity.this);
 
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
-            else if(tipoIndiceFinal.equals("ao bimestre")){
 
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/6.0;
+        valorIndiceInicial = Double.parseDouble(txtIndiceAtual.getText().toString());
 
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
-            else if(tipoIndiceFinal.equals("ao mês")){
-
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/12.0;
-
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
-            else if(tipoIndiceFinal.equals("ao dia")){
-
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/360.0;
-
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
+        if(tipoIndiceInicial.equals("ao ano")){
+            converterAnoParaQualquer();
         }
         else if(tipoIndiceInicial.equals("ao semestre")) {
-            if(tipoIndiceFinal.equals("ao ano")){
-
-                base = valorIndiceInicial/100 + 1;
-                expoente = 2.0;
-
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
-            else if(tipoIndiceFinal.equals("ao trimestre")){
-
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/2.0;
-
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
-            else if(tipoIndiceFinal.equals("ao bimestre")){
-
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/3.0;
-
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
-            else if(tipoIndiceFinal.equals("ao mês")){
-
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/6.0;
-
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
-            else if(tipoIndiceFinal.equals("ao dia")){
-
-                base = valorIndiceInicial/100 + 1;
-                expoente = 1.0/180.0;
-
-                valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
-            }
+            converterSemestreParaQualquer();
         }
         else if(tipoIndiceInicial.equals("ao trimestre")) {
-
+            converterTrimestreParaQualquer();
+        }
+        else if(tipoIndiceInicial.equals("ao bimestre")){
+            converterBimestreParaQualquer();
         }
         else if(tipoIndiceInicial.equals("ao mês")) {
-
+            converterMesParaQualquer();
         }
         else{
-            
+            converterDiaParaQualquer();
         }
+
+        //FORMATAR CASAS DECIMAIS DOS RESULTADOS
+        DecimalFormat df = new DecimalFormat("##.###");
+
+
+        alertaResultado.setTitle(df.format(valorIndiceFinal)+"% " + tipoIndiceFinal)
+                .setMessage(
+                        "equivale a taxa de " + df.format(valorIndiceInicial) + "% " + tipoIndiceInicial)
+                .setPositiveButton("Ok", null)
+                .setIcon(R.drawable.ic_loop_black_24dp)
+                .create()
+                .show();
+}
+
+public void converterAnoParaQualquer(){
+        if(tipoIndiceFinal.equals("ao semestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/2.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao trimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/4.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao bimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/6.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao mês")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/12.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao dia")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/360.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+    }
+
+public void converterSemestreParaQualquer(){
+        if(tipoIndiceFinal.equals("ao ano")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 2.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao trimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/2.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao bimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/3.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao mês")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/6.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao dia")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/180.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+    }
+
+public void converterTrimestreParaQualquer(){
+        if(tipoIndiceFinal.equals("ao ano")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 4.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao semestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 2.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao bimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 2.0/3.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao mês")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/3.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao dia")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/90.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+    }
+
+public void converterBimestreParaQualquer(){
+        if(tipoIndiceFinal.equals("ao ano")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 6.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao semestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 3.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao trimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 3.0/2.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao mês")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/2.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao dia")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/60.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+    }
+
+public void converterMesParaQualquer(){
+        if(tipoIndiceFinal.equals("ao ano")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 12.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao semestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 6.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao trimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 3.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao bimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 2.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao dia")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 1.0/30.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+    }
+
+public void converterDiaParaQualquer(){
+        if(tipoIndiceFinal.equals("ao ano")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 360.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao semestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 180.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao trimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 90.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao bimestre")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 60.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+        else if(tipoIndiceFinal.equals("ao mês")){
+
+            base = valorIndiceInicial/100 + 1;
+            expoente = 30.0;
+
+            valorIndiceFinal = (Math.pow(base, expoente) - 1)*100;
+        }
+}
