@@ -107,13 +107,12 @@ public class Parcela {
         p0.setSaldoDevedor(saldoDevedor);
         parcelas.add(p0);
 
-        //AS PARCELAS SÃO FIXAS
+        //AS PRESTAÇÕES SÃO FIXAS
         prestacao = prestacao = capital*taxa/(1-Math.pow(1+taxa,(-tempo)));
         for(int i = 1; i <= tempo; i++){
             Parcela p = new Parcela();
-
-            amortizacao = capital/tempo;
             juros = taxa*saldoDevedor;
+            amortizacao = prestacao - juros;            
             saldoDevedor = saldoDevedor - amortizacao;
 
             p.setNumero(i);
