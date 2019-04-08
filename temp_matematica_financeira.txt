@@ -71,53 +71,86 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 int rbSelecionado = rgGrupoPeriodo.getCheckedRadioButtonId();
                 rbPeriodoJuros = (RadioButton) findViewById(rbSelecionado);
 
-                capital = Double.parseDouble(txtValorFinanciamento.getText().toString());
-                taxa = Double.parseDouble(txtTaxaJuros.getText().toString())/100;
-                tempo = Integer.parseInt(txtTempo.getText().toString());
-
+                String errorDescription = "";
+                int countError = 0;
                 
-                if(rbPeriodoJuros.getText().toString().equals("a.a.")){
-                    taxa = Math.pow(1+taxa,1.0/12.0) -1;
+                if(txtValorFinanciamento.getText().toString().equals("")){
+                    countError++;
+                    errorDescription = "Valor do financiamento ausente. Por favor, insira um valor válido.";
                 }
+                else if(txtValorFinanciamento.getText().toString().equals("R$0,00")){
+                    countError++;
+                    errorDescription = "Valor do financiamento inválido. Por favor, insira um valor válido.";
+                }
+                else if(txtTaxaJuros.getText().toString().equals("")){
+                    countError++;
+                    errorDescription = "Taxa de juros ausente. Por favor, insira um valor válido.";
+                }
+                else if(txtTempo.getText().toString().equals("")){
+                    countError++;
+                    errorDescription = "Nº de prestações ausente. Por favor, insira um valor válido.";
+                }
+                else if(txtTempo.getText().toString().equals("0")){
+                    countError++;
+                    errorDescription = "Nº de prestações inválido. Por favor, insira um valor válido.";
+                }
+                
+                
+                if(countError > 0){
+                    final AlertDialog.Builder alertaErrors = new AlertDialog.Builder(MainActivity.this);
+                    alertaErrors.setTitle("Atenção!")
+                        .setMessage(errorDescription)
+                        .create()
+                        .show();
+                }
+                else{
+
+                    capital = Double.parseDouble(txtValorFinanciamento.getText().toString());
+                    taxa = Double.parseDouble(txtTaxaJuros.getText().toString())/100;
+                    tempo = Integer.parseInt(txtTempo.getText().toString());
 
 
-                Parcela parcela = new Parcela();
-                final AlertDialog.Builder alertaParcelas = new AlertDialog.Builder(MainActivity.this);
-                final AlertDialog.Builder alertaIndividual = new AlertDialog.Builder(MainActivity.this);
-
-                final ArrayList<Parcela> listaParcelas =
-                        (tipoAmortizacao.equals("SAC")) ?
-                                parcela.getParcelasSAC(capital, taxa, tempo) : parcela.getParcelasPrice(capital, taxa, tempo);
-
-
-
-                alertaParcelas.setTitle("Tabela selecionada: " + tipoAmortizacao);
-                alertaParcelas.setIcon(R.drawable.ic_attach_money_black_24dp);
-                ParcelaAdapter adapterParcela = new ParcelaAdapter(getBaseContext(), R.layout.linha_parcela, listaParcelas);
-                alertaParcelas.setSingleChoiceItems(adapterParcela, 0, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        final Parcela parcelaSelecionada = (Parcela) listaParcelas.get(which);
-
-                        DecimalFormat df = new DecimalFormat("###,##0.00");
-
-                        alertaIndividual.setTitle("Detalhamento da parcela # "+parcelaSelecionada.getNumero());
-                        alertaIndividual.setMessage(
-                                "Prestação: R$ " + df.format(parcelaSelecionada.getPrestacao()) +
-                                "\nAmortização: R$ " + df.format(parcelaSelecionada.getAmortizacao()) +
-                                "\nJuros: R$ " + df.format(parcelaSelecionada.getJuros()) +
-                                "\nSaldo Devedor: R$ " + df.format(parcelaSelecionada.getSaldoDevedor())
-                        );
-                        alertaIndividual.setPositiveButton("Voltar", null);
-                        alertaIndividual.setCancelable(false).create().show();
+                    if(rbPeriodoJuros.getText().toString().equals("a.a.")){
+                        taxa = Math.pow(1+taxa,1.0/12.0) -1;
                     }
-                });
 
-                alertaParcelas.setPositiveButton("Ok",null);
 
-                alertaParcelas.create().show();
-            }
-        });
+                    Parcela parcela = new Parcela();
+                    final AlertDialog.Builder alertaParcelas = new AlertDialog.Builder(MainActivity.this);
+                    final AlertDialog.Builder alertaIndividual = new AlertDialog.Builder(MainActivity.this);
+
+                    final ArrayList<Parcela> listaParcelas =
+                            (tipoAmortizacao.equals("SAC")) ?
+                                    parcela.getParcelasSAC(capital, taxa, tempo) : parcela.getParcelasPrice(capital, taxa, tempo);
+
+                    alertaParcelas.setTitle("Tabela selecionada: " + tipoAmortizacao);
+                    alertaParcelas.setIcon(R.drawable.ic_attach_money_black_24dp);
+                    ParcelaAdapter adapterParcela = new ParcelaAdapter(getBaseContext(), R.layout.linha_parcela, listaParcelas);
+                    alertaParcelas.setSingleChoiceItems(adapterParcela, 0, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            final Parcela parcelaSelecionada = (Parcela) listaParcelas.get(which);
+
+                            DecimalFormat df = new DecimalFormat("###,##0.00");
+
+                            alertaIndividual.setTitle("Detalhamento da parcela # "+parcelaSelecionada.getNumero());
+                            alertaIndividual.setMessage(
+                                    "Prestação: R$ " + df.format(parcelaSelecionada.getPrestacao()) +
+                                    "\nAmortização: R$ " + df.format(parcelaSelecionada.getAmortizacao()) +
+                                    "\nJuros: R$ " + df.format(parcelaSelecionada.getJuros()) +
+                                    "\nSaldo Devedor: R$ " + df.format(parcelaSelecionada.getSaldoDevedor())
+                            );
+                            alertaIndividual.setPositiveButton("Voltar", null);
+                            alertaIndividual.setCancelable(false).create().show();
+                        }
+                    });
+
+                    alertaParcelas.setPositiveButton("Ok",null);
+
+                    alertaParcelas.create().show();
+                }
+            } //Fim do else
+        }); //Fim do OnClick
     }
 
     public void carregarDadosSpinner(){
